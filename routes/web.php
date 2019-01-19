@@ -11,16 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('inicio');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 
-Route::get('/home', 'SiteController@index')->name('inicio');
+Route::get('/home', 'dashController@index')->name('inicio');
 Route::get('/cookies', 'SiteController@cookies')->name('cookies');
 Route::get('/terminos', 'SiteController@terminos')->name('terminos');
 Route::get('/privacidad', 'SiteController@privacidad')->name('privacidad');
+Route::post('/contactar', 'ContactarController@crear')->name('contactar');

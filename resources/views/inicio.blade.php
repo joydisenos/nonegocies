@@ -56,12 +56,14 @@
 				    <div class="sa-fix"></div>
 			  	</div>
 			</div>
-			<form class="wow animated fadeInUp">
-				<input class="special" type="text" name="name" placeholder="Nombre Completo *" required>
+			<form class="wow animated fadeInUp" action="{{ route('contactar') }}" method="post">
+				@csrf
+				<input class="special" type="text" name="nombre" id="nombre" placeholder="Nombre*" required>
+				<input class="special" type="text" name="apellido" placeholder="Apellido *" required>
 				<input class="special" type="email" name="email" placeholder="Email *" required>
-				<input class="special" type="text" name="phone" placeholder="Teléfono">
+				<input class="special" type="text" name="telefono" placeholder="Teléfono">
 				<div class="callme">
-				<input type="checkbox" name="callme" id="callme"> Prefiero que me llamen
+				<input type="checkbox" name="llamar" id="llamada"> Prefiero que me llamen
 				</div>
 				<div class="accept">
 				<input type="checkbox" name="accept" id="the-terms"> Acepto las <a href="{{ route('privacidad') }}" title="Ver Políticas de Privacidad">políticas de privacidad.</a>
@@ -76,30 +78,42 @@
 
 <script>
 $(document).ready(function() {
-	$(function () {
+
+
+		 $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+	});
+
+   
 
 		$('form').on('submit', function (e) {
 			
-      	
+      	var nombre = $("input[name=nombre]").val();
+      	var apellido = $("input[name=apellido]").val();
+        var email = $("input[name=email]").val();
+        var llamar = $("input[name=llamar]").val();
+
       	e.preventDefault();
       	$('form').fadeOut();
 		$.ajax({
 			type: 'post',
-			url: '/contactar',
-			data: $('form').serialize(),
+			url: '{{ route("contactar") }}',
+			data: $(this).serialize(),
 			
-	        success: function () {
+	        success: function (data) {
 	        			
 						$('.check_mark').removeClass('hide');
 						$(".sa-success").addClass("hide");
 						setTimeout(function() {
 						    $(".sa-success").removeClass("hide");
 						}, 10);
-						$("h3.gray").html("Muchas Gracias por contactarnos, pronto nos pondremos en contacto.");
+						$("h3.gray").html(data.guardado);
 					}
 				});
 			});
-		});
+		
 
 		var the_terms = $("#the-terms");
 
@@ -110,6 +124,8 @@ $(document).ready(function() {
 	            $("#submitBtn").attr("disabled", "disabled");
 	        }
 	    });
+
+		
 	}); 
 </script>
 

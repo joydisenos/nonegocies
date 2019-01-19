@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="follow,index">
     <meta name="revisit-after" content="2 days">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="apple-touch-icon" href="{{asset('img/nonegocies.png')}}" />
@@ -31,7 +32,7 @@
         "message": "Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación.",
         "dismiss": "Acepto",
         "link": "Política de cookies",
-        "href": "https://nonegocies.es/cookies"
+        "href": "{{route('cookies')}}"
       }
     })});
     </script>
