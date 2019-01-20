@@ -15,6 +15,10 @@ class CreateAjustesTable extends Migration
     {
         Schema::create('ajustes', function (Blueprint $table) {
             $table->increments('id');
+            $table->longtext('cookies')->nullable();
+            $table->longtext('privacidad')->nullable();
+            $table->longtext('terminos')->nullable();
+            $table->float('comision')->default(0);
             $table->timestamps();
         });
     }

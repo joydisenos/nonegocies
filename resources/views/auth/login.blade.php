@@ -98,7 +98,7 @@ Iniciar Sesión
             <!-- Link -->
             <div class="text-center">
               <small class="text-muted text-center">
-                Aún no te has registrado? <a href="sign-up.html">Registro</a>.
+                Aún no te has registrado? <a href="{{ route('register') }}">Registro</a>.
               </small>
             </div>
             

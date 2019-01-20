@@ -15,6 +15,14 @@ class CreateOfertasTable extends Migration
     {
         Schema::create('ofertas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->integer('empresa_id')->nullable();
+            $table->integer('categoria_id')->nullable();
+            $table->float('precio');
+            $table->float('precio_oferta')->nullable();
+            $table->text('descripcion');
+            $table->integer('estatus')->default(1);
+            $table->integer('ventas')->default(0);
             $table->timestamps();
         });
     }

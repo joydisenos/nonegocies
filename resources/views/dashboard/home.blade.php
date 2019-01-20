@@ -548,7 +548,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 col-xl-7">
+          <div class="col-12">
             
             <!-- Goals -->
             <div class="card">

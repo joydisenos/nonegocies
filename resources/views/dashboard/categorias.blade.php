@@ -18,15 +18,15 @@
 
                 <!-- Title -->
                 <h1 class="header-title">
-                  Empresas
+                  Categorías
                 </h1>
 
               </div>
               <div class="col-auto">
                
                 <!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearempresa">
-				  Crear Empresa
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearcategoria">
+				  Crear Categoría
 				</button>
 
               </div>
@@ -50,7 +50,7 @@
 
                     <!-- Title -->
                     <h4 class="card-header-title">
-                      Empresas Registradas
+                      Categorías Registradas
                     </h4>
 
                   </div>
@@ -82,37 +82,30 @@
                       </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-progress">
-                          Descripción
+                          Nº Ofertas
                         </a>
                       </th>
-                      <th>
-                        <a href="#" class="text-muted sort" data-sort="goal-date">
-                          Logo
-                        </a>
-                      </th>
+                     
                       
                       <th></th>
                     </tr>
                   </thead>
                   <tbody class="list">
                     
-                    @foreach($empresas as $empresa)
+                    @foreach($categorias as $categoria)
                     <tr>
                       <td class="goal-project">
-                        {{ title_case($empresa->nombre) }}
+                        {{ title_case($categoria->nombre) }}
                       </td>
                       <td class="goal-status">
-                      	@if($empresa->estatus == 1)
+                      	@if($categoria->estatus == 1)
                         <span class="text-success">●</span> Activo
                         @else
                         <span class="text-danger">●</span> Inactivo
                         @endif
                       </td>
                       <td class="goal-progress">
-                        {{ $empresa->descripcion }}
-                      </td>
-                      <td class="goal-date">
-                        {{ $empresa->logo }}
+                        Número de ofertas por categoría
                       </td>
                       
                       <td class="text-right">
@@ -147,32 +140,30 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="crearempresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearcategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Crear Empresa</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Crear Categoría</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('crearempresa') }}" method="post">
+      <form action="{{ route('crearcategoria') }}" method="post">
       	@csrf
       	  <div class="modal-body">
         		<div class="form-group">
 			    <label for="nombreempresa">Nombre</label>
-			    <input type="text" name="nombre" class="form-control" id="nombreempresa" placeholder="Nombre de la empresa">
-			    <small id="emailHelp" class="form-text text-muted">Nombre de la empresa</small>
+			    <input type="text" name="nombre" class="form-control" id="nombreempresa" placeholder="Nombre de la categoría">
+			    <small class="form-text text-muted">Nombre de la empresa</small>
 			  </div>
-			  <div class="form-group">
+			  <!--
+              <div class="form-group">
 			    <label for="descripcionempresa">Descripción</label>
 			    <textarea name="descripcion" class="form-control" id="descripcionempresa" cols="30" rows="10" placeholder="Descripción de la empresa"></textarea>
-			    <small id="emailHelp" class="form-text text-muted">Descripción</small>
+			    <small class="form-text text-muted">Descripción</small>
 			  </div>
-			  <div class="form-group">
-			    <label for="logotipo">Logotipo</label>
-			    <input type="file" class="form-control-file" name="logo" id="logotipo">
-			  </div>
+              -->
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

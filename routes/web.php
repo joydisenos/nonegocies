@@ -30,8 +30,15 @@ Route::prefix('admin')->group(function () {
    Route::get('/usuarios', 'dashController@usuarios')->name('usuarios');
    Route::get('/empresas', 'dashController@empresas')->name('empresas');
    Route::get('/contactar', 'dashController@contactar')->name('contactos');
+   Route::get('/categorias', 'dashController@categorias')->name('categorias');
 
+   //empresas
    Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa');
+
+   //categorias
+   Route::post('/crear/categoria', 'CategoriaController@crear')->name('crearcategoria');
+
+
 
 });
 

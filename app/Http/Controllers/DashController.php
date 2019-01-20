@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Contactar;
 use App\Empresa;
+use App\Categoria;
 
 class DashController extends Controller
 {
@@ -42,5 +43,13 @@ class DashController extends Controller
     	$contactos = $contactar->contactos();
 
     	return view('dashboard.contactar' , compact('contactos'));
+    }
+
+    public function categorias()
+    {
+    	$refCategorias = new Categoria();
+    	$categorias = $refCategorias->categorias();
+
+    	return view('dashboard.categorias' , compact('categorias'));
     }
 }
