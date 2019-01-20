@@ -27,4 +27,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function usuarios()
+    {
+        $usuarios = User::all();
+
+        return $usuarios;
+    }
+
+    public function empresas()
+    {
+        $empresas = User::all();
+
+        return $empresas;
+    }
 }
