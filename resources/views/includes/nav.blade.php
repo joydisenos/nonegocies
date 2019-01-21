@@ -24,7 +24,7 @@
               <!-- Toggle -->
               <a href="#!" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-sm avatar-online">
-                  <img src="assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+                  <img src="{{ asset('assets/img/logo.png')}}" class="avatar-img rounded-circle" alt="...">
                 </div>
               </a>
 
@@ -97,7 +97,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="{{ route('legales') }}">
                   <i class="fe fe-clipboard"></i> Legales
                 </a>
               </li>
@@ -157,7 +157,7 @@
                 <!-- Toggle -->
                 <a href="#!" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="avatar avatar-sm avatar-online">
-                    <img src="assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+                    <img src="{{ asset('assets/img/logo.png')}}" class="avatar-img rounded-circle" alt="...">
                   </div>
                 </a>
 

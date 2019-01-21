@@ -15,7 +15,7 @@
 </header>
 <section class="gray">
 	<div class="container">
-	
+			{!! $legal !!}
 	</div>
 </section>
 @endsection

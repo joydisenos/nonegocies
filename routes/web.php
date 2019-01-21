@@ -31,12 +31,17 @@ Route::prefix('admin')->group(function () {
    Route::get('/empresas', 'dashController@empresas')->name('empresas');
    Route::get('/contactar', 'dashController@contactar')->name('contactos');
    Route::get('/categorias', 'dashController@categorias')->name('categorias');
-
+   Route::get('/legales', 'dashController@legales')->name('legales');
+   
    //empresas
    Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa');
 
    //categorias
    Route::post('/crear/categoria', 'CategoriaController@crear')->name('crearcategoria');
+
+   //Legales
+   Route::get('/editar/{tabla}', 'LegalesController@editar')->name('editarlegales');
+   Route::post('/actualizar/{tabla}', 'LegalesController@actualizar')->name('actualizarlegal');
 
 
 

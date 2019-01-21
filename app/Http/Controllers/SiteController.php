@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ajuste;
 
 class SiteController extends Controller
 {
@@ -13,16 +14,25 @@ class SiteController extends Controller
 
     public function terminos()
     {
-    	return view('terminos');
+        $refLegal = Ajuste::first();
+        $legal = $refLegal->terminos;
+
+    	return view('terminos' , compact('legal'));
     }
 
     public function privacidad()
     {
-    	return view('privacidad');
+        $refLegal = Ajuste::first();
+        $legal = $refLegal->privacidad;
+
+    	return view('privacidad' , compact('legal'));
     }
 
     public function cookies()
     {
-    	return view('cookies');
+        $refLegal = Ajuste::first();
+        $legal = $refLegal->cookies;
+
+    	return view('cookies', compact('legal'));
     }
 }

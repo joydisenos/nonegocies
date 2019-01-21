@@ -19,6 +19,8 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/theme-dark.min.css')}}" id="stylesheetDark">
 
+    @yield('header')
+
     <style>body { display: none; }</style>
     
 
@@ -812,7 +814,7 @@
 
     <!-- Theme JS -->
     <script src="{{ asset('assets/js/theme.min.js')}}"></script>
-    
+    @yield('scripts')
 
   </body>
 </html>

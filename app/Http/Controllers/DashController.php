@@ -7,6 +7,7 @@ use App\User;
 use App\Contactar;
 use App\Empresa;
 use App\Categoria;
+use App\Ajuste;
 
 class DashController extends Controller
 {
@@ -51,5 +52,13 @@ class DashController extends Controller
     	$categorias = $refCategorias->categorias();
 
     	return view('dashboard.categorias' , compact('categorias'));
+    }
+
+    public function legales()
+    {
+        $refLegales = new Ajuste();
+        $legales = $refLegales->legales();
+
+        return view('dashboard.legales' , compact('legales'));
     }
 }
