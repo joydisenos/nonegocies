@@ -26,12 +26,12 @@ Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 //dashboard
 Route::prefix('admin')->group(function () {
 
-   Route::get('/', 'dashController@index')->name('inicio');
-   Route::get('/usuarios', 'dashController@usuarios')->name('usuarios');
-   Route::get('/empresas', 'dashController@empresas')->name('empresas');
-   Route::get('/contactar', 'dashController@contactar')->name('contactos');
-   Route::get('/categorias', 'dashController@categorias')->name('categorias');
-   Route::get('/legales', 'dashController@legales')->name('legales');
+   Route::get('/', 'DashController@index')->name('inicio');
+   Route::get('/usuarios', 'DashController@usuarios')->name('usuarios');
+   Route::get('/empresas', 'DashController@empresas')->name('empresas');
+   Route::get('/contactar', 'DashController@contactar')->name('contactos');
+   Route::get('/categorias', 'DashController@categorias')->name('categorias');
+   Route::get('/legales', 'DashController@legales')->name('legales');
    
    //empresas
    Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa');
