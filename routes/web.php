@@ -20,6 +20,7 @@ Route::get('/', 'SiteController@inicio')->name('home');
 Route::get('/cookies', 'SiteController@cookies')->name('cookies');
 Route::get('/terminos', 'SiteController@terminos')->name('terminos');
 Route::get('/privacidad', 'SiteController@privacidad')->name('privacidad');
+
 Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 
 
@@ -32,6 +33,7 @@ Route::prefix('admin')->group(function () {
    Route::get('/contactar', 'DashController@contactar')->name('contactos');
    Route::get('/categorias', 'DashController@categorias')->name('categorias');
    Route::get('/legales', 'DashController@legales')->name('legales');
+   Route::get('/ofertas', 'DashController@ofertas')->name('ofertas');
    
    //empresas
    Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa');

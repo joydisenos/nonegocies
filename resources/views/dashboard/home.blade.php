@@ -13,7 +13,7 @@
                 
                 <!-- Pretitle -->
                 <h6 class="header-pretitle">
-                  Overview
+                 Bienvenido, {{ title_case(Auth::user()->name) }} {{ title_case(Auth::user()->apellido) }}
                 </h6>
 
                 <!-- Title -->

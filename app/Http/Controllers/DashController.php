@@ -8,6 +8,7 @@ use App\Contactar;
 use App\Empresa;
 use App\Categoria;
 use App\Ajuste;
+use App\Ofertas;
 
 class DashController extends Controller
 {
@@ -60,5 +61,13 @@ class DashController extends Controller
         $legales = $refLegales->legales();
 
         return view('dashboard.legales' , compact('legales'));
+    }
+
+    public function ofertas()
+    {
+        $refOfertas = new Ofertas();
+        $ofertas = $refOfertas->ofertas();
+
+        return view('dashboard.ofertas' , compact('ofertas'));
     }
 }

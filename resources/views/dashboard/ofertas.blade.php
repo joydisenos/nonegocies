@@ -18,16 +18,16 @@
 
                 <!-- Title -->
                 <h1 class="header-title">
-                  Usuarios
+                  Ofertas
                 </h1>
 
               </div>
               <div class="col-auto">
                 
                 <!-- Button -->
-                <a href="#!" class="btn btn-primary">
+                <!--<a href="#!" class="btn btn-primary">
                   Crear Usuario
-                </a>
+                </a>-->
 
               </div>
             </div> <!-- / .row -->
@@ -50,7 +50,7 @@
 
                     <!-- Title -->
                     <h4 class="card-header-title">
-                      Usuarios Registrados
+                      Ofertas Registradas
                     </h4>
 
                   </div>
@@ -77,43 +77,54 @@
                       </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-status">
-                          Estatus
+                          Empresa
                         </a>
                       </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-progress">
-                          Email
+                          Categoría
                         </a>
                       </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-date">
-                          Plan
+                          Precio
                         </a>
                       </th>
                       <th class="text-right">
-                          Teléfono
+                          Estatus
+                      </th>
+                       <th class="text-right">
+                          Ventas
                       </th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody class="list">
                     
-                    @foreach($usuarios as $usuario)
+                    @foreach($ofertas as $oferta)
                     <tr>
                       <td class="goal-project">
-                        {{ title_case($usuario->name) }} {{ title_case($usuario->apellido) }}
+                        {{ title_case($oferta->nombre) }}
                       </td>
                       <td class="goal-status">
-                        <span class="text-warning">●</span> Estatus
+                        Empresa
                       </td>
                       <td class="goal-progress">
-                        {{ $usuario->email }}
+                        Categoria
                       </td>
                       <td class="goal-date">
-                        {{ ($usuario->plan_id) ? $usuario->plan_id : 'Inicial' }}
+                        
+                        {{ $oferta->precio }}
                       </td>
                       <td class="text-right">
-                        {{ ($usuario->telefono) ? $usuario->telefono : 'No Registrado'}}
+                       @if($oferta->estatus == 0)
+                        <span class="text-danger">●</span> Inactivo
+                        @else
+                        <span class="text-success">●</span> Activo
+                        @endif
+                      </td>
+                      <td class="text-right">
+                        {{ $oferta->ventas }}
                       </td>
                       <td class="text-right">
                         <div class="dropdown">
