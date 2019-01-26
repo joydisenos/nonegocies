@@ -25,9 +25,9 @@
               <div class="col-auto">
                 
                 <!-- Button -->
-                <!--<a href="#!" class="btn btn-primary">
-                  Crear Usuario
-                </a>-->
+                <a href="{{ route('crearoferta') }}" class="btn btn-primary">
+                  Crear Oferta
+                </a>
 
               </div>
             </div> <!-- / .row -->
@@ -107,10 +107,10 @@
                         {{ title_case($oferta->nombre) }}
                       </td>
                       <td class="goal-status">
-                        Empresa
+                        {{ $oferta->empresa->nombre }}
                       </td>
                       <td class="goal-progress">
-                        Categoria
+                        {{ $oferta->categoria->nombre }}
                       </td>
                       <td class="goal-date">
                         

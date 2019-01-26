@@ -18,4 +18,9 @@ class Categoria extends Model
 
         return $categorias;
     }
+
+    public function campos()
+    {
+        return $this->hasMany(CamposCategoria::class);
+    }
 }

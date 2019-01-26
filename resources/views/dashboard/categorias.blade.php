@@ -114,7 +114,7 @@
                             <i class="fe fe-more-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{ route('editarcategoria' , [$categoria->id]) }}" class="dropdown-item">
                               Editar
                             </a>
                       
@@ -154,8 +154,8 @@
       	  <div class="modal-body">
         		<div class="form-group">
 			    <label for="nombreempresa">Nombre</label>
-			    <input type="text" name="nombre" class="form-control" id="nombreempresa" placeholder="Nombre de la categoría">
-			    <small class="form-text text-muted">Nombre de la empresa</small>
+			    <input type="text" name="nombre" class="form-control" id="nombrecategoria" placeholder="Nombre de la categoría">
+			    <small class="form-text text-muted">Nombre de la categoria</small>
 			  </div>
 			  <!--
               <div class="form-group">

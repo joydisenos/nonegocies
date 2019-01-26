@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOfertasTable extends Migration
+class CreateCamposCategoriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateOfertasTable extends Migration
      */
     public function up()
     {
-        Schema::create('ofertas', function (Blueprint $table) {
+        Schema::create('campos_categorias', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('categoria_id');
             $table->string('nombre');
-            $table->integer('empresa_id')->nullable();
-            $table->integer('categoria_id')->nullable();
-            $table->float('precio')->default(0);
-            $table->float('precio_oferta')->nullable();
-            $table->text('descripcion');
-            $table->integer('estatus')->default(1);
             $table->integer('tipo')->default(1);
-            $table->integer('ventas')->default(0);
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ class CreateOfertasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ofertas');
+        Schema::dropIfExists('campos_categorias');
     }
 }

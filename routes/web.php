@@ -40,10 +40,16 @@ Route::prefix('admin')->group(function () {
 
    //categorias
    Route::post('/crear/categoria', 'CategoriaController@crear')->name('crearcategoria');
+   Route::get('/editar/categoria/{id}', 'CategoriaController@editar')->name('editarcategoria');
+   Route::post('/editar/categoria/{id}', 'CategoriaController@actualizar')->name('actualizarcategoria');
 
    //Legales
    Route::get('/editar/{tabla}', 'LegalesController@editar')->name('editarlegales');
    Route::post('/actualizar/{tabla}', 'LegalesController@actualizar')->name('actualizarlegal');
+
+   //Ofertas
+   Route::get('/crear/oferta', 'OfertasController@crear')->name('crearoferta');
+   Route::post('/crear/oferta', 'OfertasController@store')->name('storeoferta');
 
 
 
