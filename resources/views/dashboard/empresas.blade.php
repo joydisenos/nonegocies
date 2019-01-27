@@ -112,7 +112,7 @@
                         {{ $empresa->descripcion }}
                       </td>
                       <td class="goal-date">
-                        {{ $empresa->logo }}
+                        <img src="{{ asset('storage/'. $empresa->logo) }}" style="max-width:100px;" class="img-fluid" alt="Logo {{$empresa->nombre}}">
                       </td>
                       
                       <td class="text-right">
@@ -156,7 +156,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('crearempresa') }}" method="post">
+      <form action="{{ route('crearempresa') }}" method="post" enctype="multipart/form-data">
       	@csrf
       	  <div class="modal-body">
         		<div class="form-group">
@@ -170,8 +170,8 @@
 			    <small id="emailHelp" class="form-text text-muted">Descripción</small>
 			  </div>
 			  <div class="form-group">
-			    <label for="logotipo">Logotipo</label>
-			    <input type="file" class="form-control-file" name="logo" id="logotipo">
+			    <label for="logo">Logotipo</label>
+			    <input type="file" class="form-control-file" name="logo" id="logo">
 			  </div>
 	      </div>
 	      <div class="modal-footer">

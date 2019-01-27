@@ -17,7 +17,9 @@ class CategoriaController extends Controller
     {
     	$validatedData = $request->validate([
         'nombre' => 'required|max:255',
-    	]);
+        ]);
+        
+        $request->slug = str_slug($request->nombre , '-');
 
     	Categoria::create($request->all());
     	

@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Ofertas extends Model
 {
     protected $fillable = [
-        'nombre','descripcion','empresa_id','categoria_id','precio','tipo'
+        'nombre',
+        'slug',
+        'descripcion',
+        'empresa_id',
+        'categoria_id',
+        'precio',
+        'tipo'
     ];
 
     public function ofertas()
@@ -16,6 +22,22 @@ class Ofertas extends Model
 
     	return $ofertas;
     }
+
+    public function getOfertaSlug($slug)
+    {
+        $oferta = Ofertas::where('slug' , $slug)->first();
+
+        return $oferta;
+    }
+
+    public function getOfertasMenorPrecio($precio)
+    {
+        $ofertas = Ofertas::where('precio' <= $precio)->get();
+
+        return $ofertas;
+    }
+
+    //Relaciones
 
     public function empresa()
     {

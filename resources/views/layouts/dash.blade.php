@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css')}}" id="stylesheetLight">
 
     <link rel="stylesheet" href="{{ asset('assets/css/theme-dark.min.css')}}" id="stylesheetDark">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 
     @yield('header')
 
@@ -814,7 +815,10 @@
 
     <!-- Theme JS -->
     <script src="{{ asset('assets/js/theme.min.js')}}"></script>
-    @yield('scripts')
 
-  </body>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    @yield('scripts')
+    @include('includes.errors')
+    @include('includes.notificacion')
+</body>
 </html>

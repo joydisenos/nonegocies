@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="{{asset('css/styles.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <script>
@@ -101,6 +102,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    @include('includes.errors')
+    @include('includes.notificacion')
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){

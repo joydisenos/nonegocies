@@ -23,6 +23,10 @@ Route::get('/privacidad', 'SiteController@privacidad')->name('privacidad');
 
 Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 
+Route::prefix('ofertas')->group(function (){
+   Route::get('/{categoria}' , 'OfertasController@index')->name('indexofertas');
+});
+
 
 //dashboard
 Route::prefix('admin')->group(function () {

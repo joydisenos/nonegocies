@@ -8,7 +8,7 @@ class Categoria extends Model
 {
 
     protected $fillable = [
-        'nombre',
+        'nombre','slug'
     ];
 
 
@@ -19,8 +19,18 @@ class Categoria extends Model
         return $categorias;
     }
 
+    public function getCategoriaSlug($slug)
+    {
+        $categoria = Categoria::where('slug' , $slug)->first();
+
+        return $categoria;
+    }
+
+    //Relaciones
+
     public function campos()
     {
         return $this->hasMany(CamposCategoria::class);
     }
+
 }

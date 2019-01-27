@@ -35,4 +35,14 @@ class SiteController extends Controller
 
     	return view('cookies', compact('legal'));
     }
+
+    public function index($categoria)
+    {
+        $refCategoria = new Categoria();
+        $categoria = $refCategoria->getCategoriaSlug($categoria);
+
+        $ofertas = Oferta::where('categoria_id' , $categoria->id)->get();
+
+        return view('ofertas.solicitud' , compact('categoria'));
+    }
 }
