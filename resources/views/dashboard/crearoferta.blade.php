@@ -74,7 +74,7 @@
                         <div class="form-group">
                                 <label for="nombreoferta">Empresa</label>
                                 <select name="empresa_id" class="form-control" required>
-                                    <option>Seleccione una Empresa</option>
+                                    <option value="">Seleccione una Empresa</option>
                                         @foreach($empresas as $empresa)
                                             <option value="{{ $empresa->id }}">
                                                 {{ $empresa->nombre }}
@@ -83,30 +83,38 @@
                                 </select>
                         </div>
 
-                        <div class="form-group">
-                                <label for="nombreoferta">Categoría</label>
-                                <select name="categoria_id" class="form-control" required>
-                                    <option>Seleccione una Categoría</option>
-                                        @foreach($categorias as $categoria)
-                                            <option value="{{ $categoria->id }}">
-                                                {{ $categoria->nombre }}
-                                            </option>
-                                        @endforeach
-                                </select>
-                        </div>
 
-                        <div class="form-group">
-                                <label for="nombreoferta">Tipo de Oferta</label>
-                                <select name="tipo" class="form-control" required>
-                                    <option>Seleccione una Opción</option>
-                                    <option value="1">Particular</option>
-                                    <option value="2">Empresa</option>
-                                </select>
+
+                        <div class="form-group row">
+                          <div class="col">
+                            <label for="nombreoferta">Categoría</label>
+                                  <select name="categoria_id" class="form-control" required>
+                                      <option value="">Seleccione una Categoría</option>
+                                          @foreach($categorias as $categoria)
+                                              <option value="{{ $categoria->id }}">
+                                                  {{ $categoria->nombre }}
+                                              </option>
+                                          @endforeach
+                                  </select>
+                            </div>
+                            <div class="col">
+                                  <label for="nombreoferta">Tipo de Oferta</label>
+                                  <select name="tipo" class="form-control" required>
+                                      <option value="">Seleccione una Opción</option>
+                                      <option value="1">Particular</option>
+                                      <option value="2">Empresa</option>
+                                  </select>
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="nombreoferta">Nombre de la Oferta</label>
                             <input type="text" name="nombre" class="form-control" id="nombreoferta" placeholder="Nombre de la Oferta" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preciooferta">Precio de la oferta Anual</label>
+                            <input type="number" min="0" step="0.1" name="precio" class="form-control" id="preciooferta" placeholder="Precio Anual" required>
                         </div>
 
                         <div class="form-group">
