@@ -36,9 +36,14 @@ class OfertasController extends Controller
             'descripcion' => 'required',
             ]);
 
-            $request->slug = str_slug($request->nombre ,'-');
-
-            Ofertas::create($request->all());
+            $oferta = new Ofertas();
+            $oferta->nombre = $request->nombre;
+            $oferta->slug = str_slug($request->nombre , '-');
+            $oferta->empresa_id = $request->empresa_id;
+            $oferta->categoria_id = $request->categoria_id;
+            $oferta->tipo = $request->tipo;
+            $oferta->descripcion = $request->descripcion;
+            $oferta->save();
         
         return redirect()->route('ofertas')->with('Oferta Registrada');
     }

@@ -79,6 +79,12 @@
               </li>
 
               <li class="nav-item">
+                <a class="nav-link " href="{{ route('categorias') }}">
+                  <i class="fe fe-tag"></i> Categorías
+                </a>
+              </li>
+
+              <li class="nav-item">
                 <a class="nav-link " href="{{ route('empresas') }}">
                   <i class="fe fe-truck"></i> Empresas
                 </a>
@@ -87,12 +93,6 @@
               <li class="nav-item">
                 <a class="nav-link " href="{{ route('ofertas') }}">
                   <i class="fe fe-package"></i> Ofertas
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link " href="{{ route('categorias') }}">
-                  <i class="fe fe-tag"></i> Categorías
                 </a>
               </li>
 

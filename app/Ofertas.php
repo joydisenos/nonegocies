@@ -30,9 +30,11 @@ class Ofertas extends Model
         return $oferta;
     }
 
-    public function getOfertasMenorPrecio($precio)
+    public function getOfertasMenorPrecio($categoriaId , $precio)
     {
-        $ofertas = Ofertas::where('precio' <= $precio)->get();
+        $ofertas = Ofertas::where('precio' , '<=' , $precio)
+                            ->where('categoria_id' , $categoriaId)
+                            ->get();
 
         return $ofertas;
     }

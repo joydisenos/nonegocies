@@ -24,7 +24,8 @@ Route::get('/privacidad', 'SiteController@privacidad')->name('privacidad');
 Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 
 Route::prefix('ofertas')->group(function (){
-   Route::get('/{categoria}' , 'OfertasController@index')->name('indexofertas');
+   Route::get('/' , 'SiteController@categoria')->name('indexofertas');
+   Route::post('/' , 'SiteController@consultar')->name('consultar');
 });
 
 

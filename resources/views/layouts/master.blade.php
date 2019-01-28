@@ -59,6 +59,16 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{ URL::current() == url('/') ? '#contactar' : url('/#contactar')}}">Unirme</a>
             </li>
+
+            @guest
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{{ route('login') }}" >Iniciar Sesión</a>
+            </li>
+            @else
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{{ route('inicio') }}" >Panel {{ title_case(Auth::user()->name) }}</a>
+            </li>
+            @endguest
             <!--  <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
             </li> -->

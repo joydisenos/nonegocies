@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ajuste;
+use App\Categoria;
+use App\Ofertas;
+use Carbon\Carbon;
 
 class SiteController extends Controller
 {
@@ -36,13 +39,34 @@ class SiteController extends Controller
     	return view('cookies', compact('legal'));
     }
 
-    public function index($categoria)
+    public function categoria()
     {
         $refCategoria = new Categoria();
-        $categoria = $refCategoria->getCategoriaSlug($categoria);
+        $categorias = $refCategoria->categorias();
 
-        $ofertas = Oferta::where('categoria_id' , $categoria->id)->get();
+        return view('ofertas.formulario' , compact('categorias'));
+    }
 
-        return view('ofertas.solicitud' , compact('categoria'));
+    public function consultar(Request $request)
+    {
+        $validatedData = $request->validate([
+            'servicio' => 'required',
+            'monto' => 'required',
+            'desde' => 'required',
+            'hasta' => 'required',
+            ]);
+
+        $categoria = Categoria::findOrFail($request->servicio);
+        $refOfertas = new Ofertas;
+
+        $desde = Carbon::parse($request->desde);
+        $hasta = Carbon::parse($request->hasta);
+
+        $periodo = $hasta->diffInDays($desde);
+        $precio = $request->monto / $periodo;
+            
+        $ofertas = $refOfertas->getOfertasMenorPrecio($categoria->id , $precio);
+
+        return view('ofertas.resultados' , compact('ofertas' , 'categoria'));
     }
 }

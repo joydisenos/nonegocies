@@ -19,9 +19,10 @@ class CategoriaController extends Controller
         'nombre' => 'required|max:255',
         ]);
         
-        $request->slug = str_slug($request->nombre , '-');
-
-    	Categoria::create($request->all());
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
+        $categoria->slug = str_slug($request->nombre , '-');
+        $categoria->save();
     	
     	return redirect()->back()->with('status','Categoría registrada');
     }
