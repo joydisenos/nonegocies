@@ -114,7 +114,7 @@
                       </td>
                       <td class="goal-date">
                         
-                        {{ $oferta->precio }}
+                        {{ number_format($oferta->precio , 2 , ',' , '.') }}
                       </td>
                       <td class="text-right">
                        @if($oferta->estatus == 0)
