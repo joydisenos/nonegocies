@@ -18,7 +18,7 @@
 
                 <!-- Title -->
                 <h1 class="header-title">
-                  Ofertas
+                  Ofertas @if (isset($categoria)) de {{ title_case($categoria->nombre) }} @endif
                 </h1>
 
               </div>

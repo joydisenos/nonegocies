@@ -39,6 +39,7 @@ Route::prefix('admin')->group(function () {
    Route::get('/categorias', 'DashController@categorias')->name('categorias');
    Route::get('/legales', 'DashController@legales')->name('legales');
    Route::get('/ofertas', 'DashController@ofertas')->name('ofertas');
+   Route::get('/ofertas/{categoria}', 'DashController@ofertasPorCategoria')->name('ofertascategoria');
    
    //empresas
    Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa');
@@ -48,6 +49,9 @@ Route::prefix('admin')->group(function () {
    Route::get('/editar/categoria/{id}', 'CategoriaController@editar')->name('editarcategoria');
    Route::post('/editar/categoria/{id}', 'CategoriaController@actualizar')->name('actualizarcategoria');
 
+   //Usuarios
+   Route::get('/crear/usuario', 'DashController@crearUsuario')->name('crearusuario');
+   
    //Legales
    Route::get('/editar/{tabla}', 'LegalesController@editar')->name('editarlegales');
    Route::post('/actualizar/{tabla}', 'LegalesController@actualizar')->name('actualizarlegal');

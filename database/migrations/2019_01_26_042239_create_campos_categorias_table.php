@@ -17,6 +17,7 @@ class CreateCamposCategoriasTable extends Migration
             $table->increments('id');
             $table->integer('categoria_id');
             $table->string('nombre');
+            $table->string('clase')->nullable();
             $table->integer('tipo')->default(1);
             $table->timestamps();
         });

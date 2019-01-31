@@ -20,7 +20,10 @@ class DashController extends Controller
 
     public function index()
     {
-        return view('dashboard.home');
+        $refOfertas = new Ofertas();
+        $ofertasNum = $refOfertas->ofertas()->count();
+
+        return view('dashboard.home' , compact('ofertasNum'));
     }
 
     public function usuarios()
@@ -69,5 +72,21 @@ class DashController extends Controller
         $ofertas = $refOfertas->ofertas();
 
         return view('dashboard.ofertas' , compact('ofertas'));
+    }
+
+    public function ofertasPorCategoria($categoria)
+    {
+        $refCategoria = new Categoria();
+        $categoria = $refCategoria->getCategoriaSlug($categoria);
+
+        $refOfertas = new Ofertas();
+        $ofertas = $refOfertas->getOfertasCategoria($categoria->id);
+
+        return view('dashboard.ofertas' , compact('ofertas' , 'categoria'));
+    }
+
+    public function crearUsuario()
+    {
+        return view('dashboard.crearusuario');
     }
 }

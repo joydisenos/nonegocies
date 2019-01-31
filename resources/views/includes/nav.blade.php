@@ -58,10 +58,10 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#admin" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="admin">
+                <a class="nav-link" href="#admin" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="admin">
                   <i class="fe fe-home"></i> Administración
                 </a>
-                <div class="collapse show" id="admin">
+                <div class="collapse" id="admin">
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                       <a href="{{ route('inicio') }}" class="nav-link ">
@@ -90,10 +90,27 @@
                 </a>
               </li>
               
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <a class="nav-link " href="{{ route('ofertas') }}">
                   <i class="fe fe-package"></i> Ofertas
                 </a>
+              </li>-->
+
+              <li class="nav-item">
+                <a class="nav-link" href="#ofertas" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="ofertas">
+                  <i class="fe fe-package"></i> Ofertas
+                </a>
+                <div class="collapse" id="ofertas">
+                  <ul class="nav nav-sm flex-column">
+                    @foreach((new App\Categoria)->categorias() as $categoria)
+                    <li class="nav-item">
+                      <a href="{{ route('ofertascategoria' , [$categoria->slug]) }}" class="nav-link ">
+                        {{ $categoria->nombre }}
+                      </a>
+                    </li>
+                    @endforeach
+                  </ul>
+                </div>
               </li>
 
               <li class="nav-item">

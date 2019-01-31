@@ -9,21 +9,20 @@ Iniciar Sesión
       <div class="row justify-content-center">
         <div class="col-12 col-md-5 col-xl-4 my-5">
 
-             <div class="text-center">
+             
+          <div class="text-center mb-4">
               <img src="{{ asset('assets/img/logo.png') }}" class="img-fluid" alt="">
           </div>
-          
-          <!-- Heading -->
+
+          <!--
           <h1 class="display-4 text-center mb-3">
             Iniciar Sesión
           </h1>
 
-         
-          
-          <!-- Subheading -->
           <p class="text-muted text-center mb-5">
            Panel No Negocies
           </p>
+          -->
           
           <!-- Form -->
           <form method="POST" action="{{ route('login') }}">
@@ -76,31 +75,14 @@ Iniciar Sesión
               </div>
             </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-6 offset-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                            <label class="form-check-label" for="remember">
-                                Recordar
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
 
             <!-- Submit -->
             <button class="btn btn-lg btn-block btn-primary mb-3">
               Iniciar Sesión
             </button>
 
-            <!-- Link -->
-            <div class="text-center">
-              <small class="text-muted text-center">
-                Aún no te has registrado? <a href="{{ route('register') }}">Registro</a>.
-              </small>
-            </div>
+           
             
           </form>
 

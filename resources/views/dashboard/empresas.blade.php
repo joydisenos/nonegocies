@@ -166,7 +166,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="descripcionempresa">Descripción</label>
-			    <textarea name="descripcion" class="form-control" id="descripcionempresa" cols="30" rows="10" placeholder="Descripción de la empresa"></textarea>
+			    <textarea name="descripcion" class="form-control" id="descripcionempresa" cols="30" rows="10" placeholder="Descripción de la empresa (opcional)"></textarea>
 			    <small id="emailHelp" class="form-text text-muted">Descripción</small>
 			  </div>
 			  <div class="form-group">
@@ -176,7 +176,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-	        <button type="submit" class="btn btn-primary">Registrar</button>
+	        <button type="submit" class="btn btn-primary">Crear</button>
 	      </div>
       </form>
     </div>

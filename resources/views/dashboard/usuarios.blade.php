@@ -25,7 +25,7 @@
               <div class="col-auto">
                 
                 <!-- Button -->
-                <a href="#!" class="btn btn-primary">
+                <a href="{{ route('crearusuario') }}" class="btn btn-primary">
                   Crear Usuario
                 </a>
 

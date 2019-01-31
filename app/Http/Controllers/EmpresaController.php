@@ -17,8 +17,7 @@ class EmpresaController extends Controller
     public function crear(Request $request)
     {
     	$validatedData = $request->validate([
-        'nombre' => 'required|max:255',
-        'descripcion' => 'required',
+        'nombre' => 'required|max:255'
         ]);
         
         if( $request->hasFile('logo') )
@@ -31,7 +30,12 @@ class EmpresaController extends Controller
 
         $empresa = new Empresa();
         $empresa->nombre = $request->nombre;
-        $empresa->descripcion = $request->descripcion;
+        if( $request->descripcion != null)
+        {
+            $empresa->descripcion = $request->descripcion;
+        }else{
+            $empresa->descripcion = '';
+        }
         if ( $request->hasFile('logo') )
         {
             $empresa->logo = $ruta . '/' . $nombre;

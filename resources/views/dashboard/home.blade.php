@@ -24,11 +24,11 @@
               </div>
               <div class="col-auto">
                 
-                <!-- Button -->
+                <!-- Button 
                 <a href="#!" class="btn btn-primary">
                   Create Report
                 </a>
-
+                 -->
               </div>
             </div> <!-- / .row -->
           </div> <!-- / .header-body -->
@@ -85,12 +85,12 @@
 
                     <!-- Title -->
                     <h6 class="card-title text-uppercase text-muted mb-2">
-                      Total Hours
+                      Número de Ofertas
                     </h6>
                     
                     <!-- Heading -->
                     <span class="h2 mb-0">
-                      763.5
+                      {{ $ofertasNum }}
                     </span>
 
                   </div>

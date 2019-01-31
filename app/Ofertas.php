@@ -23,6 +23,15 @@ class Ofertas extends Model
     	return $ofertas;
     }
 
+    public function getOfertasCategoria($categoriaId)
+    {
+        $ofertas = Ofertas::where('estatus' , 1)
+                            ->where('categoria_id' , $categoriaId)
+                            ->get();
+
+    	return $ofertas;
+    }
+
     public function getOfertaSlug($slug)
     {
         $oferta = Ofertas::where('slug' , $slug)->first();

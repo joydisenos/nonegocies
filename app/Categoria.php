@@ -11,7 +11,6 @@ class Categoria extends Model
         'nombre','slug'
     ];
 
-
     public function categorias()
     {
         $categorias = Categoria::all();
@@ -31,6 +30,11 @@ class Categoria extends Model
     public function campos()
     {
         return $this->hasMany(CamposCategoria::class);
+    }
+
+    public function ofertas()
+    {
+        return $this->hasMany(Ofertas::class);
     }
 
 }

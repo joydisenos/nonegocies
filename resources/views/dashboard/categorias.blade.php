@@ -105,7 +105,7 @@
                         @endif
                       </td>
                       <td class="goal-progress">
-                        Número de ofertas por categoría
+                        {{ $categoria->ofertas->count() }}
                       </td>
                       
                       <td class="text-right">
