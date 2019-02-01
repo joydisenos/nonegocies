@@ -14,7 +14,7 @@ class Empresa extends Model
 
     public function empresas()
     {
-    	$empresas = Empresa::where('estatus' , 1)->get();
+    	$empresas = Empresa::where('estatus', '>' , 0)->get();
 
     	return $empresas;
     }

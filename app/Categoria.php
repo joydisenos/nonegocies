@@ -13,7 +13,7 @@ class Categoria extends Model
 
     public function categorias()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('estatus' , '>' , 0)->get();
 
         return $categorias;
     }

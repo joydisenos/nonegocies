@@ -117,10 +117,10 @@
                         {{ number_format($oferta->precio , 2 , ',' , '.') }}
                       </td>
                       <td class="text-right">
-                       @if($oferta->estatus == 0)
-                        <span class="text-danger">●</span> Inactivo
+                       @if($oferta->estatus == 1)
+                       <span class="text-success">●</span> Activo
                         @else
-                        <span class="text-success">●</span> Activo
+                        <span class="text-danger">●</span> Inactivo
                         @endif
                       </td>
                       <td class="text-right">
@@ -132,11 +132,21 @@
                             <i class="fe fe-more-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{ route('editaroferta' , [$oferta->id]) }}" class="dropdown-item">
                               Editar
                             </a>
-                      
-                            <a href="#!" class="dropdown-item">
+
+                            @if($oferta->estatus == 1)
+                            <a href="{{ route('estatusoferta' , [$oferta->id , 2]) }}" class="dropdown-item">
+                              Desactivar
+                            </a>
+                            @elseif($oferta->estatus == 2)
+                            <a href="{{ route('estatusoferta' , [$oferta->id , 1]) }}" class="dropdown-item">
+                              Activar
+                            </a>
+                            @endif
+
+                            <a href="{{ route('estatusoferta' , [$oferta->id , 0]) }}" class="dropdown-item">
                               Eliminar
                             </a>
                           </div>

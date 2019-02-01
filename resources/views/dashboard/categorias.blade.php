@@ -117,8 +117,18 @@
                             <a href="{{ route('editarcategoria' , [$categoria->id]) }}" class="dropdown-item">
                               Editar
                             </a>
-                      
-                            <a href="#!" class="dropdown-item">
+
+                            @if($categoria->estatus == 1)
+                            <a href="{{ route('estatuscategoria' , [$categoria->id , 2]) }}" class="dropdown-item">
+                              Desactivar
+                            </a>
+                            @elseif($categoria->estatus == 2)
+                            <a href="{{ route('estatuscategoria' , [$categoria->id , 1]) }}" class="dropdown-item">
+                              Activar
+                            </a>
+                            @endif
+
+                            <a href="{{ route('estatuscategoria' , [$categoria->id , 0]) }}" class="dropdown-item">
                               Eliminar
                             </a>
                           </div>

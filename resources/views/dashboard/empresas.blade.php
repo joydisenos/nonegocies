@@ -121,11 +121,21 @@
                             <i class="fe fe-more-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{ route('editarempresa' , [$empresa->id]) }}" class="dropdown-item">
                               Editar
                             </a>
-                      
-                            <a href="#!" class="dropdown-item">
+
+                            @if($empresa->estatus == 1)
+                            <a href="{{ route('estatusempresa' , [$empresa->id , 2]) }}" class="dropdown-item">
+                              Desactivar
+                            </a>
+                            @elseif($empresa->estatus == 2)
+                            <a href="{{ route('estatusempresa' , [$empresa->id , 1]) }}" class="dropdown-item">
+                              Activar
+                            </a>
+                            @endif
+
+                            <a href="{{ route('estatusempresa' , [$empresa->id , 0]) }}" class="dropdown-item">
                               Eliminar
                             </a>
                           </div>

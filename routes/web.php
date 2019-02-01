@@ -43,15 +43,22 @@ Route::prefix('admin')->group(function () {
    
    //empresas
    Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa');
+   Route::get('/estatus/empresa/{id}/{estatus}', 'EmpresaController@estatus')->name('estatusempresa');
+   Route::get('/editar/empresa/{id}', 'EmpresaController@editar')->name('editarempresa');
+   Route::post('/editar/empresa/{id}', 'EmpresaController@actualizar')->name('actualizarempresa');
 
    //categorias
    Route::post('/crear/categoria', 'CategoriaController@crear')->name('crearcategoria');
    Route::get('/editar/categoria/{id}', 'CategoriaController@editar')->name('editarcategoria');
+   Route::get('/estatus/categoria/{id}/{estatus}', 'CategoriaController@estatus')->name('estatuscategoria');
    Route::post('/editar/categoria/{id}', 'CategoriaController@actualizar')->name('actualizarcategoria');
 
    //Usuarios
    Route::get('/crear/usuario', 'DashController@crearUsuario')->name('crearusuario');
    Route::post('/crear/usuario', 'UsuarioController@store')->name('crearusuarionuevo');
+   Route::get('/modificar/usuario/{id}', 'UsuarioController@modificar')->name('modificarusuario');
+   Route::get('/eliminar/usuario/{id}', 'UsuarioController@borrar')->name('eliminarusuario');
+   Route::post('/modificar/usuario/{id}', 'UsuarioController@actualizar')->name('actualizarusuario');
    
    //Legales
    Route::get('/editar/{tabla}', 'LegalesController@editar')->name('editarlegales');
@@ -60,6 +67,9 @@ Route::prefix('admin')->group(function () {
    //Ofertas
    Route::get('/crear/oferta', 'OfertasController@crear')->name('crearoferta');
    Route::post('/crear/oferta', 'OfertasController@store')->name('storeoferta');
+   Route::post('/actualizar/oferta/{id}', 'OfertasController@actualizar')->name('actualizaroferta');
+   Route::get('/editar/oferta/{id}', 'OfertasController@editar')->name('editaroferta');
+   Route::get('/estatus/oferta/{id}/{estatus}', 'OfertasController@estatus')->name('estatusoferta');
 
 
 

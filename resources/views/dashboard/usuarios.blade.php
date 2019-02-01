@@ -77,7 +77,7 @@
                       </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-status">
-                          Estatus
+                          Localidad
                         </a>
                       </th>
                       <th>
@@ -104,7 +104,7 @@
                         {{ title_case($usuario->name) }} {{ title_case($usuario->apellido) }}
                       </td>
                       <td class="goal-status">
-                        <span class="text-warning">●</span> Estatus
+                        {{ title_case($usuario->localidad) }}
                       </td>
                       <td class="goal-progress">
                         {{ $usuario->email }}
@@ -121,11 +121,11 @@
                             <i class="fe fe-more-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{ route('modificarusuario' , [$usuario->id]) }}" class="dropdown-item">
                               Editar
                             </a>
                       
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{ route('eliminarusuario' , [$usuario->id]) }}" class="dropdown-item">
                               Eliminar
                             </a>
                           </div>

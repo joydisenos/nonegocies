@@ -18,14 +18,14 @@ class Ofertas extends Model
 
     public function ofertas()
     {
-    	$ofertas = Ofertas::where('estatus' , 1)->get();
+    	$ofertas = Ofertas::where('estatus' , '>' , 0)->get();
 
     	return $ofertas;
     }
 
     public function getOfertasCategoria($categoriaId)
     {
-        $ofertas = Ofertas::where('estatus' , 1)
+        $ofertas = Ofertas::where('estatus', '>' , 0)
                             ->where('categoria_id' , $categoriaId)
                             ->get();
 

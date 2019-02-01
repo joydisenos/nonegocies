@@ -65,4 +65,22 @@ class CategoriaController extends Controller
 
         return redirect()->route('categorias')->with('status','Categoría Actualizada');
     }
+
+    public function estatus($id , $estatus)
+    {
+        $categoria = Categoria::findOrFail($id);
+        $categoria->estatus = $estatus;
+        $categoria->save();
+
+        if($estatus == 0)
+        {
+            $mensaje = 'Eliminada';
+        }else if($estatus == 1){
+            $mensaje = 'Activada';
+        }else if($estatus == 2){
+            $mensaje = 'Desactivada';
+        }
+
+        return redirect()->back()->with('status','Categoría '. $mensaje);
+    }
 }
