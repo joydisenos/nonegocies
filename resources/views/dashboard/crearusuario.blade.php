@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="main-content">
-        <form action="{{ route('crearusuario') }}" method="post">
+        <form action="{{ route('crearusuarionuevo') }}" method="post">
                 @csrf
      <!-- HEADER -->
       <div class="header">
@@ -22,7 +22,7 @@
 
                 <!-- Title -->
                 <h1 class="header-title">
-                  Crear Oferta
+                  Crear Usuario
                 </h1>
 
               </div>
@@ -32,7 +32,7 @@
               
             
                     <button type="submit" class="btn btn-primary">
-                            Registrar
+                            Crear
                     </button>
                 
 
@@ -57,7 +57,7 @@
 
                     <!-- Title -->
                     <h4 class="card-header-title">
-                      Oferta
+                      Datos de Usuario
                     </h4>
 
                   </div>
@@ -71,52 +71,94 @@
                 <div class="row">
                     <div class="col">
 
-                        <div class="form-group">
-                                <label for="nombreoferta">Empresa</label>
-                                <select name="empresa_id" class="form-control" required>
-                                    <option value="">Seleccione una Empresa</option>
-                                        
-                                </select>
+                        <div class="form-group row">
+                                <div class="col-lg-4 col-md-6">
+                                  <label for="nombre">Nombre</label>
+                                  <input type="text" id="nombre" name="name" class="form-control" placeholder="Nombre" required>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                  <label for="apellido">Apellido</label>
+                                  <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" required>
+                                </div>
+
+                                <div class="col-lg-4 col-md-12">
+                                  <label for="email">Email</label>
+                                  <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                                </div>
                         </div>
 
 
 
                         <div class="form-group row">
-                          <div class="col">
-                            <label for="nombreoferta">Categoría</label>
-                                  <select name="categoria_id" class="form-control" required>
-                                      <option value="">Seleccione una Categoría</option>
-                                         
-                                  </select>
+                          <div class="col-md-6">
+                              <label for="password">Contraseña</label>
+                            <div class="input-group input-group-merge">
+
+                              <!-- Input -->
+                              <input type="password" class="form-control form-control-appended pass" name="password" placeholder="Indique su contraseña">
+              
+                              <!-- Icon -->
+                              <div class="input-group-append">
+                                <span class="input-group-text mostrar">
+                                  <i class="fe fe-eye"></i>
+                                </span>
+                              </div>
+              
                             </div>
-                            <div class="col">
-                                  <label for="nombreoferta">Tipo de Oferta</label>
-                                  <select name="tipo" class="form-control" required>
-                                      <option value="">Seleccione una Opción</option>
-                                      <option value="1">Particular</option>
-                                      <option value="2">Empresa</option>
-                                  </select>
                             </div>
+                            <div class="col-md-6">
+                               <!-- Input group -->
+                               <label for="password_confirmation">Confirme su Contraseña</label>
+                              <div class="input-group input-group-merge">
+
+                                <!-- Input -->
+                                <input type="password" class="form-control form-control-appended pass" name="password_confirmation" placeholder="Repita su contraseña">
+
+                                <!-- Icon -->
+                                <div class="input-group-append">
+                                  <span class="input-group-text mostrar">
+                                    <i class="fe fe-eye"></i>
+                                  </span>
+                                </div>
+
+                              </div>
+                        </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="nombreoferta">Nombre de la Oferta</label>
-                            <input type="text" name="nombre" class="form-control" id="nombreoferta" placeholder="Nombre de la Oferta" required>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                              <label for="telefono">Teléfono</label>
+                              <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Número telefónico" required>
+                            </div>
+
+                            <div class="col-md-4">
+                              <label for="dni">DNI</label>
+                              <input type="number" name="dni" class="form-control" id="dni" placeholder="DNI" required>
+                            </div>
+
+                            <div class="col-md-4">
+                              <label for="localidad">Localidad</label>
+                              <input type="text" name="localidad" class="form-control" id="localidad" placeholder="Localidad" required>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="preciooferta">Precio de la oferta Anual</label>
-                            <input type="number" min="0" step="0.1" name="precio" class="form-control" id="preciooferta" placeholder="Precio Anual" required>
+                        <div class="form-group row">
+                          <div class="col-md-8">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección" required>
+                          </div>
+                          <div class="col-md-4">
+                            <label for="cp">CP</label>
+                            <input type="number" name="cp" class="form-control" id="cp" placeholder="CP" required>
+                          </div>
                         </div>
 
-                        <div class="form-group">
-                                <label for="detallesoferta">Descripción</label>
-                                <textarea name="descripcion" class="form-control" id="detallesoferta" cols="30" rows="10" required></textarea>
-                        </div>
+                       
 
                         <div class="form-group">
                                 <button type="submit" class="btn btn-primary">
-                                        Registrar
+                                        Crear
                                 </button>
                         </div>
                     </div>
@@ -133,4 +175,18 @@
     </form>
     </div>
 
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function () {
+   $('.mostrar').click(function () {
+    if ($(this).parents('.input-group').find('.pass').attr('type') === 'text') {
+     $(this).parents('.input-group').find('.pass').attr('type', 'password');
+    } else {
+     $(this).parents('.input-group').find('.pass').attr('type', 'text');
+    }
+   });
+  });
+</script>
 @endsection

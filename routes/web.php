@@ -51,6 +51,7 @@ Route::prefix('admin')->group(function () {
 
    //Usuarios
    Route::get('/crear/usuario', 'DashController@crearUsuario')->name('crearusuario');
+   Route::post('/crear/usuario', 'UsuarioController@store')->name('crearusuarionuevo');
    
    //Legales
    Route::get('/editar/{tabla}', 'LegalesController@editar')->name('editarlegales');
