@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Empresa;
 use App\Categoria;
 use App\Ofertas;
+use App\CamposOferta;
 
 class OfertasController extends Controller
 {
@@ -89,6 +90,30 @@ class OfertasController extends Controller
             $oferta->precio_diario = $precio_diario;
             $oferta->descripcion = $request->descripcion;
             $oferta->save();
+
+            /*  opciones
+
+            $categoria = Categoria::findOrFail($request->categoria_id);
+            
+            if($categoria->slug == 'luz')
+            {
+                $opciones = CamposOferta::where('oferta_id' , $oferta->id)->get();
+
+                foreach($opciones as $del)
+                {
+                    $del->delete();
+                }
+
+                foreach($request->input('luz') as $key => $campo)
+                {
+                    $opcion = new CamposOfertas ();
+                    $opcion->oferta_id = $oferta->id;
+                    $opcion->nombre = 'p'. $key;
+                    $opcion->numero = $campo;
+                    $opcion->save();
+                }
+            }
+            */
         
         return redirect()->route('ofertas')->with('status','Oferta Actualizada');
     }

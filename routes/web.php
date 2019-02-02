@@ -67,7 +67,7 @@ Route::prefix('admin')->group(function () {
    //Ofertas
    Route::get('/crear/oferta', 'OfertasController@crear')->name('crearoferta');
    Route::post('/crear/oferta', 'OfertasController@store')->name('storeoferta');
-   Route::post('/actualizar/oferta/{id}', 'OfertasController@actualizar')->name('actualizaroferta');
+   Route::post('/modificar/oferta/{id}', 'OfertasController@actualizar')->name('actualizaroferta');
    Route::get('/editar/oferta/{id}', 'OfertasController@editar')->name('editaroferta');
    Route::get('/estatus/oferta/{id}/{estatus}', 'OfertasController@estatus')->name('estatusoferta');
 
