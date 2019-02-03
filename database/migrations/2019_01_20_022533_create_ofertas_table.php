@@ -24,6 +24,7 @@ class CreateOfertasTable extends Migration
             $table->text('descripcion');
             $table->integer('estatus')->default(1);
             $table->integer('tipo')->default(1);
+            $table->integer('tarifa')->default(0);
             $table->integer('ventas')->default(0);
             $table->timestamps();
         });

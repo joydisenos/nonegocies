@@ -34,6 +34,7 @@ class OfertasController extends Controller
             'empresa_id' => 'required',
             'categoria_id' => 'required',
             'tipo' => 'required',
+            'tarifa' => 'required',
             'precio' => 'required',
             'descripcion' => 'required',
             ]);
@@ -46,10 +47,55 @@ class OfertasController extends Controller
             $oferta->empresa_id = $request->empresa_id;
             $oferta->categoria_id = $request->categoria_id;
             $oferta->tipo = $request->tipo;
+            $oferta->tarifa = $request->tarifa;
             $oferta->precio = $request->precio;
             $oferta->precio_diario = $precio_diario;
             $oferta->descripcion = $request->descripcion;
             $oferta->save();
+
+            //  opciones
+
+            $categoria = Categoria::findOrFail($request->categoria_id);
+            
+            if($categoria->slug == 'luz')
+            {
+                $opciones = CamposOferta::where('oferta_id' , $oferta->id)->get();
+
+                $inputs = $request->input('luz');
+
+                foreach($opciones as $del)
+                {
+                    $del->delete();
+                }
+
+                foreach($inputs as $key => $campo)
+                {
+                    $opcion = new CamposOferta ();
+                    $opcion->oferta_id = $oferta->id;
+                    $opcion->nombre = 'p'. $key;
+                    $opcion->valor = $campo;
+                    $opcion->save();
+                }
+            }else if($categoria->slug == 'gas')
+            {
+                $opciones = CamposOferta::where('oferta_id' , $oferta->id)->get();
+
+                $inputs = $request->input('gas');
+
+                foreach($opciones as $del)
+                {
+                    $del->delete();
+                }
+
+                foreach($inputs as $key => $campo)
+                {
+                    $opcion = new CamposOferta ();
+                    $opcion->oferta_id = $oferta->id;
+                    $opcion->nombre = 'g'. $key;
+                    $opcion->numero = $campo;
+                    $opcion->save();
+                }
+            }
         
         return redirect()->route('ofertas')->with('status','Oferta Registrada');
     }
@@ -57,6 +103,12 @@ class OfertasController extends Controller
     public function editar($id)
     {
         $oferta = Ofertas::findOrFail($id);
+        $opcionesLuz = CamposOferta::where('oferta_id' , $oferta->id)
+                                    ->where('valor' , '!=' , null)
+                                    ->get();
+        $opcionesGas = CamposOferta::where('oferta_id' , $oferta->id)
+                                    ->where('numero' , '!=' , null)
+                                    ->get();
 
         $refEmpresas = new Empresa();
         $empresas = $refEmpresas->empresas();
@@ -64,7 +116,7 @@ class OfertasController extends Controller
         $refCategorias = new Categoria();
         $categorias = $refCategorias->categorias();
 
-        return view('dashboard.editaroferta' , compact('oferta' , 'empresas' , 'categorias'));
+        return view('dashboard.editaroferta' , compact('oferta' , 'empresas' , 'categorias','opcionesLuz' ,'opcionesGas'));
     }
 
     public function actualizar(Request $request , $id)
@@ -74,6 +126,7 @@ class OfertasController extends Controller
             'empresa_id' => 'required',
             'categoria_id' => 'required',
             'tipo' => 'required',
+            'tarifa' => 'required',
             'precio' => 'required',
             'descripcion' => 'required',
             ]);
@@ -86,12 +139,13 @@ class OfertasController extends Controller
             $oferta->empresa_id = $request->empresa_id;
             $oferta->categoria_id = $request->categoria_id;
             $oferta->tipo = $request->tipo;
+            $oferta->tarifa = $request->tarifa;
             $oferta->precio = $request->precio;
             $oferta->precio_diario = $precio_diario;
             $oferta->descripcion = $request->descripcion;
             $oferta->save();
 
-            /*  opciones
+            //  opciones
 
             $categoria = Categoria::findOrFail($request->categoria_id);
             
@@ -99,21 +153,42 @@ class OfertasController extends Controller
             {
                 $opciones = CamposOferta::where('oferta_id' , $oferta->id)->get();
 
+                $inputs = $request->input('luz');
+
                 foreach($opciones as $del)
                 {
                     $del->delete();
                 }
 
-                foreach($request->input('luz') as $key => $campo)
+                foreach($inputs as $key => $campo)
                 {
-                    $opcion = new CamposOfertas ();
+                    $opcion = new CamposOferta ();
                     $opcion->oferta_id = $oferta->id;
                     $opcion->nombre = 'p'. $key;
+                    $opcion->valor = $campo;
+                    $opcion->save();
+                }
+            }else if($categoria->slug == 'gas')
+            {
+                $opciones = CamposOferta::where('oferta_id' , $oferta->id)->get();
+
+                $inputs = $request->input('gas');
+
+                foreach($opciones as $del)
+                {
+                    $del->delete();
+                }
+
+                foreach($inputs as $key => $campo)
+                {
+                    $opcion = new CamposOferta ();
+                    $opcion->oferta_id = $oferta->id;
+                    $opcion->nombre = 'g'. $key;
                     $opcion->numero = $campo;
                     $opcion->save();
                 }
             }
-            */
+            
         
         return redirect()->route('ofertas')->with('status','Oferta Actualizada');
     }

@@ -26,5 +26,12 @@ class ContactarController extends Controller
     	return response()->json([
     		'guardado' => 'Muchas Gracias por contactarnos '.title_case($request->nombre).', pronto nos pondremos en contacto.']);
 
-    }
+	}
+	
+	public function editar ($id)
+	{
+		$contacto = Contactar::findOrFail($id);
+
+		return view('dashboard.editarcontactar' , compact('contacto'));
+	}
 }

@@ -71,6 +71,8 @@ Route::prefix('admin')->group(function () {
    Route::get('/editar/oferta/{id}', 'OfertasController@editar')->name('editaroferta');
    Route::get('/estatus/oferta/{id}/{estatus}', 'OfertasController@estatus')->name('estatusoferta');
 
+   //contactar
+   Route::get('/editar/contactar/{id}', 'ContactarController@editar')->name('editarcontactar');
 
 
 });

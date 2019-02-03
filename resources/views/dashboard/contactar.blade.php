@@ -127,7 +127,7 @@
                             <i class="fe fe-more-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{ route('editarcontactar' , [$contacto->id]) }}" class="dropdown-item">
                               Editar
                             </a>
                       

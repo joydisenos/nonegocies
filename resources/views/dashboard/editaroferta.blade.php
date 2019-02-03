@@ -112,7 +112,7 @@
                                   </select>
                             </div>
                             <div class="col">
-                              <label for="nombreoferta">Tarifa</label>
+                              <label for="tarifa">Tarifa</label>
                               <select name="tarifa" id="tarifa" class="form-control">
                                 <option value="0">tarifa</option>
 
@@ -131,22 +131,22 @@
                             </div>
                         </div>
 
-                        <!--
+                        
                         <div class="opciones luz-opt">
                             <h3>Potencia</h3>
                               <div class="form-group row mb-4">
                               
                                 <div class="col-md-4">
                                   <label>p1</label>
-                                  <input class="form-control" name="luz[0]" type="text" value="" required>
+                                  <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[0]->valor }}">
                                 </div>
                                 <div class="col-md-4">
                                   <label>p2</label>
-                                  <input class="form-control" name="luz[1]" type="text" value="" required>
+                                  <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[1]->valor }}">
                                 </div>
                                 <div class="col-md-4">
                                   <label>p3</label>
-                                  <input class="form-control" name="luz[2]" type="text" value="" required>
+                                  <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[2]->valor }}">
                                 </div>
 
                               </div>
@@ -156,15 +156,15 @@
                              
                                 <div class="col-md-4">
                                 <label>p1</label>
-                                <input class="form-control" name="luz[3]" type="text" value="" required>
+                                <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[3]->valor }}">
                               </div>
                                 <div class="col-md-4">
                                   <label>p2</label>
-                                  <input class="form-control" name="luz[4]" type="text" value="" required>
+                                  <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[4]->valor }}">
                                 </div>
                                 <div class="col-md-4">
                                 <label>p3</label>
-                                <input class="form-control" name="luz[5]" type="text" value="" required>
+                                <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[5]->valor }}">
                               </div>
                             </div>
                         </div>
@@ -174,16 +174,16 @@
                              
                                 <div class="col-md-6">
                                 <label>Precio Tarifa</label>
-                                <input class="form-control" name="gas[]" type="number" value="" min="0" step="0.1" required>
+                                <input class="form-control" name="gas[]" type="number" value="{{ ($opcionesGas->isEmpty()) ? '' : $opcionesGas[0]->numero }}" min="0" step="0.1">
                               </div>
                                 <div class="col-md-6">
                                   <label>Precio Fijo</label>
-                                  <input class="form-control" name="gas[]" type="number" value="" min="0" step="0.1" required>
+                                <input class="form-control" name="gas[]" type="number" value="{{ ($opcionesGas->isEmpty()) ? '' : $opcionesGas[1]->numero }}" min="0" step="0.1">
                                 </div>
                 
                            
                         </div>
-                        -->
+                        
 
                         <div class="form-group">
                             <label for="nombreoferta">Nombre de la Oferta</label>
@@ -233,23 +233,31 @@
 
         if(categoria == 'luz'){
           $('.luz-opt').show();
+          $('.luz-opt input').attr('required' , true);
+          $('.gas-opt input').attr('required' , false);
         }else if( categoria == 'gas'){
           $('.gas-opt').show();
+          $('.gas-opt input').attr('required' , true);
+          $('.luz-opt input').attr('required' , false);
         }
 
         $('#categorias').change(function(){
 
           $('.tarifas').hide();
           $('.opciones').hide();
-          $('.opciones input').val('');
+          //$('.opciones input').val('');
 
           $('#tarifa').val(0);
           categoria = $('#categorias option:selected').data('slug');
 
           if(categoria == 'luz'){
             $('.luz-opt').show();
+            $('.luz-opt input').attr('required' , true);
+            $('.gas-opt input').attr('required' , false);
           }else if( categoria == 'gas'){
             $('.gas-opt').show();
+            $('.gas-opt input').attr('required' , true);
+            $('.luz-opt input').attr('required' , false);
           }
 
         });

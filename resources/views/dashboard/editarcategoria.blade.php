@@ -92,13 +92,13 @@
               
             </div>
 
-
+            <!--
             <div class="card">
                     <div class="card-header">
                       <div class="row align-items-center">
                         <div class="col">
       
-                          <!-- Title -->
+                         
                           <h4 class="card-header-title">
                             Campos Especiales para  {{ title_case($categoria->nombre) }}
                           </h4>
@@ -106,7 +106,6 @@
                         </div>
                         <div class="col-auto">
       
-                          <!-- Button -->
                           
                           <a href="#" class="btn btn-sm btn-white agregar">
                             Agregar campo especial
@@ -114,7 +113,7 @@
                          
       
                         </div>
-                      </div> <!-- / .row -->
+                      </div> 
                     </div>
       
                     <div class="container">
@@ -147,7 +146,9 @@
                   </div>
 
           </div>
-          
+        -->
+
+
         </div> <!-- / .row -->
       </div>
     </form>
