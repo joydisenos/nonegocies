@@ -1,9 +1,12 @@
 @extends('layouts.dash')
+@section('header')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+@endsection
 
 @section('content')
 
 <div class="main-content">
-        <form action="" method="post">
+<form action="{{ route('actualizarcontactar' ,[$contacto->id]) }}" method="post">
                 @csrf
      <!-- HEADER -->
       <div class="header">
@@ -61,14 +64,19 @@
                     </h4>
 
                   </div>
+                  <div class="col">
+                    <div class="text-right">
+                      <h4 class="card-header-title">Contactado</h4>
+                    </div>
+                  </div>
                   <div class="col-auto">
 
-                    <!-- Button -->
-                    <!--
-                    <a href="#!" class="btn btn-sm btn-white">
-                      Export
-                    </a>
-                    -->
+                    
+                    <div class="custom-control custom-checkbox-toggle">
+                      <input type="checkbox" class="custom-control-input" id="contactado" name="contactado" {{ ($contacto->contactado == 0) ? '' : 'checked' }}>
+                      <label class="custom-control-label" for="contactado"></label>
+                    </div>
+                  
 
                   </div>
                 </div> <!-- / .row -->
@@ -104,9 +112,15 @@
                 </div>
                 </div>
 
-                <div class="row">
+                
+              <textarea id="notastext" name="notas">{{$contacto->notas}}</textarea>
+                  
+
+                <div class="row mt-4 mb-4">
                   <div class="col">
-                    <div data-toggle="quill" data-quill-placeholder="Notas" name="notas"></div>
+                    <button type="submit" class="btn btn-primary">
+                      Guardar Cambios
+                    </button>
                   </div>
                 </div>
 
@@ -122,4 +136,12 @@
     </form>
     </div>
 
+@endsection
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#notastext').summernote();
+  });
+</script>
 @endsection

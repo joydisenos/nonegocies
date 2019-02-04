@@ -1,10 +1,7 @@
 @extends('layouts.dash')
 
 @section('header')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -81,7 +78,11 @@
                 </div> <!-- / .row -->
               </div>
         
-            <textarea id="editor" name="contenido" cols="30" rows="10">{{$legal}}</textarea>
+            <div class="row">
+              <div class="col">
+                  <textarea class="form-control" id="editor" name="contenido" cols="30" rows="10">{{$legal}}</textarea>
+              </div>
+            </div>
             </div>
 
           </div>
@@ -93,11 +94,10 @@
 
 @endsection
 @section('scripts')
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <script>
-    
-    $(document).ready(function(){
-        $('#editor').froalaEditor();
-    });
+  $(document).ready(function(){
+    $('#editor').summernote();
+  });
 </script>
 @endsection

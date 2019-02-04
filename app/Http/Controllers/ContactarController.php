@@ -34,4 +34,19 @@ class ContactarController extends Controller
 
 		return view('dashboard.editarcontactar' , compact('contacto'));
 	}
+
+	public function actualizar(Request $request , $id)
+    {
+	   $contacto = Contactar::findOrFail($id);
+	   $contacto->notas = $request->notas;
+	   if($request->has('contactado'))
+	   {
+		   $contacto->contactado = 1;
+	   }else{
+		   $contacto->contactado = 0;
+	   }
+	   $contacto->save();
+
+	   return redirect()->route('contactos')->with('status' , 'Contacto Modificado');
+	}
 }

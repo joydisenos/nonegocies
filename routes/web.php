@@ -73,6 +73,7 @@ Route::prefix('admin')->group(function () {
 
    //contactar
    Route::get('/editar/contactar/{id}', 'ContactarController@editar')->name('editarcontactar');
+   Route::post('/editar/contactar/{id}', 'ContactarController@actualizar')->name('actualizarcontactar');
 
 
 });

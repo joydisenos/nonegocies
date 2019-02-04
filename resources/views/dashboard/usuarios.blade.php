@@ -104,7 +104,7 @@
                         {{ title_case($usuario->name) }} {{ title_case($usuario->apellido) }}
                       </td>
                       <td class="goal-status">
-                        {{ title_case($usuario->localidad) }}
+                        {{ ($usuario->localidad)? title_case($usuario->localidad) : 'No Registrado' }}
                       </td>
                       <td class="goal-progress">
                         {{ $usuario->email }}
