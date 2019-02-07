@@ -19,6 +19,14 @@ class CreateCamposOfertasTable extends Migration
             $table->string('nombre');
             $table->string('valor')->nullable();
             $table->float('numero')->nullable();
+            $table->float('pp1')->nullable();
+            $table->float('pp2')->nullable();
+            $table->float('pp3')->nullable();
+            $table->float('ep1')->nullable();
+            $table->float('ep2')->nullable();
+            $table->float('ep3')->nullable();
+            $table->float('precio_tarifa')->nullable();
+            $table->float('precio_fijo')->nullable();
             $table->string('clase')->nullable();
             $table->timestamps();
         });
