@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Ofertas extends Model
 {
@@ -39,11 +40,34 @@ class Ofertas extends Model
         return $oferta;
     }
 
-    public function getOfertasMenorPrecio($categoriaId , $precio)
+    public function getOfertasMenorPrecioLuz($categoriaId , $precio)
     {
-        $ofertas = Ofertas::where('precio_diario' , '<=' , $precio)
-                            ->where('categoria_id' , $categoriaId)
-                            ->get();
+        $ofertas = Ofertas::selectRaw(('* , 
+                                    (campos_ofertas.pp1 / 365) as diap1 , 
+                                    (campos_ofertas.pp2 / 365) as diap2 , 
+                                    (campos_ofertas.pp3 / 365) as diap3 ,
+                                    ((campos_ofertas.pp1 / 365) * 20 * 10) as totalp1 ,
+                                    ((campos_ofertas.pp2 / 365) * 20 * 10) as totalp2 ,
+                                    ((campos_ofertas.pp3 / 365) * 20 * 10) as totalp3 ,
+                                    (campos_ofertas.ep1 * 20 * 10) as totale1 ,
+                                    (campos_ofertas.ep2 * 20 * 10) as totale2 ,
+                                    (campos_ofertas.ep3 * 20 * 10) as totale3 ,
+                                    
+                                    (((campos_ofertas.pp1 / 365) * 20 * 10) + 
+                                    ((campos_ofertas.pp2 / 365) * 20 * 10) + 
+                                    ((campos_ofertas.pp3 / 365) * 20 * 10) + 
+                                    (campos_ofertas.ep1 * 20 * 10) + 
+                                    (campos_ofertas.ep2 * 20 * 10) + 
+                                    (campos_ofertas.ep3 * 20 * 10)) as totalgeneral'))
+                                    ->join('campos_ofertas' , 'campos_ofertas.oferta_id' , '=' , 'ofertas.id')
+                                    ->whereRaw('(((campos_ofertas.pp1 / 365) * 20 * 10) + 
+                                    ((campos_ofertas.pp2 / 365) * 20 * 10) + 
+                                    ((campos_ofertas.pp3 / 365) * 20 * 10) + 
+                                    (campos_ofertas.ep1 * 20 * 10) + 
+                                    (campos_ofertas.ep2 * 20 * 10) + 
+                                    (campos_ofertas.ep3 * 20 * 10))
+                                    >= 500')
+                                    ->get();
 
         return $ofertas;
     }
@@ -58,5 +82,10 @@ class Ofertas extends Model
     public function categoria()
     {
         return $this->belongsTo(Categoria::class);
+    }
+
+    public function opcion()
+    {
+        return $this->hasOne(CamposOferta::class , 'oferta_id');
     }
 }

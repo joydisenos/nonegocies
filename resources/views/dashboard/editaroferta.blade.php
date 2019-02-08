@@ -138,15 +138,15 @@
                               
                                 <div class="col-md-4">
                                   <label>p1</label>
-                                  <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[0]->valor }}">
+                                  <input class="form-control" name="pp1" type="text" value="{{ $oferta->opcion->pp1 }}">
                                 </div>
                                 <div class="col-md-4">
                                   <label>p2</label>
-                                  <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[1]->valor }}">
+                                  <input class="form-control" name="pp2" type="text" value="{{ $oferta->opcion->pp2 }}">
                                 </div>
                                 <div class="col-md-4">
                                   <label>p3</label>
-                                  <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[2]->valor }}">
+                                  <input class="form-control" name="pp3" type="text" value="{{ $oferta->opcion->pp3 }}">
                                 </div>
 
                               </div>
@@ -156,15 +156,15 @@
                              
                                 <div class="col-md-4">
                                 <label>p1</label>
-                                <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[3]->valor }}">
+                                <input class="form-control" name="ep1" type="text" value="{{ $oferta->opcion->ep1 }}">
                               </div>
                                 <div class="col-md-4">
                                   <label>p2</label>
-                                  <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[4]->valor }}">
+                                  <input class="form-control" name="ep2" type="text" value="{{ $oferta->opcion->ep2 }}">
                                 </div>
                                 <div class="col-md-4">
                                 <label>p3</label>
-                                <input class="form-control" name="luz[]" type="text" value="{{ ($opcionesLuz->isEmpty()) ? '' : $opcionesLuz[5]->valor }}">
+                                <input class="form-control" name="ep3" type="text" value="{{ $oferta->opcion->ep3 }}">
                               </div>
                             </div>
                         </div>
@@ -174,11 +174,11 @@
                              
                                 <div class="col-md-6">
                                 <label>Precio Tarifa</label>
-                                <input class="form-control" name="gas[]" type="number" value="{{ ($opcionesGas->isEmpty()) ? '' : $opcionesGas[0]->numero }}" min="0" step="0.1">
+                                <input class="form-control" name="precio_tarifa" type="number" value="{{ $oferta->opcion->precio_tarifa }}" min="0" step="0.1">
                               </div>
                                 <div class="col-md-6">
                                   <label>Precio Fijo</label>
-                                <input class="form-control" name="gas[]" type="number" value="{{ ($opcionesGas->isEmpty()) ? '' : $opcionesGas[1]->numero }}" min="0" step="0.1">
+                                <input class="form-control" name="precio_fijo" type="number" value="{{ $oferta->opcion->precio_fijo }}" min="0" step="0.1">
                                 </div>
                 
                            

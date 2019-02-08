@@ -65,7 +65,7 @@ class SiteController extends Controller
         $periodo = $hasta->diffInDays($desde);
         $precio = $request->monto / $periodo;
             
-        $ofertas = $refOfertas->getOfertasMenorPrecio($categoria->id , $precio);
+        $ofertas = $refOfertas->getOfertasMenorPrecioLuz($categoria->id , $precio);
 
         return view('ofertas.resultados' , compact('ofertas' , 'categoria'));
     }

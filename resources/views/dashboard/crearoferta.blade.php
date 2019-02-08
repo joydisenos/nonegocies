@@ -131,15 +131,15 @@
                             
                               <div class="col-md-4">
                                 <label>p1</label>
-                                <input class="form-control" name="luz[]" type="text">
+                                <input class="form-control" name="pp1" type="text">
                               </div>
                               <div class="col-md-4">
                                 <label>p2</label>
-                                <input class="form-control" name="luz[]" type="text">
+                                <input class="form-control" name="pp2" type="text">
                               </div>
                               <div class="col-md-4">
                                 <label>p3</label>
-                                <input class="form-control" name="luz[]" type="text">
+                                <input class="form-control" name="pp3" type="text">
                               </div>
 
                             </div>
@@ -149,15 +149,15 @@
                            
                               <div class="col-md-4">
                               <label>p1</label>
-                              <input class="form-control" name="luz[]" type="text">
+                              <input class="form-control" name="ep1" type="text">
                             </div>
                               <div class="col-md-4">
                                 <label>p2</label>
-                                <input class="form-control" name="luz[]" type="text">
+                                <input class="form-control" name="ep2" type="text">
                               </div>
                               <div class="col-md-4">
                               <label>p3</label>
-                              <input class="form-control" name="luz[]" type="text">
+                              <input class="form-control" name="ep3" type="text">
                             </div>
                           </div>
                       </div>
@@ -167,11 +167,11 @@
                            
                               <div class="col-md-6">
                               <label>Precio Tarifa</label>
-                              <input class="form-control" name="gas[]" type="number" min="0" step="0.1">
+                              <input class="form-control" name="precio_tarifa" type="number" min="0" step="0.1">
                             </div>
                               <div class="col-md-6">
                                 <label>Precio Fijo</label>
-                                <input class="form-control" name="gas[]" type="number" min="0" step="0.1">
+                                <input class="form-control" name="precio_fijo" type="number" min="0" step="0.1">
                               </div>
               
                          

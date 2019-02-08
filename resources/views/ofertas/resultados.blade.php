@@ -39,7 +39,7 @@
                             <td>{{ title_case($oferta->empresa->nombre) }}</td>
                             <td>{{ title_case($oferta->nombre) }} </td>
                             <td>{{ $oferta->descripcion }}</td>
-                            <td> {{ number_format($oferta->precio , 2 , ',' , '.') }} </td>
+                            <td> {{ number_format($oferta->totalgeneral , 2 , ',' , '.') }} </td>
                             <td><a href="#">Contratar</a></td>
                         </tr>
                         @endforeach
