@@ -76,9 +76,9 @@ class SiteController extends Controller
         $pp1 = (float)$request->pp1;
         $pp2 = (float)$request->pp2;
         $pp3 = (float)$request->pp3;
-        $ep1 = (float)$request->ep1;
-        $ep2 = (float)$request->ep2;
-        $ep3 = (float)$request->ep3;
+        $ep1 = (float)$request->ep1 / $dias;
+        $ep2 = (float)$request->ep2 / $dias;
+        $ep3 = (float)$request->ep3 / $dias;
         $categoriaId = $categoria->id;
         $tipoPersona = $request->persona;
         $tarifa = (int)$request->tarifa;
