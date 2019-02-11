@@ -40,33 +40,36 @@ class Ofertas extends Model
         return $oferta;
     }
 
-    public function getOfertasMenorPrecioLuz($categoriaId , $precio)
+    public function getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias)
     {
         $ofertas = Ofertas::selectRaw(('* , 
                                     (campos_ofertas.pp1 / 365) as diap1 , 
                                     (campos_ofertas.pp2 / 365) as diap2 , 
                                     (campos_ofertas.pp3 / 365) as diap3 ,
-                                    ((campos_ofertas.pp1 / 365) * 20 * 10) as totalp1 ,
-                                    ((campos_ofertas.pp2 / 365) * 20 * 10) as totalp2 ,
-                                    ((campos_ofertas.pp3 / 365) * 20 * 10) as totalp3 ,
-                                    (campos_ofertas.ep1 * 20 * 10) as totale1 ,
-                                    (campos_ofertas.ep2 * 20 * 10) as totale2 ,
-                                    (campos_ofertas.ep3 * 20 * 10) as totale3 ,
+                                    ((campos_ofertas.pp1 / 365) * '. $dias .' * '. $pp1 .') as totalp1 ,
+                                    ((campos_ofertas.pp2 / 365) * '. $dias .' * '. $pp2 .') as totalp2 ,
+                                    ((campos_ofertas.pp3 / 365) * '. $dias .' * '. $pp3 .') as totalp3 ,
+                                    (campos_ofertas.ep1 * '. $dias .' * '. $ep1 .') as totale1 ,
+                                    (campos_ofertas.ep2 * '. $dias .' * '. $ep2 .') as totale2 ,
+                                    (campos_ofertas.ep3 * '. $dias .' * '. $ep3 .') as totale3 ,
                                     
-                                    (((campos_ofertas.pp1 / 365) * 20 * 10) + 
-                                    ((campos_ofertas.pp2 / 365) * 20 * 10) + 
-                                    ((campos_ofertas.pp3 / 365) * 20 * 10) + 
-                                    (campos_ofertas.ep1 * 20 * 10) + 
-                                    (campos_ofertas.ep2 * 20 * 10) + 
-                                    (campos_ofertas.ep3 * 20 * 10)) as totalgeneral'))
+                                    (((campos_ofertas.pp1 / 365) * '. $dias .' * '. $pp1 .') + 
+                                    ((campos_ofertas.pp2 / 365) * '. $dias .' * '. $pp2 .') + 
+                                    ((campos_ofertas.pp3 / 365) * '. $dias .' * '. $pp3 .') + 
+                                    (campos_ofertas.ep1 * '. $dias .' * '. $ep1 .') + 
+                                    (campos_ofertas.ep2 * '. $dias .' * '. $ep2 .') + 
+                                    (campos_ofertas.ep3 * '. $dias .' * '. $ep3 .')) as totalgeneral'))
                                     ->join('campos_ofertas' , 'campos_ofertas.oferta_id' , '=' , 'ofertas.id')
-                                    ->whereRaw('(((campos_ofertas.pp1 / 365) * 20 * 10) + 
-                                    ((campos_ofertas.pp2 / 365) * 20 * 10) + 
-                                    ((campos_ofertas.pp3 / 365) * 20 * 10) + 
-                                    (campos_ofertas.ep1 * 20 * 10) + 
-                                    (campos_ofertas.ep2 * 20 * 10) + 
-                                    (campos_ofertas.ep3 * 20 * 10))
-                                    >= 500')
+                                    ->where('ofertas.categoria_id' , $categoriaId)
+                                    ->where('ofertas.tarifa' , $tarifa)
+                                    ->where('ofertas.tipo' , $tipoPersona)
+                                    ->whereRaw('(((campos_ofertas.pp1 / 365) * '. $dias .' * '. $pp1 .') + 
+                                    ((campos_ofertas.pp2 / 365) * '. $dias .' * '. $pp2 .') + 
+                                    ((campos_ofertas.pp3 / 365) * '. $dias .' * '. $pp3 .') + 
+                                    (campos_ofertas.ep1 * '. $dias .' * '. $ep1 .') + 
+                                    (campos_ofertas.ep2 * '. $dias .' * '. $ep2 .') + 
+                                    (campos_ofertas.ep3 * '. $dias .' * '. $ep3 .'))
+                                    <= '. $precio)
                                     ->get();
 
         return $ofertas;

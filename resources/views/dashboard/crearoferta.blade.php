@@ -71,6 +71,11 @@
                 <div class="row">
                     <div class="col">
 
+                    <div class="form-group">
+                            <label for="nombreoferta">Nombre de la Oferta</label>
+                            <input type="text" name="nombre" class="form-control" id="nombreoferta" placeholder="Nombre de la Oferta" required>
+                        </div>
+
                         <div class="form-group">
                                 <label for="nombreoferta">Empresa</label>
                                 <select name="empresa_id" class="form-control" required>
@@ -131,15 +136,15 @@
                             
                               <div class="col-md-4">
                                 <label>p1</label>
-                                <input class="form-control" name="pp1" type="text">
+                                <input class="form-control" name="pp1" type="number" min="0" step="0.000001">
                               </div>
                               <div class="col-md-4">
                                 <label>p2</label>
-                                <input class="form-control" name="pp2" type="text">
+                                <input class="form-control" name="pp2" type="number" min="0" step="0.000001">
                               </div>
                               <div class="col-md-4">
                                 <label>p3</label>
-                                <input class="form-control" name="pp3" type="text">
+                                <input class="form-control" name="pp3" type="number" min="0" step="0.000001">
                               </div>
 
                             </div>
@@ -149,15 +154,15 @@
                            
                               <div class="col-md-4">
                               <label>p1</label>
-                              <input class="form-control" name="ep1" type="text">
+                              <input class="form-control" name="ep1" type="number" min="0" step="0.000001">
                             </div>
                               <div class="col-md-4">
                                 <label>p2</label>
-                                <input class="form-control" name="ep2" type="text">
+                                <input class="form-control" name="ep2" type="number" min="0" step="0.000001">
                               </div>
                               <div class="col-md-4">
                               <label>p3</label>
-                              <input class="form-control" name="ep3" type="text">
+                              <input class="form-control" name="ep3" type="number" min="0" step="0.000001">
                             </div>
                           </div>
                       </div>
@@ -176,20 +181,11 @@
               
                          
                       </div>
-                        
-                        <div class="form-group">
-                            <label for="nombreoferta">Nombre de la Oferta</label>
-                            <input type="text" name="nombre" class="form-control" id="nombreoferta" placeholder="Nombre de la Oferta" required>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="preciooferta">Precio de la oferta Anual</label>
-                            <input type="number" min="0" step="0.1" name="precio" class="form-control" id="preciooferta" placeholder="Precio Anual" required>
-                        </div>
 
                         <div class="form-group">
                                 <label for="detallesoferta">Descripción</label>
-                                <textarea name="descripcion" class="form-control" id="detallesoferta" cols="30" rows="10" required></textarea>
+                                <textarea name="descripcion" class="form-control" id="detallesoferta" cols="30" rows="10"></textarea>
                         </div>
 
                         <div class="form-group">

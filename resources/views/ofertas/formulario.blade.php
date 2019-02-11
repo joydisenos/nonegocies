@@ -43,14 +43,83 @@
                                                 @endforeach
                                             </select>
                                     </div>
+                                    <div class="col">
+                                    <label for="persona">Soy</label>
+                                    <select name="persona" id="persona" class="special form-control">
+                                                <option value="">Seleccione una Opción</option>
+                                                <option value="1">Particular</option>
+                                                <option value="2">Empresa</option>
+                                            </select>
+                                    </div>
                                 </div>
-            
+
                                 <div class="row mb-4">
+                                <div class="col">
+                                <label for="tarifa">Tarifa</label>
+                                <select name="tarifa" id="tarifa" class="form-control">
+                                        <option value="0">tarifa</option>
+
+                                                <option value="1" class="tarifas luz-opt">2.0A</option>
+                                                <option value="2" class="tarifas luz-opt">2.0ADH</option>
+                                                <option value="3" class="tarifas luz-opt">2.1A</option>
+                                                <option value="4" class="tarifas luz-opt">2.1ADH</option>
+                                                <option value="5" class="tarifas luz-opt">3.0A</option>
+                                                <option value="6" class="tarifas luz-opt">3.1A</option>
+
+                                                <option value="7" class="tarifas gas-opt">3.1</option>
+                                                <option value="8" class="tarifas gas-opt">3.2</option>
+                                                <option value="9" class="tarifas gas-opt">3.3</option>
+                                                <option value="10" class="tarifas gas-opt">3.4</option>
+                                        </select>
+                                </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col">
+                                            <label>Potencia</label>
+                                    </div>
+                               </div>
+
+                                <div class="row mb-4">
+                                
                                         <div class="col">
-                                                <label>Indíquenos el monto de su servicio actual</label>
-                                                <input class="special form-control" type="number" name="monto" min="0" step="0.1" placeholder="Monto Facturado" required>
+                                                <input class="special form-control" type="number" name="pp1" min="0" step="any" placeholder="P1" required>
+                                        </div>
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="pp2" min="0" step="any" placeholder="P2" required>
+                                        </div>
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="pp3" min="0" step="any" placeholder="P3" required>
                                         </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                            <label>Energía</label>
+                                    </div>
+                               </div>
+
+                                <div class="row mb-4">
+                                
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="ep1" min="0" step="any" placeholder="P1" required>
+                                        </div>
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="ep2" min="0" step="any" placeholder="P2" required>
+                                        </div>
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="ep3" min="0" step="any" placeholder="P3" required>
+                                        </div>
+                                </div>
+
+                                <div class="row mb-4">
+
+                                        <div class="col">
+                                        <label for="monto">Monto</label>
+                                                <input class="special form-control" type="number" name="monto" min="0" step="any" placeholder="Monto Facturado" required>
+                                        </div>
+                                </div>
+
             
                                <div class="row">
                                     <div class="col">

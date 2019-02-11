@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="main-content">
-        <form action="{{ route('actualizarempresa' , [$empresa->id]) }}" method="post">
+        <form action="{{ route('actualizarempresa' , [$empresa->id]) }}" enctype="multipart/form-data" method="post">
                 @csrf
      <!-- HEADER -->
       <div class="header">

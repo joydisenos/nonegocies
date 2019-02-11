@@ -71,6 +71,11 @@
                 <div class="row">
                     <div class="col">
 
+                    <div class="form-group">
+                            <label for="nombreoferta">Nombre de la Oferta</label>
+                            <input type="text" name="nombre" class="form-control" id="nombreoferta" placeholder="Nombre de la Oferta" value="{{ $oferta->nombre }}" required>
+                        </div>
+
                         <div class="form-group">
                                 <label for="nombreoferta">Empresa</label>
                                 <select name="empresa_id" class="form-control" required>
@@ -138,15 +143,15 @@
                               
                                 <div class="col-md-4">
                                   <label>p1</label>
-                                  <input class="form-control" name="pp1" type="text" value="{{ $oferta->opcion->pp1 }}">
+                                  <input class="form-control" name="pp1" type="number" min="0" step="0.000001" value="{{ $oferta->opcion->pp1 }}">
                                 </div>
                                 <div class="col-md-4">
                                   <label>p2</label>
-                                  <input class="form-control" name="pp2" type="text" value="{{ $oferta->opcion->pp2 }}">
+                                  <input class="form-control" name="pp2" type="number" min="0" step="0.000001" value="{{ $oferta->opcion->pp2 }}">
                                 </div>
                                 <div class="col-md-4">
                                   <label>p3</label>
-                                  <input class="form-control" name="pp3" type="text" value="{{ $oferta->opcion->pp3 }}">
+                                  <input class="form-control" name="pp3" type="number" min="0" step="0.000001" value="{{ $oferta->opcion->pp3 }}">
                                 </div>
 
                               </div>
@@ -156,15 +161,15 @@
                              
                                 <div class="col-md-4">
                                 <label>p1</label>
-                                <input class="form-control" name="ep1" type="text" value="{{ $oferta->opcion->ep1 }}">
+                                <input class="form-control" name="ep1" type="number" min="0" step="0.000001" value="{{ $oferta->opcion->ep1 }}">
                               </div>
                                 <div class="col-md-4">
                                   <label>p2</label>
-                                  <input class="form-control" name="ep2" type="text" value="{{ $oferta->opcion->ep2 }}">
+                                  <input class="form-control" name="ep2" type="number" min="0" step="0.000001" value="{{ $oferta->opcion->ep2 }}">
                                 </div>
                                 <div class="col-md-4">
                                 <label>p3</label>
-                                <input class="form-control" name="ep3" type="text" value="{{ $oferta->opcion->ep3 }}">
+                                <input class="form-control" name="ep3" type="number" min="0" step="0.000001" value="{{ $oferta->opcion->ep3 }}">
                               </div>
                             </div>
                         </div>
@@ -183,21 +188,11 @@
                 
                            
                         </div>
-                        
 
-                        <div class="form-group">
-                            <label for="nombreoferta">Nombre de la Oferta</label>
-                            <input type="text" name="nombre" class="form-control" id="nombreoferta" placeholder="Nombre de la Oferta" value="{{ $oferta->nombre }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="preciooferta">Precio de la oferta Anual</label>
-                            <input type="number" min="0" step="0.1" name="precio" class="form-control" id="preciooferta" placeholder="Precio Anual" value="{{ $oferta->precio }}" required>
-                        </div>
 
                         <div class="form-group">
                                 <label for="detallesoferta">Descripción</label>
-                                <textarea name="descripcion" class="form-control" id="detallesoferta" cols="30" rows="10" required>{{ $oferta->descripcion }}</textarea>
+                                <textarea name="descripcion" class="form-control" id="detallesoferta" cols="30" rows="10">{{ $oferta->descripcion }}</textarea>
                         </div>
 
                         <div class="form-group">

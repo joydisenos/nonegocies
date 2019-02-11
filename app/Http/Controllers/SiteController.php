@@ -51,6 +51,14 @@ class SiteController extends Controller
     {
         $validatedData = $request->validate([
             'servicio' => 'required',
+            'persona' => 'required',
+            'tarifa' => 'required',
+            'pp1' => 'required',
+            'pp2' => 'required',
+            'pp3' => 'required',
+            'ep1' => 'required',
+            'ep2' => 'required',
+            'ep3' => 'required',
             'monto' => 'required',
             'desde' => 'required',
             'hasta' => 'required',
@@ -62,11 +70,20 @@ class SiteController extends Controller
         $desde = Carbon::parse($request->desde);
         $hasta = Carbon::parse($request->hasta);
 
-        $periodo = $hasta->diffInDays($desde);
-        $precio = $request->monto / $periodo;
-            
-        $ofertas = $refOfertas->getOfertasMenorPrecioLuz($categoria->id , $precio);
+        $dias = $hasta->diffInDays($desde);
+        $precio = (float)$request->monto;
 
+        $pp1 = (float)$request->pp1;
+        $pp2 = (float)$request->pp2;
+        $pp3 = (float)$request->pp3;
+        $ep1 = (float)$request->ep1;
+        $ep2 = (float)$request->ep2;
+        $ep3 = (float)$request->ep3;
+        $categoriaId = $categoria->id;
+        $tipoPersona = $request->persona;
+        $tarifa = (int)$request->tarifa;
+        
+        $ofertas = $refOfertas->getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias);
         return view('ofertas.resultados' , compact('ofertas' , 'categoria'));
     }
 }

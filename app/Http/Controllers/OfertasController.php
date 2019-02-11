@@ -35,8 +35,6 @@ class OfertasController extends Controller
             'categoria_id' => 'required',
             'tipo' => 'required',
             'tarifa' => 'required',
-            'precio' => 'required',
-            'descripcion' => 'required',
             ]);
 
             $precio_diario = $request->precio / 360;
@@ -50,7 +48,12 @@ class OfertasController extends Controller
             $oferta->tarifa = $request->tarifa;
             $oferta->precio = 0;
             $oferta->precio_diario = 0;
-            $oferta->descripcion = $request->descripcion;
+            if ( $request->descripcion !=null )
+            {
+                $oferta->descripcion = $request->descripcion;
+            }else{
+                $oferta->descripcion = '';
+            }
             $oferta->save();
 
             //  opciones
@@ -105,8 +108,6 @@ class OfertasController extends Controller
             'categoria_id' => 'required',
             'tipo' => 'required',
             'tarifa' => 'required',
-            'precio' => 'required',
-            'descripcion' => 'required',
             ]);
 
             $oferta = Ofertas::findOrFail($id);
@@ -118,7 +119,12 @@ class OfertasController extends Controller
             $oferta->tarifa = $request->tarifa;
             $oferta->precio = 0;
             $oferta->precio_diario = 0;
-            $oferta->descripcion = $request->descripcion;
+            if ( $request->descripcion !=null )
+            {
+                $oferta->descripcion = $request->descripcion;
+            }else{
+                $oferta->descripcion = '';
+            }
             $oferta->save();
 
             //  opciones
