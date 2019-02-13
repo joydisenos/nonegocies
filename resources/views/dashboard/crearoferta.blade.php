@@ -161,7 +161,7 @@
                         <div class="form-group row">
                           <div class="col-md-3">
                             <label for="detallesoferta">Comisión</label>
-                            <input type="number" step="0.01" class="form-control" name="comision" placeholder="$" data-mask="#.##0,00" data-mask-reverse="true">
+                            <input type="number" step="0.01" class="form-control" name="comision" placeholder="$">
                           </div>
 
                           <div class="col-md-3">

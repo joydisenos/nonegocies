@@ -32,6 +32,7 @@
                         <th>Descripción</th>
                         <th>Precio</th>
                         <th></th>
+                        <th></th>
                     </thead>
                     <tbody>
                         @foreach($ofertas as $oferta)
@@ -39,7 +40,18 @@
                             <td>{{ title_case($oferta->empresa->nombre) }}</td>
                             <td>{{ title_case($oferta->nombre) }} </td>
                             <td>{{ $oferta->descripcion }}</td>
-                            <td> {{ number_format( ($oferta->totalgeneral + ($oferta->totalgeneral * ($oferta->comision / 100))) , 2 , ',' , '.') }} </td>
+                            <td> {{ number_format( ($oferta->totalgeneral) , 2 , ',' , '.') }} </td>
+							@guest
+							<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }}</td>
+							@else
+								@if(Auth::user()->plan_id == null)
+								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }}</td>
+								@elseif(Auth::user()->plan_id == 2)
+								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan2 / 100)) , 2 , ',' , '.') }}</td>
+								@elseif(Auth::user()->plan_id == 3)
+								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan3 / 100)) , 2 , ',' , '.') }}</td>
+								@endif
+							@endguest
                             <td><a href="#">Contratar</a></td>
                         </tr>
                         @endforeach

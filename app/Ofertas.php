@@ -63,6 +63,7 @@ class Ofertas extends Model
                                     ->where('ofertas.categoria_id' , $categoriaId)
                                     ->where('ofertas.tarifa' , $tarifa)
                                     ->where('ofertas.tipo' , $tipoPersona)
+                                    ->where('ofertas.estatus' , 1)
                                     ->whereRaw('(((campos_ofertas.pp1 / 365) * '. $dias .' * '. $pp1 .') + 
                                     ((campos_ofertas.pp2 / 365) * '. $dias .' * '. $pp2 .') + 
                                     ((campos_ofertas.pp3 / 365) * '. $dias .' * '. $pp3 .') + 
