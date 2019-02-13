@@ -54,6 +54,30 @@ class OfertasController extends Controller
             }else{
                 $oferta->descripcion = '';
             }
+            if ( $request->comision !=null )
+            {
+                $oferta->comision = $request->comision;
+            }else{
+                $oferta->comision = 0;
+            }
+            if ( $request->plan1 !=null )
+            {
+                $oferta->plan1 = $request->plan1;
+            }else{
+                $oferta->plan1 = 0;
+            }
+            if ( $request->plan2 !=null )
+            {
+                $oferta->plan2 = $request->plan2;
+            }else{
+                $oferta->plan2 = 0;
+            }
+            if ( $request->plan3 !=null )
+            {
+                $oferta->plan3 = $request->plan3;
+            }else{
+                $oferta->plan3 = 0;
+            }
             $oferta->save();
 
             //  opciones
@@ -124,6 +148,30 @@ class OfertasController extends Controller
                 $oferta->descripcion = $request->descripcion;
             }else{
                 $oferta->descripcion = '';
+            }
+            if ( $request->comision !=null )
+            {
+                $oferta->comision = $request->comision;
+            }else{
+                $oferta->comision = 0;
+            }
+            if ( $request->plan1 !=null )
+            {
+                $oferta->plan1 = $request->plan1;
+            }else{
+                $oferta->plan1 = 0;
+            }
+            if ( $request->plan2 !=null )
+            {
+                $oferta->plan2 = $request->plan2;
+            }else{
+                $oferta->plan2 = 0;
+            }
+            if ( $request->plan3 !=null )
+            {
+                $oferta->plan3 = $request->plan3;
+            }else{
+                $oferta->plan3 = 0;
             }
             $oferta->save();
 

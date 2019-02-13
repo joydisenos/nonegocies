@@ -26,6 +26,10 @@ class CreateOfertasTable extends Migration
             $table->integer('tipo')->default(1);
             $table->integer('tarifa')->default(0);
             $table->integer('ventas')->default(0);
+            $table->float('comision')->default(0);
+            $table->float('plan1')->default(0);
+            $table->float('plan2')->default(0);
+            $table->float('plan3')->default(0);
             $table->timestamps();
         });
     }
