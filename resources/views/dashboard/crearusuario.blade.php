@@ -91,7 +91,7 @@
 
 
                         <div class="form-group row">
-                          <div class="col-md-6">
+                          <div class="col-md-4">
                               <label for="password">Contraseña</label>
                             <div class="input-group input-group-merge">
 
@@ -107,7 +107,7 @@
               
                             </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                <!-- Input group -->
                                <label for="password_confirmation">Confirme su Contraseña</label>
                               <div class="input-group input-group-merge">
@@ -123,6 +123,14 @@
                                 </div>
 
                               </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <label for="telefono">Tipo</label>
+                              <select name="tipo" class="form-control">
+                                <option value="1">Particular</option>
+                                <option value="2">Empresa</option>
+                              </select>
                         </div>
                         </div>
                         

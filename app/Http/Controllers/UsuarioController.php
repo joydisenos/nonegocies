@@ -32,6 +32,7 @@ class UsuarioController extends Controller
         $user->cp = $request->cp;
         $user->localidad = $request->localidad;
         $user->telefono = $request->telefono;
+        $user->tipo = $request->tipo;
         $user->save();
 
         return redirect()->route('usuarios')->with('status','Usuario Creado');
@@ -74,6 +75,7 @@ class UsuarioController extends Controller
         $user->cp = $request->cp;
         $user->localidad = $request->localidad;
         $user->telefono = $request->telefono;
+        $user->tipo = $request->tipo;
         $user->save();
 
         return redirect()->route('usuarios')->with('status','Usuario Actualizado');
