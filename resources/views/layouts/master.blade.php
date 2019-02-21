@@ -7,7 +7,7 @@
     <meta name="revisit-after" content="2 days">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>No Negocies</title>
     <link rel="apple-touch-icon" href="{{asset('img/nonegocies.png')}}" />
     <link rel="icon" href="{{asset('img/favicon2.png')}}" type="image/png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
