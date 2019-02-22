@@ -91,7 +91,7 @@
 
 
                         <div class="form-group row">
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                               <label for="password">Contraseña</label>
                             <div class="input-group input-group-merge">
 
@@ -107,25 +107,20 @@
               
                             </div>
                             </div>
+                            <!--
                             <div class="col-md-4">
-                               <!-- Input group -->
                                <label for="password_confirmation">Confirme su Contraseña</label>
-                              <div class="input-group input-group-merge">
-
-                                <!-- Input -->
-                                <input type="password" class="form-control form-control-appended pass" name="password_confirmation" placeholder="Repita su contraseña">
-
-                                <!-- Icon -->
-                                <div class="input-group-append">
-                                  <span class="input-group-text mostrar">
-                                    <i class="fe fe-eye"></i>
-                                  </span>
+                                <div class="input-group input-group-merge">
+                                  <input type="password" class="form-control form-control-appended pass" name="password_confirmation" placeholder="Repita su contraseña">
+                                  <div class="input-group-append">
+                                    <span class="input-group-text mostrar">
+                                      <i class="fe fe-eye"></i>
+                                    </span>
+                                  </div>
                                 </div>
+                            </div>-->
 
-                              </div>
-                        </div>
-
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                           <label for="telefono">Tipo</label>
                               <select name="tipo" class="form-control">
                                 <option value="1">Particular</option>

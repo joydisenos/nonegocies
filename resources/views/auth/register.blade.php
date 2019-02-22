@@ -101,34 +101,23 @@ Registro
               </div>
             </div>
 
-            <!-- Password Confirm -->
+            <!-- Password Confirm
             <div class="form-group">
 
               <div class="row">
                 <div class="col">
-                      
-                  <!-- Label -->
                   <label>Repita su Contraseña</label>
-
                 </div>
-
-              </div> <!-- / .row -->
-
-              <!-- Input group -->
+              </div> 
               <div class="input-group input-group-merge">
-
-                <!-- Input -->
                 <input type="password" class="form-control form-control-appended pass" name="password_confirmation" placeholder="Indique su contraseña">
-
-                <!-- Icon -->
                 <div class="input-group-append">
                   <span class="input-group-text mostrar">
                     <i class="fe fe-eye"></i>
                   </span>
                 </div>
-
               </div>
-            </div>
+            </div> -->
 
            
 

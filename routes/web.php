@@ -14,6 +14,8 @@
 Auth::routes();
 
 Route::get('/', 'SiteController@inicio')->name('home');
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
 
 
@@ -76,5 +78,9 @@ Route::prefix('admin')->group(function () {
    Route::post('/editar/contactar/{id}', 'ContactarController@actualizar')->name('actualizarcontactar');
 
 
+});
+
+Route::prefix('panel')->group(function (){
+   Route::get('/' , 'PanelController@index')->name('panel.index');
 });
 

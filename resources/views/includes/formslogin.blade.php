@@ -84,7 +84,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="register-form">Modal title</h5>
+          <h5 class="modal-title" id="register-form">Registro</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -164,34 +164,23 @@
                   </div>
                 </div>
     
-                <!-- Password Confirm -->
+                <!-- Password Confirm 
                 <div class="form-group">
     
                   <div class="row">
                     <div class="col">
-                          
-                      <!-- Label -->
                       <label>Repita su Contraseña</label>
-    
                     </div>
-    
-                  </div> <!-- / .row -->
-    
-                  <!-- Input group -->
+                  </div>
                   <div class="input-group input-group-merge">
-    
-                    <!-- Input -->
                     <input type="password" class="form-control form-control-appended pass" name="password_confirmation" placeholder="Indique su contraseña">
-    
-                    <!-- Icon -->
                     <div class="input-group-append">
                       <span class="input-group-text mostrar">
                         <i class="fe fe-eye"></i>
                       </span>
                     </div>
-    
                   </div>
-                </div>
+                </div> -->
     
                
                 

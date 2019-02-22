@@ -70,7 +70,7 @@
             </li>
             @else
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{{ route('inicio') }}" >Panel {{ title_case(Auth::user()->name) }}</a>
+                <a class="nav-link js-scroll-trigger" href="{{ route('panel.index') }}" >Panel {{ title_case(Auth::user()->name) }}</a>
             </li>
             @endguest
             <!--  <li class="nav-item">
@@ -87,7 +87,7 @@
       <div class="container">
         <div class="row">
         <div class="col-md-9 copyright">
-           Copyright &copy; {{ date('Y') }} {{ config('app.name', 'Laravel') }} <a href="{{ route('terminos') }}"> Términos y Condiciones</a>  <a href="{{ route('privacidad') }}"> Politicas de Privacidad</a>
+           Copyright &copy; {{ date('Y') }} No Negocies <a href="{{ route('terminos') }}"> Términos y Condiciones</a>  <a href="{{ route('privacidad') }}"> Politicas de Privacidad</a>
         </div>
         <div class="col-md-3">
           <ul class="social-links">

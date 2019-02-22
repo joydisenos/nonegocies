@@ -40,4 +40,10 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'client_id' => '223840758040120',
+        'client_secret' => '243589c8ea3413764a121cbbdfe531a3',
+        'redirect' => '/panel'
+    ],
+
 ];

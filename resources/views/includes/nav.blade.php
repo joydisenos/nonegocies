@@ -10,7 +10,7 @@
           </button>
 
           <!-- Brand -->
-          <a class="navbar-brand" href="{{ route('inicio') }}">
+          <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('assets/img/logo.png')}}" class="navbar-brand-img 
             mx-auto" alt="...">
           </a>
@@ -57,6 +57,7 @@
       
             <!-- Navigation -->
             <ul class="navbar-nav">
+              @role('admin')
               <li class="nav-item">
                 <a class="nav-link" href="#admin" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="admin">
                   <i class="fe fe-home"></i> Administración
@@ -124,6 +125,19 @@
                   <i class="fe fe-phone-call"></i> Contactar
                 </a>
               </li>
+              @else
+              <li class="nav-item">
+                <a class="nav-link " href="{{ route('panel.index') }}">
+                  <i class="fe fe-user"></i> Inicio
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="{{ route('panel.index') }}">
+                  <i class="fe fe-user"></i> Configuración
+                </a>
+              </li>
+              @endrole
 
               <li class="nav-item">
                 <a class="nav-link " href="{{ route('logout') }}"
