@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" href="{{asset('img/nonegocies.png')}}" />
     <link rel="icon" href="{{asset('img/favicon2.png')}}" type="image/png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/feather/feather.min.css')}}">
     <link href="{{asset('css/styles.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
@@ -62,7 +63,10 @@
 
             @guest
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{{ route('login') }}" >Iniciar Sesión</a>
+                <a class="nav-link js-scroll-trigger" id="iniciar-sesion" href="{{ route('login') }}" >Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" id="registro-sesion" href="{{ route('register') }}" >Registro</a>
             </li>
             @else
             <li class="nav-item">
@@ -108,10 +112,12 @@
       </div>
     </footer>
 
+    @include('includes.formslogin')
+
     <!-- Bootstrap core JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
     @include('includes.errors')
     @include('includes.notificacion')
@@ -140,6 +146,25 @@
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
       })
+
+      $('#iniciar-sesion').click(function(e){
+        e.preventDefault();
+        $('#login-form').modal('show');
+      });
+
+      $('#registro-sesion').click(function(e){
+        e.preventDefault();
+        $('#register-form').modal('show');
+      });
+
+      $('.mostrar').click(function () {
+        if ($(this).parents('.form-group').find('.pass').attr('type') === 'text') {
+        $(this).parents('.form-group').find('.pass').attr('type', 'password');
+        } else {
+        $(this).parents('.form-group').find('.pass').attr('type', 'text');
+        }
+      });
+  
     </script>
 
   </body>

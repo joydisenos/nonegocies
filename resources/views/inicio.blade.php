@@ -126,7 +126,7 @@ section{
     content: "";
     width: 100%;
     height: 1000px;
-    background: url({{asset('/svg/red_curve.svg')}}) no-repeat center bottom;
+    background: url({{ asset('/svg/red_curve.svg') }}) no-repeat center bottom;
     bottom: 0;
     left: 0;
     background-size: 100%;
@@ -139,7 +139,7 @@ section{
     content: "";
     width: 100%;
     height: 1000px;
-    background: url({{asset('/svg/red_curve_bottom.svg')}}) no-repeat center top;
+    background: url({{ asset('/svg/red_curve_bottom.svg') }}) no-repeat center top;
     top: 0;
     left: 0;
     background-size: 100%;
@@ -339,7 +339,7 @@ section{
 				    <div class="sa-fix"></div>
 			  	</div>
 			</div>
-			<form class="wow animated fadeInUp" action="{{ route('contactar') }}" method="post">
+			<form class="wow animated fadeInUp" id="contactar-reg" action="{{ route('contactar') }}" method="post">
 				@csrf
 				<input class="special" type="text" name="nombre" id="nombre" placeholder="Nombre*" required>
 				<input class="special" type="text" name="apellido" placeholder="Apellido *" required>
@@ -442,7 +442,7 @@ $(document).ready(function() {
 
    
 
-		$('form').on('submit', function (e) {
+		$('#contactar-reg').on('submit', function (e) {
 			
       	var nombre = $("input[name=nombre]").val();
       	var apellido = $("input[name=apellido]").val();

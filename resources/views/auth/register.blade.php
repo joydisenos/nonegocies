@@ -52,6 +52,14 @@ Registro
 
             </div>
 
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select name="tipo" class="form-control">
+                  <option value="1">Particular</option>
+                  <option value="2">Empresa</option>
+                </select>
+        </div>
+
 
             <!-- Email address -->
             <div class="form-group">
