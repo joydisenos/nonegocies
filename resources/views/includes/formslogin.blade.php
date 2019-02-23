@@ -62,7 +62,8 @@
     </div>
 
     <div class="modal-footer text-center">
-        <!-- Submit -->
+        <!-- Submit
+        <a href="{{ route('social.auth', 'facebook') }}">FB</a> -->
         <button class="btn btn-sm btn-block btn-primary mb-3" type="submit">
             Iniciar Sesión
         </button>

@@ -239,7 +239,7 @@ section{
 </header>
 <section class="about" id="about">
 	<div class="container">
-		<h2 class="center wow blue forced-top animated fadeIn">Sobre Nosotros</h2>
+		<h2 class="center wow blue forced-top animated fadeIn text-center">Sobre Nosotros</h2>
 		<div class="row">
 			<div class="col-lg-4 wow featured animated fadeInUp">
 				<div class="card">
@@ -277,8 +277,8 @@ section{
 
 <section class="target" id="target">
 	<div class="container">
-		<h2 class="white center">Titulo para los targets</h2>
-		<p class="white center">Lorem ipsum dolor sit amet nsdou tinasdfm tritani omittam qui mei oblique taimates.</p>
+		<h2 class="white center text-center">Titulo para los targets</h2>
+		<p class="white center text-center">Lorem ipsum dolor sit amet nsdou tinasdfm tritani omittam qui mei oblique taimates.</p>
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="circle">
@@ -364,8 +364,8 @@ section{
 <section class="pricing py-5">
   <div class="container">
   	<div style="height: 40px"></div>
-  	<h2 class="center">Titulo para los targets</h2>
-		<p class="center">Lorem ipsum dolor sit amet nsdou tinasdfm tritani omittam qui mei oblique taimates.</p>
+  	<h2 class="center text-center">Titulo para los targets</h2>
+		<p class="center text-center">Lorem ipsum dolor sit amet nsdou tinasdfm tritani omittam qui mei oblique taimates.</p>
     <div class="row">
       <!-- Free Tier -->
       <div class="col-lg-4">

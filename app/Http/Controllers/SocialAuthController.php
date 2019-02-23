@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
+use Socialite;
 
 class SocialAuthController extends Controller
 {

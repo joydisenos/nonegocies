@@ -137,6 +137,14 @@
                   <i class="fe fe-user"></i> Configuración
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="{{ route('panel.index') }}">
+                  <i class="fe fe-user"></i> Contratar Plan
+                </a>
+              </li>
+
+              
               @endrole
 
               <li class="nav-item">
