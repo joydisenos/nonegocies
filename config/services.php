@@ -41,9 +41,9 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '223840758040120',
-        'client_secret' => '243589c8ea3413764a121cbbdfe531a3',
-        'redirect' => '/panel'
+        'client_id' => '562891504179864',
+        'client_secret' => '7170dd098621652dd50a8059cac75a3a',
+        'redirect' => 'https://nonegocies.es/auth/facebook/callback'
     ],
 
 ];

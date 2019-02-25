@@ -15,4 +15,14 @@ class PanelController extends Controller
     {
         return view('panel.inicio');
     }
+
+    public function configuracion()
+    {
+        return view('panel.configuracion');
+    }
+
+    public function planes()
+    {
+        return view('panel.planes');
+    }
 }

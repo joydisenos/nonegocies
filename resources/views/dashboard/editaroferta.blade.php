@@ -100,6 +100,12 @@
                               <option value="2"
                                 {{ ($oferta->tipo == 2) ? 'selected' : '' }}
                               >Empresa</option>
+                              <option value="3"
+                                {{ ($oferta->tipo == 3) ? 'selected' : '' }}
+                              >Comunidad</option>
+                              <option value="4"
+                                {{ ($oferta->tipo == 4) ? 'selected' : '' }}
+                              >Administrador</option>
                             </select>
                           </div>
                           <div class="col">

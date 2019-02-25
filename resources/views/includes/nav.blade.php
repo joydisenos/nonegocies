@@ -133,13 +133,13 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link " href="{{ route('panel.index') }}">
+                <a class="nav-link " href="{{ route('panel.configuracion') }}">
                   <i class="fe fe-user"></i> Configuración
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link " href="{{ route('panel.index') }}">
+                <a class="nav-link " href="{{ route('panel.planes') }}">
                   <i class="fe fe-user"></i> Contratar Plan
                 </a>
               </li>

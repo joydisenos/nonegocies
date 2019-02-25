@@ -62,8 +62,8 @@
     </div>
 
     <div class="modal-footer text-center">
-        <!-- Submit
-        <a href="{{ route('social.auth', 'facebook') }}">FB</a> -->
+        <!-- Submit -->
+        <a href="{{ route('social.auth', 'facebook') }}">FB</a>
         <button class="btn btn-sm btn-block btn-primary mb-3" type="submit">
             Iniciar Sesión
         </button>
@@ -121,6 +121,8 @@
                         <select name="tipo" class="form-control">
                           <option value="1">Particular</option>
                           <option value="2">Empresa</option>
+                          <option value="3">Comunidad</option>
+                          <option value="4">Administrador</option>
                         </select>
                 </div>
     

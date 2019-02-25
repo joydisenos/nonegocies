@@ -82,5 +82,7 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('panel')->group(function (){
    Route::get('/' , 'PanelController@index')->name('panel.index');
+   Route::get('/configuracion' , 'PanelController@configuracion')->name('panel.configuracion');
+   Route::get('/planes' , 'PanelController@planes')->name('panel.planes');
 });
 
