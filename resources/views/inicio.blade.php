@@ -196,6 +196,179 @@ section{
 	text-transform: uppercase;
 }
 
+/* how it works */
+
+.timeline {
+  width: 100%;
+  position: relative;
+  perspective: 5000px;
+  margin-top: 140px;
+}
+.timeline:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 15px;
+  background-color: #d5dfe5;
+  border-radius: 15px;
+  top: 76px;
+}
+.timeline .timeline-item {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+.timeline .timeline-item:hover:after {
+  transform: scale(1.5, 1.5);
+}
+.timeline .timeline-item.selected:after {
+	background-color: #133871;
+  	border: 5px solid #97a2bf;
+  	transform: scale(1.5, 1.5);
+}
+.timeline .timeline-item:after {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 69px;
+  left: 50%;
+  margin-left: -15px;
+  background-color: #f5efed;
+  border: 5px solid #d5dfe5;
+  content: "";
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+.timeline .timeline-item .timeline-content {
+  position: absolute;
+  top: -100px;
+  display: none;
+  width: 350px;
+  left: -60px;
+  color:white;
+  cursor: auto;
+}
+.timeline .timeline-item .timeline-content.fadeIn {
+  animation-delay: 0.2s;
+}
+.timeline .timeline-item .timeline-content.animated {
+  display: block;
+}
+
+.timeline-content p{color: white;}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.flex-items-default {
+  width: 25%;
+  height: 150px;
+}
+
+.dropdown {
+  width: 400px;
+  height: 126px;
+  background: #FF034C;
+  box-shadow: 0 3px 20px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: absolute;
+  top: -100px;
+  animation-duration: 0.2s;
+  transition: left 0.3s ease;
+}
+.dropdown .inner {
+  position: relative;
+  width: 100%;
+  height: 126px;
+}
+.dropdown .inner .arrow-down {
+  position: absolute;
+  bottom: -19px;
+  left: 50%;
+  margin-left: -20px;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #FF034C;
+}
+
+/*tabs*/
+
+.tab-slider--nav {
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.tab-slider--tabs {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  border-radius: 35px;
+  overflow: hidden;
+  background: #fff;
+  height: 35px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.tab-slider--tabs:after {
+  content: "";
+  width: 50%;
+  background: #345F90;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 250ms ease-in-out;
+  border-radius: 35px;
+}
+.tab-slider--tabs.slide:after {
+  left: 50%;
+}
+
+.tab-slider--trigger {
+  font-size: 12px;
+  line-height: 1;
+  font-weight: bold;
+  color: #345F90;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 11px 20px;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  display: inline-block;
+  transition: color 250ms ease-in-out;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.tab-slider--trigger.active {
+  color: #fff;
+}
+
+.tab-slider--body {
+  margin-bottom: 20px;
+}
+
+
 </style>
 
 <header class="masthead" id="hero">
@@ -204,7 +377,7 @@ section{
 		<div class="hero-text">
 			<h1 class="title-hero fadeInDown animated">Te pagamos por ahorrar en tus facturas</h1>
 			<h2 class="subtitle-hero fadeInRight animated">Te damos la comisión de venta por cada contratación de servicio en nuestra web</h2>
-			<a href="#contactar" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Unete a nuestro movimiento</a>
+			<a href="#contactar" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Comenzar</a>
 		</div>
 		<div class="social-wrapper">
 			<h5>Síguenos</h5>
@@ -233,10 +406,93 @@ section{
 			</ul>
 		</div>
 		<div class="sheader-shape">
-			<img src="{{  asset('img/wave.png')}}" alt="Shape">
+			<svg style="fill:white;" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="217" viewBox="0 0 1920 217">
+  <g fill-rule="evenodd" transform="matrix(-1 0 0 1 1920 0)">
+    <path d="M0,57.46875 C203.364583,135.217754 494.835938,156.564108 874.414062,121.507813 C1192.61198,-13.9827666 1541.14063,-35.3291208 1920,57.46875 L1920,207 L0,207 L0,57.46875 Z" opacity=".3"></path>
+    <path d="M0,79 C292.46875,165.453125 612.46875,165.453125 960,79 C1307.53125,-7.453125 1627.53125,-7.453125 1920,79 L1920,207 L0,207 L0,79 Z" opacity=".6"></path>
+    <path d="M0,89 C288.713542,146.786458 608.713542,146.786458 960,89 C1311.28646,31.2135417 1631.28646,31.2135417 1920,89 L1920,217 L0,217 L0,89 Z"></path>
+  </g>
+</svg>
 		</div>
 	</div>
 </header>
+<section>
+  <div class="container">
+    <h1 class="text-center">Cómo Funciona?</h1>
+    <div class="timeline flex-container">
+
+      <div class="timeline-item flex-items-default selected">
+        <div class="timeline-content text-left animated bounceIn">
+          <h2>Paso 1</h2>
+          <p>Registrate con solo tu email y una contraseña para comenzar a utilizar NO Negocies</p>
+        </div>
+      </div>
+      <div class="timeline-item flex-items-default">
+        <div class="timeline-content text-left">
+          <h2>Paso 2</h2>
+          <p>Selecciona en el menu ofertas el suministro que quieras comparar</p>
+        </div>
+      </div>
+      <div class="timeline-item flex-items-default">
+        <div class="timeline-content text-left">
+          <h2>Paso 3</h2>
+          <p>Contrata el servicio por nuestra web y obtiene un beneficio</p>
+        
+        </div>
+      </div>
+      <div class="timeline-item flex-items-default">
+        <div class="timeline-content text-left">
+          <h2>Paso 4</h2>
+          <p>cuando ya tengas 30 dias de uso del servicio, NO Negocies ingresara en tu cuenta tu comisión</p>
+        </div>
+      </div>
+   
+      <div class="dropdown animated bounceIn" style="left: -88px;">
+        <div class="inner">
+          <div class="arrow-down"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="users">
+	<div class="container">
+		<h1 class="wow blue forced-top animated fadeIn">Para quienes?</h1>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="tab-slider--nav">
+					<ul class="tab-slider--tabs">
+						<li class="tab-slider--trigger active" rel="tab1">Particulares</li>
+						<li class="tab-slider--trigger" rel="tab2">Empresas</li>
+						<li class="tab-slider--trigger" rel="tab3">Comunidades</li>
+						<li class="tab-slider--trigger" rel="tab4">Administradores</li>
+					</ul>
+				</div>
+				<div class="tab-slider--container">
+					<div id="tab1" class="tab-slider--body">
+						<h2>Particulares</h2>
+						<p>Toggle switch style tab navigation. Currently only works with two tabs.</p>
+						<p>Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue.</p>
+					</div>
+					<div id="tab2" class="tab-slider--body">
+						<h2>Empresas</h2>
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+					</div>
+					<div id="tab3" class="tab-slider--body">
+						<h2>Comunidades</h2>
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+					</div>
+					<div id="tab4" class="tab-slider--body">
+						<h2>Administradores</h2>
+						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6"><img src="{{ asset('/img/target.png') }}" alt="target"></div>
+		</div>
+	</div>
+</section>
 <section class="about" id="about">
 	<div class="container">
 		<h2 class="center wow blue forced-top animated fadeIn text-center">Sobre Nosotros</h2>
@@ -317,48 +573,6 @@ section{
 </section>
 
 
-<!-- <section class="contactar" id="contactar">
-	<div class="floating-ball-model-3">
-		<span class="floating-ball-1"></span>
-		<span class="floating-ball-2"></span>
-		<span class="floating-ball-3"></span>
-	</div>
-	<div class="container">
-	<div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-6 center">
-			<h2 class="wow blue animated fadeInUp">Fala muy poco para el lanzamiento de nuestra plataforma</h1>
-      <p id="time"></p>
-			<h3 class="wow gray animated fadeInUp">dejanos tus datos por si quieres comenzar antes o te avisemos cuando estemos listos</h3>
-			<br>
-			<div class="check_mark hide">
-			  	<div class="sa-icon sa-success animate">
-			    	<span class="sa-line sa-tip animateSuccessTip"></span>
-				    <span class="sa-line sa-long animateSuccessLong"></span>
-				    <div class="sa-placeholder"></div>
-				    <div class="sa-fix"></div>
-			  	</div>
-			</div>
-			<form class="wow animated fadeInUp" id="contactar-reg" action="{{ route('contactar') }}" method="post">
-				@csrf
-				<input class="special" type="text" name="nombre" id="nombre" placeholder="Nombre*" required>
-				<input class="special" type="text" name="apellido" placeholder="Apellido *" required>
-				<input class="special" type="email" name="email" placeholder="Email *" required>
-				<input class="special" type="text" name="telefono" placeholder="Teléfono">
-				<div class="callme">
-				<input type="checkbox" name="llamar" id="llamada"> Prefiero que me llamen
-				</div>
-				<div class="accept">
-				<input type="checkbox" name="accept" id="the-terms"> Acepto las <a href="{{ route('privacidad') }}" title="Ver Políticas de Privacidad">políticas de privacidad.</a>
-				</div>
-				<input id="submitBtn" class="btn btn-outline-light btn-lg submit-contactar" type="submit" value="Enviar" disabled="disabled">
-			</form>
-		</div>
-		<div class="col-md-3"></div>
-		</div>
-	</div>
-</section> -->
-
 <!-- prices -->
 
 <section class="pricing py-5">
@@ -424,63 +638,220 @@ section{
     </div>
   </div>
 </section>
-<section style="background: #eaeaea;height: 400px;">
-	
-</section>
 
+<section class="contactar" id="contactar" style="background: #eaeaea;">
+	<div class="floating-ball-model-3">
+		<span class="floating-ball-1"></span>
+		<span class="floating-ball-2"></span>
+		<span class="floating-ball-3"></span>
+	</div>
+	<div class="container">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 center">
+			<h2 class="wow blue animated fadeInUp">Fala muy poco para el lanzamiento de nuestra plataforma</h1>
+      <p id="time"></p>
+			<h3 class="wow gray animated fadeInUp">dejanos tus datos por si quieres comenzar antes o te avisemos cuando estemos listos</h3>
+			<br>
+			<div class="check_mark hide">
+			  	<div class="sa-icon sa-success animate">
+			    	<span class="sa-line sa-tip animateSuccessTip"></span>
+				    <span class="sa-line sa-long animateSuccessLong"></span>
+				    <div class="sa-placeholder"></div>
+				    <div class="sa-fix"></div>
+			  	</div>
+			</div>
+			<form class="wow animated fadeInUp bg-white" id="contactar-reg" action="{{ route('contactar') }}" method="post">
+				@csrf
+				<input class="special" type="text" name="nombre" id="nombre" placeholder="Nombre*" required>
+				<input class="special" type="text" name="apellido" placeholder="Apellido *" required>
+				<input class="special" type="email" name="email" placeholder="Email *" required>
+				<input class="special" type="text" name="telefono" placeholder="Teléfono">
+				<div class="callme">
+				<input type="checkbox" name="llamar" id="llamada"> Prefiero que me llamen
+				</div>
+				<div class="accept">
+				<input type="checkbox" name="accept" id="the-terms"> Acepto las <a href="{{ route('privacidad') }}" title="Ver Políticas de Privacidad">políticas de privacidad.</a>
+				</div>
+				<input id="submitBtn" class="btn btn-outline-light btn-lg submit-contactar" type="submit" value="Enviar" disabled="disabled">
+			</form>
+		</div>
+		<div class="col-md-3"></div>
+		</div>
+	</div>
+</section>
 <!-- end prices -->
 
 <script>
 $(document).ready(function() {
 
+	// tabs
 
-		 $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
+	$(".tab-slider--body").hide();
+  	$(".tab-slider--body:first").show();
+
+	$(".tab-slider--nav li").click(function() {
+  		
+  		$(".tab-slider--body").hide();
+  		var activeTab = $(this).attr("rel");
+  		$("#"+activeTab).fadeIn();
+		if($(this).attr("rel") == "tab2"){
+			$('.tab-slider--tabs').addClass('slide');
+		}else{
+			$('.tab-slider--tabs').removeClass('slide');
+		}
+  		$(".tab-slider--nav li").removeClass("active");
+  		$(this).addClass("active");
+
+	});
+	
+
+	$.ajaxSetup({
+    	headers: {
+        	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    	}
 	});
 
-   
 
-		$('#contactar-reg').on('submit', function (e) {
-			
-      	var nombre = $("input[name=nombre]").val();
-      	var apellido = $("input[name=apellido]").val();
-        var email = $("input[name=email]").val();
-        var llamar = $("input[name=llamar]").val();
+	$('#contactar-reg').on('submit', function (e) {
+		
+  	var nombre = $("input[name=nombre]").val();
+  	var apellido = $("input[name=apellido]").val();
+    var email = $("input[name=email]").val();
+    var llamar = $("input[name=llamar]").val();
 
-      	e.preventDefault();
-      	$('form').fadeOut();
-		$.ajax({
-			type: 'post',
-			url: '{{ route("contactar") }}',
-			data: $(this).serialize(),
-			
-	        success: function (data) {
-	        			
-						$('.check_mark').removeClass('hide');
-						$(".sa-success").addClass("hide");
-						setTimeout(function() {
-						    $(".sa-success").removeClass("hide");
-						}, 10);
-						$("h3.gray").html(data.guardado);
-					}
-				});
+  	e.preventDefault();
+  	$('form').fadeOut();
+	$.ajax({
+		type: 'post',
+		url: '{{ route("contactar") }}',
+		data: $(this).serialize(),
+		
+        success: function (data) {
+        			
+					$('.check_mark').removeClass('hide');
+					$(".sa-success").addClass("hide");
+					setTimeout(function() {
+					    $(".sa-success").removeClass("hide");
+					}, 10);
+					$("h3.gray").html(data.guardado);
+				}
 			});
+		});
+	
+
+	var the_terms = $("#the-terms");
+
+    the_terms.click(function() {
+        if ($(this).is(":checked")) {
+            $("#submitBtn").removeAttr("disabled");
+        } else {
+            $("#submitBtn").attr("disabled", "disabled");
+        }
+    });
+
 		
+	});
 
-		var the_terms = $("#the-terms");
+		// Globals
+	var prefixes         = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	var $container       = $('.container');
+	var $timeline        = $('.timeline');
+	var $timelineItem    = $('.timeline-item');
+	var $timelineContent = $('.timeline-content');
+	var $dropDown        = $('.dropdown');
+	var $hasHovered      = true;
+	var hideOnExit       = false;
 
-	    the_terms.click(function() {
-	        if ($(this).is(":checked")) {
-	            $("#submitBtn").removeAttr("disabled");
-	        } else {
-	            $("#submitBtn").attr("disabled", "disabled");
-	        }
-	    });
+	// mouseenter event handler
+	$timelineItem.on('mouseenter', function(e) {
+	  
+	  var isSelected = $(this).hasClass('selected');
+	  
+	  if ( isSelected === false ) {
+	  
+	    var leftPos = $(this).position().left,
+	        left    = leftPos - 88,
+	        $that   = $(this);
 
-		
-	}); 
+	    $timelineItem.removeClass('selected');
+	    $(this).addClass('selected');
+
+	    if ( $hasHovered === false ) {
+	      // Show Bounce
+
+	        // Set Flag
+	        $hasHovered = true;
+
+	        // Show DD Bounce
+	        showBounce(left);
+
+	        // Show DD content Bounce
+	        showContentBounce($that);
+
+	    } else {
+	      // Follow
+
+	        // Change pos of DD to follow
+	        dropDownFollow(left);
+
+	        // Hide previous dd content
+	        $timelineContent.removeClass('animated fadeIn bounceIn');
+
+	        // Show hovered dd content
+	        $that.find($timelineContent).addClass('animated fadeIn');
+	    }
+	  }
+  
+});
+
+// mouseleave event handler
+$timeline.on('mouseleave', function(e) {
+  
+  if (hideOnExit) {
+   
+    //   Set Flag
+    $hasHovered = false;
+
+    // Hide DD
+    hideDropDown();
+
+    // Hide DD content
+    $timelineContent.removeClass('animated fadeIn');
+    
+  }
+  
+});
+
+// Animation end event listener
+$dropDown.on(prefixes, function(e) {
+  
+  if ( e.originalEvent.animationName === 'fadeOut' ) {
+    $dropDown.removeAttr('style');
+  }
+  
+});
+
+/**
+* Private functions that do showing/hiding/animating
+*/
+function showContentBounce(that) {
+  $hasBounced = true;
+  that.find('.timeline-content').addClass('animated bounceIn');
+}
+
+function showBounce(pos) {
+  $dropDown.css('left', pos + 'px').removeClass('fadeOut').addClass('animated bounceIn');
+}
+
+function dropDownFollow(pos) {
+  $dropDown.css('left', pos + 'px');
+}
+
+function hideDropDown() {
+  $timelineItem.removeClass('selected');
+  $dropDown.removeClass('bounceIn').addClass('fadeOut');
+} 
 </script>
 
 @endsection

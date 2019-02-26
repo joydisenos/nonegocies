@@ -125,6 +125,8 @@
                               <select name="tipo" class="form-control">
                                 <option value="1">Particular</option>
                                 <option value="2">Empresa</option>
+                                <option value="3">Comunidad</option>
+                                <option value="4">Administrador</option>
                               </select>
                         </div>
                         </div>

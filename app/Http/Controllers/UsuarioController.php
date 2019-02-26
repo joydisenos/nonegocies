@@ -19,7 +19,7 @@ class UsuarioController extends Controller
             'name' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'email' => 'required|string|unique:users|max:255',
-            'password' => 'required|string|min:6|confirmed|max:255',
+            'password' => 'required|string|min:6|max:255',
             ]);
 
         $user = new User();
@@ -53,7 +53,7 @@ class UsuarioController extends Controller
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
                 'apellido' => 'required|string|max:255',
-                'password' => 'required|string|min:6|confirmed|max:255',
+                'password' => 'required|string|min:6|max:255',
                 ]);
         }else{
             $validatedData = $request->validate([

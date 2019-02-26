@@ -43,7 +43,7 @@ return [
     'facebook' => [
         'client_id' => '562891504179864',
         'client_secret' => '7170dd098621652dd50a8059cac75a3a',
-        'redirect' => 'https://nonegocies.es/auth/facebook/callback'
+        'redirect' => 'https://nonegocies.es'
     ],
 
 ];

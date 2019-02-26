@@ -127,6 +127,8 @@
                               <select name="tipo" class="form-control">
                                 <option value="1" {{($usuario->tipo == 1)? 'selected' : ''}}>Particular</option>
                                 <option value="2" {{($usuario->tipo == 2)? 'selected' : ''}}>Empresa</option>
+                                <option value="3" {{($usuario->tipo == 3)? 'selected' : ''}}>Comunidad</option>
+                                <option value="4" {{($usuario->tipo == 4)? 'selected' : ''}}>Administrador</option>
                               </select>
                         </div>
                         </div>

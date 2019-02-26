@@ -13,6 +13,13 @@
             @csrf
         <div class="modal-body">
                 <!-- Email address -->
+
+                    <a href="{{ route('social.auth', 'facebook') }}" class="" type="submit">
+                      <svg viewBox="0 0 46 34">
+                        <path d="M25.6 33h-7.1V19H15v-6.2h3.5V9.1c0-5.1 2-8.1 7.7-8.1H31v6.2h-3c-2.2 0-2.4.9-2.4 2.5v3.1H31l-.6 6.2h-4.7v14z"/>
+                      </svg>
+                    </a>
+
                 <div class="form-group">
 
                 <!-- Label -->
@@ -63,7 +70,6 @@
 
     <div class="modal-footer text-center">
         <!-- Submit -->
-        <a href="{{ route('social.auth', 'facebook') }}">FB</a>
         <button class="btn btn-sm btn-block btn-primary mb-3" type="submit">
             Iniciar Sesión
         </button>
@@ -95,6 +101,9 @@
                 @csrf
     <div class="modal-body">              
                 <!-- Nombre -->
+                
+                  
+                
                 <div class="form-group">
     
                   <!-- Label -->
