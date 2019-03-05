@@ -1,120 +1,8 @@
 @extends('layouts.master')
 @section('content')
-
+<script src="{{ asset('js/owl.js') }}"></script>
 <style>
-	.card-body {
-    border: 2px solid #e8e8e8;
-    background-color: #fff;
-    padding: 30px 25px;
-    border-radius: 32px;
-    margin-bottom: 50px;
-    position: relative;
-    transition: .5s ease-in-out;
-    z-index: 2;
-}
-
-.card.mb-5.mb-lg-0 {
-    border: 0;
-}
-
-.card {
-    border: 0;
-}
-
-span.currency {
-    font-size: 30px;
-}
-
-span.period {
-    font-size: 20px;
-    color: black;
-}
-
-h5.card-title {
-    color: black !important;
-    margin: 30px 0;
-    font-size: 30px;
-}
-
-h6.card-price {
-    color: #e73747 !important;
-    font-size: 90px;
-    padding-bottom: 20px;
-}
-
-.card-body:hover {
-    border-color: #e8ca49;
-    transform: translateY(-5px);
-}
-
-.card-body:hover a.btn.btn-block.btn-primary.text-uppercase{
-	color: white !important;
-	background: #e73747 !important;
-}
-
-.card-body:hover h5.card-title:before{
-	background: #FF034C;
-}
-
-
-a.btn.btn-block.btn-primary.text-uppercase {
-    border-radius: 32px!important;
-    border: none!important;
-    width: 200px!important;
-    background: #e8cb4a!important;
-    color: #000!important;
-    font-size: 14px!important;
-    line-height: 14px!important;
-    padding: 16px 0!important;
-    text-align: center!important;
-    text-transform: uppercase!important;
-    letter-spacing: 1.8px;
-    font-weight: 600;
-    margin: 0 auto;
-    transition: .5s ease-in-out;
-}
-
-a.btn.btn-block.btn-primary.text-uppercase:hover {
-    background: #FF034C !important;
-    color: white !important;
-}
-
-img.plan-img {
-    height: 80px;
-    margin: 0 auto;
-    display: block;
-}
-
-
-h5.card-title:before{
-	height: 2px;
-    width: 130px;
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    background: #dedbdc;
-    top: 189;
-    margin: 0 auto;
-    transition: .5s esae-in-out;
-}
-
-.card-body-featured{
-	background: #ffffff;
-    padding: 45px;
-    -webkit-box-shadow: 7px 5px 30px rgba(72, 73, 121, 0.15);
-    -moz-box-shadow: 7px 5px 30px rgba(72, 73, 121, 0.15);
-    box-shadow: 7px 5px 30px rgba(72, 73, 121, 0.15);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.col-lg-4.wow.featured.fadeInUp.animated {
-    z-index: 999;
-}
-
+	
 section{
 	    box-sizing: border-box;
 	    overflow: hidden;
@@ -198,186 +86,654 @@ section{
 
 /* how it works */
 
-.timeline {
-  width: 100%;
-  position: relative;
-  perspective: 5000px;
-  margin-top: 140px;
-}
-.timeline:before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 15px;
-  background-color: #d5dfe5;
-  border-radius: 15px;
-  top: 76px;
-}
-.timeline .timeline-item {
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-}
-.timeline .timeline-item:hover:after {
-  transform: scale(1.5, 1.5);
-}
-.timeline .timeline-item.selected:after {
-	background-color: #133871;
-  	border: 5px solid #97a2bf;
-  	transform: scale(1.5, 1.5);
-}
-.timeline .timeline-item:after {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: 69px;
-  left: 50%;
-  margin-left: -15px;
-  background-color: #f5efed;
-  border: 5px solid #d5dfe5;
-  content: "";
-  border-radius: 50%;
-  transition: transform 0.5s ease;
-}
-.timeline .timeline-item .timeline-content {
-  position: absolute;
-  top: -100px;
-  display: none;
-  width: 350px;
-  left: -60px;
-  color:white;
-  cursor: auto;
-}
-.timeline .timeline-item .timeline-content.fadeIn {
-  animation-delay: 0.2s;
-}
-.timeline .timeline-item .timeline-content.animated {
-  display: block;
+.steps-section{
+	position:relative;
+	padding-top:30px;
+	padding-bottom:60px;
 }
 
-.timeline-content p{color: white;}
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
+.steps-section .outer-container{
+	position:relative;
+	margin-top: 50px;
 }
 
-.flex-items-default {
-  width: 25%;
-  height: 150px;
+.steps-section .outer-container:before{
+	position:absolute;
+	content:'';
+	left:0px;
+	top:70px;
+	width:100%;
+	height:91px;
+	background:url(/img/pattern-1.png) center top no-repeat;
 }
 
-.dropdown {
-  width: 400px;
-  height: 126px;
-  background: #FF034C;
-  box-shadow: 0 3px 20px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  position: absolute;
-  top: -100px;
-  animation-duration: 0.2s;
-  transition: left 0.3s ease;
-}
-.dropdown .inner {
-  position: relative;
-  width: 100%;
-  height: 126px;
-}
-.dropdown .inner .arrow-down {
-  position: absolute;
-  bottom: -19px;
-  left: 50%;
-  margin-left: -20px;
+.steps-section .outer-container .services-block-two:nth-child(2),
+.steps-section .outer-container .services-block-two:nth-child(4){
+	margin-top:70px;
 }
 
-.arrow-down {
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #FF034C;
+.services-block-two{
+	position:relative;
+	margin-bottom:40px;
+}
+
+.services-block-two .inner-box{
+	position:relative;
+	text-align:center;
+}
+
+.services-block-two .inner-box .icon-outer{
+	position:relative;
+	display:inline-block;
+}
+
+.services-block-two .inner-box .icon-outer .icon-box{
+	position:relative;
+	width:135px;
+	height:135px;
+	color:#ffffff;
+	text-align:center;
+	border-radius:50%;
+	line-height:138px;
+	font-size:62px;
+	background-color:#d3dde8;
+	box-shadow: inset 0 0 10px rgba(0,0,0,0.20);
+}
+
+.services-block-two .inner-box .icon-outer .icon-box .icon{
+	position:relative;
+}
+
+.services-block-two .inner-box .icon-outer .icon-box:before{
+	position:absolute;
+	content:'';
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+	display:block;
+	opacity:0;
+	border-radius:50%;
+	transition:all 0.3s ease;
+	-moz-transition:all 0.3s ease;
+	-webkit-transition:all 0.3s ease;
+	-ms-transition:all 0.3s ease;
+	-o-transition:all 0.3s ease;
+	box-shadow:inset 0 0 15px rgba(0,0,0,0.20);
+	background-image: -ms-linear-gradient(left, #FF8441 0%, #f53d96 100%);
+	background-image: -moz-linear-gradient(left, #FF8441 0%, #f53d96 100%);
+	background-image: -o-linear-gradient(left, #FF8441 0%, #f53d96 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FF8441), color-stop(100, #f53d96));
+	background-image: -webkit-linear-gradient(left, #FF8441 0%, #f53d96 100%);
+	background-image: linear-gradient(to right, #FF8441 0%, #f53d96 100%);
+}
+
+.services-block-two .inner-box:hover .icon-outer .icon-box:before{
+	opacity:1;
+}
+
+.services-block-two .inner-box .lower-box{
+	position:relative;
+	margin-top:30px;
+}
+
+.services-block-two .inner-box .lower-box h5{
+	position:relative;
+	font-weight:700;
+	line-height:1.3em;
+	margin-bottom:14px;
+	text-transform: uppercase;
+}
+
+.services-block-two .inner-box .lower-box h5 a{
+	position:relative;
+	color:#FF034C;
+	transition:all 0.3s ease;
+	-moz-transition:all 0.3s ease;
+	-webkit-transition:all 0.3s ease;
+	-ms-transition:all 0.3s ease;
+	-o-transition:all 0.3s ease;
+
+}
+
+.services-block-two .inner-box .lower-box h5 a:hover{
+	color:#fe8045;
+}
+
+.services-block-two .inner-box .lower-box .text{
+	position:relative;
+	color:#555555;
+	font-size:14px;
+	line-height:2em;
+	margin-bottom:14px;
+	padding:0px 20px;
+}
+
+.services-block-two .inner-box .lower-box .contact{
+	position:relative;
+	font-size:13px;
+	font-weight:600;
+	text-transform:uppercase;
+	font-family: 'Poppins', sans-serif;
+    color: #f23e9d;
+	letter-spacing:1px;
+    background: linear-gradient(to top, #fb8460 0%, #f13aa1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.inner-box .icon-outer .service-number {
+    position: absolute;
+    left: -45px;
+    top: -20px;
+    line-height: 1em;
+    color: #e3ecf6;
+    font-size: 100px;
+    font-weight: 700;
+    text-align: center;
+    background-color: #e3ecf6;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+.inner-box:hover .icon-outer .service-number {
+    color: #eb2f5b;
+}
+
+.sec-title.centered {
+    text-align: center;
 }
 
 /*tabs*/
 
-.tab-slider--nav {
-  width: 100%;
-  float: left;
-  margin-bottom: 20px;
+.tabs {
+	left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    position: relative;
+    background: white;
 }
-
-.tab-slider--tabs {
-  display: block;
-  float: left;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: relative;
-  border-radius: 35px;
-  overflow: hidden;
-  background: #fff;
-  height: 35px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+.tabs input[name="tab-control"] {
+  display: none;
 }
-.tab-slider--tabs:after {
-  content: "";
-  width: 50%;
-  background: #345F90;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: all 250ms ease-in-out;
-  border-radius: 35px;
-}
-.tab-slider--tabs.slide:after {
-  left: 50%;
-}
-
-.tab-slider--trigger {
-  font-size: 12px;
-  line-height: 1;
+.tabs .content section h2,
+.tabs ul li label {
   font-weight: bold;
-  color: #345F90;
-  text-transform: uppercase;
+  font-size: 18px;
+  color: #428BFF;
+}
+.tabs ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.tabs ul li {
+  box-sizing: border-box;
+  flex: 1;
+  width: 25%;
+  padding: 0 10px;
   text-align: center;
-  padding: 11px 20px;
+}
+.tabs ul li label {
+	transition: all 0.3s ease-in-out;
+    color: #929daf;
+    padding: 0 10px;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    display: block;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    /* white-space: nowrap; */
+    -webkit-touch-callout: none;
+    /* -webkit-user-select: none; */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    float: left;
+}
+.tabs ul li label br {
+  display: none;
+}
+.tabs ul li label svg {
+  fill: #929daf;
+  height: 1.2em;
+  vertical-align: bottom;
+  margin-right: 0.2em;
+  transition: all 0.2s ease-in-out;
+}
+.tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
+  outline: 0;
+  color: #bec5cf;
+}
+.tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg {
+  fill: #bec5cf;
+}
+.tabs .slider {
   position: relative;
-  z-index: 2;
-  cursor: pointer;
-  display: inline-block;
-  transition: color 250ms ease-in-out;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  width: 25%;
+  transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
 }
-.tab-slider--trigger.active {
-  color: #fff;
+.tabs .slider .indicator {
+  position: relative;
+  width: 50px;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 4px;
+  background: #428BFF;
+  border-radius: 1px;
+}
+.tabs .content {
+  margin-top: 30px;
+}
+.tabs .content section {
+  display: none;
+  -webkit-animation-name: content;
+          animation-name: content;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  line-height: 1.4;
+  padding:0;
+}
+.tabs .content section h2 {
+  color: #428BFF;
+  display: none;
+}
+.tabs .content section h2::after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #428BFF;
+  margin-top: 5px;
+  left: 1px;
+}
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+  cursor: default;
+  color: #428BFF;
+}
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
+  fill: #428BFF;
+}
+@media (max-width: 600px) {
+  .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .content > section:nth-child(1) {
+  display: block;
+}
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+  cursor: default;
+  color: #428BFF;
+}
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg {
+  fill: #428BFF;
+}
+@media (max-width: 600px) {
+  .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .content > section:nth-child(2) {
+  display: block;
+}
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+  cursor: default;
+  color: #428BFF;
+}
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
+  fill: #428BFF;
+}
+@media (max-width: 600px) {
+  .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
+}
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .content > section:nth-child(3) {
+  display: block;
+}
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+  cursor: default;
+  color: #428BFF;
+}
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg {
+  fill: #428BFF;
+}
+@media (max-width: 600px) {
+  .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .slider {
+  -webkit-transform: translateX(300%);
+          transform: translateX(300%);
+}
+.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .content > section:nth-child(4) {
+  display: block;
+}
+@-webkit-keyframes content {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+@keyframes content {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+@media (max-width: 1000px) {
+  .tabs ul li label {
+    white-space: initial;
+  }
+  .tabs ul li label br {
+    display: initial;
+  }
+  .tabs ul li label svg {
+    height: 1.5em;
+  }
+}
+@media (max-width: 600px) {
+  .tabs ul li label {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .tabs ul li label span {
+    display: none;
+  }
+  .tabs .slider {
+    display: none;
+  }
+  .tabs .content {
+    margin-top: 20px;
+  }
+  .tabs .content section h2 {
+    display: block;
+  }
 }
 
-.tab-slider--body {
-  margin-bottom: 20px;
+
+
+
+/* testimonial */
+
+
+.testimonial-section{
+	position:relative;
 }
 
+.testimonial-section .image-layer{
+	position:absolute;
+	content:'';
+	left:0px;
+	top:160px;
+	width:651px;
+	height:593px;
+}
 
+.testimonial-section .outer-container{
+	position:relative;
+	min-height:250px;
+}
+
+.testimonial-section .image-column{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:40%;
+	height:100%;
+	z-index:1;
+	background-repeat:no-repeat;
+	background-position:right top;
+	background-size:cover;	
+}
+
+.testimonial-section .image-column .image-box{
+	position:relative;
+}
+
+.testimonial-section .image-column .image-box img{
+	position:relative;
+	display:block;
+	width:100%;
+}
+
+.testimonial-section .content-column{
+	position:relative;
+	float:right;
+	width:60%;
+}
+
+.testimonial-section .content-column:before{
+	position:absolute;
+	content:'';
+	right:0px;
+	top:-340px;
+	width:1114px;
+	height:1121px;
+	display:inline-block;
+	background:url(/img/image-2.png) no-repeat;
+}
+
+.testimonial-section .content-column .inner-column{
+	position:relative;
+	overflow:hidden;
+	padding:65px 15px 50px 70px;
+}
+
+.testimonial-section .content-column .inner-column .testimonial-carousel{
+	max-width:550px;
+	width:100%;
+}
+
+.testimonial-section .content-column .inner-column .owl-stage-outer{
+	overflow:visible;
+}
+
+.testimonial-section .owl-dots{
+	position: relative;
+	display: none;
+}
+
+.testimonial-section .owl-nav{
+	position:relative;
+	margin-top: 50px;
+}
+
+.testimonial-section .owl-nav .owl-prev,
+.testimonial-section .owl-nav .owl-next{
+	position: relative;
+    width: 60px;
+    height: 60px;
+    bottom: 50%;
+    color: #ffffff;
+    background: none;
+    z-index: 10;
+	display: inline-block;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 60px;
+	margin-right:20px;
+	overflow:hidden;
+    border-radius: 50px;
+    background-color: rgba(255,255,255,0.30);
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+	box-shadow:0px 10px 20px rgba(0,0,0,0.35);
+}
+
+.testimonial-section .owl-nav .owl-prev span,
+.testimonial-section .owl-nav .owl-next span{
+	position:relative;
+	z-index:1;
+}
+
+.testimonial-section .owl-nav .owl-prev:before,
+.testimonial-section .owl-nav .owl-next:before{
+	position:absolute;
+	content:'';
+	left:0px;
+	top:0px;
+	width:0px;
+	height:100%;
+	transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+	background-image: -ms-linear-gradient(left, #FF8442 0%, #f4369e 100%);
+	background-image: -moz-linear-gradient(left, #FF8442 0%, #f4369e 100%);
+	background-image: -o-linear-gradient(left, #FF8442 0%, #f4369e 100%);
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FF8442), color-stop(100, #f4369e));
+	background-image: -webkit-linear-gradient(left, #FF8442 0%, #f4369e 100%);
+	background-image: linear-gradient(to right, #FF8442 0%, #f4369e 100%);
+}
+
+.testimonial-section .owl-nav .owl-prev:hover::before,
+.testimonial-section .owl-nav .owl-next:hover::before{
+	width:100%;
+}
+
+.testimonial-block{
+	position:relative;
+}
+
+.testimonial-block .inner-box{
+	position:relative;
+	padding:50px 70px 80px;
+	border-radius:8px;
+	background-color:#ffffff;
+	box-shadow:0px 10px 25px rgba(0,0,0,0.35);
+}
+
+.testimonial-block .inner-box .upper-box{
+	position:relative;
+}
+
+.testimonial-block .inner-box .upper-box .upper-inner{
+	position:relative;
+	padding-top:15px;
+	min-height:85px;
+	padding-left:110px;
+}
+
+.testimonial-block .inner-box .upper-box .upper-inner .image{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:85px;
+	height:85px;
+	padding:5px;
+	overflow:hidden;
+	border-radius:50%;
+	background-color:#ffffff;
+	box-shadow:2px 4px 6px 2px rgba(249,98,105,0.10);
+}
+
+.testimonial-block .inner-box .upper-box .upper-inner h5{
+	position:relative;
+	font-weight:700;
+	color:#222222;
+	line-height:1.3em;
+}
+
+.testimonial-block .inner-box .upper-box .upper-inner .designation{
+	position:relative;
+	margin-top:2px;
+	color:#999999;
+	font-size:16px;
+}
+
+.testimonial-block .inner-box .text{
+	position:relative;
+	color:#555555;
+	font-size:16px;
+	line-height:1.9em;
+	margin-top:30px;
+}
+
+.testimonial-block .inner-box .quote{
+	position:absolute;
+	right:60px;
+	bottom:40px;
+	font-size:46px;
+	line-height:1em;
+	color:#e7e7e7;
+}
+
+.owl-carousel .owl-item img{
+	border-radius:100%;
+}
+
+/*test*/
+
+.sec-title h2 {
+	font-family: 'Cera';
+    letter-spacing: -2px;
+    color: #133273;
+    font-weight: bold;
+    position: relative;
+    line-height: 1.2em;
+    padding-bottom: 20px;
+    font-size: 50px;
+}
 </style>
-
 <header class="masthead" id="hero">
 	<div class="overlay"></div>
 	<div class="container d-flex h-100 align-items-center">
 		<div class="hero-text">
 			<h1 class="title-hero fadeInDown animated">Te pagamos por ahorrar en tus facturas</h1>
 			<h2 class="subtitle-hero fadeInRight animated">Te damos la comisión de venta por cada contratación de servicio en nuestra web</h2>
-			<a href="#contactar" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Comenzar</a>
+			<a href="#howitworks" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Como funciona?</a> <a href="#login" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger blue-btn-hero">Comenzar</a>
 		</div>
 		<div class="social-wrapper">
 			<h5>Síguenos</h5>
@@ -416,83 +772,123 @@ section{
 		</div>
 	</div>
 </header>
-<section>
-  <div class="container">
-    <h1 class="text-center">Cómo Funciona?</h1>
-    <div class="timeline flex-container">
+<section id="howitworks" class="steps-section">
+		<div class="container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<h2>Como funciona<br>nuestra plataforma</h2>
+			</div>
+			
+			<div class="outer-container">
+				<div class="row clearfix">
+					
+					<!-- Services Block Two -->
+					<div class="services-block-two col-lg-3 col-md-6 col-sm-12">
+						<div class="inner-box wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
+							<div class="icon-outer">
+								<div class="service-number">1</div>
+								<div class="icon-box">
+									<span class="icon flaticon-contact"></span>
+								</div>
+							</div>
+							<div class="lower-box">
+								<h5><a href="#">Registrate</a></h5>
+								<div class="text">Crea una cuenta para comenzar, es gratis!</div>
+								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Crear cuenta</a> -->
+							</div>
+						</div>
+					</div>
+					
+					<!-- Services Block Two -->
+					<div class="services-block-two col-lg-3 col-md-6 col-sm-12">
+						<div class="inner-box wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 300ms; animation-name: fadeInUp;">
+							<div class="icon-outer">
+								<div class="service-number">2</div>
+								<div class="icon-box">
+									<span class="icon flaticon-network-1"></span>
+								</div>
+							</div>
+							<div class="lower-box">
+								<h5><a href="#">Busca tu oferta</a></h5>
+								<div class="text">Busca la oferta que mas te convenga</div>
+								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Ofertas</a> -->
+							</div>
+						</div>
+					</div>
+					
+					<!-- Services Block Two -->
+					<div class="services-block-two col-lg-3 col-md-6 col-sm-12">
+						<div class="inner-box wow fadeInUp animated" data-wow-delay="600ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 600ms; animation-name: fadeInUp;">
+							<div class="icon-outer">
+								<div class="service-number">3</div>
+								<div class="icon-box">
+									<span class="icon flaticon-target"></span>
+								</div>
+							</div>
+							<div class="lower-box">
+								<h5><a href="#">Contrata tu oferta</a></h5>
+								<div class="text">Confirma tus datos y firma la contratacion de tu oferta</div>
+								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Mis contratos</a> -->
+							</div>
+						</div>
+					</div>
+					
+					<!-- Services Block Two -->
+					<div class="services-block-two col-lg-3 col-md-6 col-sm-12">
+						<div class="inner-box wow fadeInUp animated" data-wow-delay="900ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 900ms; animation-name: fadeInUp;">
+							<div class="icon-outer">
+								<div class="service-number">4</div>
+								<div class="icon-box">
+									<span class="icon flaticon-banknote"></span>
+								</div>
+							</div>
+							<div class="lower-box">
+								<h5><a href="#">Gana dinero</a></h5>
+								<div class="text">en 30 dias ingresamos dinero en tu cuenta</div>
+								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Ver pagos</a> -->
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
 
-      <div class="timeline-item flex-items-default selected">
-        <div class="timeline-content text-left animated bounceIn">
-          <h2>Paso 1</h2>
-          <p>Registrate con solo tu email y una contraseña para comenzar a utilizar NO Negocies</p>
-        </div>
-      </div>
-      <div class="timeline-item flex-items-default">
-        <div class="timeline-content text-left">
-          <h2>Paso 2</h2>
-          <p>Selecciona en el menu ofertas el suministro que quieras comparar</p>
-        </div>
-      </div>
-      <div class="timeline-item flex-items-default">
-        <div class="timeline-content text-left">
-          <h2>Paso 3</h2>
-          <p>Contrata el servicio por nuestra web y obtiene un beneficio</p>
-        
-        </div>
-      </div>
-      <div class="timeline-item flex-items-default">
-        <div class="timeline-content text-left">
-          <h2>Paso 4</h2>
-          <p>cuando ya tengas 30 dias de uso del servicio, NO Negocies ingresara en tu cuenta tu comisión</p>
-        </div>
-      </div>
-   
-      <div class="dropdown animated bounceIn" style="left: -88px;">
-        <div class="inner">
-          <div class="arrow-down"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<section id="users">
+<section id="targets">
 	<div class="container">
 		<h1 class="wow blue forced-top animated fadeIn">Para quienes?</h1>
 		<div class="row">
 			<div class="col-lg-6">
-				<div class="tab-slider--nav">
-					<ul class="tab-slider--tabs">
-						<li class="tab-slider--trigger active" rel="tab1">Particulares</li>
-						<li class="tab-slider--trigger" rel="tab2">Empresas</li>
-						<li class="tab-slider--trigger" rel="tab3">Comunidades</li>
-						<li class="tab-slider--trigger" rel="tab4">Administradores</li>
-					</ul>
-				</div>
-				<div class="tab-slider--container">
-					<div id="tab1" class="tab-slider--body">
-						<h2>Particulares</h2>
-						<p>Toggle switch style tab navigation. Currently only works with two tabs.</p>
-						<p>Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue.</p>
-					</div>
-					<div id="tab2" class="tab-slider--body">
-						<h2>Empresas</h2>
-						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-					</div>
-					<div id="tab3" class="tab-slider--body">
-						<h2>Comunidades</h2>
-						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-					</div>
-					<div id="tab4" class="tab-slider--body">
-						<h2>Administradores</h2>
-						<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-					</div>
+				<div class="tabs">
+				  	<input type="radio" id="tab1" name="tab-control" checked>
+				  	<input type="radio" id="tab2" name="tab-control">
+				  	<input type="radio" id="tab3" name="tab-control">  
+				  	<input type="radio" id="tab4" name="tab-control">
+				  	<ul>
+					    <li><label for="tab1" role="button"><span>Particulares</span></label></li>
+					    <li><label for="tab2" role="button"><span>Empresa</span></label></li>
+					    <li><label for="tab3" role="button"><span>Comunidades</span></label></li>
+					    <li><label for="tab4" role="button"><span>Administradores</span></label></li>
+				  	</ul>
+  					<div class="slider"><div class="indicator"></div></div>
+  					<div class="content">
+						<section>
+						Texto para Particulares</section>
+						<section>
+						Texto para Empresas</section>
+						<section>
+						Texto para Comunidades</section>
+						<section>
+						Texto para Administradores</section>
+  					</div>
 				</div>
 			</div>
-			<div class="col-lg-6"><img src="{{ asset('/img/target.png') }}" alt="target"></div>
+			<div class="col-lg-6"><img src="/img/target.png" alt="target"></div>
 		</div>
 	</div>
 </section>
+
 <section class="about" id="about">
 	<div class="container">
 		<h2 class="center wow blue forced-top animated fadeIn text-center">Sobre Nosotros</h2>
@@ -573,72 +969,97 @@ section{
 </section>
 
 
-<!-- prices -->
-
-<section class="pricing py-5">
-  <div class="container">
-  	<div style="height: 40px"></div>
-  	<h2 class="center text-center">Titulo para los targets</h2>
-		<p class="center text-center">Lorem ipsum dolor sit amet nsdou tinasdfm tritani omittam qui mei oblique taimates.</p>
-    <div class="row">
-      <!-- Free Tier -->
-      <div class="col-lg-4">
-        <div class="card mb-5 mb-lg-0">
-          <div class="card-body">
-          	<img src="{{ asset('svg/free.svg') }}" alt="free" class="plan-img" />
-            <h5 class="card-title text-muted text-uppercase text-center">Gratis</h5>
-            <ul class="fa-ul gray">
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-            </ul>
-            <h6 class="card-price text-center">0<span class="currency">€</span><span class="period"></span></h6>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
-          </div>
-        </div>
-      </div>
-      <!-- Plus Tier -->
-      <div class="col-lg-4">
-        <div class="card mb-5 mb-lg-0">
-          <div class="card-body">
-          	<img src="{{ asset('svg/premium.svg') }}" alt="free" class="plan-img" />
-            <h5 class="card-title text-muted text-uppercase text-center">Premium</h5>
-            <ul class="fa-ul gray">
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-            </ul>
-             <h6 class="card-price text-center">29<span class="currency">€</span><span class="period"> x mes</span></h6>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
-          </div>
-        </div>
-      </div>
-      <!-- Pro Tier -->
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-          	<img src="{{ asset('svg/platinum.svg') }}" alt="free" class="plan-img" />
-            <h5 class="card-title text-muted text-uppercase text-center">Platinum</h5>
-            <ul class="fa-ul gray">
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-            </ul>
-             <h6 class="card-price text-center">49<span class="currency">€</span><span class="period"> x mes</span></h6>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="testimonial-section">
+	<div class="image-layer"></div>
+	<div class="container">
+		<!-- Sec Title -->
+		<div class="sec-title">
+			<div class="title">Testimonos</div>
+			<h2>Que opinan los usuarios<br> sobre nuestro servicio</h2>
+		</div>
+	</div>
+	<div class="outer-container clearfix">
+		<!--Image Column-->
+		<div class="image-column">
+		<figure class="image-box"><img src="images/resource/author-12.png" alt=""></figure>
+	</div>
+	<!--Content Column-->
+	<div class="content-column">
+		<div class="inner-column">
+			<div class="testimonial-carousel owl-carousel owl-theme owl-drag">
+				<div class="owl-item" style="width: 550px; margin-right: 90px;">
+					<div class="testimonial-block">
+						<div class="inner-box">
+							<div class="upper-box">
+								<div class="upper-inner">
+									<div class="image">
+										<img src="img/avatar.jpg" alt="">
+									</div>
+									<h5>Frederic Anderson</h5>
+									<div class="designation">President</div>
+								</div>
+								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
+							</div>
+							<div class="quote flaticon-quotations"></div>
+						</div>
+					</div>
+				</div>
+				<div class="owl-item" style="width: 550px; margin-right: 90px;">
+					<div class="testimonial-block">
+						<div class="inner-box">
+							<div class="upper-box">
+								<div class="upper-inner">
+									<div class="image">
+										<img src="img/avatar.jpg" alt="">
+									</div>
+									<h5>Frederic Anderson</h5>
+									<div class="designation">President</div>
+								</div>
+								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
+							</div>
+							<div class="quote flaticon-quotations"></div>
+						</div>
+					</div>
+				</div>
+				<div class="owl-item" style="width: 550px; margin-right: 90px;">
+					<div class="testimonial-block">
+						<div class="inner-box">
+							<div class="upper-box">
+								<div class="upper-inner">
+									<div class="image">
+										<img src="img/avatar.jpg" alt="">
+									</div>
+									<h5>Frederic Anderson</h5>
+									<div class="designation">President</div>
+								</div>
+								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
+							</div>
+							<div class="quote flaticon-quotations"></div>
+						</div>
+					</div>
+				</div>
+				<div class="owl-item" style="width: 550px; margin-right: 90px;">
+					<div class="testimonial-block">
+						<div class="inner-box">
+							<div class="upper-box">
+								<div class="upper-inner">
+									<div class="image">
+										<img src="img/avatar.jpg" alt="">
+									</div>
+									<h5>Frederic Anderson</h5>
+									<div class="designation">President</div>
+								</div>
+								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
+							</div>
+							<div class="quote flaticon-quotations"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </section>
-
 <section class="contactar" id="contactar" style="background: #eaeaea;">
 	<div class="floating-ball-model-3">
 		<span class="floating-ball-1"></span>
@@ -661,7 +1082,7 @@ section{
 				    <div class="sa-fix"></div>
 			  	</div>
 			</div>
-			<form class="wow animated fadeInUp bg-white" id="contactar-reg" action="{{ route('contactar') }}" method="post">
+			<form class="wow animated fadeInUp" id="contactar-reg" action="{{ route('contactar') }}" method="post">
 				@csrf
 				<input class="special" type="text" name="nombre" id="nombre" placeholder="Nombre*" required>
 				<input class="special" type="text" name="apellido" placeholder="Apellido *" required>
@@ -753,105 +1174,43 @@ $(document).ready(function() {
 		
 	});
 
-		// Globals
-	var prefixes         = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-	var $container       = $('.container');
-	var $timeline        = $('.timeline');
-	var $timelineItem    = $('.timeline-item');
-	var $timelineContent = $('.timeline-content');
-	var $dropDown        = $('.dropdown');
-	var $hasHovered      = true;
-	var hideOnExit       = false;
+	// testimonial
 
-	// mouseenter event handler
-	$timelineItem.on('mouseenter', function(e) {
-	  
-	  var isSelected = $(this).hasClass('selected');
-	  
-	  if ( isSelected === false ) {
-	  
-	    var leftPos = $(this).position().left,
-	        left    = leftPos - 88,
-	        $that   = $(this);
+	 // Single Item Carousel
+	if ($('.testimonial-carousel').length) {
+		$('.testimonial-carousel').owlCarousel({
+			loop:true,
+			margin:90,
+			nav:true,
+			smartSpeed: 500,
+			autoplay: 500,
+			navText: [ '<span class="flaticon-left-arrow"></span>', '<span class="flaticon-next-1"></span>' ],
+			responsive:{
+				0:{
+					items:1,
+					margin:30
+				},
+				600:{
+					items:1,
+					margin:30
+				},
+				800:{
+					items:1,
+					margin:30
+				},
+				1024:{
+					items:1,
+					margin:30
+				},
+				1200:{
+					items:1
+				}
+			}
+		});  		
+	}
 
-	    $timelineItem.removeClass('selected');
-	    $(this).addClass('selected');
 
-	    if ( $hasHovered === false ) {
-	      // Show Bounce
 
-	        // Set Flag
-	        $hasHovered = true;
-
-	        // Show DD Bounce
-	        showBounce(left);
-
-	        // Show DD content Bounce
-	        showContentBounce($that);
-
-	    } else {
-	      // Follow
-
-	        // Change pos of DD to follow
-	        dropDownFollow(left);
-
-	        // Hide previous dd content
-	        $timelineContent.removeClass('animated fadeIn bounceIn');
-
-	        // Show hovered dd content
-	        $that.find($timelineContent).addClass('animated fadeIn');
-	    }
-	  }
-  
-});
-
-// mouseleave event handler
-$timeline.on('mouseleave', function(e) {
-  
-  if (hideOnExit) {
-   
-    //   Set Flag
-    $hasHovered = false;
-
-    // Hide DD
-    hideDropDown();
-
-    // Hide DD content
-    $timelineContent.removeClass('animated fadeIn');
-    
-  }
-  
-});
-
-// Animation end event listener
-$dropDown.on(prefixes, function(e) {
-  
-  if ( e.originalEvent.animationName === 'fadeOut' ) {
-    $dropDown.removeAttr('style');
-  }
-  
-});
-
-/**
-* Private functions that do showing/hiding/animating
-*/
-function showContentBounce(that) {
-  $hasBounced = true;
-  that.find('.timeline-content').addClass('animated bounceIn');
-}
-
-function showBounce(pos) {
-  $dropDown.css('left', pos + 'px').removeClass('fadeOut').addClass('animated bounceIn');
-}
-
-function dropDownFollow(pos) {
-  $dropDown.css('left', pos + 'px');
-}
-
-function hideDropDown() {
-  $timelineItem.removeClass('selected');
-  $dropDown.removeClass('bounceIn').addClass('fadeOut');
-} 
 </script>
 
 @endsection

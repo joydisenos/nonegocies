@@ -1,51 +1,30 @@
-@extends('layouts.dash')
-
+@extends('layouts.master')
 @section('content')
-<div class="main-content">
-     <!-- HEADER -->
-      <div class="header">
-        <div class="container-fluid">
+<style>
+	p{
+		font-size: 13px !important;
+	    color: dimgray !important;
+	    line-height: 1.5 !important
+	}
+</style>
+<header class="page">
+	<div class="container">
+	<h1 class="animated fadeInLeft">Configuración</h1>
+	<p class="animated fadeInDown">Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p>
+	</div>
+</header>
 
-          <!-- Body -->
-          <div class="header-body">
-            <div class="row align-items-end">
-              <div class="col">
+<div class="container">
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      asd
+    </div>
+    <div class="col-md-8">
+    <div class="card">
+              <div class="card-header p-4">
                 
-                <!-- Pretitle -->
-                <h6 class="header-pretitle">
-                 Bienvenido, {{ title_case(Auth::user()->name) }} {{ title_case(Auth::user()->apellido) }}
-                </h6>
-
-                <!-- Title -->
-                <h1 class="header-title">
-                  Configuración
-                </h1>
-
-              </div>
-              <div class="col-auto">
-                
-                
-                <a href="#!" id="actualizar" class="btn btn-primary">
-                  Actualizar Datos
-                </a>
-                 
-              </div>
-            </div> <!-- / .row -->
-          </div> <!-- / .header-body -->
-
-        </div>
-      </div> <!-- / .header -->
-      
-      <!-- CARDS -->
-      <div class="container-fluid">
-        
-        <div class="row">
-          <div class="col-12 col-xl-8">
-            
-            <!-- Orders -->
-            <div class="card">
-              <div class="card-header">
-                <div class="row align-items-center">
+              <div class="row align-items-center">
                   <div class="col">
                 
                     <!-- Title -->
@@ -55,19 +34,14 @@
 
                   </div>
 
-                  <!--
-                  <div class="col-auto mr--3">
-                    <span class="text-muted">
-                      Show affiliate:
-                    </span>
-                  </div>
+                  
+                  
                   <div class="col-auto">
-                    <div class="custom-control custom-checkbox-toggle">
-                      <input type="checkbox" class="custom-control-input" id="cardToggle">
-                      <label class="custom-control-label" for="cardToggle"></label>
-                    </div>
+                    <a href="#!" id="actualizar" class="btn btn-sm btn-block btn-primary p-2">
+                      Actualizar Datos
+                    </a>
                   </div>
-                  -->
+                  
                 </div> <!-- / .row -->
 
               </div>
@@ -75,6 +49,7 @@
                 
               <div class="row align-items-center">
                   <div class="col">
+                  
                     <div class="table-responsive">
                       <table class="table table-hover">
                         <thead>
@@ -146,54 +121,8 @@
 
               </div>
             </div>
-
-          </div>
-          <div class="col-12 col-xl-4">
-
-            <!-- Devices -->
-            <div class="card">
-              <div class="card-header">
-                <div class="row align-items-center">
-                  <div class="col">
-                
-                    <!-- Title -->
-                    <h4 class="card-header-title">
-                      Plan Activo
-                    </h4>
-
-                  </div>
-                  <div class="col-auto">
-                   
-                  @if (Auth::user()->plan_id == null)
-                    Gratis
-                    @elseif (Auth::user()->plan_id == 2)
-                    Premium
-                    @elseif (Auth::user()->plan_id == 3)
-                    Platinum
-                    @endif
-                    
-
-                  </div>
-                </div> <!-- / .row -->
-
-              </div>
-              <div class="card-body">
-                
-                @if (Auth::user()->plan_id == null)
-                    <img src="{{ asset('svg/free.svg') }}" alt="free" class="plan-img" />
-                    @elseif (Auth::user()->plan_id == 2)
-                    <img src="{{ asset('svg/premium.svg') }}" alt="free" class="plan-img" />
-                    @elseif (Auth::user()->plan_id == 3)
-                    <img src="{{ asset('svg/platinum.svg') }}" alt="free" class="plan-img" />
-                    @endif
-
-              </div>
-            </div>
-            
-          </div>
-        </div> <!-- / .row -->
-        
-      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -202,7 +131,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="Label">Modal title</h5>
+        <h5 class="modal-title" id="Label">Actualizar Datos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -229,7 +158,7 @@
                           <div class="col-auto">
         
                           </div>
-                        </div> <!-- / .row -->
+                </div> <!-- / .row -->
                       </div>
         
                       <div class="container">

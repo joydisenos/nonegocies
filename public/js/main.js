@@ -30,13 +30,13 @@
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
       
     // Output the result in an element with id="demo"
-    document.getElementById("time").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
+    //document.getElementById("time").innerHTML = days + "d " + hours + "h "
+    // + minutes + "m " + seconds + "s ";
       
     // If the count down is over, write some text 
     if (distance < 0) {
       clearInterval(x);
-      document.getElementById("time").innerHTML = "EXPIRED";
+      $("#time").html("EXPIRED");
     }
     }, 1000);
   });

@@ -15,28 +15,31 @@
     <link href="{{asset('css/styles.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.css') }}">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <script>
     window.addEventListener("load", function(){
-    window.cookieconsent.initialise({
-      "palette": {
-        "popup": {
-          "background": "transparent",
-          "text": "#838391"
-        },
-        "button": {
-          "background": "#FF034C",
-        }
-      },
-      "position": "bottom-right",
-      "content": {
-        "message": "Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación.",
-        "dismiss": "Acepto",
-        "link": "Política de cookies",
-        "href": "{{route('cookies')}}"
-      }
-    })});
+	    window.cookieconsent.initialise({
+	      "palette": {
+	        "popup": {
+	          "background": "transparent",
+	          "text": "#838391"
+	        },
+	        "button": {
+	          "background": "#FF034C",
+	        }
+	      },
+	      "position": "bottom-right",
+	      "content": {
+	        "message": "Utilizamos cookies propias y de terceros para mejorar la experiencia de navegación.",
+	        "dismiss": "Acepto",
+	        "link": "Política de cookies",
+	        "href": "{{route('cookies')}}"
+	      }
+	    })
+	});
     </script>
   </head>
   <body id="page-top">
@@ -55,27 +58,42 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{ URL::current() == url('/') ? '#page-top' : url('/#page-top')}}">Inicio</a>
+              <a class="nav-link js-scroll-trigger" href="{{ URL::current() == url('/') ? '#page-top' : url('/#page-top')}}">Quienes somos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{ URL::current() == url('/') ? '#contactar' : url('/#contactar')}}">Unirme</a>
+              <a class="nav-link js-scroll-trigger" href="{{ URL::current() == url('/') ? '#howitworks' : url('/#howitworks')}}">Como Funciona</a>
+            </li>
+
+            @guest
+            @else
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/ofertas">Ofertas</a>
+            </li>
+            @endguest
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{ route('planes') }}">Planes</a>
             </li>
 
             @guest
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" id="iniciar-sesion" href="{{ route('login') }}" >Iniciar Sesión</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" id="registro-sesion" href="{{ route('register') }}" >Registro</a>
+                <a class="nav-link js-scroll-trigger" id="iniciar-sesion" href="{{ route('login') }}" >Ingresar</a>
             </li>
             @else
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{{ route('panel.index') }}" >Panel {{ title_case(Auth::user()->name) }}</a>
+                <a class="nav-link js-scroll-trigger trigger-drop" href="{{ route('panel.index') }}" >{{ title_case(Auth::user()->name) }} <i class="arrow"></i></a>
+                <ul class="drop">
+                  <li><a href ="{{ route('panel.configuracion') }}">Perfil</a></li>
+                  <li><a href ="#">Mensajes</a></li>
+                  <li><a href ="{{ route('panel.planes') }}">Mis Contratos</a></li>
+                  <li><a class="nav-link " href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">Salir</a></li>
+                </ul>
             </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
             @endguest
-            <!--  <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -157,7 +175,7 @@
         $('#register-form').modal('show');
       });
 
-      $('.mostrar').click(function () {
+      $('.mostrar').click(function () { 
         if ($(this).parents('.form-group').find('.pass').attr('type') === 'text') {
         $(this).parents('.form-group').find('.pass').attr('type', 'password');
         } else {
@@ -166,6 +184,6 @@
       });
   
     </script>
-
+    @yield('scripts')
   </body>
 </html>

@@ -18,7 +18,7 @@ Route::get('auth/{provider}', 'SocialAuthController@redirectToProvider')->name('
 Route::get('auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
 
-
+Route::get('/planes', 'SiteController@planes')->name('planes');
 Route::get('/cookies', 'SiteController@cookies')->name('cookies');
 Route::get('/terminos', 'SiteController@terminos')->name('terminos');
 Route::get('/privacidad', 'SiteController@privacidad')->name('privacidad');

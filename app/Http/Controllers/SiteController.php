@@ -15,6 +15,16 @@ class SiteController extends Controller
     	return view('inicio');
     }
 
+     public function planes()
+    {
+        return view('planes');
+    }
+
+     public function nosotros()
+    {
+        return view('nosotros');
+    }
+
     public function terminos()
     {
         $refLegal = Ajuste::first();
