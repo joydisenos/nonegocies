@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-<script src="{{ asset('js/owl.js') }}"></script>
 <style>
 	
 section{
@@ -884,7 +883,7 @@ section{
   					</div>
 				</div>
 			</div>
-			<div class="col-lg-6"><img src="/img/target.png" alt="target"></div>
+			<div class="col-lg-6"><img src="{{ asset('/img/target.png') }}" alt="target"></div>
 		</div>
 	</div>
 </section>
@@ -974,14 +973,14 @@ section{
 	<div class="container">
 		<!-- Sec Title -->
 		<div class="sec-title">
-			<div class="title">Testimonos</div>
+			<div class="title">Testimonios</div>
 			<h2>Que opinan los usuarios<br> sobre nuestro servicio</h2>
 		</div>
 	</div>
 	<div class="outer-container clearfix">
 		<!--Image Column-->
 		<div class="image-column">
-		<figure class="image-box"><img src="images/resource/author-12.png" alt=""></figure>
+		<figure class="image-box"><img src="{{ asset('images/resource/author-12.png') }}" alt=""></figure>
 	</div>
 	<!--Content Column-->
 	<div class="content-column">
@@ -993,7 +992,7 @@ section{
 							<div class="upper-box">
 								<div class="upper-inner">
 									<div class="image">
-										<img src="img/avatar.jpg" alt="">
+										<img src="{{ asset('img/avatar.jpg') }}" alt="">
 									</div>
 									<h5>Frederic Anderson</h5>
 									<div class="designation">President</div>
@@ -1010,7 +1009,7 @@ section{
 							<div class="upper-box">
 								<div class="upper-inner">
 									<div class="image">
-										<img src="img/avatar.jpg" alt="">
+										<img src="{{ asset('img/avatar.jpg') }}" alt="">
 									</div>
 									<h5>Frederic Anderson</h5>
 									<div class="designation">President</div>
@@ -1027,7 +1026,7 @@ section{
 							<div class="upper-box">
 								<div class="upper-inner">
 									<div class="image">
-										<img src="img/avatar.jpg" alt="">
+										<img src="{{ asset('img/avatar.jpg') }}" alt="">
 									</div>
 									<h5>Frederic Anderson</h5>
 									<div class="designation">President</div>
@@ -1044,7 +1043,7 @@ section{
 							<div class="upper-box">
 								<div class="upper-inner">
 									<div class="image">
-										<img src="img/avatar.jpg" alt="">
+										<img src="{{ asset('img/avatar.jpg') }}" alt="">
 									</div>
 									<h5>Frederic Anderson</h5>
 									<div class="designation">President</div>
@@ -1103,6 +1102,11 @@ section{
 </section>
 <!-- end prices -->
 
+
+
+@endsection
+@section('scripts')
+<script src="{{ asset('js/owl.js') }}"></script>
 <script>
 $(document).ready(function() {
 
@@ -1214,4 +1218,3 @@ $(document).ready(function() {
 </script>
 
 @endsection
-

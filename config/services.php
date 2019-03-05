@@ -41,9 +41,9 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '562891504179864',
-        'client_secret' => '7170dd098621652dd50a8059cac75a3a',
-        'redirect' => 'https://nonegocies.es'
+        'client_id' => env('FB_CLIENT_ID'),
+        'client_secret' => env('FB_CLIENT_SECRET'),
+        'redirect' => 'https://nonegocies.es/auth/facebook/callback'
     ],
 
 ];

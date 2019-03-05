@@ -3,8 +3,8 @@
 .modal-header {padding: 0;}
 .card.mt-3.tab-card {border: 0;}
 .modal-body .form-group {margin-bottom: 15px;}
-.modal-header .close {padding: 10px 15px;opacity: 1;float: right;text-align: right;right: 0;position: fixed;background: #133273 !important;color: white;}
-.modal-header .close:hover{background: #e8cb4a!important}
+.modal-header .close {font-size: 15px;font-weight: initial;padding: 10px 15px;opacity: 1;float: right;text-align: right;right: 0;position: fixed;background: #133273 !important;color: white;}
+.modal-header .close:hover{background: #e8cb4a!important;color:black;}
 .modal-header .close:focus{outline: 0;}
 .modal-header ul {border: none;}
 .modal-header ul li {margin: 0;}
@@ -18,22 +18,15 @@
 .mt-3, .my-3 {margin-top: 8px!important;}
 button.close {background: white;border-radius: 100%;color: black;opacity:1;}
 .modal-header {height: 50px;}
-.modal-footer{border:0 !important;}
+.modal-footer{border:0 !important;padding-bottom: 0;}
 .card-header-tabs{margin-left: unset !important;}
-button.btn.btn-sm.btn-block.btn-primary.mb-3 {padding: 10px;display: block;margin: 0 auto;}
+button.btn.btn-sm.btn-block.btn-primary.mb-3 {padding: 10px;display: block;margin: 0 auto;margin-bottom: 0 !important;}
 .card-header {padding: 0;margin-bottom: 0;background-color: unset;border-bottom: 0;}
 .nav-tabs .nav-link{border: 0 !important;font-weight: bold;}
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{border: 0 !important;background: transparent !important;}
 button.btn.btn-sm.btn-block.btn-primary.mb-3:hover{background: #133273 !important;}
-.nav-tabs .nav-link.active:after {
-    content: '';
-    height: 3px;
-    background: red;
-    width: 100%;
-    position: relative;
-    display: block;
-    margin-top: 13px;
-}
+.nav-tabs .nav-link.active:after {content: '';height: 3px;background: red;width: 100%;position: relative;display: block;margin-top: 10px;}
+form.login{margin-top:-24px;}
 </style>
 
 <div class="modal fade" id="login-form" tabindex="-1" role="dialog" aria-labelledby="log-in" aria-hidden="true">
@@ -59,13 +52,17 @@ button.btn.btn-sm.btn-block.btn-primary.mb-3:hover{background: #133273 !importan
       <div class="modal-body">
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login') }}" class="login">
               @csrf
               <a href="{{ route('social.auth', 'facebook') }}" class="" type="submit">
                 <svg viewBox="0 0 46 34">
                   <path d="M25.6 33h-7.1V19H15v-6.2h3.5V9.1c0-5.1 2-8.1 7.7-8.1H31v6.2h-3c-2.2 0-2.4.9-2.4 2.5v3.1H31l-.6 6.2h-4.7v14z"/>
                 </svg>
               </a>
+               <a class="loginBtn loginBtn--facebook" href="{{ route('social.auth', 'facebook') }}">
+                  Ingresar con Facebook
+              </a>
+              <hr>
               <div class="form-group">
                 <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
               </div>
