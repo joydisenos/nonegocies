@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDatosTable extends Migration
+class CreateOrdenesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateDatosTable extends Migration
      */
     public function up()
     {
-        Schema::create('datos', function (Blueprint $table) {
+        Schema::create('ordenes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('tarjeta');
-            $table->integer('cvv');
-            $table->string('vence');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateDatosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('datos');
+        Schema::dropIfExists('ordenes');
     }
 }
