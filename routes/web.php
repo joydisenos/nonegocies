@@ -80,14 +80,14 @@ Route::prefix('admin')->group(function () {
 
 });
 
-Route::prefix('panel')->group(function (){
-   Route::get('/' , 'PanelController@index')->name('panel.index');
+   // Usuario
+   Route::get('/panel' , 'PanelController@index')->name('panel.index');
    Route::get('/configuracion' , 'PanelController@configuracion')->name('panel.configuracion');
-   Route::get('/planes' , 'PanelController@planes')->name('panel.planes');
+   Route::get('/plan' , 'PanelController@planes')->name('panel.planes');
    Route::post('/datos' , 'PanelController@datos')->name('panel.datos');
 
 
    Route::get('/plan/{plan}' , 'PlanController@cambiarPlan')->name('panel.plan');
    
-});
+
 

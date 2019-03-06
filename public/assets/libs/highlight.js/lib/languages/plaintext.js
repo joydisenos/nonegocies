@@ -1,5 +1,5 @@
-module.exports = function(hljs) {
-    return {
-        disableAutodetect: true
-    };
+module.exports = function(hljs) {
+    return {
+        disableAutodetect: true
+    };
 };

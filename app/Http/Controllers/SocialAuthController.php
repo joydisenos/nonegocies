@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Socialite;
 
@@ -20,14 +20,15 @@ class SocialAuthController extends Controller
     {
         // Obtenemos los datos del usuario
         $social_user = Socialite::driver($provider)->user(); 
+        $nombres = explode(' ' , $social_user->name);
         // Comprobamos si el usuario ya existe
         if ($user = User::where('email', $social_user->email)->first()) { 
             return $this->authAndRedirect($user); // Login y redirección
         } else {  
             // En caso de que no exista creamos un nuevo usuario con sus datos.
             $user = User::create([
-                'name' => $social_user->user['first_name'], 
-                'apellido' => $social_user->user['last_name'], 
+                'name' => $nombres[0], 
+                'apellido' => $nombres[1], 
                 'email' => $social_user->email,
             ]);
  
@@ -40,6 +41,6 @@ class SocialAuthController extends Controller
     {
         Auth::login($user);
  
-        return redirect()->to('/home#');
+        return redirect()->to('/ofertas');
     }
 }

@@ -103,7 +103,7 @@ section{
 	top:70px;
 	width:100%;
 	height:91px;
-	background:url(/img/pattern-1.png) center top no-repeat;
+	background:url({{ asset('/img/pattern-1.png') }}) center top no-repeat;
 }
 
 .steps-section .outer-container .services-block-two:nth-child(2),
@@ -556,7 +556,7 @@ section{
 	width:1114px;
 	height:1121px;
 	display:inline-block;
-	background:url(/img/image-2.png) no-repeat;
+	background:url({{ asset('/img/image-2.png') }}) no-repeat;
 }
 
 .testimonial-section .content-column .inner-column{

@@ -67,7 +67,7 @@
             @guest
             @else
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/ofertas">Ofertas</a>
+              <a class="nav-link js-scroll-trigger" href="{{ route('indexofertas') }}">Ofertas</a>
             </li>
             @endguest
               <li class="nav-item">

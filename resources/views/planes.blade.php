@@ -1,6 +1,12 @@
 @extends('layouts.master')
 @section('content')
 <style>
+
+.row {
+    padding-top: 50px;
+}
+
+
 .card-body {
     border: 2px solid #e8e8e8;
     background-color: #fff;
@@ -47,12 +53,12 @@ h6.card-price {
 }
 
 .card-body:hover a.btn.btn-block.btn-primary.text-uppercase{
-	color: white !important;
-	background: #e73747 !important;
+  color: white !important;
+  background: #e73747 !important;
 }
 
 .card-body:hover h5.card-title:before{
-	background: #FF034C;
+  background: #FF034C;
 }
 
 
@@ -86,7 +92,7 @@ img.plan-img {
 
 
 h5.card-title:before{
-	height: 2px;
+  height: 2px;
     width: 130px;
     content: "";
     position: absolute;
@@ -98,13 +104,8 @@ h5.card-title:before{
     transition: .5s esae-in-out;
 }
 
-.pricing .container {
-    padding-top: 120px;
-}
-
-
 .card-body-featured{
-	background: #ffffff;
+  background: #ffffff;
     padding: 45px;
     -webkit-box-shadow: 7px 5px 30px rgba(72, 73, 121, 0.15);
     -moz-box-shadow: 7px 5px 30px rgba(72, 73, 121, 0.15);
@@ -120,38 +121,134 @@ h5.card-title:before{
 }
 
 section{
-	    box-sizing: border-box;
-	    overflow: hidden;
-	    position: relative
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative
 }
 
+/*faqs*/
+
+details {
+  width: 75%;
+  min-height: 5px;
+  max-width: 700px;
+  padding: 45px 70px 45px 45px;
+  margin: 0 auto;
+  position: relative;
+  font-size: 22px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 15px;
+  box-sizing: border-box;
+  transition: all .3s;
+}
+
+details + details {
+  margin-top: 20px;
+}
+
+details[open] {
+    min-height: 50px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 20px rgba(0,0,0,.2);
+}
+
+details p {
+  color: #96999d;
+  font-weight: 300;
+}
+
+summary {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+summary:focus {
+  outline: none;
+}
+
+summary::-webkit-details-marker {
+  display: none
+}
+
+summary::after {
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: rebeccapurple;
+  font-size: 15px;
+  font-style: normal;
+  font-variant-caps: normal;
+  font-variant-ligatures: normal;
+  font-weight: 900;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: "V";
+  transform: translateY(-50%);
+  transition: .3s ease;
+}
+
+details[open] summary::after {
+  content: "X";
+  font-size: 30px;
+  top: 0;
+  transform: translateY(0);
+  transition: .3s ease;
+}
+
+details[open] summary:hover::after {
+  animation: pulse 1s ease;
+}
+
+@keyframes pulse {
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+details{background: #f1f1f1}
+
+.faq{background: #393975 url({{ asset('/img/bg-hero-page.svg') }}) repeat;}
+
+.faq h2{color: white !important;padding-bottom: 60px}
+
 </style>
+
 <header class="page">
-	<div class="container">
-	<h1 class="animated fadeInLeft">Planes</h1>
-	<p class="animated fadeInDown">Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p>
-	</div>
-</header>
-<section class="gray">
-	<div class="container">
-		<section class="pricing py-5">
   <div class="container">
-  	<div style="height: 40px"></div>
-  	<h2 class="center text-center">Titulo para los targets</h2>
-		<p class="center text-center">Lorem ipsum dolor sit amet nsdou tinasdfm tritani omittam qui mei oblique taimates.</p>
+    <h1 class="animated fadeInLeft">Planes</h1>
+    <p class="animated fadeInDown">Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p>
+  </div>
+</header>
+
+<section class="pricing py-5">
+  <div class="container">
+    <div style="height: 40px"></div>
+    <h2 class="text-center">Nuestros Planes</h2>
+    <p class="text-center">Puedes ganar mas dinero por el plan que elijas, ademas de tener mas ventajas</p>
     <div class="row">
       <!-- Free Tier -->
       <div class="col-lg-4">
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
-          	<img src="https://nonegocies.es/svg/free.svg" alt="free" class="plan-img">
+            <img src="https://nonegocies.es/svg/free.svg" alt="free" class="plan-img">
             <h5 class="card-title text-muted text-uppercase text-center">Gratis</h5>
             <ul class="fa-ul gray">
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
             </ul>
             <h6 class="card-price text-center">0<span class="currency">€</span><span class="period"></span></h6>
             <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
@@ -162,16 +259,16 @@ section{
       <div class="col-lg-4">
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
-          	<img src="https://nonegocies.es/svg/premium.svg" alt="free" class="plan-img">
+            <img src="https://nonegocies.es/svg/premium.svg" alt="free" class="plan-img">
             <h5 class="card-title text-muted text-uppercase text-center">Premium</h5>
             <ul class="fa-ul gray">
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
             </ul>
-             <h6 class="card-price text-center">29<span class="currency">€</span><span class="period"> x mes</span></h6>
+            <h6 class="card-price text-center">29<span class="currency">€</span><span class="period"> x mes</span></h6>
             <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
           </div>
         </div>
@@ -180,16 +277,16 @@ section{
       <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
-          	<img src="https://nonegocies.es/svg/platinum.svg" alt="free" class="plan-img">
+            <img src="https://nonegocies.es/svg/platinum.svg" alt="free" class="plan-img">
             <h5 class="card-title text-muted text-uppercase text-center">Platinum</h5>
             <ul class="fa-ul gray">
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
-             <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
+              <li>incluye ..</li>
             </ul>
-             <h6 class="card-price text-center">49<span class="currency">€</span><span class="period"> x mes</span></h6>
+            <h6 class="card-price text-center">49<span class="currency">€</span><span class="period"> x mes</span></h6>
             <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
           </div>
         </div>
@@ -197,6 +294,21 @@ section{
     </div>
   </div>
 </section>
-	</div>
+
+<section class="faq">
+  <h2 class="text-center">Preguntas Frecuentes</h2>
+  <details open>
+  <summary>Does this product have what I need?</summary>
+  <p>Totally. Totally does.</p>
+  </details>
+  <details>
+  <summary>Can I use it all the time?</summary>
+  <p>Of course you can, we won't stop you.</p>
+  </details>
+  <details>
+  <summary>Are there any restrictions?</summary>
+  <p>Only your imagination my friend. Go forth!</p>
+  </details>
 </section>
+
 @endsection
