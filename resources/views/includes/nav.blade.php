@@ -74,8 +74,14 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link " href="{{ route('usuarios') }}">
+                <a class="nav-link" href="{{ route('usuarios') }}">
                   <i class="fe fe-user"></i> Usuarios
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('enviar.mensajes') }}">
+                  <i class="fe fe-mail"></i> Mensajes
                 </a>
               </li>
 
@@ -86,7 +92,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link " href="{{ route('empresas') }}">
+                <a class="nav-link" href="{{ route('empresas') }}">
                   <i class="fe fe-truck"></i> Empresas
                 </a>
               </li>

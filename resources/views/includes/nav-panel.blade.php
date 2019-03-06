@@ -6,6 +6,6 @@
 </style>
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <a class="nav-link {{ (URL::current() == route('panel.configuracion')) ? 'active' : ''}}" href="{{ route('panel.configuracion') }}">Perfil</a>
-    <a class="nav-link" href="#">Mensajes</a>
+    <a class="nav-link {{ (URL::current() == route('panel.mensajes')) ? 'active' : ''}}" href="{{ route('panel.mensajes') }}">Mensajes</a>
     <a a class="nav-link {{ (URL::current() == route('panel.planes')) ? 'active' : ''}}" href="{{ route('panel.planes') }}">Mis Contratos</a>
   </div>

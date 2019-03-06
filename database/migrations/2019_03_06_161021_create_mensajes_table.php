@@ -16,6 +16,7 @@ class CreateMensajesTable extends Migration
         Schema::create('mensajes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
+            $table->string('asunto');
             $table->text('mensaje');
             $table->integer('leido')->default(0);
             $table->timestamps();

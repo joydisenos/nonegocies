@@ -43,4 +43,9 @@ class User extends Authenticatable
 
         return $empresas;
     }
+
+    public function mensajes()
+    {
+        return $this->hasMany(Mensajes::class , 'user_id');
+    }
 }

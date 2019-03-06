@@ -77,6 +77,10 @@ Route::prefix('admin')->group(function () {
    Route::get('/editar/contactar/{id}', 'ContactarController@editar')->name('editarcontactar');
    Route::post('/editar/contactar/{id}', 'ContactarController@actualizar')->name('actualizarcontactar');
 
+   //Mensajes
+   Route::get('/enviar/mensajes' , 'MensajeController@mensajes')->name('enviar.mensajes');
+   Route::post('/registrar/mensajes' , 'MensajeController@enviar')->name('registrar.mensajes');
+
 
 });
 
@@ -85,6 +89,7 @@ Route::prefix('admin')->group(function () {
    Route::get('/configuracion' , 'PanelController@configuracion')->name('panel.configuracion');
    Route::get('/plan' , 'PanelController@planes')->name('panel.planes');
    Route::post('/datos' , 'PanelController@datos')->name('panel.datos');
+   Route::get('/mensajes' , 'PanelController@mensajes')->name('panel.mensajes');
 
 
    Route::get('/plan/{plan}' , 'PlanController@cambiarPlan')->name('panel.plan');

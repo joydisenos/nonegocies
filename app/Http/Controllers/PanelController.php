@@ -63,4 +63,9 @@ class PanelController extends Controller
 
         return redirect()->back()->with('status','Datos Actualizados Correctamente');
     }
+    
+    public function mensajes()
+    {
+        return view('panel.mensajes');
+    }
 }
