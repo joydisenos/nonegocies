@@ -47,10 +47,30 @@
                                     <label for="persona">Soy</label>
                                     <select name="persona" id="persona" class="special form-control">
                                                 <option value="">Seleccione una Opción</option>
-                                                <option value="1">Particular</option>
-                                                <option value="2">Empresa</option>
-                                                <option value="3">Comunidad</option>
-                                                <option value="4">Administrador</option>
+                                                <option value="1"
+                                                @guest
+                                                @else
+                                                {{ (Auth::user()->tipo == 1) ? 'selected' : ''}}
+                                                @endguest
+                                                >Particular</option>
+                                                <option value="2"
+                                                @guest
+                                                @else
+                                                {{ (Auth::user()->tipo == 2) ? 'selected' : ''}}
+                                                @endguest
+                                                >Empresa</option>
+                                                <option value="3"
+                                                @guest
+                                                @else
+                                                {{ (Auth::user()->tipo == 3) ? 'selected' : ''}}
+                                                @endguest
+                                                >Comunidad</option>
+                                                <option value="4"
+                                                @guest
+                                                @else
+                                                {{ (Auth::user()->tipo == 4) ? 'selected' : ''}}
+                                                @endguest
+                                                >Administrador</option>
                                             </select>
                                     </div>
                                 </div>

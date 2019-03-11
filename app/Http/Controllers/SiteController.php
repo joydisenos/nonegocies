@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Ajuste;
 use App\Categoria;
 use App\Ofertas;
@@ -73,6 +74,12 @@ class SiteController extends Controller
             'desde' => 'required',
             'hasta' => 'required',
             ]);
+        if($user = Auth::user() && Auth::user()->tipo == null)
+            {
+                $user = Auth::user();
+                $user->tipo = $request->persona;
+                $user->save();
+            }   
 
         $categoria = Categoria::findOrFail($request->servicio);
         $refOfertas = new Ofertas;

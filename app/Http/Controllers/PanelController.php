@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Mensajes;
 
 class PanelController extends Controller
 {
@@ -66,6 +67,9 @@ class PanelController extends Controller
     
     public function mensajes()
     {
-        return view('panel.mensajes');
+        $mensajesRef = new Mensajes();
+        $mensajes = $mensajesRef->getMensajes(Auth::user()->id);
+
+        return view('panel.mensajes' , compact('mensajes'));
     }
 }

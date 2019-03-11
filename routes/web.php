@@ -80,6 +80,7 @@ Route::prefix('admin')->group(function () {
    //Mensajes
    Route::get('/enviar/mensajes' , 'MensajeController@mensajes')->name('enviar.mensajes');
    Route::post('/registrar/mensajes' , 'MensajeController@enviar')->name('registrar.mensajes');
+   Route::post('/marcar/mensajes' , 'MensajeController@marcar')->name('marcar.mensajes');
 
 
 });

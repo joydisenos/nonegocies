@@ -43,4 +43,22 @@ class MensajeController extends Controller
 
         return redirect()->back()->with('status','Mensaje Enviado');
     }
+
+    public function marcar(Request $request)
+    {
+        $mensaje = Mensajes::findOrFail($request->id);
+        $mensaje->leido = $request->leido;
+        $mensaje->save();
+
+        if($request->leido == 1)
+        {
+            return response()->json([
+                'guardado' => 'Marcado como Leido']);
+        }
+        elseif($request->leido == 0)
+        {
+            return response()->json([
+                'guardado' => 'Marcado como Pendiente']);
+        }
+    }
 }
