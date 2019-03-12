@@ -58,12 +58,11 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{ URL::current() == url('/') ? '#page-top' : url('/#page-top')}}">Quienes somos</a>
+              <a class="nav-link js-scroll-trigger" href="{{ url('/') }}">Como Funciona</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{ URL::current() == url('/') ? '#howitworks' : url('/#howitworks')}}">Como Funciona</a>
+              <a class="nav-link js-scroll-trigger" href="{{ route('nosotros') }}">Quienes somos</a>
             </li>
-
             @guest
             @else
             <li class="nav-item">
@@ -73,7 +72,6 @@
               <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{ route('planes') }}">Planes</a>
             </li>
-
             @guest
             <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" id="iniciar-sesion" href="{{ route('login') }}" >Ingresar</a>
@@ -181,6 +179,12 @@
         } else {
         $(this).parents('.form-group').find('.pass').attr('type', 'text');
         }
+      });
+
+      $('#olvido-contrasena').click(function (e){
+        e.preventDefault();
+        $('#login-form').modal('hide');
+        $('#reset-contrasena').modal('show');
       });
   
     </script>

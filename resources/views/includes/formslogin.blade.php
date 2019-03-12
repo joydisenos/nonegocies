@@ -75,7 +75,7 @@ form.login{margin-top:-24px;}
                 </div>
               </div>
               <br>
-              <a id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="Three" aria-selected="false" class="form-text small text-muted text-center">
+              <a id="olvido-contrasena" data-toggle="tab" href="#three" role="tab" aria-controls="Three" aria-selected="false" class="form-text small text-muted text-center">
                 Olvido su contraseña?
               </a>
               <div class="modal-footer text-center">
@@ -121,6 +121,50 @@ form.login{margin-top:-24px;}
           <div class="tab-pane fade p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
             LOST PASSWORD
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reset-contrasena" tabindex="-1" role="dialog" aria-labelledby="reset-contrasena" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+        X
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
+          <form method="POST" action="{{ route('password.email') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Send Password Reset Link') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+          </div>
+          
         </div>
       </div>
     </div>

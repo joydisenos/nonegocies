@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('content')
 <style>
+
+/*reset*/
 	
 section{
 	    box-sizing: border-box;
@@ -8,82 +10,16 @@ section{
 	    position: relative
 }
 
-.about:after{
-	position: absolute;
-    content: "";
-    width: 100%;
-    height: 1000px;
-    background: url({{ asset('/svg/red_curve.svg') }}) no-repeat center bottom;
-    bottom: 0;
-    left: 0;
-    background-size: 100%;
-}
-
-
-
-.pricing:before{
-	position: absolute;
-    content: "";
-    width: 100%;
-    height: 1000px;
-    background: url({{ asset('/svg/red_curve_bottom.svg') }}) no-repeat center top;
-    top: 0;
-    left: 0;
-    background-size: 100%;
-}
-
-.target{
-	background: #e73747!important;
-	padding-bottom:0;
-}
-
-.white{
-	color:white !important;
-}
-
-.target h2{
-	font-size: 38px;
-}
-
-.target p{
-	font-size: 16px;
-}
-
-.pricing .container {
-    padding-top: 120px;
-}
-
-.circle {
-    background: white;
-    color: blue;
-    border-radius: 100%;
-    height: 180px;
-    width: 180px;
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 10px;
-}
-
-.target .col-lg-3 {
-    text-align: center;
-    color: white;
-}
-
-.target .row {
-    padding-top: 40px;
-}
-
-.circle img {
-    width: 110px;
-    padding-top: 30px;
-}
-
-.target h3{
-	text-transform: uppercase;
-}
 
 /* how it works */
+
+.service-number {
+    color: #d61e1e !important;
+}
+
+.icon-box {
+    background-image: linear-gradient(to right, #133871 0%, #5d6f9a 100%);
+}
 
 .steps-section{
 	position:relative;
@@ -94,6 +30,8 @@ section{
 .steps-section .outer-container{
 	position:relative;
 	margin-top: 50px;
+	margin-bottom:180px;
+	z-index: 999999999999999;
 }
 
 .steps-section .outer-container:before{
@@ -133,7 +71,7 @@ section{
 	color:#ffffff;
 	text-align:center;
 	border-radius:50%;
-	line-height:138px;
+	line-height:132px;
 	font-size:62px;
 	background-color:#d3dde8;
 	box-shadow: inset 0 0 10px rgba(0,0,0,0.20);
@@ -159,12 +97,12 @@ section{
 	-ms-transition:all 0.3s ease;
 	-o-transition:all 0.3s ease;
 	box-shadow:inset 0 0 15px rgba(0,0,0,0.20);
-	background-image: -ms-linear-gradient(left, #FF8441 0%, #f53d96 100%);
-	background-image: -moz-linear-gradient(left, #FF8441 0%, #f53d96 100%);
-	background-image: -o-linear-gradient(left, #FF8441 0%, #f53d96 100%);
-	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FF8441), color-stop(100, #f53d96));
-	background-image: -webkit-linear-gradient(left, #FF8441 0%, #f53d96 100%);
-	background-image: linear-gradient(to right, #FF8441 0%, #f53d96 100%);
+	background-image: -ms-linear-gradient(left, #FF8441 0%, #f53d96 100%) !important;
+	background-image: -moz-linear-gradient(left, #FF8441 0%, #f53d96 100%) !important;
+	background-image: -o-linear-gradient(left, #FF8441 0%, #f53d96 100%) !important;
+	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FF8441), color-stop(100, #f53d96)) !important;
+	background-image: -webkit-linear-gradient(left, #FF8441 0%, #f53d96 100%) !important;
+	background-image: linear-gradient(to right, #FF8441 0%, #f53d96 100%) !important;
 }
 
 .services-block-two .inner-box:hover .icon-outer .icon-box:before{
@@ -249,261 +187,95 @@ section{
 
 .sec-title.centered {
     text-align: center;
+    padding: 70px 0 30px 0; 
 }
 
-/*tabs*/
+/* targets */
 
-.tabs {
-	left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-    position: relative;
+#howitworks:after{
+	position: absolute;
+    content: "";
+    width: 100%;
+    height: 1000px;
+    background: url({{ asset('/svg/red_curve.svg') }}) no-repeat center bottom;
+    bottom: 0;
+    left: 0;
+    background-size: 100%;
+}
+
+
+
+#temporal2:before{
+	position: absolute;
+    content: "";
+    width: 100%;
+    height: 1000px;
+    background: url({{ asset('/svg/red_curve_bottom.svg') }}) no-repeat center top;
+    top: 0;
+    left: 0;
+    background-size: 100%;
+}
+
+.col-lg-4.wow.featured.fadeInUp.animated {
+    z-index: 999;
+}
+
+
+.target{
+	background: #e73747!important;
+	padding:0;
+
+}
+
+.white{
+	color:white !important;
+}
+
+.target p{
+	font-size: 16px;
+}
+
+.pricing .container {
+    padding-top: 120px;
+}
+
+.circle {
     background: white;
-}
-.tabs input[name="tab-control"] {
-  display: none;
-}
-.tabs .content section h2,
-.tabs ul li label {
-  font-weight: bold;
-  font-size: 18px;
-  color: #428BFF;
-}
-.tabs ul {
-  list-style-type: none;
-  padding-left: 0;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-}
-.tabs ul li {
-  box-sizing: border-box;
-  flex: 1;
-  width: 25%;
-  padding: 0 10px;
-  text-align: center;
-}
-.tabs ul li label {
-	transition: all 0.3s ease-in-out;
-    color: #929daf;
-    padding: 0 10px;
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
+    color: blue;
+    border-radius: 100%;
+    height: 180px;
+    width: 180px;
+    text-align: center;
     display: block;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    /* white-space: nowrap; */
-    -webkit-touch-callout: none;
-    /* -webkit-user-select: none; */
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    float: left;
-}
-.tabs ul li label br {
-  display: none;
-}
-.tabs ul li label svg {
-  fill: #929daf;
-  height: 1.2em;
-  vertical-align: bottom;
-  margin-right: 0.2em;
-  transition: all 0.2s ease-in-out;
-}
-.tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
-  outline: 0;
-  color: #bec5cf;
-}
-.tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg {
-  fill: #bec5cf;
-}
-.tabs .slider {
-  position: relative;
-  width: 25%;
-  transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
-}
-.tabs .slider .indicator {
-  position: relative;
-  width: 50px;
-  max-width: 100%;
-  margin: 0 auto;
-  height: 4px;
-  background: #428BFF;
-  border-radius: 1px;
-}
-.tabs .content {
-  margin-top: 30px;
-}
-.tabs .content section {
-  display: none;
-  -webkit-animation-name: content;
-          animation-name: content;
-  -webkit-animation-direction: normal;
-          animation-direction: normal;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-  line-height: 1.4;
-  padding:0;
-}
-.tabs .content section h2 {
-  color: #428BFF;
-  display: none;
-}
-.tabs .content section h2::after {
-  content: "";
-  position: relative;
-  display: block;
-  width: 30px;
-  height: 3px;
-  background: #428BFF;
-  margin-top: 5px;
-  left: 1px;
-}
-.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
-  cursor: default;
-  color: #428BFF;
-}
-.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
-  fill: #428BFF;
-}
-@media (max-width: 600px) {
-  .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
-}
-.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .content > section:nth-child(1) {
-  display: block;
-}
-.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
-  cursor: default;
-  color: #428BFF;
-}
-.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg {
-  fill: #428BFF;
-}
-@media (max-width: 600px) {
-  .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .content > section:nth-child(2) {
-  display: block;
-}
-.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
-  cursor: default;
-  color: #428BFF;
-}
-.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
-  fill: #428BFF;
-}
-@media (max-width: 600px) {
-  .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
-  -webkit-transform: translateX(200%);
-          transform: translateX(200%);
-}
-.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .content > section:nth-child(3) {
-  display: block;
-}
-.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
-  cursor: default;
-  color: #428BFF;
-}
-.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg {
-  fill: #428BFF;
-}
-@media (max-width: 600px) {
-  .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .slider {
-  -webkit-transform: translateX(300%);
-          transform: translateX(300%);
-}
-.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .content > section:nth-child(4) {
-  display: block;
-}
-@-webkit-keyframes content {
-  from {
-    opacity: 0;
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-}
-@keyframes content {
-  from {
-    opacity: 0;
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-}
-@media (max-width: 1000px) {
-  .tabs ul li label {
-    white-space: initial;
-  }
-  .tabs ul li label br {
-    display: initial;
-  }
-  .tabs ul li label svg {
-    height: 1.5em;
-  }
-}
-@media (max-width: 600px) {
-  .tabs ul li label {
-    padding: 5px;
-    border-radius: 5px;
-  }
-  .tabs ul li label span {
-    display: none;
-  }
-  .tabs .slider {
-    display: none;
-  }
-  .tabs .content {
-    margin-top: 20px;
-  }
-  .tabs .content section h2 {
-    display: block;
-  }
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 
+.target .col-lg-3 {
+    text-align: center;
+    color: white;
+}
 
+.target .row {
+    padding-top: 40px;
+}
 
+.circle img {
+    width: 110px;
+    padding-top: 30px;
+}
+
+.target h3{
+	text-transform: uppercase;
+	padding-top: 20px;
+}
 
 /* testimonial */
 
 
 .testimonial-section{
 	position:relative;
+	overflow: visible;
 }
 
 .testimonial-section .image-layer{
@@ -713,6 +485,10 @@ section{
 	border-radius:100%;
 }
 
+.testimonial-section .sec-title {top: -100px;position: absolute;}
+
+.testimonial-section .sec-title h2{color: #ef1114}
+
 /*test*/
 
 .sec-title h2 {
@@ -787,12 +563,12 @@ section{
 							<div class="icon-outer">
 								<div class="service-number">1</div>
 								<div class="icon-box">
-									<span class="icon flaticon-contact"></span>
+									<span class="icon flaticon-start"></span>
 								</div>
 							</div>
 							<div class="lower-box">
 								<h5><a href="#">Registrate</a></h5>
-								<div class="text">Crea una cuenta para comenzar, es gratis!</div>
+								<div class="text">Comienza creando tu cuenta es rapido y gratis!</div>
 								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Crear cuenta</a> -->
 							</div>
 						</div>
@@ -804,12 +580,12 @@ section{
 							<div class="icon-outer">
 								<div class="service-number">2</div>
 								<div class="icon-box">
-									<span class="icon flaticon-network-1"></span>
+									<span class="icon flaticon-target"></span>
 								</div>
 							</div>
 							<div class="lower-box">
 								<h5><a href="#">Busca tu oferta</a></h5>
-								<div class="text">Busca la oferta que mas te convenga</div>
+								<div class="text">Busca la oferta que mejor se adapte a tus necesidades</div>
 								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Ofertas</a> -->
 							</div>
 						</div>
@@ -821,12 +597,12 @@ section{
 							<div class="icon-outer">
 								<div class="service-number">3</div>
 								<div class="icon-box">
-									<span class="icon flaticon-target"></span>
+									<span class="icon flaticon-hand-shake-1"></span>
 								</div>
 							</div>
 							<div class="lower-box">
 								<h5><a href="#">Contrata tu oferta</a></h5>
-								<div class="text">Confirma tus datos y firma la contratacion de tu oferta</div>
+								<div class="text">Confirma la oferta, tus datos y tu comisión</div>
 								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Mis contratos</a> -->
 							</div>
 						</div>
@@ -838,7 +614,7 @@ section{
 							<div class="icon-outer">
 								<div class="service-number">4</div>
 								<div class="icon-box">
-									<span class="icon flaticon-banknote"></span>
+									<span class="icon flaticon-money-bag"></span>
 								</div>
 							</div>
 							<div class="lower-box">
@@ -853,82 +629,9 @@ section{
 			</div>
 		</div>
 	</section>
-
-<section id="targets">
-	<div class="container">
-		<h1 class="wow blue forced-top animated fadeIn">Para quienes?</h1>
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="tabs">
-				  	<input type="radio" id="tab1" name="tab-control" checked>
-				  	<input type="radio" id="tab2" name="tab-control">
-				  	<input type="radio" id="tab3" name="tab-control">  
-				  	<input type="radio" id="tab4" name="tab-control">
-				  	<ul>
-					    <li><label for="tab1" role="button"><span>Particulares</span></label></li>
-					    <li><label for="tab2" role="button"><span>Empresa</span></label></li>
-					    <li><label for="tab3" role="button"><span>Comunidades</span></label></li>
-					    <li><label for="tab4" role="button"><span>Administradores</span></label></li>
-				  	</ul>
-  					<div class="slider"><div class="indicator"></div></div>
-  					<div class="content">
-						<section>
-						Texto para Particulares</section>
-						<section>
-						Texto para Empresas</section>
-						<section>
-						Texto para Comunidades</section>
-						<section>
-						Texto para Administradores</section>
-  					</div>
-				</div>
-			</div>
-			<div class="col-lg-6"><img src="{{ asset('/img/target.png') }}" alt="target"></div>
-		</div>
-	</div>
-</section>
-
-<section class="about" id="about">
-	<div class="container">
-		<h2 class="center wow blue forced-top animated fadeIn text-center">Sobre Nosotros</h2>
-		<div class="row">
-			<div class="col-lg-4 wow featured animated fadeInUp">
-				<div class="card">
-					<div class="card-body-featured">
-						<img class="icons" src="{{ asset('/img/01.svg') }}" alt="flag">
-				<h2 class="blue center">Movimiento</h2>
-				<p class="gray big-txt">Los comerciales ganan dinero con nuestras facturas, eso se ha terminado, nace No Negocies, donde tú eres tu propio comercial.</p>
-					</div>
-				</div>
-				
-			</div>
-			<div class="col-lg-4 wow featured animated fadeInUp">
-				<div class="card">
-					<div class="card-body-featured">
-						<img class="icons" src="{{ asset('/img/02.svg') }}" alt="target">
-				<h2 class="blue center">Objetivo</h2>
-				<p class="gray big-txt">Tenemos por objetivo ofrecerte un mundo de posibilidades para ahorrar en tus facturas y que ganes dinero con ello.</p>
-					</div>
-				</div>
-				
-			</div>
-			<div class="col-lg-4 wow featured animated fadeInUp">
-				<div class="card">
-					<div class="card-body-featured">
-						<img class="icons" src="{{ asset('/img/03.svg') }}" alt="magic">
-				<h2 class="blue center">Concepto</h2>
-				<p class="gray big-txt">Te ayudamos a encontrar las mejores opciones y al finalizar una contratación se te abonará la comisión específica en tu cuenta.</p>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-	</div>
-</section>
-
 <section class="target" id="target">
 	<div class="container">
-		<h2 class="white center text-center">Titulo para los targets</h2>
+		<h2 class="white text-center">Titulo para los targets</h2>
 		<p class="white center text-center">Lorem ipsum dolor sit amet nsdou tinasdfm tritani omittam qui mei oblique taimates.</p>
 		<div class="row">
 			<div class="col-lg-3">
@@ -966,23 +669,23 @@ section{
 		</div>
 	</div>
 </section>
-
-
+<section style="height: 900px;padding-top: 300px;text-align: center;" id="temporal2">
+	<div class="container">
+		<h2 class="wow blue  fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">A que esperas para comenzar a ganar dinero y ahorrar en tus suministros?</h2>
+		<br>
+		<a href="#howitworks" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Como funciona?</a> <a href="#login" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger blue-btn-hero">Comenzar</a>
+	</div>
+	
+	
+</section>
 <section class="testimonial-section">
-	<div class="image-layer"></div>
 	<div class="container">
 		<!-- Sec Title -->
 		<div class="sec-title">
-			<div class="title">Testimonios</div>
 			<h2>Que opinan los usuarios<br> sobre nuestro servicio</h2>
 		</div>
 	</div>
 	<div class="outer-container clearfix">
-		<!--Image Column-->
-		<div class="image-column">
-		<figure class="image-box"><img src="{{ asset('images/resource/author-12.png') }}" alt=""></figure>
-	</div>
-	<!--Content Column-->
 	<div class="content-column">
 		<div class="inner-column">
 			<div class="testimonial-carousel owl-carousel owl-theme owl-drag">
@@ -1011,7 +714,7 @@ section{
 									<div class="image">
 										<img src="{{ asset('img/avatar.jpg') }}" alt="">
 									</div>
-									<h5>Frederic Anderson</h5>
+									<h5>Andreu laclau</h5>
 									<div class="designation">President</div>
 								</div>
 								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
@@ -1059,7 +762,8 @@ section{
 	</div>
 </div>
 </section>
-<section class="contactar" id="contactar" style="background: #eaeaea;">
+
+<section class="contactar" id="contactar">
 	<div class="floating-ball-model-3">
 		<span class="floating-ball-1"></span>
 		<span class="floating-ball-2"></span>
@@ -1167,6 +871,7 @@ $(document).ready(function() {
 
 	var the_terms = $("#the-terms");
 
+	// legal stuff before send
     the_terms.click(function() {
         if ($(this).is(":checked")) {
             $("#submitBtn").removeAttr("disabled");
@@ -1179,8 +884,6 @@ $(document).ready(function() {
 	});
 
 	// testimonial
-
-	 // Single Item Carousel
 	if ($('.testimonial-carousel').length) {
 		$('.testimonial-carousel').owlCarousel({
 			loop:true,
@@ -1212,8 +915,6 @@ $(document).ready(function() {
 			}
 		});  		
 	}
-
-
 
 </script>
 
