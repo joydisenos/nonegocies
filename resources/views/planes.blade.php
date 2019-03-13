@@ -251,7 +251,7 @@ details{background: #f1f1f1}
               <li>incluye ..</li>
             </ul>
             <h6 class="card-price text-center">0<span class="currency">€</span><span class="period"></span></h6>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
+            <a href="{{ route('panel.plan' , [0]) }}" class="btn btn-block btn-primary text-uppercase">Contratar</a>
           </div>
         </div>
       </div>
@@ -269,7 +269,7 @@ details{background: #f1f1f1}
               <li>incluye ..</li>
             </ul>
             <h6 class="card-price text-center">29<span class="currency">€</span><span class="period"> x mes</span></h6>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
+            <a href="{{ route('panel.plan' , [2]) }}" class="btn btn-block btn-primary text-uppercase">Contratar</a>
           </div>
         </div>
       </div>
@@ -287,7 +287,7 @@ details{background: #f1f1f1}
               <li>incluye ..</li>
             </ul>
             <h6 class="card-price text-center">49<span class="currency">€</span><span class="period"> x mes</span></h6>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Contratar</a>
+            <a href="{{ route('panel.plan' , [3]) }}" class="btn btn-block btn-primary text-uppercase">Contratar</a>
           </div>
         </div>
       </div>

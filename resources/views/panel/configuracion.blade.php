@@ -125,6 +125,7 @@
                                 @elseif(Auth::user()->plan_id == 3)
                                 Platinum
                                 @endif
+                              <a href="{{ route('planes') }}">cambiar plan</a>
                               </td>
                             </tr>
                         </tbody>

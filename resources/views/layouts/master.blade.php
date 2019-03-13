@@ -183,10 +183,16 @@
 
       $('#olvido-contrasena').click(function (e){
         e.preventDefault();
-        $('#login-form').modal('hide');
-        $('#reset-contrasena').modal('show');
+        $('#form-login').hide('slow');
+        $('#form-olvido').show('slow'); 
       });
-  
+      
+      $('#regresar').click(function (e){
+        e.preventDefault();
+        $('#form-olvido').hide('slow');
+        $('#form-login').show('slow'); 
+      });
+
     </script>
     @yield('scripts')
   </body>

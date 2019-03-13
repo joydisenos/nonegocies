@@ -52,7 +52,7 @@ form.login{margin-top:-24px;}
       <div class="modal-body">
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
-            <form method="POST" action="{{ route('login') }}" class="login">
+            <form method="POST" id="form-login" action="{{ route('login') }}" class="login">
               @csrf
               <a href="{{ route('social.auth', 'facebook') }}" class="" type="submit">
                 <svg viewBox="0 0 46 34">
@@ -84,6 +84,36 @@ form.login{margin-top:-24px;}
                 </button>
               </div>
             </form>
+
+            <form method="POST" style="display:none" id="form-olvido" action="{{ route('password.email') }}">
+              @csrf
+
+              <a id="regresar" href="#" class="form-text small text-muted text-left">
+                &larr; Regresar a Iniciar Sesión
+              </a>
+
+              <div class="form-group">
+                  <label for="email" class="col-md-12 col-form-label">{{ __('E-Mail Address') }}</label>
+
+                      <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                      @if ($errors->has('email'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('email') }}</strong>
+                          </span>
+                      @endif
+                 
+              </div>
+
+              <div class="form-group text-center mb-2">
+                  
+                      <button type="submit" class="btn btn-sm btn-block btn-primary mb-3">
+                          Enviar Solicitud
+                      </button>
+                  
+              </div>
+          </form>
+
           </div>
           <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
             <form method="POST" action="{{ route('register') }}" autocomplete="off">
