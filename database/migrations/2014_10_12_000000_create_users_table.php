@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('localidad')->nullable();
             $table->string('tipodni_id')->nullable();
             $table->string('telefono')->nullable();
+            $table->string('cup_gas')->nullable();
+            $table->string('cup_luz')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

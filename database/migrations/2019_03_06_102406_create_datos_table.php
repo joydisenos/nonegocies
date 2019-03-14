@@ -16,7 +16,7 @@ class CreateDatosTable extends Migration
         Schema::create('datos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('tarjeta');
+            $table->string('tarjeta');
             $table->integer('cvv');
             $table->string('vence');
             $table->timestamps();

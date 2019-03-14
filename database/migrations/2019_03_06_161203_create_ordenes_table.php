@@ -18,12 +18,6 @@ class CreateOrdenesTable extends Migration
             $table->integer('user_id');
             $table->integer('oferta_id');
             $table->float('comision');
-            $table->float('pp1' , 20 , 6)->nullable();
-            $table->float('pp2' , 20 , 6)->nullable();
-            $table->float('pp3' , 20 , 6)->nullable();
-            $table->float('ep1' , 20 , 6)->nullable();
-            $table->float('ep2' , 20 , 6)->nullable();
-            $table->float('ep3' , 20 , 6)->nullable();
             $table->timestamps();
         });
     }

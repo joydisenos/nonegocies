@@ -88,11 +88,13 @@ Route::prefix('admin')->group(function () {
 
    // Usuario
    Route::get('/panel' , 'PanelController@index')->name('panel.index');
-   Route::get('/configuracion' , 'PanelController@configuracion')->name('panel.configuracion');
+   Route::get('/perfil' , 'PanelController@configuracion')->name('panel.configuracion');
    Route::get('/plan' , 'PanelController@planes')->name('panel.planes');
    Route::post('/datos' , 'PanelController@datos')->name('panel.datos');
    Route::get('/mensajes' , 'PanelController@mensajes')->name('panel.mensajes');
 
+   Route::post('/tarjeta' , 'TarjetaController@registrar')->name('registrar.tarjeta');
+   Route::post('/cuenta' , 'CuentaController@registrar')->name('registrar.cuenta');
 
    Route::get('/plan/{plan}' , 'PlanController@cambiarPlan')->name('panel.plan');
    
