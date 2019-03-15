@@ -37,22 +37,26 @@
                     <tbody>
                         @foreach($ofertas as $oferta)
                         <tr>
-                            <td><img src="{{ ($oferta->empresa->logo) ? asset('storage'. $oferta->empresa->logo) : asset('img/nonegocies.png')}}" style="max-width:100px;" class="img-fluid" alt="Logo {{$oferta->empresa->nombre}}"></td>
+                            <td><img src="{{ ($oferta->empresa->logo) ? asset('storage/'. $oferta->empresa->logo) : asset('img/nonegocies.png')}}" style="max-width:100px;" class="img-fluid" alt="Logo {{$oferta->empresa->nombre}}"></td>
                             <!--<td>{{ title_case($oferta->nombre) }} </td>-->
                             <td>{{ $oferta->descripcion }}</td>
                             <td> {{ number_format( ($oferta->totalgeneral) , 2 , ',' , '.') }} € </td>
 							@guest
-							<td>{{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }} €</td>
+							<td>{{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }} €
+							{{ $comision = $oferta->comision * ($oferta->plan1 / 100) }}</td>
 							@else
 								@if(Auth::user()->plan_id == null)
-								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }}</td>
+								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }} €
+								{{ $comision = $oferta->comision * ($oferta->plan1 / 100) }}</td>
 								@elseif(Auth::user()->plan_id == 2)
-								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan2 / 100)) , 2 , ',' , '.') }}</td>
+								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan2 / 100)) , 2 , ',' , '.') }} €
+								{{ $comision = $oferta->comision * ($oferta->plan2 / 100) }}</td>
 								@elseif(Auth::user()->plan_id == 3)
-								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan3 / 100)) , 2 , ',' , '.') }}</td>
+								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan3 / 100)) , 2 , ',' , '.') }} €
+								{{ $comision = $oferta->comision * ($oferta->plan3 / 100) }}</td>
 								@endif
 							@endguest
-                            <td><a href="#">Contratar</a></td>
+                            <td><a href="{{ route('contratar.oferta' , [$oferta->id , $comision] ) }}">Contratar</a></td>
                         </tr>
                         @endforeach
                     </tbody>

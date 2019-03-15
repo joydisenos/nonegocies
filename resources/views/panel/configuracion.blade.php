@@ -85,6 +85,27 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        Nueva Contraseña:
+                                    </td>
+
+                                    <td>
+                                    <div class="form-group input-group input-group-merge m-0">
+              
+                                          
+                                        <input type="password" class="form-control form-control-appended pass" name="password" placeholder="Indique su contraseña nueva">
+
+                                  
+                                        <div class="input-group-append">
+                                          <span class="input-group-text mostrar">
+                                            <i class="fe fe-eye"></i>
+                                          </span>
+                                        </div>
+
+                                      </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Teléfono:
                                     </td>
                                     <td>
@@ -121,6 +142,22 @@
                                     </td>
                                     <td>
                                       <input type="number" name="cp" class="form-control" id="cp" placeholder="CP" value="{{ Auth::user()->cp }}" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        CUP Servicio Gas
+                                    </td>
+                                    <td>
+                                        <input type="text" name="cup_gas" class="form-control" id="cup_gas" placeholder="CUP Gas" value="{{ Auth::user()->cup_gas }}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        CUP Servicio Luz
+                                    </td>
+                                    <td>
+                                    <input type="text" name="cup_luz" class="form-control" id="cup_luz" placeholder="CUP Luz" value="{{ Auth::user()->cup_luz }}">
                                     </td>
                                 </tr>
                                 <tr>

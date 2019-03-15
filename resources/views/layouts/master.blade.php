@@ -78,10 +78,10 @@
             </li>
             @else
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger trigger-drop" href="{{ route('panel.index') }}" >{{ title_case(Auth::user()->name) }} <i class="arrow"></i></a>
+                <a class="nav-link js-scroll-trigger trigger-drop" href="{{ route('panel.configuracion') }}" >{{ title_case(Auth::user()->name) }} {{ (Auth::user()->noleidos() > 0) ? Auth::user()->noleidos() : '' }} <i class="arrow"></i></a>
                 <ul class="drop">
                   <li><a href ="{{ route('panel.configuracion') }}">Perfil</a></li>
-                  <li><a href ="{{ route('panel.mensajes') }}">Mensajes</a></li>
+                  <li><a href ="{{ route('panel.mensajes') }}">Mensajes {{ (Auth::user()->noleidos() > 0) ? Auth::user()->noleidos() : '' }}</a></li>
                   <li><a href ="{{ route('panel.planes') }}">Mis Contratos</a></li>
                   <li><a class="nav-link " href="{{ route('logout') }}"
                  onclick="event.preventDefault();

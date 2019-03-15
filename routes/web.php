@@ -29,6 +29,7 @@ Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 Route::prefix('ofertas')->group(function (){
    Route::get('/' , 'SiteController@categoria')->name('indexofertas');
    Route::post('/' , 'SiteController@consultar')->name('consultar');
+   Route::get('/contratar/{oferta_id}/{comision}' , 'OrdenController@contratar')->name('contratar.oferta');
 });
 
 
@@ -83,13 +84,15 @@ Route::prefix('admin')->group(function () {
    Route::post('/registrar/mensajes' , 'MensajeController@enviar')->name('registrar.mensajes');
    Route::post('/marcar/mensajes' , 'MensajeController@marcar')->name('marcar.mensajes');
 
+   //contratos
+   Route::get('/contratos' , 'DashController@contratos')->name('index.contratos');
 
 });
 
    // Usuario
    Route::get('/panel' , 'PanelController@index')->name('panel.index');
    Route::get('/perfil' , 'PanelController@configuracion')->name('panel.configuracion');
-   Route::get('/plan' , 'PanelController@planes')->name('panel.planes');
+   Route::get('/contratos' , 'PanelController@planes')->name('panel.planes');
    Route::post('/datos' , 'PanelController@datos')->name('panel.datos');
    Route::get('/mensajes' , 'PanelController@mensajes')->name('panel.mensajes');
 

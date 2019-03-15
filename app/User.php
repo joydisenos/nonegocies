@@ -44,6 +44,13 @@ class User extends Authenticatable
         return $empresas;
     }
 
+    public function noleidos()
+    {
+        $num = $this->mensajes->where('leido' , 0)->count();
+
+        return $num;
+    }
+
     public function mensajes()
     {
         return $this->hasMany(Mensajes::class , 'user_id');
@@ -57,5 +64,10 @@ class User extends Authenticatable
     public function cuentas()
     {
         return $this->hasMany(Cobro::class , 'user_id');
+    }
+
+    public function contratos()
+    {
+        return $this->hasMany(Ordenes::class, 'user_id');
     }
 }

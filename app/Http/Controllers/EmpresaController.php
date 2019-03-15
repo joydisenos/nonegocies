@@ -22,7 +22,7 @@ class EmpresaController extends Controller
         
         if( $request->hasFile('logo') )
         {
-            $ruta = '/empresa/'. str_slug($request->nombre , '-');
+            $ruta = 'empresa/'. str_slug($request->nombre , '-');
             $logo = $request->file('logo');
             $nombre = $logo->getClientOriginalName();
             $request->file('logo')->storeAs($ruta, $nombre, 'public');
@@ -78,7 +78,7 @@ class EmpresaController extends Controller
             
             if( $request->hasFile('logo') )
             {
-                $ruta = '/empresa/'. str_slug($request->nombre , '-');
+                $ruta = 'empresa/'. str_slug($request->nombre , '-');
                 $logo = $request->file('logo');
                 $nombre = $logo->getClientOriginalName();
                 $request->file('logo')->storeAs($ruta, $nombre, 'public');

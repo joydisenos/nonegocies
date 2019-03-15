@@ -9,6 +9,7 @@ use App\Empresa;
 use App\Categoria;
 use App\Ajuste;
 use App\Ofertas;
+use App\Ordenes;
 
 class DashController extends Controller
 {
@@ -88,5 +89,12 @@ class DashController extends Controller
     public function crearUsuario()
     {
         return view('dashboard.crearusuario');
+    }
+
+    public function contratos()
+    {
+        $contratos = Ordenes::all();
+
+        return view('dashboard.contratos' , compact('contratos'));
     }
 }

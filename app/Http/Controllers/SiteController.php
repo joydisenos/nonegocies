@@ -101,6 +101,7 @@ class SiteController extends Controller
         $tarifa = (int)$request->tarifa;
         
         $ofertas = $refOfertas->getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias);
+        
         return view('ofertas.resultados' , compact('ofertas' , 'categoria'));
     }
 }

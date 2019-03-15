@@ -60,6 +60,8 @@ class PanelController extends Controller
         $user->localidad = $request->localidad;
         $user->telefono = $request->telefono;
         $user->tipo = $request->tipo;
+        $user->cup_gas = $request->cup_gas;
+        $user->cup_luz = $request->cup_luz;
         $user->save();
 
         return redirect()->back()->with('status','Datos Actualizados Correctamente');

@@ -80,6 +80,12 @@
               </li>
 
               <li class="nav-item">
+                <a class="nav-link" href="{{ route('index.contratos') }}">
+                  <i class="fe fe-user"></i> Contratos
+                </a>
+              </li>
+
+              <li class="nav-item">
                 <a class="nav-link" href="{{ route('enviar.mensajes') }}">
                   <i class="fe fe-mail"></i> Mensajes
                 </a>
