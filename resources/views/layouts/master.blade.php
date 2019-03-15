@@ -168,6 +168,11 @@
         $('#login-form').modal('show');
       });
 
+      $('.iniciar').click(function(e){
+        e.preventDefault();
+        $('#login-form').modal('show');
+      });
+
       $('#registro-sesion').click(function(e){
         e.preventDefault();
         $('#register-form').modal('show');

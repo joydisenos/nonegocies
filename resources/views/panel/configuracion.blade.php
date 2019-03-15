@@ -6,21 +6,23 @@
 	    color: dimgray !important;
 	    line-height: 1.5 !important
 	}
+  .card {
+      margin-bottom: 50px;
+  }
 </style>
 <header class="page">
 	<div class="container">
-	<h1 class="animated fadeInLeft">Configuración</h1>
-  <p class="animated fadeInDown">Bienvenido {{ title_case(Auth::user()->name) }}, Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p>
+	<h1 class="animated fadeInLeft">Mis Datos</h1>
 	</div>
 </header>
 
 <div class="container">
 
-  <div class="row mt-4">
-    <div class="col-md-4">
+  <div class="row mt-3">
+    <div class="col-md-3">
       @include('includes.nav-panel')
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
       <div class="card">
                 <div class="card-header p-4">
                   
@@ -49,90 +51,98 @@
                   
                 <div class="row align-items-center">
                     <div class="col">
-                    
-                      <div class="table-responsive">
-                        <table class="table table-hover">
-                          <thead>
-                            <th width="40%">Nombre:</th>
-                            <th>{{ title_case(Auth::user()->name) }} {{ title_case(Auth::user()->apellido) }}</th>
-                          </thead>
-                          <tbody>
-                              <tr>
+                      <form action="{{ route('panel.datos') }}" method="post" id="form-datos">
+                        @csrf
+                        <input type="hidden" name="name" value="{{Auth::user()->name}}">
+                        <input type="hidden" name="apellido" value="{{Auth::user()->apellido}}">
+                        <div class="table-responsive">
+                          <table class="table table-hover">
+                            <thead>
+                              <th width="40%">Nombre:</th>
+                              <th>{{ title_case(Auth::user()->name) }} {{ title_case(Auth::user()->apellido) }}</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Email:
+                                    </td>
+                                    <td>
+                                        {{ Auth::user()->email }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tipo de Usuario:
+                                    </td>
+                                    <td>
+                                          <select name="tipo" class="form-control">
+                                                <option value="1" {{(Auth::user()->tipo == 1)? 'selected' : ''}}>Particular</option>
+                                                <option value="2" {{(Auth::user()->tipo == 2)? 'selected' : ''}}>Empresa</option>
+                                                <option value="3" {{(Auth::user()->tipo == 3)? 'selected' : ''}}>Comunidad</option>
+                                                <option value="4" {{(Auth::user()->tipo == 4)? 'selected' : ''}}>Administrador</option>
+                                          </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Teléfono:
+                                    </td>
+                                    <td>
+                                      <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Número telefónico" value="{{ Auth::user()->telefono }}" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        DNI:
+                                    </td>
+                                    <td>
+                                    <input type="number" name="dni" class="form-control" id="dni" placeholder="DNI" value="{{ Auth::user()->dni }}" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Dirección:
+                                    </td>
+                                    <td>
+                                      <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección" value="{{ Auth::user()->direccion }}" required>
+                                    </td>
+                                </tr>
+                                <tr>    
+                                    <td>
+                                        Localidad:
+                                    </td>
+                                    <td>
+                                        <input type="text" name="localidad" class="form-control" id="localidad" placeholder="Localidad" value="{{ Auth::user()->localidad }}" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        CP
+                                    </td>
+                                    <td>
+                                      <input type="number" name="cp" class="form-control" id="cp" placeholder="CP" value="{{ Auth::user()->cp }}" required>
+                                    </td>
+                                </tr>
+                                <tr>
                                   <td>
-                                      Email:
+                                    Plan activo:
                                   </td>
                                   <td>
-                                      {{ Auth::user()->email }}
+                                    @if(Auth::user()->plan_id == null)
+                                    Gratis
+                                    @elseif(Auth::user()->plan_id == 2)
+                                    Premium
+                                    @elseif(Auth::user()->plan_id == 3)
+                                    Platinum
+                                    @endif
+                                  <a href="{{ route('planes') }}">cambiar plan</a>
                                   </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Tipo de Usuario:
-                                  </td>
-                                  <td>
-                                      @if(Auth::user()->tipo == 1)
-                                      Particular
-                                      @elseif(Auth::user()->tipo == 2)
-                                      Empresa
-                                      @elseif(Auth::user()->tipo == 3)
-                                      Comunidad
-                                      @elseif(Auth::user()->tipo == 4)
-                                      Administrador
-                                      @endif
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Teléfono:
-                                  </td>
-                                  <td>
-                                      {{ Auth::user()->telefono }}
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      DNI:
-                                  </td>
-                                  <td>
-                                      {{ Auth::user()->dni }}
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Dirección:
-                                  </td>
-                                  <td>
-                                      {{ Auth::user()->direccion }}
-                                  </td>
-                              </tr>
-                              <tr>    
-                                  <td>
-                                      Localidad:
-                                  </td>
-                                  <td>
-                                      {{ Auth::user()->localidad }}
-                                  </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Plan activo:
-                                </td>
-                                <td>
-                                  @if(Auth::user()->plan_id == null)
-                                  Gratis
-                                  @elseif(Auth::user()->plan_id == 2)
-                                  Premium
-                                  @elseif(Auth::user()->plan_id == 3)
-                                  Platinum
-                                  @endif
-                                <a href="{{ route('planes') }}">cambiar plan</a>
-                                </td>
-                              </tr>
-                          </tbody>
-                        </table>
-                        
-                      </div>
-                      
+                                </tr>
+                            </tbody>
+                          </table>
+                          
+                        </div>
+                      </form>
                         <div class="row mb-2 mt-2">
                             <div class="col">
                                 <h3>Datos de Pago</h3>
@@ -301,8 +311,8 @@
                                             <select name="tipo" class="form-control">
                                               <option value="1" {{(Auth::user()->tipo == 1)? 'selected' : ''}}>Particular</option>
                                               <option value="2" {{(Auth::user()->tipo == 2)? 'selected' : ''}}>Empresa</option>
-                                              <option value="3" {{(Auth::user()->tipo == 2)? 'selected' : ''}}>Comunidad</option>
-                                              <option value="4" {{(Auth::user()->tipo == 2)? 'selected' : ''}}>Administrador</option>
+                                              <option value="3" {{(Auth::user()->tipo == 3)? 'selected' : ''}}>Comunidad</option>
+                                              <option value="4" {{(Auth::user()->tipo == 4)? 'selected' : ''}}>Administrador</option>
                                             </select>
                                       </div>
                                     </div>
@@ -455,12 +465,12 @@
   
                             <div class="col-md-6">
                                 <label for="nombre-cuenta">Nombre</label>
-                                <input type="text" id="nombre-cuenta" name="nombre" class="form-control" placeholder="Nombre del titular" required>
+                                <input type="text" id="nombre-cuenta" name="nombre" class="form-control" placeholder="Nombre del titular" value="{{ Auth::user()->name }}" required>
                               </div> 
   
                                 <div class="col-md-6">
                                   <label for="apellido-cuenta">Apellido</label>
-                                  <input type="text" id="apellido-cuenta" name="apellido" class="form-control" placeholder="Apellido del titular" required>
+                                  <input type="text" id="apellido-cuenta" name="apellido" class="form-control" placeholder="Apellido del titular" value="{{ Auth::user()->apellido }}" required>
                                 </div>
   
                                       
@@ -496,7 +506,8 @@
 
     $('#actualizar').click(function(e){
       e.preventDefault();
-      $('#datos').modal('show');
+      //$('#datos').modal('show');
+      $('#form-datos').submit();
     });
 
     $('#tarjeta').click(function(e){

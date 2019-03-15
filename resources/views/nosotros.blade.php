@@ -369,7 +369,7 @@ img.icons{
     </div>
   </div>
 </section>
-
+<!-- 
 <section>
   <style>.icons-list span.icon {font-size: 30px}</style>
   <div class="container">
@@ -547,6 +547,6 @@ img.icons{
 </div>
     </div>
   </div>
-</section>
+</section> -->
 
 @endsection

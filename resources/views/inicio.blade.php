@@ -508,7 +508,13 @@ section{
 		<div class="hero-text">
 			<h1 class="title-hero fadeInDown animated">Te pagamos por ahorrar en tus facturas</h1>
 			<h2 class="subtitle-hero fadeInRight animated">Te damos la comisión de venta por cada contratación de servicio en nuestra web</h2>
-			<a href="#howitworks" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Como funciona?</a> <a href="#login" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger blue-btn-hero">Comenzar</a>
+			<a href="#howitworks" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Como funciona?</a> 
+			
+			@guest
+			<a href="#login" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger blue-btn-hero iniciar">Comenzar</a>
+			@else
+			<a href="{{ route('indexofertas') }}" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger blue-btn-hero">Comenzar</a>
+			@endguest
 		</div>
 		<div class="social-wrapper">
 			<h5>Síguenos</h5>
@@ -673,7 +679,13 @@ section{
 	<div class="container">
 		<h2 class="wow blue  fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">A que esperas para comenzar a ganar dinero y ahorrar en tus suministros?</h2>
 		<br>
-		<a href="#howitworks" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Como funciona?</a> <a href="#login" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger blue-btn-hero">Comenzar</a>
+		<a href="#howitworks" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger">Como funciona?</a> 
+		
+		@guest
+		<a href="#login" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger blue-btn-hero iniciar">Comenzar</a>
+		@else
+		<a href="{{ route('indexofertas') }}" class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger blue-btn-hero">Comenzar</a>
+		@endguest
 	</div>
 	
 	

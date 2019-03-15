@@ -37,7 +37,7 @@
                     <tbody>
                         @foreach($ofertas as $oferta)
                         <tr>
-                            <td><img src="{{ ($oferta->empresa->logo) ? asset('storage/'. $oferta->empresa->logo) : asset('img/nonegocies.png')}}" style="max-width:100px;" class="img-fluid" alt="Logo {{$oferta->empresa->nombre}}"></td>
+                            <td><img src="{{ ($oferta->empresa->logo) ? asset('storage'. $oferta->empresa->logo) : asset('img/nonegocies.png')}}" style="max-width:100px;" class="img-fluid" alt="Logo {{$oferta->empresa->nombre}}"></td>
                             <!--<td>{{ title_case($oferta->nombre) }} </td>-->
                             <td>{{ $oferta->descripcion }}</td>
                             <td> {{ number_format( ($oferta->totalgeneral) , 2 , ',' , '.') }} € </td>

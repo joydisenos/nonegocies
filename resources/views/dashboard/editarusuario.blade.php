@@ -176,6 +176,122 @@
                 
               
             </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Datos de Cobro
+                    </h4>
+
+                  </div>
+                  <div class="col-auto">
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+
+              <div class="container">
+                @foreach($usuario->tarjetas as $tarjeta)
+                  <div class="row p-3">
+                      <div class="col-4">
+
+                              <h4>Tarjeta:</h4>
+
+                      </div>
+                      <div class="col">
+                             <h4> {{ $tarjeta->tarjeta }}</h4>
+                      </div>
+                  </div>
+
+                  <div class="row p-3">
+                      <div class="col-4">
+
+                              <h4>Código de Seguridad (CVV):</h4>
+
+                      </div>
+                      <div class="col">
+                             <h4> {{ $tarjeta->cvv }}</h4>
+                      </div>
+                  </div>
+
+                  <div class="row p-3">
+                      <div class="col-4">
+
+                              <h4>Vence:</h4>
+
+                      </div>
+                      <div class="col">
+                             <h4> {{ $tarjeta->vence }}</h4>
+                      </div>
+                  </div>
+                @endforeach
+                
+              </div>
+                
+              
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Datos de Pago
+                    </h4>
+
+                  </div>
+                  <div class="col-auto">
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+
+              <div class="container">
+                @foreach($usuario->cuentas as $cuenta)
+                  <div class="row p-3">
+                      <div class="col-4">
+
+                              <h4>Número:</h4>
+
+                      </div>
+                      <div class="col">
+                             <h4> {{ $cuenta->numero }}</h4>
+                      </div>
+                  </div>
+
+                  <div class="row p-3">
+                      <div class="col-4">
+
+                              <h4>Titular:</h4>
+
+                      </div>
+                      <div class="col">
+                             <h4> {{ title_case($cuenta->nombre) }} {{ title_case($cuenta->apellido) }}</h4>
+                      </div>
+                  </div>
+
+                  <div class="row p-3">
+                      <div class="col-4">
+
+                              <h4>Banco:</h4>
+
+                      </div>
+                      <div class="col">
+                             <h4> {{ $cuenta->banco }}</h4>
+                      </div>
+                  </div>
+                @endforeach
+                
+              </div>
+                
+              
+            </div>
           
         </div> <!-- / .row -->
       </div>

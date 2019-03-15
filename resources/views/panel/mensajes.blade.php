@@ -6,35 +6,33 @@
 	    color: dimgray !important;
 	    line-height: 1.5 !important
 	}
+.card-body {
+    padding-top: 0;
+    min-height: 350px;
+}
 </style>
 <header class="page">
 	<div class="container">
 	<h1 class="animated fadeInLeft">Mensajes</h1>
-  <p class="animated fadeInDown">Bienvenido {{ title_case(Auth::user()->name) }}, Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p>
+<!--   <p class="animated fadeInDown">Bienvenido {{ title_case(Auth::user()->name) }}, Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p> -->
 	</div>
 </header>
 
 <div class="container">
 
-  <div class="row mt-4">
-    <div class="col-md-4">
+  <div class="row mt-3">
+    <div class="col-md-3">
       @include('includes.nav-panel')
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9" style="min-height: 500px">
     <div class="card">
               <div class="card-header p-4">
                 
               <div class="row align-items-center">
                   <div class="col">
-                
                     <!-- Title -->
-                    <h4 class="card-header-title">
-                      Mensajes de {{ title_case(Auth::user()->name) }}
-                    </h4>
-
+                    <h4 class="card-header-title">Mensajes de {{ title_case(Auth::user()->name) }}</h4>
                   </div>
-
-                  
                   
                   <div class="col-auto">
                     <!-- <a href="#!" id="actualizar" class="btn btn-sm btn-block btn-primary p-2">
@@ -62,7 +60,7 @@
                             @foreach($mensajes as $mensaje)
                                 <tr class="{{ $mensaje->leido == 0 ? 'font-weight-bold' : '' }} fila" data-asunto="{{ $mensaje->asunto }}" data-mensaje="{{ $mensaje->mensaje }}" data-fecha="{{ $mensaje->created_at->format('d/m/y') }}">
                                     <td>{{ $mensaje->asunto }}</td>
-                                    <td>{!! str_limit($mensaje->mensaje , 45 , '...<a href="#" class="ver-mas" data-toggle="modal" data-target="#mensaje">ver mas</a>') !!}</td>
+                                    <td>{!! str_limit($mensaje->mensaje , 45 , '... <a href="#" class="ver-mas" data-toggle="modal" data-target="#mensaje">ver mas</a>') !!}</td>
                                     <td>{{ $mensaje->created_at->format('d/m/y') }}</td>
                                     <td>
                                     <form class="marcar-mensaje">
