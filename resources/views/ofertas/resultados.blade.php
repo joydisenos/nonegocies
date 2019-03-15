@@ -43,17 +43,21 @@
                             <td> {{ number_format( ($oferta->totalgeneral) , 2 , ',' , '.') }} € </td>
 							@guest
 							<td>{{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }} €
-							{{ $comision = $oferta->comision * ($oferta->plan1 / 100) }}</td>
+							<?php $comision = $oferta->comision * ($oferta->plan1 / 100); ?>
+							</td>
 							@else
 								@if(Auth::user()->plan_id == null)
 								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }} €
-								{{ $comision = $oferta->comision * ($oferta->plan1 / 100) }}</td>
+								<?php $comision = $oferta->comision * ($oferta->plan1 / 100);  ?>
+								</td>
 								@elseif(Auth::user()->plan_id == 2)
 								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan2 / 100)) , 2 , ',' , '.') }} €
-								{{ $comision = $oferta->comision * ($oferta->plan2 / 100) }}</td>
+								<?php $comision = $oferta->comision * ($oferta->plan2 / 100);  ?>
+								</td>
 								@elseif(Auth::user()->plan_id == 3)
 								<td>Ganas desde: {{ number_format( ($oferta->comision * ($oferta->plan3 / 100)) , 2 , ',' , '.') }} €
-								{{ $comision = $oferta->comision * ($oferta->plan3 / 100) }}</td>
+								<?php $comision = $oferta->comision * ($oferta->plan3 / 100);  ?>
+								</td>
 								@endif
 							@endguest
                             <td><a href="{{ route('contratar.oferta' , [$oferta->id , $comision] ) }}">Contratar</a></td>
