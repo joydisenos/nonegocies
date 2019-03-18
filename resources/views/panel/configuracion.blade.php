@@ -39,9 +39,7 @@
                     
                     
                     <div class="col-auto">
-                      <a href="#!" id="actualizar" class="btn btn-sm btn-block btn-primary p-2">
-                        Actualizar Datos
-                      </a>
+                      
                     </div>
                     
                   </div> <!-- / .row -->
@@ -179,21 +177,18 @@
                           </table>
                           
                         </div>
-                      </form>
+                      
                         <div class="row mb-2 mt-2">
                             <div class="col">
                                 <h3>Datos de Pago</h3>
                             </div>
                             <div class="col-auto">
-                                <a href="#!" id="tarjeta" class="btn btn-sm btn-block btn-primary p-2">
+                                <!--<a href="#!" id="tarjeta" class="btn btn-sm btn-block btn-primary p-2">
                                     Agregar Tarjeta
-                                  </a>
+                                  </a>-->
                             </div>
                         </div>
-                        @if(Auth::user()->tarjetas->count() < 1)
-                        <h5>No Definido</h5>
-                        @else
-                        @foreach(Auth::user()->tarjetas as $tarjeta)
+                        
                           <div class="table-responsive">
                             
                             <table class="table table-hover">
@@ -202,7 +197,7 @@
                                   Tarjeta
                                 </th>
                                 <th>
-                                  {{ $tarjeta->tarjeta }}
+                                  <input type="text" class="form-control" value="{{ $tarjeta == null ? '' : $tarjeta->tarjeta }}" name="tarjeta">
                                 </th>
                               </thead>
                               <tbody>
@@ -211,7 +206,7 @@
                                     Código de Seguridad (CVV)
                                   </td>
                                   <td>
-                                    {{ $tarjeta->cvv }}
+                                    <input type="number" min="0" class="form-control" value="{{ $tarjeta == null ? '' : $tarjeta->cvv }}" name="cvv">
                                   </td>
                                 </tr>
                                 <tr>
@@ -219,31 +214,26 @@
                                     Vence
                                   </td>
                                   <td>
-                                    {{ $tarjeta->vence }}
+                                    <input type="text" class="form-control" value="{{ $tarjeta == null ? '' : $tarjeta->vence }}" name="vence">
                                   </td>
                                 </tr>
                               </tbody>
                             </table>
                            
                           </div>
-                          @endforeach
-                      @endif
+                          
 
                           <div class="row mb-2 mt-2">
                             <div class="col">
                                 <h3>Datos de Cobro</h3>
                             </div>
                             <div class="col-auto">
-                                <a href="#!" id="cuenta" class="btn btn-sm btn-block btn-primary p-2">
+                                <!-- <a href="#!" id="cuenta" class="btn btn-sm btn-block btn-primary p-2">
                                     Agregar cuenta
-                                  </a>
+                                  </a> -->
                             </div>
                           </div>
-                        @if(Auth::user()->cuentas->count() < 1)
-                        <h5>No Definido</h5>
-                        @else
-
-                        @foreach(Auth::user()->cuentas as $cuenta)
+                       
                           <div class="table-responsive">
                             
                             <table class="table table-hover">
@@ -252,7 +242,7 @@
                                   Cuenta
                                 </th>
                                 <th>
-                                  {{ $cuenta->numero }}
+                                  <input type="text" class="form-control" value="{{ $cuenta == null ? '' : $cuenta->numero }}" name="numero">
                                 </th>
                               </thead>
                               <tbody>
@@ -261,7 +251,7 @@
                                     Titular
                                   </td>
                                   <td>
-                                    {{ title_case($cuenta->nombre) }} {{ title_case($cuenta->apellido) }}
+                                    <input type="text" class="form-control" value="{{ $cuenta == null ? title_case(Auth::user()->name) : title_case($cuenta->nombre) }} {{ $cuenta == null ? title_case(Auth::user()->apellido) : title_case($cuenta->apellido) }}" name="nombre">
                                   </td>
                                 </tr>
                                 <tr>
@@ -269,16 +259,24 @@
                                     Banco
                                   </td>
                                   <td>
-                                    {{ $cuenta->banco }}
+                                    <input type="text" class="form-control" value="{{ $cuenta == null ? '' : $cuenta->banco }}" name="banco">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                  </td>
+                                  <td>
+                                      <a href="#!" id="actualizar" class="btn btn-sm btn-block btn-primary p-2">
+                                        Actualizar Datos
+                                      </a>
                                   </td>
                                 </tr>
                               </tbody>
                             </table>
                             
                           </div>
-                          @endforeach
-
-                      @endif
+                         
+                      </form>
                     </div>
                   </div> <!-- / .row -->
 
