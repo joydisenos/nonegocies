@@ -110,7 +110,13 @@
                         {{ $usuario->email }}
                       </td>
                       <td class="goal-date">
-                        {{ ($usuario->plan_id) ? $usuario->plan_id : 'Inicial' }}
+              			@if($usuario->plan_id == null)
+              				Inicial
+              			@elseif($usuario->plan_id == 2)
+              				Premium
+              			@elseif($usuario->plan_id == 3)
+              				Platinum
+              			@endif
                       </td>
                       <td class="text-right">
                         {{ ($usuario->telefono) ? $usuario->telefono : 'No Registrado'}}

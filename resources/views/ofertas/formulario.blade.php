@@ -1,18 +1,62 @@
 @extends('layouts.master')
 @section('content')
-<header class="masthead" id="hero">
-	<div class="overlay"></div>
-	<div class="container d-flex h-100 align-items-center">
-		<div class="hero-text">
-			<h1 class="title-hero fadeInDown animated">Calcula el ahorro de tu próximo servicio en línea</h1>
-			<h2 class="subtitle-hero fadeInRight animated">Te damos la comisión de venta por cada contratación de servicio en nuestra web</h2>
-		</div>
-		
-		<div class="sheader-shape">
-			<img src="{{  asset('img/wave.png')}}" alt="Shape">
-		</div>
-	</div>
+<style>
+    img.icons {
+    padding-top: 7px;
+    margin-left: -1px;
+    margin: 0 auto;
+    display: block;
+    height: 140px;
+}
+.card-body-featured {
+    padding: 30px 0;
+    background: #F44336;
+    color: white;
+    border-radius: 6px;
+}
+
+h2.center.wow.blue.forced-top.fadeIn.text-center.animated {
+    padding-bottom: 80px;
+}
+
+</style>
+<header class="page">
+  <div class="container">
+    <h1 class="animated fadeInLeft">Nuestras Ofertas</h1>
+    <p class="animated fadeInDown">Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p>
+  </div>
 </header>
+<section class="step1">
+  <div class="container">
+    <h2 class="center wow blue forced-top animated fadeIn text-center">Qué Busco?</h2>
+    <div class="row">
+      <div class="col-lg-4 wow featured animated fadeInUp">
+        <div class="card">
+          <div class="card-body-featured">
+           <!--  <img class="icons" src="{{ asset('/img/01.svg') }}" alt="flag"> -->
+            <h3 class="blue center">LUZ</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 wow featured animated fadeInUp">
+        <div class="card">
+          <div class="card-body-featured">
+           <!--  <img class="icons" src="{{ asset('/img/02.svg') }}" alt="target"> -->
+            <h3 class="blue center">GAS</h3>
+            </div>
+        </div>
+    </div>
+      <div class="col-lg-4 wow featured animated fadeInUp">
+        <div class="card">
+          <div class="card-body-featured">
+            <!-- <img class="icons" src="{{ asset('/img/03.svg') }}" alt="magic"> -->
+            <h3 class="blue center">TELEFONIA</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="contactar" id="contactar">
 	<div class="floating-ball-model-3">
