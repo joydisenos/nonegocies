@@ -18,7 +18,10 @@ class OrdenController extends Controller
     {
         if(Auth::user()->tarjetas->count() < 1 )
         {
-            return redirect()->route('panel')->with('status','Debe completar los datos para realizar el pago');
+            return redirect()->back()->with('status','Debe completar los datos para realizar el pago');
+        }
+        elseif(Auth::user()->cup_luz == null ){
+            return redirect()->back()->with('status','Debe completar los datos para realizar el pago');
         }else{
             $orden = new Ordenes ();
             $orden->user_id = Auth::user()->id;
