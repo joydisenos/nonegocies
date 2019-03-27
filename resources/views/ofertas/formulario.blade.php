@@ -19,6 +19,10 @@ h2.center.wow.blue.forced-top.fadeIn.text-center.animated {
     padding-bottom: 80px;
 }
 
+.ocultar{
+        display: none;
+}
+
 </style>
 <header class="page">
   <div class="container">
@@ -30,35 +34,51 @@ h2.center.wow.blue.forced-top.fadeIn.text-center.animated {
   <div class="container">
     <h2 class="center wow blue forced-top animated fadeIn text-center">Qué Busco?</h2>
     <div class="row">
-      <div class="col-lg-4 wow featured animated fadeInUp">
+      <div class="col-lg-3 wow featured animated fadeInUp">
         <div class="card">
-          <div class="card-body-featured">
-           <!--  <img class="icons" src="{{ asset('/img/01.svg') }}" alt="flag"> -->
-            <h3 class="blue center">LUZ</h3>
-          </div>
+                <a href="#contratar-luz" class="text-light step">
+                        <div class="card-body-featured">
+                        <!--  <img class="icons" src="{{ asset('/img/01.svg') }}" alt="flag"> -->
+                        <h3 class="blue center">LUZ</h3>
+                        </div>
+                </a>
         </div>
       </div>
-      <div class="col-lg-4 wow featured animated fadeInUp">
+      <div class="col-lg-3 wow featured animated fadeInUp">
         <div class="card">
-          <div class="card-body-featured">
-           <!--  <img class="icons" src="{{ asset('/img/02.svg') }}" alt="target"> -->
-            <h3 class="blue center">GAS</h3>
-            </div>
+                <a href="#contratar-gas" class="text-light step">
+                        <div class="card-body-featured">
+                <!--  <img class="icons" src="{{ asset('/img/02.svg') }}" alt="target"> -->
+                        <h3 class="blue center">GAS</h3>
+                        </div>
+                </a>
         </div>
     </div>
-      <div class="col-lg-4 wow featured animated fadeInUp">
+      <div class="col-lg-3 wow featured animated fadeInUp">
         <div class="card">
-          <div class="card-body-featured">
-            <!-- <img class="icons" src="{{ asset('/img/03.svg') }}" alt="magic"> -->
-            <h3 class="blue center">TELEFONIA</h3>
-          </div>
+                <a href="{{ route('ofertas.telefonia') }}" class="text-light">
+                        <div class="card-body-featured">
+                        <!-- <img class="icons" src="{{ asset('/img/03.svg') }}" alt="magic"> -->
+                        <h3 class="blue center">TELEFONÍA</h3>
+                        </div>
+                </a>
+        </div>
+      </div>
+      <div class="col-lg-3 wow featured animated fadeInUp">
+        <div class="card">
+                <a href="{{ route('ofertas.seguros') }}" class="text-light">
+                        <div class="card-body-featured">
+                        <!-- <img class="icons" src="{{ asset('/img/03.svg') }}" alt="magic"> -->
+                        <h3 class="blue center">SEGUROS</h3>
+                        </div>
+                </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="contactar" id="contactar">
+<section class="contactar ocultar" id="contratar-luz">
 	<div class="floating-ball-model-3">
 		<span class="floating-ball-1"></span>
 		<span class="floating-ball-2"></span>
@@ -212,5 +232,20 @@ h2.center.wow.blue.forced-top.fadeIn.text-center.animated {
 	</div>
 </section>
 
+@endsection
+@section('scripts')
+<script>
+        $(document).ready(function(){
+                $('.step').click(function(e){
+                        e.preventDefault();
+                        $('.ocultar').hide();
+                        target = $(this).attr('href');
+                        $(target).show();
+                        $('html, body').animate({
+                                scrollTop: $(target).offset().top
+                        }, 2000);
+                });
+        });
+</script>
 @endsection
 
