@@ -29,8 +29,8 @@ Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 Route::prefix('ofertas')->group(function (){
    Route::get('/' , 'SiteController@categoria')->name('indexofertas');
    Route::post('/' , 'SiteController@consultar')->name('consultar');
-   Route::post('/seguros' , 'SiteController@seguros')->name('ofertas.seguros');
-   Route::post('/telefonia' , 'SiteController@telefonia')->name('ofertas.telefonia');
+   Route::get('/seguros' , 'SiteController@seguros')->name('ofertas.seguros');
+   Route::get('/telefonia' , 'SiteController@telefonia')->name('ofertas.telefonia');
    Route::get('/contratar/{oferta_id}/{comision}' , 'OrdenController@contratar')->name('contratar.oferta');
 });
 

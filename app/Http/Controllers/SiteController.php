@@ -26,6 +26,16 @@ class SiteController extends Controller
         return view('nosotros');
     }
 
+    public function seguros()
+    {
+        return view('ofertas.seguros');
+    }
+
+    public function telefonia()
+    {
+        return view('ofertas.telefonia');
+    }
+
     public function terminos()
     {
         $refLegal = Ajuste::first();
