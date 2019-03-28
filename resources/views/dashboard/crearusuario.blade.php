@@ -28,14 +28,14 @@
               </div>
               <div class="col-auto">
                
-                <!-- Button trigger modal -->
+                <!-- Button trigger modal 
               
             
                     <button type="submit" class="btn btn-primary">
                             Crear
                     </button>
                 
-
+-->
               </div>
             </div> <!-- / .row -->
           </div> <!-- / .header-body -->
@@ -159,6 +159,36 @@
                           </div>
                         </div>
 
+                        <h3 class="mt-3">Datos de Tarjeta de Crédito (opcional)</h3>
+
+                        <div class="form-group row">
+                          <div class="col-md-6">
+                              <label for="numero-tarjeta">Número de Tarjeta</label>
+                            <input type="text" class="form-control" id="numero-tarjeta" value="" placeholder="Número de Tarjeta" name="tarjeta">
+                          </div>
+                          <div class="col-md-4">
+                              <label for="vence-tarjeta">Fecha de Vencimiento</label>
+                            <input type="text" class="form-control" id="vence-tarjeta" value="" name="vence">
+                          </div>
+                          <div class="col-md-2">
+                              <label for="cvv-tarjeta">CVV</label>
+                            <input type="number" min="0" id="cvv-tarjeta" class="form-control" value="" name="cvv">
+                          </div>
+                        </div>
+
+                        <h3 class="mt-3">Datos de Cuenta (opcional)</h3>
+                        
+                        <div class="form-group row">
+                            <div class="col-md-8">
+                                <label for="numero-cuenta">Número de cuenta</label>
+                                <input type="text" class="form-control" id="numero-cuenta" name="numero">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="banco-cuenta">Banco</label>
+                                <input type="text" class="form-control" id="banco-cuenta" name="banco">
+                            </div>
+              
+                          </div>
                        
 
                         <div class="form-group">

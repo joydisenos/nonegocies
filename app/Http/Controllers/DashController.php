@@ -24,7 +24,13 @@ class DashController extends Controller
         $refOfertas = new Ofertas();
         $ofertasNum = $refOfertas->ofertas()->count();
 
-        return view('dashboard.home' , compact('ofertasNum'));
+        $refContratos = new Ordenes();
+        $contratosNum = $refContratos->contratos()->count();
+
+        $refContactar = new Contactar();
+        $porContactar = $refContactar->porContactar()->count();
+
+        return view('dashboard.home' , compact('ofertasNum' , 'contratosNum' , 'porContactar'));
     }
 
     public function usuarios()

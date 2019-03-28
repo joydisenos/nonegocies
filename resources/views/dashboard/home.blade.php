@@ -49,7 +49,7 @@
 
                     <!-- Title -->
                     <h6 class="card-title text-uppercase text-muted mb-2">
-                      Budget
+                      Total
                     </h6>
                     
                     <!-- Heading -->
@@ -66,7 +66,7 @@
                   <div class="col-auto">
                     
                     <!-- Icon -->
-                    <span class="h2 fe fe-dollar-sign text-muted mb-0"></span>
+                    <span class="h2 text-muted mb-0">€</span>
 
                   </div>
                 </div> <!-- / .row -->
@@ -116,7 +116,7 @@
 
                     <!-- Title -->
                     <h6 class="card-title text-uppercase text-muted mb-2">
-                      Progress
+                      Por contactar
                     </h6>
 
                     <div class="row align-items-center no-gutters">
@@ -124,16 +124,13 @@
 
                         <!-- Heading -->
                         <span class="h2 mr-2 mb-0">
-                          84.5%
+                          {{ $porContactar }}
                         </span>
                         
                       </div>
                       <div class="col">
                         
-                        <!-- Progress -->
-                        <div class="progress progress-sm">
-                          <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                        
 
                       </div>
                     </div> <!-- / .row -->
@@ -161,19 +158,19 @@
 
                     <!-- Title -->
                     <h6 class="card-title text-uppercase text-muted mb-2">
-                      Effective Hourly
+                      Contratos
                     </h6>
                     
                     <!-- Heading -->
                     <span class="h2 mb-0">
-                      $85.50
+                      {{ $contratosNum }}
                     </span>
 
                   </div>
                   <div class="col-auto">
                     
                     <!-- Icon -->
-                    <span class="h2 fe fe-clock text-muted mb-0"></span>
+                    <span class="h2 fe fe-activity text-muted mb-0"></span>
 
                   </div>
                 </div> <!-- / .row -->

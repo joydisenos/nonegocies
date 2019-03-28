@@ -15,4 +15,9 @@ class Ordenes extends Model
     {
         return $this->belongsTo(User::class , 'user_id');
     }
+
+    public function contratos()
+    {
+        return $this->where('estatus' , '>=' , 1)->get();
+    }
 }

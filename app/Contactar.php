@@ -14,4 +14,9 @@ class Contactar extends Model
 
     	return $contactos;
     }
+
+    public function porContactar()
+    {
+        return $this->where('contactado' , 0)->get();
+    }
 }
