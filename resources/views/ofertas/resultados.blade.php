@@ -71,12 +71,12 @@
 								data-titulo="{{ title_case($oferta->titulo) }}"
 								data-descripcion="{{ $oferta->descripcion }}"
 								data-comision="{{ $comision }}"
-								data-pp1="{{ $oferta->opcion->pp1 }}" 
-								data-pp2="{{ $oferta->opcion->pp2 }}" 
-								data-pp3="{{ $oferta->opcion->pp3 }}"
-								data-ep1="{{ $oferta->opcion->ep1 }}" 
-								data-ep2="{{ $oferta->opcion->ep2 }}" 
-								data-ep3="{{ $oferta->opcion->ep3 }}"
+								data-pp1="{{ $oferta->pp1 }}" 
+								data-pp2="{{ $oferta->pp2 }}" 
+								data-pp3="{{ $oferta->pp3 }}"
+								data-ep1="{{ $oferta->ep1 }}" 
+								data-ep2="{{ $oferta->ep2 }}" 
+								data-ep3="{{ $oferta->ep3 }}"
 								data-total="{{ number_format( ($oferta->totalgeneral) , 2 , ',' , '.') }}"
 
 								href="{{ route('contratar.oferta' , [$oferta->id , $comision] ) }}">Contratar</a></td>
