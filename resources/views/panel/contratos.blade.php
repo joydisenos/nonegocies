@@ -52,7 +52,7 @@ section{
                                         </thead>
 
                                         <tbody>
-                                            @foreach(Auth::user()->contratos as $contrato)
+                                            @foreach($contratos as $contrato)
                                                 <tr>
                                                     <td>
                                                         {{ $contrato->oferta->descripcion }}

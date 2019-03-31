@@ -9,6 +9,7 @@ use App\User;
 use App\Mensajes;
 use App\Datos;
 use App\Cobro;
+use App\Ordenes;
 
 class PanelController extends Controller
 {
@@ -30,9 +31,11 @@ class PanelController extends Controller
         return view('panel.configuracion' , compact('cuenta' , 'tarjeta'));
     }
 
-    public function planes()
+    public function contratos()
     {
-        return view('panel.planes');
+        $contratos = Ordenes::where('user_id' , Auth::user()->id)->orderBy('created_at' , 'desc')->get();
+
+        return view('panel.contratos' , compact('contratos'));
     }
 
     public function datos(Request $request)

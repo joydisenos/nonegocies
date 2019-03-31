@@ -95,7 +95,8 @@ h2.center.wow.blue.forced-top.fadeIn.text-center.animated {
                                 @csrf
             
                                 <div class="row mb-4">
-                                    <div class="col">
+                                <input type="hidden" name="servicio" value="{{ $categorias->where('slug' ,'luz')->first()->id }}">
+                                   <!-- <div class="col">
                                             <label>Seleccione el servicio</label>
             
                                             <select name="servicio" id="servicio" class="special form-control">
@@ -106,7 +107,7 @@ h2.center.wow.blue.forced-top.fadeIn.text-center.animated {
                                                     </option>
                                                 @endforeach
                                             </select>
-                                    </div>
+                                    </div> -->
                                     <div class="col">
                                     <label for="persona">Soy</label>
                                     <select name="persona" id="persona" class="special form-control">

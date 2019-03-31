@@ -82,7 +82,7 @@
                 <ul class="drop">
                   <li><a href ="{{ route('panel.configuracion') }}">Perfil</a></li>
                   <li><a href ="{{ route('panel.mensajes') }}">Mensajes <span class="badge">{{ (Auth::user()->noleidos() > 0) ? Auth::user()->noleidos() : '' }}</span></a></li>
-                  <li><a href ="{{ route('panel.planes') }}">Mis Contratos</a></li>
+                  <li><a href ="{{ route('panel.contratos') }}">Mis Contratos</a></li>
                   <li><a class="nav-link " href="{{ route('logout') }}"
                  onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">Salir</a></li>

@@ -67,7 +67,8 @@
 							@endguest
 							<td><a class="btn-contratar" 
 
-								data-titulo="{{ title_case($oferta->nombre) }}"
+								data-id="{{ $oferta->id }}"
+								data-titulo="{{ title_case($oferta->titulo) }}"
 								data-descripcion="{{ $oferta->descripcion }}"
 								data-comision="{{ $comision }}"
 								data-pp1="{{ $oferta->opcion->pp1 }}" 
@@ -109,46 +110,130 @@
 
 			<hr>
 
-			<div class="text-right mt-2 mb-2">
-					<h5>Precio aproximado: <span id="precio"></span>€</h5>
+			<div class="row"> 
+				<div class="col">
+					<div class="text-right mt-2 mb-2">
+						<h5>Precio aproximado: <span id="precio"></span>€</h5>
 
-					<h5>Ganas desde: <span id="comision"></span>€</h5>
+						<h5>Ganas desde: <span id="comision"></span>€</h5>
+					</div>
+				</div>
 			</div>
+
+			<hr>
 
 			<h5>Potencia</h5>
 			<div class="row">
 				<div class="col">
-					<strong>P1:</strong> <span id="pp1"></span>
+					<strong>P1:</strong> <span id="pp1"> €</span>
 				</div>
 				<div class="col">
-					<strong>P2:</strong> <span id="pp2"></span>
+					<strong>P2:</strong> <span id="pp2"> €</span>
 				</div>
 				<div class="col">
-					<strong>P3:</strong> <span id="pp3"></span>
+					<strong>P3:</strong> <span id="pp3"> €</span>
 				</div>
 			</div>
 
+			<hr>
+
 			<h5>Energía</h5>
-			<div class="row">
+			<div class="row mb-3">
 				<div class="col">
-					<strong>P1:</strong> <span id="ep1"></span>
+					<strong>P1:</strong> <span id="ep1"> €</span>
 				</div>
 				<div class="col">
-					<strong>P2:</strong> <span id="ep2"></span>
+					<strong>P2:</strong> <span id="ep2"> €</span>
 				</div>
 				<div class="col">
-					<strong>P3:</strong> <span id="ep3"></span>
+					<strong>P3:</strong> <span id="ep3"> €</span>
 				</div>
 			</div>
 
 			
+	
+			@guest
+			@else
+			<form action="{{ route('contratar.oferta') }}" method="post">
+				@csrf
+				<input type="hidden" name="oferta_id" value="" id="oferta_id">
+				<input type="hidden" name="comision" value="" id="comision_input">
+				
+				@if(Auth::user()->tarjetas->first() == null || Auth::user()->cup_luz == null)
+				<div class="card mt-3 mb-3">
+					<div class="card-header p-4">
+						<div class="row align-items-center">
+						<div class="col">
+							<!-- Title -->
+							<h4 class="card-header-title">
+							Datos Requeridos para contratar
+							</h4>
+						</div>
+						
+						</div>
+					</div>
+					
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								
+								<tbody>
+								@if(Auth::user()->cup_luz == null)
+								<tr>
+									<td width="40%">CUP</td>
+									<td>
+										<input type="text" name="cup" value="" class="form-control" required>
+									</td>
+								</tr>
+								@endif
 
-			<a href="" class="btn btn-primary mt-4" id="contratar">Contratar</a>
+								@if(Auth::user()->tarjetas->first() == null)
+								<tr>
+									<td width="40%">
+										Tarjeta
+									</td>
+									<td>
+										<input type="text" class="form-control" value="" name="tarjeta" required>
+									</td>
+								</tr>
+							
+								<tr>
+									<td>
+									Código de Seguridad (CVV)
+									</td>
+									<td>
+									<input type="number" min="0" class="form-control" value="" name="cvv" required>
+									</td>
+								</tr>
+							
+								<tr>
+									<td>
+									Vence
+									</td>
+									<td>
+									<input type="text" class="form-control" value="" name="vence" required>
+									</td>
+								</tr>
+								@endif
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				@endif
+
+				<button type="submit" class="btn btn-primary mt-4" id="contratar">Contratar</button>
+		</form>
+			@endguest
+
+			
 
 		</div>
 		<div class="col-md-1"></div>
 		</div>
 	</div>
+
+	
 </section>
 
 @endsection
@@ -176,11 +261,14 @@
 			ep2 = $(this).data('ep2');
 			ep3 = $(this).data('ep3');
 			total = $(this).data('total');
+			ofertaId = $(this).data('id');
 
 			$('#contratar').attr('href' , link);
+			$('#oferta_id').val(ofertaId);
 			$('#titulo').text(titulo);
 			$('#descripcion').text(descripcion);
 			$('#comision').text(comision);
+			$('#comision_input').val(comision);
 			$('#pp1').text(pp1);
 			$('#pp2').text(pp2);
 			$('#pp3').text(pp3);

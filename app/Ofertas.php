@@ -42,7 +42,7 @@ class Ofertas extends Model
 
     public function getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias)
     {
-        $ofertas = Ofertas::selectRaw(('* , 
+        $ofertas = Ofertas::selectRaw(('* , ofertas.nombre as titulo,
                                     (campos_ofertas.pp1 / 365) as diap1 , 
                                     (campos_ofertas.pp2 / 365) as diap2 , 
                                     (campos_ofertas.pp3 / 365) as diap3 ,

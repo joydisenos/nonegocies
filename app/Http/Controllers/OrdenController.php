@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Ordenes;
+use App\Datos;
 
 class OrdenController extends Controller
 {
@@ -14,22 +15,34 @@ class OrdenController extends Controller
         $this->middleware('auth');
     }
 
-    public function contratar($oferta_id , $comision)
+    public function contratar(Request $request)
     {
-        if(Auth::user()->tarjetas->count() < 1 )
-        {
-            return redirect()->back()->with('status','Debe completar los datos para realizar el pago');
-        }
-        elseif(Auth::user()->cup_luz == null ){
-            return redirect()->back()->with('status','Debe completar los datos para realizar el pago');
-        }else{
+            if(Auth::user()->cup_luz == null){
+                $user = Auth::user();
+                $user->cup_luz = $request->cup;
+                $user->save();
+            }
+
+            if(Auth::user()->tarjetas->first() == null || Auth::user()->tarjetas->first()->tarjeta == null || Auth::user()->tarjetas->first()->cvv == null || Auth::user()->tarjetas->first()->vence == null)
+            {
+                $tarjeta = Datos::where('user_id' , Auth::user()->id)->first();
+                    if(Auth::user()->tarjetas->first() == null)
+                    {
+                        $tarjeta = new Datos();
+                    }
+                        $tarjeta->user_id = Auth::user()->id;
+                        $tarjeta->tarjeta = $request->tarjeta;
+                        $tarjeta->cvv = $request->cvv;
+                        $tarjeta->vence = $request->vence;
+                        $tarjeta->save();
+            }
+        
             $orden = new Ordenes ();
             $orden->user_id = Auth::user()->id;
-            $orden->oferta_id = $oferta_id;
-            $orden->comision = $comision;
+            $orden->oferta_id = $request->oferta_id;
+            $orden->comision = $request->comision;
             $orden->save();
 
-            return redirect()->route('panel.planes')->with('status','Oferta contratada en breve nos comunicaremos para completar el proceso');
-        }
+            return redirect()->route('panel.contratos')->with('status','Oferta contratada en breve nos comunicaremos para completar el proceso');
     }
 }

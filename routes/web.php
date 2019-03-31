@@ -31,7 +31,8 @@ Route::prefix('ofertas')->group(function (){
    Route::post('/' , 'SiteController@consultar')->name('consultar');
    Route::get('/seguros' , 'SiteController@seguros')->name('ofertas.seguros');
    Route::get('/telefonia' , 'SiteController@telefonia')->name('ofertas.telefonia');
-   Route::get('/contratar/{oferta_id}/{comision}' , 'OrdenController@contratar')->name('contratar.oferta');
+   // Route::get('/contratar/{oferta_id}/{comision}' , 'OrdenController@contratar')->name('contratar.oferta');
+   Route::post('/contratar' , 'OrdenController@contratar')->name('contratar.oferta');
 });
 
 
@@ -94,7 +95,7 @@ Route::prefix('admin')->group(function () {
    // Usuario
    Route::get('/panel' , 'PanelController@index')->name('panel.index');
    Route::get('/perfil' , 'PanelController@configuracion')->name('panel.configuracion');
-   Route::get('/contratos' , 'PanelController@planes')->name('panel.planes');
+   Route::get('/contratos' , 'PanelController@contratos')->name('panel.contratos');
    Route::post('/datos' , 'PanelController@datos')->name('panel.datos');
    Route::get('/mensajes' , 'PanelController@mensajes')->name('panel.mensajes');
 
