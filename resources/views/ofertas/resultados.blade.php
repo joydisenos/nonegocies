@@ -79,7 +79,7 @@
 								data-ep3="{{ $oferta->ep3 }}"
 								data-total="{{ number_format( ($oferta->totalgeneral) , 2 , ',' , '.') }}"
 
-								href="{{ route('contratar.oferta' , [$oferta->id , $comision] ) }}">Contratar</a></td>
+								href="#">Contratar</a></td>
                         </tr>
                         @endforeach
                     </tbody>
