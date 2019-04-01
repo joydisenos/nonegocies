@@ -38,6 +38,13 @@ class PanelController extends Controller
         return view('panel.contratos' , compact('contratos'));
     }
 
+    public function contrato($id)
+    {
+        $contrato = Ordenes::findOrFail($id);
+
+        return view('panel.contrato' , compact('contrato'));
+    }
+
     public function datos(Request $request)
     {
         if($request->password != null)

@@ -16,7 +16,11 @@ class LegalesController extends Controller
     public function editar($tabla)
     {
         $refLegal = Ajuste::first();
-        $legal = $refLegal->$tabla;
+        if(Ajuste::first() == null)
+        {
+            $refLegal = new Ajuste();
+        }
+            $legal = $refLegal->$tabla;
 
         return view('dashboard.editarlegales' , compact('legal','tabla'));
     }
@@ -24,7 +28,11 @@ class LegalesController extends Controller
     public function actualizar(Request $request , $tabla)
     {
         $refLegal = Ajuste::first();
-        $refLegal->$tabla = $request->contenido;
+        if(Ajuste::first() == null)
+        {
+            $refLegal = new Ajuste();
+        }
+            $refLegal->$tabla = $request->contenido;
         $refLegal->save();
 
         return redirect()->route('legales')->with('status', 'Actualizado');

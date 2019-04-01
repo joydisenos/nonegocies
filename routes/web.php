@@ -96,6 +96,7 @@ Route::prefix('admin')->group(function () {
    Route::get('/panel' , 'PanelController@index')->name('panel.index');
    Route::get('/perfil' , 'PanelController@configuracion')->name('panel.configuracion');
    Route::get('/contratos' , 'PanelController@contratos')->name('panel.contratos');
+   Route::get('/contrato/{id}' , 'PanelController@contrato')->name('ver.contrato');
    Route::post('/datos' , 'PanelController@datos')->name('panel.datos');
    Route::get('/mensajes' , 'PanelController@mensajes')->name('panel.mensajes');
 

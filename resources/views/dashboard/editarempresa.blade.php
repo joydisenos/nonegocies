@@ -1,5 +1,9 @@
 @extends('layouts.dash')
 
+@section('header')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+@endsection
+
 @section('content')
 
 <div class="main-content">
@@ -104,6 +108,12 @@
                             </div>
                         </div> 
                 </div>
+
+                <div class="row">
+                    <div class="col">
+                        <textarea id="editor" name="contrato" cols="30" rows="10">{{ $empresa->contrato }}</textarea>
+                    </div>
+                </div>
                 
               </div>
                 
@@ -116,4 +126,12 @@
     </form>
     </div>
 
+@endsection
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#editor').summernote();
+  });
+</script>
 @endsection

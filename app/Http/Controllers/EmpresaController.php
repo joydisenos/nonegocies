@@ -86,6 +86,12 @@ class EmpresaController extends Controller
     
             $empresa = Empresa::findOrFail($id);
             $empresa->nombre = $request->nombre;
+            if( $request->contrato != null )
+            {
+                $empresa->contrato = $request->contrato;
+            }else{
+                $empresa->contrato = '';
+            }
             if( $request->descripcion != null)
             {
                 $empresa->descripcion = $request->descripcion;

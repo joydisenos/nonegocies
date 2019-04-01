@@ -48,6 +48,7 @@ section{
                                         <thead>
                                             <th>Oferta</th>
                                             <th>Fecha</th>
+                                            <th>Contrato</th>
                                             <th>Estatus</th>
                                         </thead>
 
@@ -59,6 +60,9 @@ section{
                                                     </td>
                                                     <td>
                                                         {{ $contrato->created_at->format('d/m/y') }}
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('ver.contrato', [$contrato->id]) }}">Ver Contrato</a>
                                                     </td>
                                                     <td>
                                                         @if($contrato->estatus == 1)

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Ordenes;
 use App\Datos;
+use App\Ofertas;
 
 class OrdenController extends Controller
 {
@@ -37,10 +38,18 @@ class OrdenController extends Controller
                         $tarjeta->save();
             }
         
+            $oferta = Ofertas::findOrFail($request->oferta_id);
+
+            $contrato = $oferta->empresa->contrato;
+            $contrato = str_replace('{nombre}' , Auth::user()->name . ' ' . Auth::user()->apellido , $contrato);
+            $contrato = str_replace('{dni}' , Auth::user()->dni , $contrato);
+            $contrato = str_replace('{direccion}' , Auth::user()->direccion , $contrato);
+
             $orden = new Ordenes ();
             $orden->user_id = Auth::user()->id;
             $orden->oferta_id = $request->oferta_id;
             $orden->comision = $request->comision;
+            $orden->contrato = $contrato;
             $orden->save();
 
             return redirect()->route('panel.contratos')->with('status','Oferta contratada en breve nos comunicaremos para completar el proceso');

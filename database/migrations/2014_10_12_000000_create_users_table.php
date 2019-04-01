@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('cup_gas')->nullable();
             $table->string('cup_luz')->nullable();
+            $table->date('fecha_corte')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

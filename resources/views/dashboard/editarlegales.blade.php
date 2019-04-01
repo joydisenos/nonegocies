@@ -80,7 +80,7 @@
         
             <div class="row">
               <div class="col">
-                  <textarea class="form-control" id="editor" name="contenido" cols="30" rows="10">{{$legal}}</textarea>
+                  <textarea class="form-control" id="editor" name="contenido" cols="30" rows="10">{{$legal}}</textarea> 
               </div>
             </div>
             </div>
