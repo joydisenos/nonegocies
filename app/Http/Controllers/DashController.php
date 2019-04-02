@@ -30,7 +30,16 @@ class DashController extends Controller
         $refContactar = new Contactar();
         $porContactar = $refContactar->porContactar()->count();
 
-        return view('dashboard.home' , compact('ofertasNum' , 'contratosNum' , 'porContactar'));
+        $refUser = new User();
+        $usuariosCobros = $refUser->where('plan_id' , '!=' , null)->get();
+
+        $planPremium = $refUser->where('plan_id' , 2)->count() * 29;
+        $planPlatinum = $refUser->where('plan_id' , 3)->count() * 49;
+        $totalRecaudar = $planPlatinum + $planPremium;
+
+        $contratos = Ordenes::orderBy('created_at' , 'desc')->take(10)->get();
+
+        return view('dashboard.home' , compact('ofertasNum' , 'contratosNum' , 'porContactar','usuariosCobros' , 'totalRecaudar','contratos'));
     }
 
     public function usuarios()
@@ -39,6 +48,14 @@ class DashController extends Controller
     	$usuarios = $users->usuarios();
 
     	return view('dashboard.usuarios' , compact('usuarios'));
+    }
+
+    public function cobros()
+    {
+    	$users = new User();
+    	$usuarios = $users->cobros();
+
+    	return view('dashboard.cobros' , compact('usuarios'));
     }
 
     public function empresas()

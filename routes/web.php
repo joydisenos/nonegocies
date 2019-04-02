@@ -41,6 +41,7 @@ Route::prefix('admin')->group(function () {
 
    Route::get('/', 'DashController@index')->name('inicio');
    Route::get('/usuarios', 'DashController@usuarios')->name('usuarios');
+   Route::get('/cobros', 'DashController@cobros')->name('cobros');
    Route::get('/empresas', 'DashController@empresas')->name('empresas');
    Route::get('/contactar', 'DashController@contactar')->name('contactos');
    Route::get('/categorias', 'DashController@categorias')->name('categorias');

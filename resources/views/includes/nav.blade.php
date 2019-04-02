@@ -80,6 +80,12 @@
               </li>
 
               <li class="nav-item">
+                <a class="nav-link" href="{{ route('cobros') }}">
+                  <i class="fe fe-user"></i> Cobro de Planes
+                </a>
+              </li>
+
+              <li class="nav-item">
                 <a class="nav-link" href="{{ route('index.contratos') }}">
                   <i class="fe fe-user"></i> Contratos
                 </a>

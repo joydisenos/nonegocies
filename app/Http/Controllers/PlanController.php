@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Carbon\Carbon;
 
 class PlanController extends Controller
 {
@@ -21,6 +22,10 @@ class PlanController extends Controller
             $user->plan_id = null;
         }else{
             $user->plan_id = $plan;
+            if($user->fecha_corte == null)
+            {
+                $user->fecha_corte = Carbon::now();
+            }
         }
         $user->save();
 

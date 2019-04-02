@@ -37,6 +37,13 @@ class User extends Authenticatable
         return $usuarios;
     }
 
+    public function cobros()
+    {
+        $usuarios = $this->where('plan_id' ,'!=' , null)->orderBy('fecha_corte')->get();
+
+        return $usuarios;
+    }
+
     public function empresas()
     {
         $empresas = User::all();
