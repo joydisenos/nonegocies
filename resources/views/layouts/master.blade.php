@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.css') }}">
+    @yield('header')
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <script>

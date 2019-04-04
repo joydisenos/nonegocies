@@ -33,7 +33,10 @@ class SiteController extends Controller
 
     public function telefonia()
     {
-        return view('ofertas.telefonia');
+        $cat = Categoria::where('slug' , 'telefonia')->first();
+        $ofertas = Ofertas::where( 'categoria_id' , $cat->id )->get();
+
+        return view('ofertas.telefonia' , compact('ofertas'));
     }
 
     public function terminos()

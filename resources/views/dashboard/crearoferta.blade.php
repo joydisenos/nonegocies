@@ -100,22 +100,73 @@
                             </select>
                           </div>
                           <div class="col">
-                            <label for="tarifa">Tarifa</label>
-                            <select name="tarifa" id="tarifa" class="form-control">
-                              <option value="0">tarifa</option>
-                              <option value="1" class="tarifas luz-opt">2.0A</option>
-                              <option value="2" class="tarifas luz-opt">2.0ADH</option>
-                              <option value="3" class="tarifas luz-opt">2.1A</option>
-                              <option value="4" class="tarifas luz-opt">2.1ADH</option>
-                              <option value="5" class="tarifas luz-opt">3.0A</option>
-                              <option value="6" class="tarifas luz-opt">3.1A</option>
-                              <option value="7" class="tarifas gas-opt">3.1</option>
-                              <option value="8" class="tarifas gas-opt">3.2</option>
-                              <option value="9" class="tarifas gas-opt">3.3</option>
-                              <option value="10" class="tarifas gas-opt">3.4</option>
-                            </select>
+                            <div id="luz-tarifas" class="opciones">
+                              <label for="tarifa">Tarifa</label>
+                              <select name="tarifa" id="tarifa" class="form-control">
+                                <option value="0">tarifa</option>
+                                <option value="1" class="tarifas luz-opt">2.0A</option>
+                                <option value="2" class="tarifas luz-opt">2.0ADH</option>
+                                <option value="3" class="tarifas luz-opt">2.1A</option>
+                                <option value="4" class="tarifas luz-opt">2.1ADH</option>
+                                <option value="5" class="tarifas luz-opt">3.0A</option>
+                                <option value="6" class="tarifas luz-opt">3.1A</option>
+                                <option value="7" class="tarifas gas-opt">3.1</option>
+                                <option value="8" class="tarifas gas-opt">3.2</option>
+                                <option value="9" class="tarifas gas-opt">3.3</option>
+                                <option value="10" class="tarifas gas-opt">3.4</option>
+                              </select>
+                            </div>
+
+                            <div class="opciones telefonia-opt">
+                                <label for="tarifa">Subcategoría</label>
+                                <select name="subcategoria" id="subcategoria" class="form-control">
+                                  <option value="1">Internet sin Fijo</option>
+                                  <option value="2">Internet + Fijo</option>
+                                  <option value="3">Tarifa Móvil Contrato</option>
+                                  <option value="4">Internet + Fijo + TV</option>
+                                  <option value="5">Internet + Fijo + Tarifa Móvil</option>
+                                  <option value="6">Internet + Fijo + Tarifa Móvil + TV</option>
+                                  <option value="7">Tarifa Móvil Prepago</option>
+                                  <option value="8">Tarifa Móvil Prepago</option>
+                                  <option value="9">Internet + Fútbol</option>
+                                  <option value="10">Internet + Tarifa Móvil</option>
+                                </select>
+                            </div>
                           </div>
                         </div>
+
+                        <div class="opciones telefonia-opt">
+                          <div class="form-group row mb-4">
+                            <div class="col-md-4">
+                                <label>Subtítulo</label>
+                                <input class="form-control" name="subtitulo_telefonia" type="text" placeholder="Subtítulo">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Precio</label>
+                                <input class="form-control" name="precio_telefonia" type="number" min="0" step="0.01">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Móvil</label>
+                                <input class="form-control" name="movil_telefonia" type="number" min="0" step="0.01">
+                            </div>
+                          </div>
+
+                          <div class="form-group row mb-4">
+                              <div class="col-md-4">
+                                  <label>Fijo</label>
+                                  <input class="form-control" name="fijo_telefonia" type="number" min="0" step="0.01">
+                              </div>
+                              <div class="col-md-4">
+                                  <label>Internet</label>
+                                  <input class="form-control" name="internet_telefonia" type="number" min="0" step="0.01">
+                              </div>
+                              <div class="col-md-4">
+                                  <label>TV</label>
+                                  <input class="form-control" name="tv_telefonia" type="number" min="0" step="0.01">
+                              </div>
+                            </div>
+                        </div>
+                        
                         <div class="opciones luz-opt">
                           <h3>Potencia</h3>
                           <div class="form-group row mb-4">
@@ -203,21 +254,27 @@
 <script>
     $(document).ready(function(){
 
-      // Opciones de Tarifas
-      $('.tarifas').hide();
+        // Opciones de Tarifas
+        $('.tarifas').hide();
         $('.opciones').hide();
+
 
         categoria = $('#categorias option:selected').data('slug');
 
         if(categoria == 'luz'){
           $('.luz-opt').show();
+          $('#luz-tarifas').show();
           $('.luz-opt input').attr('required' , true);
           $('.gas-opt input').attr('required' , false);
         }else if( categoria == 'gas'){
           $('.gas-opt').show();
           $('.gas-opt input').attr('required' , true);
           $('.luz-opt input').attr('required' , false);
-        }
+        }else if( categoria == 'telefonia' ){
+            $('.telefonia-opt').show();
+            $('.gas-opt input').attr('required' , false);
+            $('.luz-opt input').attr('required' , false);
+          }
 
         $('#categorias').change(function(){
 
@@ -230,11 +287,16 @@
 
           if(categoria == 'luz'){
             $('.luz-opt').show();
+            $('#luz-tarifas').show();
             $('.luz-opt input').attr('required' , true);
             $('.gas-opt input').attr('required' , false);
           }else if( categoria == 'gas'){
             $('.gas-opt').show();
             $('.gas-opt input').attr('required' , true);
+            $('.luz-opt input').attr('required' , false);
+          }else if( categoria == 'telefonia' ){
+            $('.telefonia-opt').show();
+            $('.gas-opt input').attr('required' , false);
             $('.luz-opt input').attr('required' , false);
           }
 

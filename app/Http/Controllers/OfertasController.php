@@ -106,6 +106,19 @@ class OfertasController extends Controller
                     $opcion->precio_tarifa = $request->precio_tarifa;
                     $opcion->precio_fijo = $request->precio_fijo;
                     $opcion->save();
+            }else if($categoria->slug == 'telefonia')
+            {
+                    $opcion = new CamposOferta ();
+                    $opcion->oferta_id = $oferta->id;
+                    $opcion->nombre = 'telefonia';
+                    $opcion->categoria_telefonia = $request->subcategoria;
+                    $opcion->subtitulo_telefonia = $request->subtitulo_telefonia;
+                    $opcion->precio_telefonia = $request->precio_telefonia;
+                    $opcion->movil_telefonia = $request->movil_telefonia;
+                    $opcion->fijo_telefonia = $request->fijo_telefonia;
+                    $opcion->internet_telefonia = $request->internet_telefonia;
+                    $opcion->tv_telefonia = $request->tv_telefonia;
+                    $opcion->save();
             }
         
         return redirect()->route('ofertas')->with('status','Oferta Registrada');
@@ -198,6 +211,18 @@ class OfertasController extends Controller
                     $opcion->precio_fijo = $request->precio_fijo;
                     $opcion->save();
                 
+            }else if($categoria->slug == 'telefonia')
+            {
+                    $opcion = CamposOferta::where('oferta_id' , $oferta->id)->first();
+                    $opcion->oferta_id = $oferta->id;
+                    $opcion->categoria_telefonia = $request->subcategoria;
+                    $opcion->subtitulo_telefonia = $request->subtitulo_telefonia;
+                    $opcion->precio_telefonia = $request->precio_telefonia;
+                    $opcion->movil_telefonia = $request->movil_telefonia;
+                    $opcion->fijo_telefonia = $request->fijo_telefonia;
+                    $opcion->internet_telefonia = $request->internet_telefonia;
+                    $opcion->tv_telefonia = $request->tv_telefonia;
+                    $opcion->save();
             }
             
         
