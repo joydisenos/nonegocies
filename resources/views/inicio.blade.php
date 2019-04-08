@@ -31,7 +31,7 @@ section{
 	position:relative;
 	margin-top: 50px;
 	margin-bottom:180px;
-	z-index: 999999999999999;
+	z-index: 99;
 }
 
 .steps-section .outer-container:before{
@@ -775,7 +775,7 @@ section{
 </div>
 </section>
 
-<section class="contactar" id="contactar">
+<!-- <section class="contactar" id="contactar">
 	<div class="floating-ball-model-3">
 		<span class="floating-ball-1"></span>
 		<span class="floating-ball-2"></span>
@@ -789,33 +789,12 @@ section{
       <p id="time"></p>
 			<h3 class="wow gray animated fadeInUp">dejanos tus datos por si quieres comenzar antes o te avisemos cuando estemos listos</h3>
 			<br>
-			<div class="check_mark hide">
-			  	<div class="sa-icon sa-success animate">
-			    	<span class="sa-line sa-tip animateSuccessTip"></span>
-				    <span class="sa-line sa-long animateSuccessLong"></span>
-				    <div class="sa-placeholder"></div>
-				    <div class="sa-fix"></div>
-			  	</div>
-			</div>
-			<form class="wow animated fadeInUp" id="contactar-reg" action="{{ route('contactar') }}" method="post">
-				@csrf
-				<input class="special" type="text" name="nombre" id="nombre" placeholder="Nombre*" required>
-				<input class="special" type="text" name="apellido" placeholder="Apellido *" required>
-				<input class="special" type="email" name="email" placeholder="Email *" required>
-				<input class="special" type="text" name="telefono" placeholder="Teléfono">
-				<div class="callme">
-				<input type="checkbox" name="llamar" id="llamada"> Prefiero que me llamen
-				</div>
-				<div class="accept">
-				<input type="checkbox" name="accept" id="the-terms"> Acepto las <a href="{{ route('privacidad') }}" title="Ver Políticas de Privacidad">políticas de privacidad.</a>
-				</div>
-				<input id="submitBtn" class="btn btn-outline-light btn-lg submit-contactar" type="submit" value="Enviar" disabled="disabled">
-			</form>
+			
 		</div>
 		<div class="col-md-3"></div>
 		</div>
 	</div>
-</section>
+</section> -->
 <!-- end prices -->
 
 
@@ -853,47 +832,6 @@ $(document).ready(function() {
     	}
 	});
 
-
-	$('#contactar-reg').on('submit', function (e) {
-		
-  	var nombre = $("input[name=nombre]").val();
-  	var apellido = $("input[name=apellido]").val();
-    var email = $("input[name=email]").val();
-    var llamar = $("input[name=llamar]").val();
-
-  	e.preventDefault();
-  	$('form').fadeOut();
-	$.ajax({
-		type: 'post',
-		url: '{{ route("contactar") }}',
-		data: $(this).serialize(),
-		
-        success: function (data) {
-        			
-					$('.check_mark').removeClass('hide');
-					$(".sa-success").addClass("hide");
-					setTimeout(function() {
-					    $(".sa-success").removeClass("hide");
-					}, 10);
-					$("h3.gray").html(data.guardado);
-				}
-			});
-		});
-	
-
-	var the_terms = $("#the-terms");
-
-	// legal stuff before send
-    the_terms.click(function() {
-        if ($(this).is(":checked")) {
-            $("#submitBtn").removeAttr("disabled");
-        } else {
-            $("#submitBtn").attr("disabled", "disabled");
-        }
-    });
-
-		
-	});
 
 	// testimonial
 	if ($('.testimonial-carousel').length) {

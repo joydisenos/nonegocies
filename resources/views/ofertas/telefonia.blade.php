@@ -36,7 +36,9 @@
 				{{ title_case($oferta->nombre) }}
 				</div>
 				<div class="card-body">
+					@if($oferta->opcion->subtitulo_telefonia != null)
 				<h5 class="card-title">{{ title_case($oferta->opcion->subtitulo_telefonia) }}</h5>
+					@endif
 				<div class="row">
 					@if($oferta->opcion->precio_telefonia != null)
 					<div class="col-6">

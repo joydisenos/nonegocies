@@ -33,8 +33,12 @@ class SiteController extends Controller
 
     public function telefonia()
     {
-        $cat = Categoria::where('slug' , 'telefonia')->first();
-        $ofertas = Ofertas::where( 'categoria_id' , $cat->id )->get();
+
+        $refCategoria = new Categoria();
+        $categoria = $refCategoria->getCategoriaSlug('telefonia');
+
+        $refOfertas = new Ofertas();
+        $ofertas = $refOfertas->getOfertasCategoria($categoria->id);
 
         return view('ofertas.telefonia' , compact('ofertas'));
     }

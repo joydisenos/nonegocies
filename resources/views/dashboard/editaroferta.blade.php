@@ -152,26 +152,26 @@
                               </div>
                               <div class="col-md-4">
                                   <label>Precio</label>
-                                  <input class="form-control" name="precio_telefonia" type="number" min="0" step="0.01" value="{{ $oferta->opcion->precio_telefonia }}">
+                                  <input class="form-control" name="precio_telefonia" type="text" value="{{ $oferta->opcion->precio_telefonia }}">
                               </div>
                               <div class="col-md-4">
                                   <label>Móvil</label>
-                                  <input class="form-control" name="movil_telefonia" type="number" min="0" step="0.01" value="{{ $oferta->opcion->movil_telefonia }}">
+                                  <input class="form-control" name="movil_telefonia" type="text" value="{{ $oferta->opcion->movil_telefonia }}">
                               </div>
                             </div>
   
                             <div class="form-group row mb-4">
                                 <div class="col-md-4">
                                     <label>Fijo</label>
-                                    <input class="form-control" name="fijo_telefonia" type="number" min="0" step="0.01" value="{{ $oferta->opcion->fijo_telefonia }}">
+                                    <input class="form-control" name="fijo_telefonia" type="text" value="{{ $oferta->opcion->fijo_telefonia }}">
                                 </div>
                                 <div class="col-md-4">
                                     <label>Internet</label>
-                                    <input class="form-control" name="internet_telefonia" type="number" min="0" step="0.01" value="{{ $oferta->opcion->internet_telefonia }}">
+                                    <input class="form-control" name="internet_telefonia" type="text" value="{{ $oferta->opcion->internet_telefonia }}">
                                 </div>
                                 <div class="col-md-4">
                                     <label>TV</label>
-                                    <input class="form-control" name="tv_telefonia" type="number" min="0" step="0.01" value="{{ $oferta->opcion->tv_telefonia }}">
+                                    <input class="form-control" name="tv_telefonia" type="text" value="{{ $oferta->opcion->tv_telefonia }}">
                                 </div>
                               </div>
                           </div>
