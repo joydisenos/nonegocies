@@ -817,6 +817,20 @@
     <script src="{{ asset('assets/js/theme.min.js')}}"></script>
 
     <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#buscar").keyup(function(){
+            _this = this;
+            // Show only matching TR, hide rest of them
+              $.each($(".list tr"), function() {
+                  if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                  $(this).hide();
+                  else
+                  $(this).show();
+              });
+            });
+        });
+  </script>
     @yield('scripts')
     @include('includes.errors')
     @include('includes.notificacion')

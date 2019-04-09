@@ -19,6 +19,7 @@ class CreateContactarsTable extends Migration
             $table->string('apellido');
             $table->string('email');
             $table->string('telefono');
+            $table->string('servicio');
             $table->integer('contactado')->default(0);
             $table->text('notas')->nullable();
             $table->integer('llamar')->default(0);

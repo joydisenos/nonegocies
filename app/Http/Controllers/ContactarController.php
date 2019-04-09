@@ -20,6 +20,9 @@ class ContactarController extends Controller
     	$contacto->telefono = $request->telefono;
     	if ($request->has('llamar')) {
             $contacto->llamar = 1;
+		}
+		if ($request->has('servicio')) {
+            $contacto->servicio = $request->servicio;
         }
     	$contacto->save();
 
@@ -48,5 +51,13 @@ class ContactarController extends Controller
 	   $contacto->save();
 
 	   return redirect()->route('contactos')->with('status' , 'Contacto Modificado');
+	}
+
+	public function eliminar($id)
+	{
+		$contacto = Contactar::findOrFail($id);
+		$contacto->delete();
+
+		return redirect()->back()->with('status' , 'Contacto Eliminado');
 	}
 }

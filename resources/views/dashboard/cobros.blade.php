@@ -56,14 +56,10 @@
 
                   </div>
                   <div class="col-auto">
-
-                    <!-- Button -->
-                    <!--
-                    <a href="#!" class="btn btn-sm btn-white">
-                      Export
-                    </a>
-                    -->
-
+                  <span class="fe fe-search text-muted"></span>
+                  </div>
+                  <div class="col">
+                    <input type="search" id="buscar" class="form-control form-control-flush search" placeholder="Buscar">
                   </div>
                 </div> <!-- / .row -->
               </div>

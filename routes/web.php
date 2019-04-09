@@ -27,10 +27,10 @@ Route::get('/privacidad', 'SiteController@privacidad')->name('privacidad');
 Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 
 Route::prefix('ofertas')->group(function (){
-   Route::get('/' , 'SiteController@categoria')->name('indexofertas');
+   Route::get('/' , 'SiteController@categoria')->name('indexofertas')->middleware('auth');
    Route::post('/' , 'SiteController@consultar')->name('consultar');
-   Route::get('/seguros' , 'SiteController@seguros')->name('ofertas.seguros');
-   Route::get('/telefonia' , 'SiteController@telefonia')->name('ofertas.telefonia');
+   Route::get('/seguros' , 'SiteController@seguros')->name('ofertas.seguros')->middleware('auth');
+   Route::get('/telefonia' , 'SiteController@telefonia')->name('ofertas.telefonia')->middleware('auth');
    // Route::get('/contratar/{oferta_id}/{comision}' , 'OrdenController@contratar')->name('contratar.oferta');
    Route::post('/contratar' , 'OrdenController@contratar')->name('contratar.oferta');
 });
@@ -82,6 +82,7 @@ Route::prefix('admin')->group(function () {
    //contactar
    Route::get('/editar/contactar/{id}', 'ContactarController@editar')->name('editarcontactar');
    Route::post('/editar/contactar/{id}', 'ContactarController@actualizar')->name('actualizarcontactar');
+   Route::get('/eliminar/{id}', 'ContactarController@eliminar')->name('eliminar.contactar');
 
    //Mensajes
    Route::get('/enviar/mensajes' , 'MensajeController@mensajes')->name('enviar.mensajes');

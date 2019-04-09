@@ -520,10 +520,10 @@ form#contactar-reg{
                 <input class="special" type="hidden" name="nombre" id="nombre" value="{{ Auth::user()->name }}">
                 <input class="special" type="hidden" name="apellido" value="{{ Auth::user()->apellido }}">
                 <input class="special" type="hidden" name="email" value="{{ Auth::user()->email }}">
-                <input class="special" type="hidden" name="servicio" value="">
+                <input class="special" type="hidden" name="servicio" value="" id="servicio-id">
                 <input class="special" type="text" name="telefono" placeholder="Teléfono" value="{{ Auth::user()->telefono }}" required>
                 <div class="accept">
-                <input type="checkbox" name="accept" id="the-terms"> Acepto las <a href="{{ route('privacidad') }}" title="Ver Políticas de Privacidad">políticas de privacidad.</a>
+                <input type="checkbox" name="accept" id="the-terms" required> Acepto las <a href="{{ route('privacidad') }}" title="Ver Políticas de Privacidad">políticas de privacidad.</a>
                 </div>
                 <input id="submitBtn" class="btn btn-outline-light btn-lg submit-contactar" type="submit" value="Enviar" disabled="disabled">
             </form>
@@ -685,12 +685,15 @@ form#contactar-reg{
 @section('scripts')
 <script>
     $(document).ready(function(){
+
         $('.step').click(function(e){
             e.preventDefault();
             $('.ocultar').hide();
+
             target = $(this).attr('href');
-            servicio = $(this).attr('rel')
-            $("input[name='servicio']").val(servicio); 
+            servicio = $(this).attr('rel');
+
+            $("#servicio-id").val(servicio); 
             $(target).show();
             $('html, body').animate({
                     scrollTop: $(target).offset().top
@@ -698,13 +701,14 @@ form#contactar-reg{
         });
 
         $('#contactar-reg').on('submit', function (e) {
-        
+            
+            e.preventDefault();
             var nombre = $("input[name=nombre]").val();
             var apellido = $("input[name=apellido]").val();
             var email = $("input[name=email]").val();
             var llamar = $("input[name=llamar]").val();
+            var servicio = $("#servicio-id").val();
 
-            e.preventDefault();
             $('form').fadeOut();
             $.ajax({
                 type: 'post',

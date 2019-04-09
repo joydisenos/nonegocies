@@ -55,14 +55,10 @@
 
                   </div>
                   <div class="col-auto">
-
-                    <!-- Button -->
-                    <!--
-                    <a href="#!" class="btn btn-sm btn-white">
-                      Export
-                    </a>
-                    -->
-
+                  <span class="fe fe-search text-muted"></span>
+                  </div>
+                  <div class="col">
+                    <input type="search" id="buscar" class="form-control form-control-flush search" placeholder="Buscar">
                   </div>
                 </div> <!-- / .row -->
               </div>
@@ -85,10 +81,13 @@
                           Email
                         </a>
                       </th>
-                      <th>
+                      <!--<th>
                         <a href="#" class="text-muted sort" data-sort="goal-date">
                           Llamar
                         </a>
+                      </th>-->
+                      <th>
+                        Servicio
                       </th>
                       <th class="text-right">
                           Teléfono
@@ -113,10 +112,12 @@
                       <td class="goal-progress">
                         {{ $contacto->email }}
                       </td>
-                      <td class="goal-date">
-                        
+                      <!--<td class="goal-date">
                          <i class="fe {{ ($contacto->llamar == 1) ? 'fe-check' : 'fe-x' }}"
                          	style="color:{{ ($contacto->llamar == 1) ? 'green' : 'red' }}"></i>
+                      </td>-->
+                      <td>
+                        {{ title_case($contacto->servicio ) }}
                       </td>
                       <td class="text-right">
                         {{ ($contacto->telefono) ? $contacto->telefono : 'No Registrado'}}
@@ -131,7 +132,7 @@
                               Editar
                             </a>
                       
-                            <a href="#!" class="dropdown-item">
+                            <a href="{{ route('eliminar.contactar' , [$contacto->id]) }}" class="dropdown-item">
                               Eliminar
                             </a>
                           </div>

@@ -52,9 +52,10 @@
 
                   </div>
                   <div class="col-auto">
-
-                   
-
+                  <span class="fe fe-search text-muted"></span>
+                  </div>
+                  <div class="col">
+                    <input type="search" id="buscar" class="form-control form-control-flush search" placeholder="Buscar">
                   </div>
                 </div> <!-- / .row -->
               </div>
