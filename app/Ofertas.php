@@ -40,10 +40,20 @@ class Ofertas extends Model
         return $oferta;
     }
 
+    public function ventasPorId($id)
+    {
+        $oferta = Ordenes::where('oferta_id' , $id)->get()->count();
+
+        return $oferta;
+    }
+
     public function getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias)
     {
-        $ofertas = Ofertas::selectRaw(('* , ofertas.nombre as titulo,
-                                    campos_ofertas.pp1,
+        $ofertas = Ofertas::selectRaw(('* , 
+                                    ofertas.id as ofertaid,
+                                    ofertas.estatus,
+        							ofertas.nombre as titulo,
+        							campos_ofertas.pp1,
         							campos_ofertas.pp2,
         							campos_ofertas.pp3,
         							campos_ofertas.ep1,

@@ -15,6 +15,8 @@
     border-radius: 6px;
 }
 
+.special{color: #133273 !important;}
+
 .card-body-featured p{color:white;}
 
 .ocultar{

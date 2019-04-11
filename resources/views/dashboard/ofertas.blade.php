@@ -81,11 +81,7 @@
                           Categoría
                         </a>
                       </th>
-                      <th>
-                        <a href="#" class="text-muted sort" data-sort="goal-date">
-                          Precio
-                        </a>
-                      </th>
+                      
                       <th class="text-right">
                           Estatus
                       </th>
@@ -108,10 +104,7 @@
                       <td class="goal-progress">
                         {{ $oferta->categoria->nombre }}
                       </td>
-                      <td class="goal-date">
-                        
-                        {{ number_format($oferta->precio , 2 , ',' , '.') }}
-                      </td>
+                      
                       <td class="text-right">
                        @if($oferta->estatus == 1)
                        <span class="text-success">●</span> Activo
@@ -120,7 +113,7 @@
                         @endif
                       </td>
                       <td class="text-right">
-                        {{ $oferta->ventas }}
+                        {{ $oferta->ventasPorId($oferta->id) }}
                       </td>
                       <td class="text-right">
                         <div class="dropdown">

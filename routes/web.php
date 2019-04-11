@@ -50,6 +50,7 @@ Route::prefix('admin')->group(function () {
    Route::get('/ofertas/{categoria}', 'DashController@ofertasPorCategoria')->name('ofertascategoria');
    
    //empresas
+   Route::get('/crear/empresa', 'EmpresaController@registrar')->name('registrar.empresa');
    Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa');
    Route::get('/estatus/empresa/{id}/{estatus}', 'EmpresaController@estatus')->name('estatusempresa');
    Route::get('/editar/empresa/{id}', 'EmpresaController@editar')->name('editarempresa');

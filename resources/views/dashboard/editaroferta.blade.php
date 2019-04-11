@@ -152,7 +152,7 @@
                               </div>
                               <div class="col-md-4">
                                   <label>Precio</label>
-                                  <input class="form-control" name="precio_telefonia" type="text" value="{{ $oferta->opcion->precio_telefonia }}">
+                                  <input class="form-control" name="precio_telefonia" type="number" value="{{ number_format($oferta->opcion->precio_telefonia , 2) }}" min="0" step="0.01">
                               </div>
                               <div class="col-md-4">
                                   <label>Móvil</label>

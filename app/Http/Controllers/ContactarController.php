@@ -24,6 +24,9 @@ class ContactarController extends Controller
 		if ($request->has('servicio')) {
             $contacto->servicio = $request->servicio;
         }
+        if ($request->has('notas')) {
+            $contacto->notas = $request->notas;
+        }
     	$contacto->save();
 
     	return response()->json([

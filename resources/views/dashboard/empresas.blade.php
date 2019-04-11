@@ -25,9 +25,10 @@
               <div class="col-auto">
                
                 <!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearempresa">
+				<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearempresa">-->
+        <a class="btn btn-primary" href="{{ route('registrar.empresa') }}">
 				  Crear Empresa
-				</button>
+				</a>
 
               </div>
             </div> <!-- / .row -->

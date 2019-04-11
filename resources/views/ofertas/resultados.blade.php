@@ -67,7 +67,7 @@
 							@endguest
 							<td><a class="btn-contratar" 
 
-								data-id="{{ $oferta->id }}"
+								data-id="{{ $oferta->ofertaid }}"
 								data-titulo="{{ title_case($oferta->titulo) }}"
 								data-descripcion="{{ $oferta->descripcion }}"
 								data-comision="{{ $comision }}"

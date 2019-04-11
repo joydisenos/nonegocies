@@ -13,6 +13,10 @@ class EmpresaController extends Controller
         $this->middleware('auth');
     }
 
+    public function registrar()
+    {
+        return view('dashboard.crearempresa');
+    }
     
     public function crear(Request $request)
     {
@@ -35,6 +39,10 @@ class EmpresaController extends Controller
             $empresa->descripcion = $request->descripcion;
         }else{
             $empresa->descripcion = '';
+        }
+        if( $request->contrato != null )
+        {
+            $empresa->contrato = $request->contrato;
         }
         if ( $request->hasFile('logo') )
         {
