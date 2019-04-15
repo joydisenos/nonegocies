@@ -1,250 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <style>
-  /*tabs*/
-
-.tabs {
-  left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-    position: relative;
-    background: white;
-}
-.tabs input[name="tab-control"] {
-  display: none;
-}
-.tabs .content section h2,
-.tabs ul li label {
-  font-weight: bold;
-  font-size: 18px;
-  color: #428BFF;
-}
-.tabs ul {
-  list-style-type: none;
-  padding-left: 0;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-}
-.tabs ul li {
-  box-sizing: border-box;
-  flex: 1;
-  width: 25%;
-  padding: 0 10px;
-  text-align: center;
-}
-.tabs ul li label {
-  transition: all 0.3s ease-in-out;
-    color: #929daf;
-    padding: 0 10px;
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
-    display: block;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    /* white-space: nowrap; */
-    -webkit-touch-callout: none;
-    /* -webkit-user-select: none; */
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    float: left;
-}
-.tabs ul li label br {
-  display: none;
-}
-.tabs ul li label svg {
-  fill: #929daf;
-  height: 1.2em;
-  vertical-align: bottom;
-  margin-right: 0.2em;
-  transition: all 0.2s ease-in-out;
-}
-.tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
-  outline: 0;
-  color: #bec5cf;
-}
-.tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg {
-  fill: #bec5cf;
-}
-.tabs .slider {
-  position: relative;
-  width: 25%;
-  transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
-}
-.tabs .slider .indicator {
-  position: relative;
-  width: 50px;
-  max-width: 100%;
-  margin: 0 auto;
-  height: 4px;
-  background: #428BFF;
-  border-radius: 1px;
-}
-.tabs .content {
-  margin-top: 30px;
-}
-.tabs .content section {
-  display: none;
-  -webkit-animation-name: content;
-          animation-name: content;
-  -webkit-animation-direction: normal;
-          animation-direction: normal;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-  line-height: 1.4;
-  padding:0;
-}
-.tabs .content section h2 {
-  color: #428BFF;
-  display: none;
-}
-.tabs .content section h2::after {
-  content: "";
-  position: relative;
-  display: block;
-  width: 30px;
-  height: 3px;
-  background: #428BFF;
-  margin-top: 5px;
-  left: 1px;
-}
-.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
-  cursor: default;
-  color: #428BFF;
-}
-.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
-  fill: #428BFF;
-}
-@media (max-width: 600px) {
-  .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
-}
-.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .content > section:nth-child(1) {
-  display: block;
-}
-.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
-  cursor: default;
-  color: #428BFF;
-}
-.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg {
-  fill: #428BFF;
-}
-@media (max-width: 600px) {
-  .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .content > section:nth-child(2) {
-  display: block;
-}
-.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
-  cursor: default;
-  color: #428BFF;
-}
-.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
-  fill: #428BFF;
-}
-@media (max-width: 600px) {
-  .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
-  -webkit-transform: translateX(200%);
-          transform: translateX(200%);
-}
-.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .content > section:nth-child(3) {
-  display: block;
-}
-.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
-  cursor: default;
-  color: #428BFF;
-}
-.tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label svg {
-  fill: #428BFF;
-}
-@media (max-width: 600px) {
-  .tabs input[name="tab-control"]:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
-    background: rgba(0, 0, 0, 0.08);
-  }
-}
-.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .slider {
-  -webkit-transform: translateX(300%);
-          transform: translateX(300%);
-}
-.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .content > section:nth-child(4) {
-  display: block;
-}
-@-webkit-keyframes content {
-  from {
-    opacity: 0;
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-}
-@keyframes content {
-  from {
-    opacity: 0;
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
-  }
-}
-@media (max-width: 1000px) {
-  .tabs ul li label {
-    white-space: initial;
-  }
-  .tabs ul li label br {
-    display: initial;
-  }
-  .tabs ul li label svg {
-    height: 1.5em;
-  }
-}
-@media (max-width: 600px) {
-  .tabs ul li label {
-    padding: 5px;
-    border-radius: 5px;
-  }
-  .tabs ul li label span {
-    display: none;
-  }
-  .tabs .slider {
-    display: none;
-  }
-  .tabs .content {
-    margin-top: 20px;
-  }
-  .tabs .content section h2 {
-    display: block;
-  }
-}
+ 
 
 /*about*/
 
@@ -270,8 +27,6 @@
     padding: 10px 0;
 }
 
-
-
 .col-md-6.text-side {
     background: #f1f1f1;
     padding: 30px;
@@ -280,6 +35,7 @@
     -ms-box-shadow: 0 4px 46px rgba(0,0,0,.1);
     box-shadow: 0 4px 46px rgba(0,0,0,.1);
 }
+
 img.icons{
     padding-top: 7px;
     margin-left: -1px;
@@ -288,13 +44,148 @@ img.icons{
     height: 140px;
 }
 
+div.card .card-header-primary {
+    background: linear-gradient(to right, #FF8441 0%, #f53d96 100%);
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(255, 87, 34, 0.44);
+}
+
+div.card {
+    border: 0;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border-radius: 6px;
+    color: rgba(0,0,0,.87);
+    background: #fff;
+    width: 100%;
+}
+
+div.card.card-plain {
+    background: transparent;
+    box-shadow: none;
+}
+div.card .card-header {
+    border-radius: 3px;
+    padding: 1rem 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: -30px;
+    border: 0;
+}
+
+.nav-tabs .nav-link.active:after{
+        background: #133273 !important;
+}
+
+.card-plain .card-header:not(.card-avatar) {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.div.card .card-body{
+    padding: 15px 30px;
+}
+
+div.card .card-header-danger {
+    background: linear-gradient(60deg,#ef5350,#d32f2f);
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(244,67,54,.6);
+}
+
+
+.card-nav-tabs .card-header {
+    margin-top: -30px!important;
+}
+
+.card .card-header .nav-tabs {
+    padding: 0;
+}
+
+.nav-tabs {
+    border: 0;
+    border-radius: 3px;
+    padding: 0 15px;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: -1px;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    background-color: hsla(0,0%,100%,.2);
+    transition: background-color .3s .2s;
+}
+
+.nav-tabs .nav-item .nav-link{
+    border: 0!important;
+    color: #fff!important;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-item .nav-link {
+    color: #fff;
+    border: 0;
+    margin: 0;
+    border-radius: 3px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: transparent;
+    transition: background-color .3s 0s;
+}
+
+.nav-link{
+    display: block;
+}
+
+.nav-tabs .nav-item .material-icons {
+    margin: -1px 5px 0 0;
+    vertical-align: middle;
+}
+
+.nav .nav-item {
+    position: relative;
+}
+
+.tab-pane p {
+    text-align: left;
+    color: #929FAD !important
+}
+
+section#targets {
+    background-image: -webkit-linear-gradient(top left, rgba(76, 216, 255, 0.7), rgba(30, 108, 217, 0.82)), url(/img/invoice.png);
+    background-image: -o-linear-gradient(top left, rgba(76, 216, 255, 0.7), rgba(30, 108, 217, 0.82)), url(/img/invoice.png);
+    background-image: linear-gradient(to bottom right, rgba(76, 216, 255, 0.7), rgba(30, 108, 217, 0.82)), url(/img/invoice.png);
+    background-size: cover;
+    background-position: center bottom;
+    position: relative;
+}
+
+h1.wow.blue.forced-top.fadeIn.animated {
+    padding: 0 0 50px 0;
+}
 
 </style>
 
 <header class="page">
   <div class="container">
-    <h1 class="animated fadeInLeft">Planes</h1>
-    <p class="animated fadeInDown">Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p>
+    <h1 class="animated fadeInLeft">Sobre Nosotros</h1>
+    <p class="animated fadeInDown">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+  </div>
+  <div class="wave">
+    <svg style="fill:white;" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="217" viewBox="0 0 1920 217">
+  <g fill-rule="evenodd" transform="matrix(-1 0 0 1 1920 0)">
+    <path d="M0,57.46875 C203.364583,135.217754 494.835938,156.564108 874.414062,121.507813 C1192.61198,-13.9827666 1541.14063,-35.3291208 1920,57.46875 L1920,207 L0,207 L0,57.46875 Z" opacity=".3"></path>
+    <path d="M0,79 C292.46875,165.453125 612.46875,165.453125 960,79 C1307.53125,-7.453125 1627.53125,-7.453125 1920,79 L1920,207 L0,207 L0,79 Z" opacity=".6"></path>
+    <path d="M0,89 C288.713542,146.786458 608.713542,146.786458 960,89 C1311.28646,31.2135417 1631.28646,31.2135417 1920,89 L1920,217 L0,217 L0,89 Z"></path>
+  </g>
+</svg>
   </div>
 </header>
 
@@ -305,7 +196,7 @@ img.icons{
       <div class="col-lg-4 wow featured animated fadeInUp">
         <div class="card">
           <div class="card-body-featured">
-            <img class="icons" src="{{ asset('/img/01.svg') }}" alt="flag">
+            <img class="icons" src="{{ asset('/img/idea.svg') }}" alt="flag">
         <h3 class="blue center">Movimiento</h3>
         <p class="gray big-txt">Los comerciales ganan dinero con nuestras facturas, eso se ha terminado, nace No Negocies, donde tú eres tu propio comercial.</p>
           </div>
@@ -315,7 +206,7 @@ img.icons{
       <div class="col-lg-4 wow featured animated fadeInUp">
         <div class="card">
           <div class="card-body-featured">
-            <img class="icons" src="{{ asset('/img/02.svg') }}" alt="target">
+            <img class="icons" src="{{ asset('/img/target.svg') }}" alt="target">
         <h3 class="blue center">Objetivo</h3>
         <p class="gray big-txt">Tenemos por objetivo ofrecerte un mundo de posibilidades para ahorrar en tus facturas y que ganes dinero con ello.</p>
           </div>
@@ -325,7 +216,7 @@ img.icons{
       <div class="col-lg-4 wow featured animated fadeInUp">
         <div class="card">
           <div class="card-body-featured">
-            <img class="icons" src="{{ asset('/img/03.svg') }}" alt="magic">
+            <img class="icons" src="{{ asset('/img/movement.svg') }}" alt="magic">
         <h3 class="blue center">Concepto</h3>
         <p class="gray big-txt">Te ayudamos a encontrar las mejores opciones y al contratar una oferta se te abonará la comisión específica en tu cuenta.</p>
           </div>
@@ -337,216 +228,73 @@ img.icons{
 </section>
 
 <section id="targets">
-  <div class="container">
-    <h1 class="wow blue forced-top animated fadeIn">Para quienes?</h1>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="tabs">
-            <input type="radio" id="tab1" name="tab-control" checked>
-            <input type="radio" id="tab2" name="tab-control">
-            <input type="radio" id="tab3" name="tab-control">  
-            <input type="radio" id="tab4" name="tab-control">
-            <ul>
-              <li><label for="tab1" role="button"><span>Particulares</span></label></li>
-              <li><label for="tab2" role="button"><span>Empresa</span></label></li>
-              <li><label for="tab3" role="button"><span>Comunidades</span></label></li>
-              <li><label for="tab4" role="button"><span>Administradores</span></label></li>
-            </ul>
-            <div class="slider"><div class="indicator"></div></div>
-            <div class="content">
-            <section>
-            Texto para Particulares</section>
-            <section>
-            Texto para Empresas</section>
-            <section>
-            Texto para Comunidades</section>
-            <section>
-            Texto para Administradores</section>
-            </div>
+    <div class="container">
+        <h2 class="wow white forced-top animated fadeIn">Para quienes?</h2>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="card card-nav-tabs">
+                    <div class="card-header card-header-primary">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#particulares" data-toggle="tab">
+                                            Particulares
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#empresas" data-toggle="tab">
+                                            Empresas
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#comunidades" data-toggle="tab">
+                                            Comunidades
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#administradores" data-toggle="tab">
+                                            Administradores
+                                        </a>
+                                        
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><div class="card-body ">
+                    <div class="tab-content text-center">
+                        <div class="tab-pane active" id="particulares">
+                            <p>tenga la posibilidad de que todos los servicios que dispone tanto en su domicilio como para su dia , a dia,los encontrara en este apartado.
+                                Productos como
+                                LUZ,GAS,TELEFONIA,SEGUROS..ELIJA SU OFERTA COMIENZE A AHORRAR Y LO MEJOR DE TODO COBRE POR ELLO!!1
+                            </p>
+                        </div>
+                        <div class="tab-pane" id="empresas">
+                            <p>Tenemos todos los productos que necesitas para tu empresa.
+                                LUZ,TELEFONIA,SEGUROS,CO FORMACION BONIFICADA GRATUITA, ALARMAS..
+                                Elija el presupuesto más económico del mercado contrátalo tú mismo y cobra por ello.
+                            </p>
+                        </div>
+                        <div class="tab-pane" id="comunidades">
+                            <p>Tenemos tanto la solución a tus problemas como todos los servicios que necesitan en vuestro dia a dia.
+                                LUZ,SEGUROS,MANTENIMIENTOS,ASCENSORES,servicio de adm.de fincas…
+                                Ofrecemos un estudio gratuito de reducción de costes de  tu comunidad.
+                                Y lo mejor de todo es que tendrán los mejores precios del mercado y les derivaremos una comisión por todos los servicios, que actualmente  disfrutáis.
+                            </p>
+                        </div>
+                        <div class="tab-pane" id="administradores">
+                            <p>Disponemos de una solución integral para centralizar todos los PYS que disponen en cada comunidad,tales como: LUZ,SEGUROS,ASCENSORES,TELECOMUNICACIONES,ENERGIA SOLAR,CARGADORES VEHICULOS ELECTRICOS ETC..
+                                ELIJE EL MEJOR proveedor.
+                                CENTRALIZADO,GANA CLIENTES Y COBRA POR ELLO.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>        
         </div>
-      </div>
-      <div class="col-lg-6"><img src="{{ asset('/img/target.png') }}" alt="target"></div>
     </div>
-  </div>
-</section>
-<!-- 
-<section>
-  <style>.icons-list span.icon {font-size: 30px}</style>
-  <div class="container">
-    <h2>test icons</h2>
-    <div class="row">
-      <div class="icons-list">
-      <span class="icon flaticon-shopping-cart-of-checkered-design "></span>
-<span class="icon flaticon-timer"></span>
-<span class="icon flaticon-blocks-with-angled-cuts"></span>
-<span class="icon flaticon-quote"></span>
-<span class="icon flaticon-next"></span>
-<span class="icon flaticon-phone-receiver"></span>
-<span class="icon flaticon-play"></span>
-<span class="icon flaticon-handshake"></span>
-<span class="icon flaticon-rss"></span>
-<span class="icon flaticon-comment"></span>
-<span class="icon flaticon-social-media"></span>
-<span class="icon flaticon-calendar"></span>
-<span class="icon flaticon-next-1"></span>
-<span class="icon flaticon-phone-call"></span>
-<span class="icon flaticon-placeholder"></span>
-<span class="icon flaticon-settings"></span>
-<span class="icon flaticon-link "></span>
-<span class="icon flaticon-garbage "></span>
-<span class="icon flaticon-internet "></span>
-<span class="icon flaticon-network "></span>
-<span class="icon flaticon-clock "></span>
-<span class="icon flaticon-clock-1 "></span>
-<span class="icon flaticon-diamond "></span>
-<span class="icon flaticon-computer "></span>
-<span class="icon flaticon-e-mail-envelope "></span>
-<span class="icon flaticon-message "></span>
-<span class="icon flaticon-chat"></span>
-<span class="icon flaticon-growth"></span>
-<span class="icon flaticon-play-button"></span>
-<span class="icon flaticon-right-arrow"></span>
-<span class="icon flaticon-back"></span>
-<span class="icon flaticon-play-button-1"></span>
-<span class="icon flaticon-play-button-2"></span>
-<span class="icon flaticon-upload"></span>
-<span class="icon flaticon-multimedia"></span>
-<span class="icon flaticon-target"></span>
-<span class="icon flaticon-paper-plane"></span>
-<span class="icon flaticon-play-button-3"></span>
-<span class="icon flaticon-next-2"></span>
-<span class="icon flaticon-next-3"></span>
-<span class="icon flaticon-back-1"></span>
-<span class="icon flaticon-back-2"></span>
-<span class="icon flaticon-menu"></span>
-<span class="icon flaticon-menu-1"></span>
-<span class="icon flaticon-menu-button"></span>
-<span class="icon flaticon-menu-2"></span>
-<span class="icon flaticon-magnifying-glass"></span>
-<span class="icon flaticon-tick"></span>
-<span class="icon flaticon-next-5"></span>
-<span class="icon flaticon-back-3"></span>
-<span class="icon flaticon-smartphone"></span>
-<span class="icon flaticon-success"></span>
-<span class="icon flaticon-clock-2"></span>
-<span class="icon flaticon-placeholder-1"></span>
-<span class="icon flaticon-settings-1"></span>
-<span class="icon flaticon-stopwatch"></span>
-<span class="icon flaticon-add"></span>
-<span class="icon flaticon-substract"></span>
-<span class="icon flaticon-mortarboard"></span>
-<span class="icon flaticon-exam"></span>
-<span class="icon flaticon-attachment"></span>
-<span class="icon flaticon-headset"></span>
-<span class="icon flaticon-download-arrow"></span>
-<span class="icon flaticon-plus-symbol"></span>
-<span class="icon flaticon-bar-chart"></span>
-<span class="icon flaticon-startup"></span>
-<span class="icon flaticon-diamond-1"></span>
-<span class="icon flaticon-headphones"></span>
-<span class="icon flaticon-money-bag"></span>
-<span class="icon flaticon-coin"></span>
-<span class="icon flaticon-piggy-bank"></span>
-<span class="icon flaticon-like"></span>
-<span class="icon flaticon-cancel"></span>
-<span class="icon flaticon-cancel-1"></span>
-<span class="icon flaticon-share"></span>
-<span class="icon flaticon-share-1"></span>
-<span class="icon flaticon-price-tag"></span>
-<span class="icon flaticon-tag"></span>
-<span class="icon flaticon-right-quotation-mark"></span>
-<span class="icon flaticon-quote-left"></span>
-<span class="icon flaticon-quote-1"></span>
-<span class="icon flaticon-right-quote"></span>
-<span class="icon flaticon-quotations"></span>
-<span class="icon flaticon-quote-2"></span>
-<span class="icon flaticon-left-quote"></span>
-<span class="icon flaticon-double-quotes"></span>
-<span class="icon flaticon-left-quote-1"></span>
-<span class="icon flaticon-quote-sign"></span>
-<span class="icon flaticon-right-quote-sign"></span>
-<span class="icon flaticon-left-quotes"></span>
-<span class="icon flaticon-electrician"></span>
-<span class="icon flaticon-map"></span>
-<span class="icon flaticon-clock-3"></span>
-<span class="icon flaticon-hourglass"></span>
-<span class="icon flaticon-email"></span>
-<span class="icon flaticon-email-1"></span>
-<span class="icon flaticon-briefcase"></span>
-<span class="icon flaticon-briefcase-"></span> 
-<span class="icon flaticon-document"></span>
-<span class="icon flaticon-contract"></span>
-<span class="icon flaticon-document-1"></span>
-<span class="icon flaticon-cap"></span>
-<span class="icon flaticon-medal"></span>
-<span class="icon flaticon-coffee-cup"></span>
-<span class="icon flaticon-straight-quotes"></span>
-<span class="icon flaticon-cooperation"></span>
-<span class="icon flaticon-pdf"></span>
-<span class="icon flaticon-pdf-1"></span>
-<span class="icon flaticon-back-4"></span>
-<span class="icon flaticon-reply"></span>
-<span class="icon flaticon-reply-1"></span>
-<span class="icon flaticon-law"></span>
-<span class="icon flaticon-statistics"></span>
-<span class="icon flaticon-line-chart"></span>
-<span class="icon flaticon-direction"></span>
-<span class="icon flaticon-eye"></span>
-<span class="icon flaticon-share-option"></span>
-<span class="icon flaticon-notebook-computer"></span>
-<span class="icon flaticon-student"></span>
-<span class="icon flaticon-layers"></span>
-<span class="icon flaticon-comment-1"></span>
-<span class="icon flaticon-paper"></span>
-<span class="icon flaticon-home"></span>
-<span class="icon flaticon-house"></span>
-<span class="icon flaticon-download"></span>
-<span class="icon flaticon-hand-shake"></span>
-<span class="icon flaticon-hand-shake-1"></span>
-<span class="icon flaticon-planet-earth"></span>
-<span class="icon flaticon-map-1"></span>
-<span class="icon flaticon-next-6"></span>
-<span class="icon flaticon-next-7"></span>
-<span class="icon flaticon-next-8"></span>
-<span class="icon flaticon-chronometer"></span>
-<span class="icon flaticon-monitor"></span>
-<span class="icon flaticon-left-arrow"></span>
-<span class="icon flaticon-back-5"></span>
-<span class="icon flaticon-back-7"></span>
-<span class="icon flaticon-eye-1"></span>
-<span class="icon flaticon-menu-3"></span>
-<span class="icon flaticon-contact"></span>
-<span class="icon flaticon-collaboratio"></span> 
-<span class="icon flaticon-organization"></span>
-<span class="icon flaticon-partner"></span>
-<span class="icon flaticon-money"></span>
-<span class="icon flaticon-notes"></span>
-<span class="icon flaticon-target-1"></span>
-<span class="icon flaticon-line-chart-1"></span>
-<span class="icon flaticon-line-graph-and-men"></span>
-<span class="icon flaticon-user-with-computer-monitor-and-bar-graphs"></span>
-<span class="icon flaticon-shopping-cart"></span>
-<span class="icon flaticon-graph-line-screen"></span>
-<span class="icon flaticon-chart-analysis"></span>
-<span class="icon flaticon-supermarket"></span>
-<span class="icon flaticon-growth-1"></span>
-<span class="icon flaticon-monitor-1"></span>
-<span class="icon flaticon-network-1"></span>
-<span class="icon flaticon-banknote"></span>
-<span class="icon flaticon-start"></span>
-<span class="icon flaticon-engineer"></span>
-<span class="icon flaticon-help"></span>
-<span class="icon flaticon-risk"></span>
-<span class="icon flaticon-report"></span>
-<span class="icon flaticon-shield"></span>
-<span class="icon flaticon-two-quote"></span> 
-<span class="icon flaticon-board"></span>
-<span class="icon flaticon-chess"></span>
-<span class="icon flaticon-document-"></span> 
-<span class="icon flaticon-bankin"></span> 
 </div>
-    </div>
-  </div>
-</section> -->
+</section>
 
 @endsection

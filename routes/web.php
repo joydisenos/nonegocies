@@ -23,6 +23,7 @@ Route::get('/nosotros', 'SiteController@nosotros')->name('nosotros');
 Route::get('/cookies', 'SiteController@cookies')->name('cookies');
 Route::get('/terminos', 'SiteController@terminos')->name('terminos');
 Route::get('/privacidad', 'SiteController@privacidad')->name('privacidad');
+Route::get('/contrato-plan', 'SiteController@contrato_plan')->name('contrato.plan');
 
 Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 
@@ -106,7 +107,8 @@ Route::prefix('admin')->group(function () {
    Route::post('/tarjeta' , 'TarjetaController@registrar')->name('registrar.tarjeta');
    Route::post('/cuenta' , 'CuentaController@registrar')->name('registrar.cuenta');
 
-   Route::get('/plan/{plan}' , 'PlanController@cambiarPlan')->name('panel.plan');
+   //Route::get('/plan/{plan}' , 'PlanController@cambiarPlan')->name('panel.plan');
+   Route::post('/plan' , 'PlanController@cambiarPlan')->name('panel.plan');
    
 
 

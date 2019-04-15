@@ -95,7 +95,7 @@ form.login{margin-top:-24px;}
               <div class="form-group">
                   <label for="email" class="col-md-12 col-form-label">{{ __('E-Mail Address') }}</label>
 
-                      <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                      <input id="email2" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                       @if ($errors->has('email'))
                           <span class="invalid-feedback" role="alert">

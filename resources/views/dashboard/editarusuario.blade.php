@@ -163,11 +163,11 @@
 
                        
 
-                        <div class="form-group">
+                       <!-- <div class="form-group">
                                 <button type="submit" class="btn btn-primary">
                                         Actualizar
                                 </button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 

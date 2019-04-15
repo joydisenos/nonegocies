@@ -97,28 +97,41 @@
                     </tr>
 
                     <tr>
-                    <td class="goal-project">
-                        Políticas de privacidad
-                    </td>
-                    <td class="goal-status">
-                        <a href="{{ route('privacidad') }}" target="_blank">{{ route('privacidad') }}</a>
-                    </td>
-                    <td>
-                    <a class="btn btn-primary" href="{{ route('editarlegales', ['privacidad']) }}">Editar</a>
-                    </td>
+                      <td class="goal-project">
+                          Políticas de privacidad
+                      </td>
+                      <td class="goal-status">
+                          <a href="{{ route('privacidad') }}" target="_blank">{{ route('privacidad') }}</a>
+                      </td>
+                      <td>
+                      <a class="btn btn-primary" href="{{ route('editarlegales', ['privacidad']) }}">Editar</a>
+                      </td>
                     
                     </tr>
 
                     <tr>
-                    <td class="goal-project">
-                        Términos y condiciones
-                    </td>
-                    <td class="goal-status">
-                        <a href="{{ route('terminos') }}" target="_blank">{{ route('terminos') }}</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" href="{{ route('editarlegales', ['terminos']) }}">Editar</a>
-                    </td>
+                      <td class="goal-project">
+                          Términos y condiciones
+                      </td>
+                      <td class="goal-status">
+                          <a href="{{ route('terminos') }}" target="_blank">{{ route('terminos') }}</a>
+                      </td>
+                      <td>
+                          <a class="btn btn-primary" href="{{ route('editarlegales', ['terminos']) }}">Editar</a>
+                      </td>
+                    
+                    </tr>
+
+                    <tr>
+                      <td class="goal-project">
+                          Contrato para Planes
+                      </td>
+                      <td class="goal-status">
+                          <a href="{{ route('contrato.plan') }}" target="_blank">{{ route('contrato.plan') }}</a>
+                      </td>
+                      <td>
+                          <a class="btn btn-primary" href="{{ route('editarlegales', ['contrato_plan']) }}">Editar</a>
+                      </td>
                     
                     </tr>
                  

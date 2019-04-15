@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Contactar;
 
 class ContactarController extends Controller
@@ -28,6 +29,13 @@ class ContactarController extends Controller
             $contacto->notas = $request->notas;
         }
     	$contacto->save();
+
+    	if(Auth::user()->telefono == null)
+    	{
+    		$user = Auth::user();
+    		$user->telefono = $request->telefono;
+    		$user->save();
+    	}
 
     	return response()->json([
     		'guardado' => 'Muchas Gracias por contactarnos '.title_case($request->nombre).', pronto nos pondremos en contacto.']);

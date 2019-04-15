@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('header')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css">
+@endsection
 @section('content')
 <style>
     img.icons {
@@ -91,13 +94,6 @@ a.btn.btn-white:hover {
     text-align: center;
 }
 
-
-
-/*grid*/
-
-
-/* css grid*/
-
 .service-grid {
     width: 100%;
     max-width: 1240px;
@@ -135,11 +131,38 @@ form#contactar-reg{
     background: white;
 }
 
+
+select{
+    border: 2px solid #133273 !important;
+    padding: 6px 0 6px 0;
+    color: red;
+    margin-bottom: 28px;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 30px !important;
+    padding-left: 20px;
+    height: 50px !important;
+    background: #ffffff;
+    -webkit-appearance: none;
+    margin-bottom: 0;
+}
+
+input.special{margin-bottom: 0 !important}
+
 </style>
 <header class="page">
   <div class="container">
     <h1 class="animated fadeInLeft">Nuestras Ofertas</h1>
-    <p class="animated fadeInDown">Si tienes alguna duda o necesitas que te ayudemos<br>ponte en contacto con atención al cliente.</p>
+    <p class="animated fadeInDown">Te damos la comisión de venta por cada contratación de servicio en nuestra web</p>
+  </div>
+  <div class="wave">
+    <svg style="fill:white;" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="217" viewBox="0 0 1920 217">
+  <g fill-rule="evenodd" transform="matrix(-1 0 0 1 1920 0)">
+    <path d="M0,57.46875 C203.364583,135.217754 494.835938,156.564108 874.414062,121.507813 C1192.61198,-13.9827666 1541.14063,-35.3291208 1920,57.46875 L1920,207 L0,207 L0,57.46875 Z" opacity=".3"></path>
+    <path d="M0,79 C292.46875,165.453125 612.46875,165.453125 960,79 C1307.53125,-7.453125 1627.53125,-7.453125 1920,79 L1920,207 L0,207 L0,79 Z" opacity=".6"></path>
+    <path d="M0,89 C288.713542,146.786458 608.713542,146.786458 960,89 C1311.28646,31.2135417 1631.28646,31.2135417 1920,89 L1920,217 L0,217 L0,89 Z"></path>
+  </g>
+</svg>
   </div>
 </header>
 <section class="step1">
@@ -507,7 +530,7 @@ form#contactar-reg{
         <div class="row">
             <div class="col-md-6 center">
             <h2 class="wow white animated fadeInUp">Te llamamos!</h1>
-                <p class="white animated fadeIn">te llamamos para una mejor atención y para ofrecerte la mejor oferta del momento</p>
+                <p class="white animated fadeIn">Te llamamos para una mejor atención y para ofrecerte la mejor oferta del momento</p>
             <br>
         <div class="check_mark hide">
                 <div class="sa-icon sa-success animate">
@@ -543,24 +566,139 @@ form#contactar-reg{
             
             <form class="wow animated fadeInUp" action="{{ route('consultar') }}" method="post">
                                 @csrf
-            
-                                <div class="row mb-4">
+    
                                 <input type="hidden" name="servicio" value="{{ $categorias->where('slug' ,'luz')->first()->id }}">
-                                   <!-- <div class="col">
-                                            <label>Seleccione el servicio</label>
-            
-                                            <select name="servicio" id="servicio" class="special form-control">
-                                                <option>Seleccione un Servicio</option>
-                                                @foreach($categorias as $categoria)
-                                                    <option value="{{ $categoria->id }}">
-                                                        {{ title_case($categoria->nombre) }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                    </div> -->
+                                    
+                                <select name="persona" id="persona" class="special form-control ocultar">
+                                        <option value="">Seleccione una Opción</option>
+                                        <option value="1"
+                                        @guest
+                                        @else
+                                        {{ (Auth::user()->tipo == 1) ? 'selected' : ''}}
+                                        @endguest
+                                        >Particular</option>
+                                        <option value="2"
+                                        @guest
+                                        @else
+                                        {{ (Auth::user()->tipo == 2) ? 'selected' : ''}}
+                                        @endguest
+                                        >Empresa</option>
+                                        <option value="3"
+                                        @guest
+                                        @else
+                                        {{ (Auth::user()->tipo == 3) ? 'selected' : ''}}
+                                        @endguest
+                                        >Comunidad</option>
+                                        <option value="4"
+                                        @guest
+                                        @else
+                                        {{ (Auth::user()->tipo == 4) ? 'selected' : ''}}
+                                        @endguest
+                                        >Administrador</option>
+                                </select>
+                                   
+                                <div class="row mb-4">
                                     <div class="col">
-                                    <label for="persona">Soy</label>
-                                    <select name="persona" id="persona" class="special form-control">
+                                        <label for="tarifa">Tarifa</label>
+                                        <select name="tarifa" id="tarifa" class="form-control special">
+                                            <option value="0">Seleccione una Opción</option>
+                                            <option value="1" class="tarifas luz-opt">2.0A</option>
+                                            <option value="2" class="tarifas luz-opt">2.0ADH</option>
+                                            <option value="3" class="tarifas luz-opt">2.1A</option>
+                                            <option value="4" class="tarifas luz-opt">2.1ADH</option>
+                                            <option value="5" class="tarifas luz-opt">3.0A</option>
+                                            <option value="6" class="tarifas luz-opt">3.1A</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col">
+                                        <label>Potencia</label>
+                                    </div>
+                               </div>
+
+                                <div class="row mb-4">
+                                
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="pp1" min="0" step="any" placeholder="P1" required>
+                                        </div>
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="pp2" min="0" step="any" placeholder="P2" required>
+                                        </div>
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="pp3" min="0" step="any" placeholder="P3" required>
+                                        </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                            <label>Energía</label>
+                                    </div>
+                               </div>
+
+                                <div class="row mb-4">
+                                
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="ep1" min="0" step="any" placeholder="P1" required>
+                                        </div>
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="ep2" min="0" step="any" placeholder="P2" required>
+                                        </div>
+                                        <div class="col">
+                                                <input class="special form-control" type="number" name="ep3" min="0" step="any" placeholder="P3" required>
+                                        </div>
+                                </div>
+
+                                <div class="row mb-4">
+
+                                        <div class="col">
+                                        <label for="monto">Total Factura</label>
+                                                <input class="special form-control" type="number" name="monto" min="0" step="any" placeholder="00.00" required>
+                                        </div>
+                                </div>
+
+            
+                               <div class="row">
+                                    <div class="col">
+                                            <label>Período de Tiempo</label>
+                                    </div>
+                               </div>
+                                
+                                <div class="row">
+                                    <div class="col">
+                                            <label for="">Desde</label>
+                                            <input class="special form-control datepicker" name="desde" data-date-format="dd/mm/yyyy" required>
+                                    </div>
+                                    <div class="col">
+                                            <label for="">Hasta</label>
+
+                                            <input class="special form-control datepicker" data-date-format="dd/mm/yyyy" name="hasta" required>
+                                    </div>
+                                </div>
+                                
+                                <input id="submitBtn" class="btn btn-outline-light btn-lg submit-contactar" type="submit" value="Consultar">
+                            </form>
+        </div>
+        <div class="service-item"></div>
+        </div>
+    </div>
+</section>
+<section class="contactar ocultar" id="contratar-gas">
+    <div class="container">
+    <div class="row">
+        <div class="service-item"></div>
+        <div class="col-md-6 center">
+            <h2 class="wow blue animated fadeInUp">Calculadora de Ahorros</h1>
+            <br>
+            
+            <form class="wow animated fadeInUp" action="{{ route('consultar') }}" method="post">
+                                @csrf
+            
+                                <input type="hidden" name="servicio" value="{{ $categorias->where('slug' ,'gas')->first()->id }}">
+                                   
+                                   
+                                    <select name="persona" id="persona" class="special form-control ocultar">
                                                 <option value="">Seleccione una Opción</option>
                                                 <option value="1"
                                                 @guest
@@ -587,27 +725,17 @@ form#contactar-reg{
                                                 @endguest
                                                 >Administrador</option>
                                             </select>
-                                    </div>
-                                </div>
 
                                 <div class="row mb-4">
                                 <div class="col">
                                 <label for="tarifa">Tarifa</label>
                                 <select name="tarifa" id="tarifa" class="form-control">
-                                        <option value="0">tarifa</option>
-
-                                                <option value="1" class="tarifas luz-opt">2.0A</option>
-                                                <option value="2" class="tarifas luz-opt">2.0ADH</option>
-                                                <option value="3" class="tarifas luz-opt">2.1A</option>
-                                                <option value="4" class="tarifas luz-opt">2.1ADH</option>
-                                                <option value="5" class="tarifas luz-opt">3.0A</option>
-                                                <option value="6" class="tarifas luz-opt">3.1A</option>
-
-                                                <option value="7" class="tarifas gas-opt">3.1</option>
-                                                <option value="8" class="tarifas gas-opt">3.2</option>
-                                                <option value="9" class="tarifas gas-opt">3.3</option>
-                                                <option value="10" class="tarifas gas-opt">3.4</option>
-                                        </select>
+                                    <option value="0">Seleccione una Opción</option>
+                                        <option value="7" class="tarifas gas-opt">3.1</option>
+                                        <option value="8" class="tarifas gas-opt">3.2</option>
+                                        <option value="9" class="tarifas gas-opt">3.3</option>
+                                        <option value="10" class="tarifas gas-opt">3.4</option>
+                                    </select>
                                 </div>
                                 </div>
                                 
@@ -653,7 +781,7 @@ form#contactar-reg{
 
                                         <div class="col">
                                         <label for="monto">Total Factura</label>
-                                                <input class="special form-control" type="number" name="monto" min="0" step="any" placeholder="Monto Facturado" required>
+                                                <input class="special form-control" type="number" name="monto" min="0" step="any" placeholder="00.00" required>
                                         </div>
                                 </div>
 
@@ -667,11 +795,12 @@ form#contactar-reg{
                                 <div class="row">
                                     <div class="col">
                                             <label for="">Desde</label>
-                                            <input class="special form-control" type="date" name="desde" placeholder="Desde" required>
+                                            <input class="special form-control datepicker" name="desde" data-date-format="dd/mm/yyyy" required>
                                     </div>
                                     <div class="col">
                                             <label for="">Hasta</label>
-                                            <input class="special form-control" type="date" name="hasta" placeholder="Hasta" required>
+
+                                            <input class="special form-control datepicker" data-date-format="dd/mm/yyyy" name="hasta" required>
                                     </div>
                                 </div>
                                 
@@ -683,10 +812,20 @@ form#contactar-reg{
     </div>
 </section>
 
+
 @endsection
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.es.min.js"></script>
 <script>
     $(document).ready(function(){
+
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            language: "es",
+            autoclose: true,
+            todayHighlight: true
+        });
 
         $('.step').click(function(e){
             e.preventDefault();

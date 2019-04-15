@@ -18,6 +18,7 @@ class CreateAjustesTable extends Migration
             $table->longtext('cookies')->nullable();
             $table->longtext('privacidad')->nullable();
             $table->longtext('terminos')->nullable();
+            $table->longtext('contrato_plan')->nullable();
             $table->float('comision')->default(0);
             $table->timestamps();
         });

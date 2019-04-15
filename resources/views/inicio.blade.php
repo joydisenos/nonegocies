@@ -17,10 +17,6 @@ section{
     color: #d61e1e !important;
 }
 
-.icon-box {
-    background-image: linear-gradient(to right, #133871 0%, #5d6f9a 100%);
-}
-
 .steps-section{
 	position:relative;
 	padding-top:30px;
@@ -73,8 +69,6 @@ section{
 	border-radius:50%;
 	line-height:132px;
 	font-size:62px;
-	background-color:#d3dde8;
-	box-shadow: inset 0 0 10px rgba(0,0,0,0.20);
 }
 
 .services-block-two .inner-box .icon-outer .icon-box .icon{
@@ -96,13 +90,6 @@ section{
 	-webkit-transition:all 0.3s ease;
 	-ms-transition:all 0.3s ease;
 	-o-transition:all 0.3s ease;
-	box-shadow:inset 0 0 15px rgba(0,0,0,0.20);
-	background-image: -ms-linear-gradient(left, #FF8441 0%, #f53d96 100%) !important;
-	background-image: -moz-linear-gradient(left, #FF8441 0%, #f53d96 100%) !important;
-	background-image: -o-linear-gradient(left, #FF8441 0%, #f53d96 100%) !important;
-	background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FF8441), color-stop(100, #f53d96)) !important;
-	background-image: -webkit-linear-gradient(left, #FF8441 0%, #f53d96 100%) !important;
-	background-image: linear-gradient(to right, #FF8441 0%, #f53d96 100%) !important;
 }
 
 .services-block-two .inner-box:hover .icon-outer .icon-box:before{
@@ -137,14 +124,6 @@ section{
 	color:#fe8045;
 }
 
-.services-block-two .inner-box .lower-box .text{
-	position:relative;
-	color:#555555;
-	font-size:14px;
-	line-height:2em;
-	margin-bottom:14px;
-	padding:0px 20px;
-}
 
 .services-block-two .inner-box .lower-box .contact{
 	position:relative;
@@ -198,7 +177,7 @@ section{
     width: 100%;
     height: 1000px;
     background: url({{ asset('/svg/red_curve.svg') }}) no-repeat center bottom;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     background-size: 100%;
 }
@@ -211,7 +190,7 @@ section{
     width: 100%;
     height: 1000px;
     background: url({{ asset('/svg/red_curve_bottom.svg') }}) no-repeat center top;
-    top: 0;
+    top: -1px;
     left: 0;
     background-size: 100%;
 }
@@ -240,15 +219,14 @@ section{
 }
 
 .circle {
-    background: white;
+	background: white;
     color: blue;
     border-radius: 100%;
-    height: 180px;
+    height: 140px;
     width: 180px;
     text-align: center;
     display: block;
     margin: 0 auto;
-    margin-bottom: 10px;
 }
 
 .target .col-lg-3 {
@@ -464,14 +442,6 @@ section{
 	font-size:16px;
 }
 
-.testimonial-block .inner-box .text{
-	position:relative;
-	color:#555555;
-	font-size:16px;
-	line-height:1.9em;
-	margin-top:30px;
-}
-
 .testimonial-block .inner-box .quote{
 	position:absolute;
 	right:60px;
@@ -486,7 +456,6 @@ section{
 }
 
 .testimonial-section .sec-title {top: -100px;position: absolute;}
-
 .testimonial-section .sec-title h2{color: #ef1114}
 
 /*test*/
@@ -501,6 +470,16 @@ section{
     padding-bottom: 20px;
     font-size: 50px;
 }
+
+.icon-box img {
+    width: 100px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 23px;
+}
+
+
 </style>
 <header class="masthead" id="hero">
 	<div class="overlay"></div>
@@ -569,13 +548,12 @@ section{
 							<div class="icon-outer">
 								<div class="service-number">1</div>
 								<div class="icon-box">
-									<span class="icon flaticon-start"></span>
+									<img src="/img/step1.svg" alt="step1">
 								</div>
 							</div>
 							<div class="lower-box">
 								<h5><a href="#">Registrate</a></h5>
-								<div class="text">Comienza creando tu cuenta es rapido y gratis!</div>
-								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Crear cuenta</a> -->
+								<div class="gray big-txt">Comienza creando tu cuenta es rapido y gratis!</div>
 							</div>
 						</div>
 					</div>
@@ -586,13 +564,12 @@ section{
 							<div class="icon-outer">
 								<div class="service-number">2</div>
 								<div class="icon-box">
-									<span class="icon flaticon-target"></span>
+									<img src="/img/step2.svg" alt="step2">
 								</div>
 							</div>
 							<div class="lower-box">
 								<h5><a href="#">Busca tu oferta</a></h5>
-								<div class="text">Busca la oferta que mejor se adapte a tus necesidades</div>
-								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Ofertas</a> -->
+								<div class="gray big-txt">Busca la oferta que mejor se adapte a tus necesidades</div>
 							</div>
 						</div>
 					</div>
@@ -603,13 +580,12 @@ section{
 							<div class="icon-outer">
 								<div class="service-number">3</div>
 								<div class="icon-box">
-									<span class="icon flaticon-hand-shake-1"></span>
+									<img src="/img/step3.svg" alt="step3">
 								</div>
 							</div>
 							<div class="lower-box">
 								<h5><a href="#">Contrata tu oferta</a></h5>
-								<div class="text">Confirma la oferta, tus datos y tu comisión</div>
-								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Mis contratos</a> -->
+								<div class="gray big-txt">Confirma la oferta, tus datos y tu comisión</div>
 							</div>
 						</div>
 					</div>
@@ -620,13 +596,12 @@ section{
 							<div class="icon-outer">
 								<div class="service-number">4</div>
 								<div class="icon-box">
-									<span class="icon flaticon-money-bag"></span>
+									<img src="/img/step4.svg" alt="step4">
 								</div>
 							</div>
 							<div class="lower-box">
 								<h5><a href="#">Gana dinero</a></h5>
-								<div class="text">en 30 dias ingresamos dinero en tu cuenta</div>
-								<!-- <a class="btn btn-outline-light btn-lg ts-scroll mr-4 slideInUp animated js-scroll-trigger" href="#">Ver pagos</a> -->
+								<div class="gray big-txt">en 30 dias ingresamos dinero en tu cuenta</div>
 							</div>
 						</div>
 					</div>
@@ -635,42 +610,58 @@ section{
 			</div>
 		</div>
 	</section>
+<style>
+	.target-icon{
+		transition: all ease .5s;
+	    background: white;
+	    display: block;
+	    border-radius: 6px;
+	}
+	.target-icon:hover{
+    	transform: translateY(-5px);
+	}
+	.target-icon h3{
+    color: red;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+</style>
 <section class="target" id="target">
 	<div class="container">
 		<h2 class="white text-center">Titulo para los targets</h2>
 		<p class="white center text-center">Lorem ipsum dolor sit amet nsdou tinasdfm tritani omittam qui mei oblique taimates.</p>
 		<div class="row">
 			<div class="col-lg-3">
+				<a href="/nosotros" class="target-icon">
 				<div class="circle">
-					<img src="{{ asset('/svg/house.svg') }}" alt="house" />
+					<img src="{{ asset('/img/nosotros/particulares.svg') }}" alt="house" />
 				</div>
 				<h3>Particulares</h3>
-				<hr>
-				<p class="white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet neque facilis doloremque temporibus quaerat culpa architecto voluptatem esse similique cupiditate.</p>
+				</a>
 			</div>
 			<div class="col-lg-3">
+				<a href="/nosotros" class="target-icon">
 				<div class="circle">
-					<img src="{{ asset('/svg/house.svg') }}" alt="house" />
+					<img src="{{ asset('/img/nosotros/empresas.svg') }}" alt="house" />
 				</div>
 				<h3>Empresas</h3>
-				<hr>
-				<p class="white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus eaque, eligendi sed, vero error aliquam praesentium provident eius nostrum! Ducimus.</p>
+				</a>
 			</div>
 			<div class="col-lg-3">
+				<a href="/nosotros" class="target-icon">
 				<div class="circle">
-					<img src="{{ asset('/svg/house.svg') }}" alt="house" />
+					<img src="{{ asset('/img/nosotros/comunidades.svg') }}" alt="house" />
 				</div>
 				<h3>Comunidades</h3>
-				<hr>
-				<p class="white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo minima, cupiditate sit at voluptatibus hic alias porro vero est dolore.</p>
+				</a>
 			</div>
 			<div class="col-lg-3">
+				<a href="/nosotros" class="target-icon">
 				<div class="circle">
-					<img src="{{ asset('/svg/house.svg') }}" alt="house" />
+					<img src="{{ asset('/img/nosotros/administradores.svg') }}" alt="house" />
 				</div>
 				<h3>Administradores</h3>
-				<hr>
-				<p class="white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor qui error modi nihil dicta velit maxime consequuntur ab, deleniti cumque.</p>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -694,7 +685,7 @@ section{
 	<div class="container">
 		<!-- Sec Title -->
 		<div class="sec-title">
-			<h2>Que opinan los usuarios<br> sobre nuestro servicio</h2>
+			<h2>Que opinan los usuarios<br> sobre nuestra iniciativa</h2>
 		</div>
 	</div>
 	<div class="outer-container clearfix">
@@ -709,10 +700,10 @@ section{
 									<div class="image">
 										<img src="{{ asset('img/avatar.jpg') }}" alt="">
 									</div>
-									<h5>Frederic Anderson</h5>
+									<h5>Juan Roman</h5>
 									<div class="designation">President</div>
 								</div>
-								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
+								<div class="text">Me registre y elegí una tarifa de luz, aparentemente más barata, realice todos los pasos y verdaderamente pago menos.</div>
 							</div>
 							<div class="quote flaticon-quotations"></div>
 						</div>
@@ -729,7 +720,7 @@ section{
 									<h5>Andreu laclau</h5>
 									<div class="designation">President</div>
 								</div>
-								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
+								<div class="text">Cambiamos los suministros de nuestra comunidad con ellos, hicimos el estudio de reducción de costes y ingresamos en la comunidad 525€</div>
 							</div>
 							<div class="quote flaticon-quotations"></div>
 						</div>
@@ -743,10 +734,10 @@ section{
 									<div class="image">
 										<img src="{{ asset('img/avatar.jpg') }}" alt="">
 									</div>
-									<h5>Frederic Anderson</h5>
+									<h5>Romina Zapata</h5>
 									<div class="designation">President</div>
 								</div>
-								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
+								<div class="text">Pille una tarifa de móvil más barato que en la tienda y encima me pagaron, cambiare más cosas , lo recomiendo.</div>
 							</div>
 							<div class="quote flaticon-quotations"></div>
 						</div>
@@ -760,10 +751,10 @@ section{
 									<div class="image">
 										<img src="{{ asset('img/avatar.jpg') }}" alt="">
 									</div>
-									<h5>Frederic Anderson</h5>
+									<h5>Lucas Roldan</h5>
 									<div class="designation">President</div>
 								</div>
-								<div class="text">Cookies are set through this site to recognise your repeat visits and preferences, serve more relevant ads, facilitate social sharing, and to  violanalyse traffic. </div>
+								<div class="text">Pense que todo era un timo, recibi mi pago a los 20 dias de la contratación. lo recomiendo!</div>
 							</div>
 							<div class="quote flaticon-quotations"></div>
 						</div>
@@ -803,69 +794,68 @@ section{
 @section('scripts')
 <script src="{{ asset('js/owl.js') }}"></script>
 <script>
-$(document).ready(function() {
 
-	// tabs
+	$(document).ready(function() {
 
-	$(".tab-slider--body").hide();
-  	$(".tab-slider--body:first").show();
+		// tabs
+		$(".tab-slider--body").hide();
+	  	$(".tab-slider--body:first").show();
 
-	$(".tab-slider--nav li").click(function() {
-  		
-  		$(".tab-slider--body").hide();
-  		var activeTab = $(this).attr("rel");
-  		$("#"+activeTab).fadeIn();
-		if($(this).attr("rel") == "tab2"){
-			$('.tab-slider--tabs').addClass('slide');
-		}else{
-			$('.tab-slider--tabs').removeClass('slide');
-		}
-  		$(".tab-slider--nav li").removeClass("active");
-  		$(this).addClass("active");
-
-	});
-	
-
-	$.ajaxSetup({
-    	headers: {
-        	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    	}
-	});
-
-
-	// testimonial
-	if ($('.testimonial-carousel').length) {
-		$('.testimonial-carousel').owlCarousel({
-			loop:true,
-			margin:90,
-			nav:true,
-			smartSpeed: 500,
-			autoplay: 500,
-			navText: [ '<span class="flaticon-left-arrow"></span>', '<span class="flaticon-next-1"></span>' ],
-			responsive:{
-				0:{
-					items:1,
-					margin:30
-				},
-				600:{
-					items:1,
-					margin:30
-				},
-				800:{
-					items:1,
-					margin:30
-				},
-				1024:{
-					items:1,
-					margin:30
-				},
-				1200:{
-					items:1
-				}
+		$(".tab-slider--nav li").click(function() {
+	  		
+	  		$(".tab-slider--body").hide();
+	  		var activeTab = $(this).attr("rel");
+	  		$("#"+activeTab).fadeIn();
+			if($(this).attr("rel") == "tab2"){
+				$('.tab-slider--tabs').addClass('slide');
+			}else{
+				$('.tab-slider--tabs').removeClass('slide');
 			}
-		});  		
-	}
+	  		$(".tab-slider--nav li").removeClass("active");
+	  		$(this).addClass("active");
 
+		});
+
+		$.ajaxSetup({
+	    	headers: {
+	        	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    	}
+		});
+
+		// testimonial
+		if ($('.testimonial-carousel').length) {
+			$('.testimonial-carousel').owlCarousel({
+				loop:true,
+				margin:90,
+				nav:true,
+				smartSpeed: 500,
+				autoplay: 500,
+				navText: [ '<span class="flaticon-left-arrow"></span>', '<span class="flaticon-next-1"></span>' ],
+				responsive:{
+					0:{
+						items:1,
+						margin:30
+					},
+					600:{
+						items:1,
+						margin:30
+					},
+					800:{
+						items:1,
+						margin:30
+					},
+					1024:{
+						items:1,
+						margin:30
+					},
+					1200:{
+						items:1
+					}
+				}
+			});  		
+		};
+	});
+ 	
 </script>
 
 @endsection

@@ -18,7 +18,10 @@ class SiteController extends Controller
 
      public function planes()
     {
-        return view('planes');
+    	$refLegal = Ajuste::first();
+        $legal = $refLegal->terminos;
+
+        return view('planes' , compact('legal'));
     }
 
      public function nosotros()
@@ -65,6 +68,14 @@ class SiteController extends Controller
         $legal = $refLegal->cookies;
 
     	return view('cookies', compact('legal'));
+    }
+
+    public function contrato_plan()
+    {
+        $refLegal = Ajuste::first();
+        $legal = $refLegal->contrato_plan;
+
+    	return view('contrato', compact('legal'));
     }
 
     public function categoria()
