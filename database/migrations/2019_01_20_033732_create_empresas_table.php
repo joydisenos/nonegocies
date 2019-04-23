@@ -19,6 +19,7 @@ class CreateEmpresasTable extends Migration
             $table->text('descripcion');
             $table->string('logo')->nullable();
             $table->text('contrato')->nullable();
+            $table->integer('cerrar')->nullable();
             $table->integer('estatus')->default(1);
             $table->timestamps();
         });

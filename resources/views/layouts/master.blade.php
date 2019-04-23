@@ -65,6 +65,7 @@
             </li>
             @guest
             @else
+
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{ route('indexofertas') }}">Ofertas</a>
             </li>
@@ -77,9 +78,13 @@
                 <a class="nav-link js-scroll-trigger" id="iniciar-sesion" href="{{ route('login') }}" >Ingresar</a>
             </li>
             @else
+
             <li class="nav-item">
                 <a class="nav-link js-scroll-trigger trigger-drop" href="{{ route('panel.configuracion') }}" >{{ title_case(Auth::user()->name) }} <span class="badge">{{ (Auth::user()->noleidos() > 0) ? Auth::user()->noleidos() : '' }}</span> <i class="arrow"></i></a>
                 <ul class="drop">
+                  @role('admin')
+                  <li><a href ="{{ route('inicio') }}">Admin</a></li>
+                  @endrole
                   <li><a href ="{{ route('panel.configuracion') }}">Perfil</a></li>
                   <li><a href ="{{ route('panel.mensajes') }}">Mensajes <span class="badge">{{ (Auth::user()->noleidos() > 0) ? Auth::user()->noleidos() : '' }}</span></a></li>
                   <li><a href ="{{ route('panel.contratos') }}">Mis Contratos</a></li>

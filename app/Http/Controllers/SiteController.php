@@ -86,6 +86,42 @@ class SiteController extends Controller
         return view('ofertas.formulario' , compact('categorias'));
     }
 
+    public function consultar_gas(Request $request)
+    {
+         $validatedData = $request->validate([
+            'servicio' => 'required',
+            'persona' => 'required',
+            'tarifa' => 'required',
+            'monto' => 'required',
+            'desde' => 'required',
+            'hasta' => 'required',
+            ]);
+
+         if($user = Auth::user() && Auth::user()->tipo == null)
+            {
+                $user = Auth::user();
+                $user->tipo = $request->persona;
+                $user->save();
+            }   
+
+        $categoria = Categoria::findOrFail($request->servicio);
+        $refOfertas = new Ofertas;
+
+        $desde = Carbon::createFromFormat('d/m/Y' , $request->desde);
+        $hasta = Carbon::createFromFormat('d/m/Y' , $request->hasta);
+
+        $dias = $hasta->diffInDays($desde);
+        $precio = ( (float)$request->monto / $dias ) * 30;
+
+        $categoriaId = $categoria->id;
+        $tipoPersona = $request->persona;
+        $tarifa = (int)$request->tarifa;
+        
+        $ofertas = $refOfertas->getOfertasMenorPrecioGas($categoriaId , $tarifa , $tipoPersona , $precio );
+        
+        return view('ofertas.resultados-gas' , compact('ofertas' , 'categoria'));
+    }
+
     public function consultar(Request $request)
     {
         $validatedData = $request->validate([
@@ -112,8 +148,8 @@ class SiteController extends Controller
         $categoria = Categoria::findOrFail($request->servicio);
         $refOfertas = new Ofertas;
 
-        $desde = Carbon::parse($request->desde);
-        $hasta = Carbon::parse($request->hasta);
+        $desde = Carbon::createFromFormat('d/m/Y' , $request->desde);
+        $hasta = Carbon::createFromFormat('d/m/Y' , $request->hasta);
 
         $dias = $hasta->diffInDays($desde);
         $precio = (float)$request->monto;

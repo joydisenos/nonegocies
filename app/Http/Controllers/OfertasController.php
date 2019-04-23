@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Empresa;
 use App\Categoria;
 use App\Ofertas;
+use App\Ordenes;
+use App\User;
 use App\CamposOferta;
 
 class OfertasController extends Controller
@@ -122,6 +124,119 @@ class OfertasController extends Controller
             }
         
         return redirect()->route('ofertas')->with('status','Oferta Registrada');
+    }
+
+    public function contratoOffline(Request $request)
+    {
+
+        if($request->oferta_id == 0)
+        {
+            $validatedData = $request->validate([
+            'nombre' => 'required|max:255',
+            'empresa_id' => 'required',
+            'precio' => 'required',
+            'user' => 'required'
+            ]);
+
+            //obtener categoria offline
+            $refCategoria = new Categoria();
+            $categoria = $refCategoria->getCategoriaSlug('contratos-offline');
+
+            $oferta = new Ofertas();
+            $oferta->nombre = $request->nombre;
+            $oferta->slug = str_slug($request->nombre , '-');
+            $oferta->empresa_id = $request->empresa_id;
+            $oferta->categoria_id = $categoria->id;
+            $oferta->tipo = 1;
+            $oferta->precio = 0;
+            $oferta->precio_diario = 0;
+            if ( $request->descripcion !=null )
+            {
+                $oferta->descripcion = $request->descripcion;
+            }else{
+                $oferta->descripcion = '';
+            }
+            if ( $request->comision !=null )
+            {
+                $oferta->comision = $request->comision;
+            }else{
+                $oferta->comision = 0;
+            }
+            if ( $request->plan1 !=null )
+            {
+                $oferta->plan1 = $request->plan1;
+            }else{
+                $oferta->plan1 = 0;
+            }
+            if ( $request->plan2 !=null )
+            {
+                $oferta->plan2 = $request->plan2;
+            }else{
+                $oferta->plan2 = 0;
+            }
+            if ( $request->plan3 !=null )
+            {
+                $oferta->plan3 = $request->plan3;
+            }else{
+                $oferta->plan3 = 0;
+            }
+            $oferta->save();
+                
+            $opcion = new CamposOferta ();
+            $opcion->oferta_id = $oferta->id;
+            $opcion->nombre = 'offline';
+            $opcion->precio_fijo = $request->precio;
+            $opcion->fecha = $request->fecha;
+            $opcion->save();
+
+            
+                //$oferta = Ofertas::findOrFail($request->oferta_id);
+
+                $contrato = $oferta->empresa->contrato;
+                $contrato = $oferta->contratoUser($oferta->empresa->contrato , $request->user);
+
+                    $user = User::findOrFail($request->user);
+
+                    if($user->plan_id == 0)
+                    {
+                        $multiplo = $request->plan1 / 100;
+                    }else if($user->plan_id == 2)
+                    {
+                        $multiplo = $request->plan2 / 100;
+                    }else if($user->plan_id == 3)
+                    {
+                        $multiplo = $request->plan3 / 100;
+                    }
+
+                $comision = $request->comision * $multiplo;
+
+                $orden = new Ordenes ();
+                $orden->user_id = $request->user;
+                $orden->oferta_id = $oferta->id;
+                $orden->comision = $comision;
+                $orden->contrato = $contrato;
+                $orden->save();
+            
+                return redirect()->route('index.contratos')->with('status','Oferta Offline Registrada');
+
+        }else{
+
+            if($request->user != 0)
+            {
+
+                $oferta = Ofertas::findOrFail($request->oferta_id);
+
+                $contrato = $oferta->empresa->contrato;
+                $contrato = $oferta->contratoUser($oferta->empresa->contrato , $request->user);
+
+                $orden = new Ordenes ();
+                $orden->user_id = $request->user;
+                $orden->oferta_id = $request->oferta_id;
+                $orden->comision = 0;
+                $orden->contrato = $contrato;
+                $orden->save();
+            }
+        }
     }
 
     public function editar($id)

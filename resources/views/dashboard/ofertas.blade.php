@@ -25,9 +25,25 @@
               <div class="col-auto">
                 
                 <!-- Button -->
+
+                
+              @if (isset($categoria))
+                @if($categoria->slug == 'offline')
+                  <a href="{{ route('offline') }}" class="btn btn-primary">
+                    Crear Oferta
+                  </a>
+                @else
                 <a href="{{ route('crearoferta') }}" class="btn btn-primary">
                   Crear Oferta
                 </a>
+                @endif
+
+              @else
+                <a href="{{ route('crearoferta') }}" class="btn btn-primary">
+                  Crear Oferta
+                </a>
+              @endif
+
 
               </div>
             </div> <!-- / .row -->

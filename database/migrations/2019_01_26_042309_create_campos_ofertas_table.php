@@ -27,6 +27,7 @@ class CreateCamposOfertasTable extends Migration
             $table->float('ep3' , 20 , 6)->nullable();
             $table->float('precio_tarifa' , 20 , 6)->nullable();
             $table->float('precio_fijo' , 20 , 6)->nullable();
+            $table->date('fecha')->nullable();
             $table->integer('categoria_telefonia')->nullable();
             $table->string('subtitulo_telefonia')->nullable();
             $table->float('precio_telefonia')->nullable();

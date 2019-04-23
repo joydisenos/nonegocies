@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Ofertas extends Model
@@ -47,6 +48,27 @@ class Ofertas extends Model
         return $oferta;
     }
 
+    public function contrato($contrato)
+    {
+        $contrato = str_replace("{nombre}", title_case(Auth::user()->name) . ' ' . title_case(Auth::user()->apellido) . ' ' , $contrato);
+        $contrato = str_replace('{dni}' , Auth::user()->dni , $contrato);
+        $contrato = str_replace('{direccion}' , Auth::user()->direccion , $contrato);
+
+        return $contrato;
+    }
+
+    public function contratoUser($contrato , $user)
+    {
+        $user = User::findOrFail($user);
+
+        $contrato = str_replace("{nombre}", title_case($user->name) . ' ' . title_case($user->apellido) . ' ' , $contrato);
+        $contrato = str_replace('{dni}' , $user->dni , $contrato);
+        $contrato = str_replace('{direccion}' , $user->direccion , $contrato);
+
+        return $contrato;
+    }
+
+
     public function getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias)
     {
         $ofertas = Ofertas::selectRaw(('* , 
@@ -87,6 +109,23 @@ class Ofertas extends Model
                                     (campos_ofertas.ep2 * '. $dias .' * '. $ep2 .') + 
                                     (campos_ofertas.ep3 * '. $dias .' * '. $ep3 .'))
                                     <= '. $precio)
+                                    ->get();
+
+        return $ofertas;
+    }
+
+    public function getOfertasMenorPrecioGas($categoriaId , $tarifa , $tipoPersona , $precio)
+    {
+        $ofertas = Ofertas::selectRaw(('* , 
+                                    ofertas.id as ofertaid,
+                                    ofertas.estatus,
+                                    ofertas.nombre as titulo'))
+                                    ->join('campos_ofertas' , 'campos_ofertas.oferta_id' , '=' , 'ofertas.id')
+                                    ->where('ofertas.categoria_id' , $categoriaId)
+                                    ->where('ofertas.tarifa' , $tarifa)
+                                    ->where('ofertas.tipo' , $tipoPersona)
+                                    ->where('campos_ofertas.precio_fijo' , '<=' , $precio)
+                                    ->where('ofertas.estatus' , 1)
                                     ->get();
 
         return $ofertas;

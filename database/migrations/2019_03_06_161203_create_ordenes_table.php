@@ -18,6 +18,8 @@ class CreateOrdenesTable extends Migration
             $table->integer('user_id');
             $table->integer('oferta_id');
             $table->float('comision');
+            $table->string('dni');
+            $table->string('factura');
             $table->text('contrato')->nullable();
             $table->integer('estatus');
             $table->timestamps();

@@ -29,7 +29,8 @@ Route::post('/contactar', 'ContactarController@crear')->name('contactar');
 
 Route::prefix('ofertas')->group(function (){
    Route::get('/' , 'SiteController@categoria')->name('indexofertas')->middleware('auth');
-   Route::post('/' , 'SiteController@consultar')->name('consultar');
+   Route::post('/luz' , 'SiteController@consultar')->name('consultar');
+   Route::post('/gas' , 'SiteController@consultar_gas')->name('consultar.gas');
    Route::get('/seguros' , 'SiteController@seguros')->name('ofertas.seguros')->middleware('auth');
    Route::get('/telefonia' , 'SiteController@telefonia')->name('ofertas.telefonia')->middleware('auth');
    // Route::get('/contratar/{oferta_id}/{comision}' , 'OrdenController@contratar')->name('contratar.oferta');
@@ -38,61 +39,68 @@ Route::prefix('ofertas')->group(function (){
 
 
 //dashboard
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->group( function () {
 
-   Route::get('/', 'DashController@index')->name('inicio');
-   Route::get('/usuarios', 'DashController@usuarios')->name('usuarios');
-   Route::get('/cobros', 'DashController@cobros')->name('cobros');
-   Route::get('/empresas', 'DashController@empresas')->name('empresas');
-   Route::get('/contactar', 'DashController@contactar')->name('contactos');
-   Route::get('/categorias', 'DashController@categorias')->name('categorias');
-   Route::get('/legales', 'DashController@legales')->name('legales');
-   Route::get('/ofertas', 'DashController@ofertas')->name('ofertas');
-   Route::get('/ofertas/{categoria}', 'DashController@ofertasPorCategoria')->name('ofertascategoria');
+   Route::get('/', 'DashController@index')->name('inicio')->middleware('role:admin');
+   Route::get('/usuarios', 'DashController@usuarios')->name('usuarios')->middleware('role:admin');
+   Route::get('/cobros', 'DashController@cobros')->name('cobros')->middleware('role:admin');
+   Route::get('/empresas', 'DashController@empresas')->name('empresas')->middleware('role:admin');
+   Route::get('/contactar', 'DashController@contactar')->name('contactos')->middleware('role:admin');
+   Route::get('/categorias', 'DashController@categorias')->name('categorias')->middleware('role:admin');
+   Route::get('/legales', 'DashController@legales')->name('legales')->middleware('role:admin');
+   Route::get('/ofertas', 'DashController@ofertas')->name('ofertas')->middleware('role:admin');
+   Route::get('/ofertas/{categoria}', 'DashController@ofertasPorCategoria')->name('ofertascategoria')->middleware('role:admin');
    
    //empresas
-   Route::get('/crear/empresa', 'EmpresaController@registrar')->name('registrar.empresa');
-   Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa');
-   Route::get('/estatus/empresa/{id}/{estatus}', 'EmpresaController@estatus')->name('estatusempresa');
-   Route::get('/editar/empresa/{id}', 'EmpresaController@editar')->name('editarempresa');
-   Route::post('/editar/empresa/{id}', 'EmpresaController@actualizar')->name('actualizarempresa');
+   Route::get('/crear/empresa', 'EmpresaController@registrar')->name('registrar.empresa')->middleware('role:admin');
+   Route::post('/crear/empresa', 'EmpresaController@crear')->name('crearempresa')->middleware('role:admin');
+   Route::get('/estatus/empresa/{id}/{estatus}', 'EmpresaController@estatus')->name('estatusempresa')->middleware('role:admin');
+   Route::get('/editar/empresa/{id}', 'EmpresaController@editar')->name('editarempresa')->middleware('role:admin');
+   Route::post('/editar/empresa/{id}', 'EmpresaController@actualizar')->name('actualizarempresa')->middleware('role:admin');
 
    //categorias
-   Route::post('/crear/categoria', 'CategoriaController@crear')->name('crearcategoria');
-   Route::get('/editar/categoria/{id}', 'CategoriaController@editar')->name('editarcategoria');
-   Route::get('/estatus/categoria/{id}/{estatus}', 'CategoriaController@estatus')->name('estatuscategoria');
-   Route::post('/editar/categoria/{id}', 'CategoriaController@actualizar')->name('actualizarcategoria');
+   Route::post('/crear/categoria', 'CategoriaController@crear')->name('crearcategoria')->middleware('role:admin');
+   Route::get('/editar/categoria/{id}', 'CategoriaController@editar')->name('editarcategoria')->middleware('role:admin');
+   Route::get('/estatus/categoria/{id}/{estatus}', 'CategoriaController@estatus')->name('estatuscategoria')->middleware('role:admin');
+   Route::post('/editar/categoria/{id}', 'CategoriaController@actualizar')->name('actualizarcategoria')->middleware('role:admin');
 
    //Usuarios
-   Route::get('/crear/usuario', 'DashController@crearUsuario')->name('crearusuario');
-   Route::post('/crear/usuario', 'UsuarioController@store')->name('crearusuarionuevo');
-   Route::get('/modificar/usuario/{id}', 'UsuarioController@modificar')->name('modificarusuario');
+   Route::get('/crear/usuario', 'DashController@crearUsuario')->name('crearusuario')->middleware('role:admin');
+   Route::post('/crear/usuario', 'UsuarioController@store')->name('crearusuarionuevo')->middleware('role:admin');
+   Route::get('/modificar/usuario/{id}', 'UsuarioController@modificar')->name('modificarusuario')->middleware('role:admin');
    Route::get('/eliminar/usuario/{id}', 'UsuarioController@borrar')->name('eliminarusuario');
-   Route::post('/modificar/usuario/{id}', 'UsuarioController@actualizar')->name('actualizarusuario');
+   Route::post('/modificar/usuario/{id}', 'UsuarioController@actualizar')->name('actualizarusuario')->middleware('role:admin');
    
    //Legales
-   Route::get('/editar/{tabla}', 'LegalesController@editar')->name('editarlegales');
-   Route::post('/actualizar/{tabla}', 'LegalesController@actualizar')->name('actualizarlegal');
+   Route::get('/editar/{tabla}', 'LegalesController@editar')->name('editarlegales')->middleware('role:admin');
+   Route::post('/actualizar/{tabla}', 'LegalesController@actualizar')->name('actualizarlegal')->middleware('role:admin');
 
    //Ofertas
-   Route::get('/crear/oferta', 'OfertasController@crear')->name('crearoferta');
-   Route::post('/crear/oferta', 'OfertasController@store')->name('storeoferta');
-   Route::post('/modificar/oferta/{id}', 'OfertasController@actualizar')->name('actualizaroferta');
-   Route::get('/editar/oferta/{id}', 'OfertasController@editar')->name('editaroferta');
-   Route::get('/estatus/oferta/{id}/{estatus}', 'OfertasController@estatus')->name('estatusoferta');
+   Route::get('/crear/oferta', 'OfertasController@crear')->name('crearoferta')->middleware('role:admin');
+   Route::post('/crear/oferta', 'OfertasController@store')->name('storeoferta')->middleware('role:admin');
+   Route::post('/modificar/oferta/{id}', 'OfertasController@actualizar')->name('actualizaroferta')->middleware('role:admin');
+   Route::get('/editar/oferta/{id}', 'OfertasController@editar')->name('editaroferta')->middleware('role:admin');
+   Route::get('/estatus/oferta/{id}/{estatus}', 'OfertasController@estatus')->name('estatusoferta')->middleware('role:admin');
 
    //contactar
-   Route::get('/editar/contactar/{id}', 'ContactarController@editar')->name('editarcontactar');
-   Route::post('/editar/contactar/{id}', 'ContactarController@actualizar')->name('actualizarcontactar');
-   Route::get('/eliminar/{id}', 'ContactarController@eliminar')->name('eliminar.contactar');
+   Route::get('/editar/contactar/{id}', 'ContactarController@editar')->name('editarcontactar')->middleware('role:admin');
+   Route::post('/editar/contactar/{id}', 'ContactarController@actualizar')->name('actualizarcontactar')->middleware('role:admin');
+   Route::get('/eliminar/{id}', 'ContactarController@eliminar')->name('eliminar.contactar')->middleware('role:admin');
 
    //Mensajes
-   Route::get('/enviar/mensajes' , 'MensajeController@mensajes')->name('enviar.mensajes');
-   Route::post('/registrar/mensajes' , 'MensajeController@enviar')->name('registrar.mensajes');
-   Route::post('/marcar/mensajes' , 'MensajeController@marcar')->name('marcar.mensajes');
+   Route::get('/enviar/mensajes' , 'MensajeController@mensajes')->name('enviar.mensajes')->middleware('role:admin');
+   Route::post('/registrar/mensajes' , 'MensajeController@enviar')->name('registrar.mensajes')->middleware('role:admin');
+   Route::post('/marcar/mensajes' , 'MensajeController@marcar')->name('marcar.mensajes')->middleware('role:admin');
 
    //contratos
-   Route::get('/contratos' , 'DashController@contratos')->name('index.contratos');
+   Route::get('/contratos' , 'DashController@contratos')->name('index.contratos')->middleware('role:admin');
+   Route::get('/contrato/{id}' , 'DashController@detallesContrato')->name('detalles.contrato')->middleware('role:admin');
+   Route::get('/aprobar/contrato/{id}' , 'OrdenController@aprobar')->name('aprobar.contrato')->middleware('role:admin');
+   Route::get('/negar/contrato/{id}' , 'OrdenController@negar')->name('negar.contrato')->middleware('role:admin');
+
+   //Offline
+   Route::get('/offline' , 'DashController@offline')->name('offline')->middleware('role:admin');
+   Route::post('/crear/offline' , 'OfertasController@contratoOffline')->name('contrato.offline')->middleware('role:admin');
 
 });
 

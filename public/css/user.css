@@ -1,0 +1,15 @@
+
+.page .container {min-height: 350px}
+p{font-size: 13px !important;color: dimgray !important;line-height: 1.5 !important}
+.card {margin-bottom: 50px;}
+.table thead th{border-bottom:0;}
+.table td, .table th{border-top:0;}
+.row.mt-3 {padding-top: 30px;}
+.card-header.p-4 {background: #FF034C;color: white;padding: 15px 30px !important;}
+.table-hover tbody tr:hover{background: transparent !important;}
+#v-pills-tab {background: #133273;padding: 10px;border-radius: 6px;position: sticky;top: 90px;}
+.nav-pills .nav-link {color: #fff !important;}
+.nav-pills .nav-link:hover{color: #133273;}
+#actualizar:hover {background: #133273 !important;}
+.nav-pills .nav-link:hover {color: yellow !important;}
+td {color: #929FAD;}

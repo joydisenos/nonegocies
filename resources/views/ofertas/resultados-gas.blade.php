@@ -297,7 +297,7 @@ details{
                             <td><img src="{{ ($oferta->empresa->logo) ? asset('storage/'. $oferta->empresa->logo) : asset('img/nonegocies.png')}}" style="max-width:100px;" class="img-fluid" alt="Logo {{$oferta->empresa->nombre}}"></td>
                             <!--<td>{{ title_case($oferta->nombre) }} </td>-->
                             <td>{{ $oferta->descripcion }}</td>
-                            <td> {{ number_format( ($oferta->totalgeneral) , 2 , ',' , '.') }} € </td>
+                            <td> {{ number_format( ($oferta->precio_fijo) , 2 , ',' , '.') }} € </td>
 							@guest
 							<td>{{ number_format( ($oferta->comision * ($oferta->plan1 / 100)) , 2 , ',' , '.') }} €
 							<?php $comision = $oferta->comision * ($oferta->plan1 / 100); ?>
@@ -323,13 +323,7 @@ details{
 								data-titulo="{{ title_case($oferta->titulo) }}"
 								data-descripcion="{{ $oferta->descripcion }}"
 								data-comision="{{ $comision }}"
-								data-pp1="{{ $oferta->pp1 }}" 
-								data-pp2="{{ $oferta->pp2 }}" 
-								data-pp3="{{ $oferta->pp3 }}"
-								data-ep1="{{ $oferta->ep1 }}" 
-								data-ep2="{{ $oferta->ep2 }}" 
-								data-ep3="{{ $oferta->ep3 }}"
-								data-total="{{ number_format( ($oferta->totalgeneral) , 2 , ',' , '.') }}"
+								data-total="{{ number_format( ($oferta->precio_fijo) , 2 , ',' , '.') }}"
 								data-contrato="{{ $oferta->contrato($oferta->empresa->contrato) }}"
 
 								href="#">Contratar</a></td>
@@ -374,34 +368,6 @@ details{
 			</div>
 
 			<hr>
-
-			<h5>Potencia</h5>
-			<div class="row">
-				<div class="col">
-					<strong>P1:</strong> <span id="pp1"> €</span>
-				</div>
-				<div class="col">
-					<strong>P2:</strong> <span id="pp2"> €</span>
-				</div>
-				<div class="col">
-					<strong>P3:</strong> <span id="pp3"> €</span>
-				</div>
-			</div>
-
-			<hr>
-
-			<h5>Energía</h5>
-			<div class="row mb-3">
-				<div class="col">
-					<strong>P1:</strong> <span id="ep1"> €</span>
-				</div>
-				<div class="col">
-					<strong>P2:</strong> <span id="ep2"> €</span>
-				</div>
-				<div class="col">
-					<strong>P3:</strong> <span id="ep3"> €</span>
-				</div>
-			</div>
 
 			
 	
@@ -527,12 +493,6 @@ details{
 			comision = $(this).data('comision');
 			contrato = $(this).data('contrato');
 
-			pp1 = $(this).data('pp1');
-			pp2 = $(this).data('pp2');
-			pp3 = $(this).data('pp3');
-			ep1 = $(this).data('ep1');
-			ep2 = $(this).data('ep2');
-			ep3 = $(this).data('ep3');
 			total = $(this).data('total');
 			ofertaId = $(this).data('id');
 
@@ -543,12 +503,7 @@ details{
 			$('#comision').text(comision);
 			$('#contrato').html(contrato);
 			$('#comision_input').val(comision);
-			$('#pp1').text(pp1);
-			$('#pp2').text(pp2);
-			$('#pp3').text(pp3);
-			$('#ep1').text(ep1);
-			$('#ep2').text(ep2);
-			$('#ep3').text(ep3);
+
 			$('#precio').text(total);
 
 			$('#resultados').hide();

@@ -98,6 +98,23 @@ class DashController extends Controller
         return view('dashboard.ofertas' , compact('ofertas'));
     }
 
+    public function offline()
+    {
+        $refCategoria = new Categoria();
+        $categoria = $refCategoria->getCategoriaSlug('offline');
+
+        $refOfertas = new Ofertas();
+        $ofertas = $refOfertas->getOfertasCategoria($categoria->id);
+
+        $refEmpresas = new Empresa();
+        $empresas = $refEmpresas->empresas();
+
+        $refUsuarios = new User();
+        $usuarios = $refUsuarios->usuarios();
+
+        return view('dashboard.offline' , compact('ofertas' , 'empresas' , 'usuarios'));
+    }
+
     public function ofertasPorCategoria($categoria)
     {
         $refCategoria = new Categoria();
@@ -116,8 +133,15 @@ class DashController extends Controller
 
     public function contratos()
     {
-        $contratos = Ordenes::all();
+        $contratos = Ordenes::orderBy('created_at' , 'desc')->get();
 
         return view('dashboard.contratos' , compact('contratos'));
+    }
+
+    public function detallesContrato($id)
+    {
+        $contrato = Ordenes::findOrFail($id);
+
+        return view('dashboard.contrato' , compact('contrato'));
     }
 }

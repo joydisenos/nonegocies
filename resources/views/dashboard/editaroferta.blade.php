@@ -283,6 +283,7 @@
           $('.gas-opt input').attr('required' , false);
         }else if( categoria == 'gas'){
           $('.gas-opt').show();
+          $('#luz-tarifas').show();
           $('.gas-opt input').attr('required' , true);
           $('.luz-opt input').attr('required' , false);
         }else if( categoria == 'telefonia' ){

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Empresa;
 
 class EmpresaController extends Controller
@@ -34,6 +35,7 @@ class EmpresaController extends Controller
 
         $empresa = new Empresa();
         $empresa->nombre = $request->nombre;
+        $empresa->cerrar = $request->cerrar;
         if( $request->descripcion != null)
         {
             $empresa->descripcion = $request->descripcion;
@@ -94,6 +96,7 @@ class EmpresaController extends Controller
     
             $empresa = Empresa::findOrFail($id);
             $empresa->nombre = $request->nombre;
+            $empresa->cerrar = $request->cerrar;
             if( $request->contrato != null )
             {
                 $empresa->contrato = $request->contrato;

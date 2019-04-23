@@ -127,10 +127,6 @@
                             <a href="{{ route('modificarusuario' , [$usuario->id]) }}" class="dropdown-item">
                               Editar
                             </a>
-                      
-                            <a href="{{ route('eliminarusuario' , [$usuario->id]) }}" class="dropdown-item">
-                              Eliminar
-                            </a>
                           </div>
                         </div>
                       </td>

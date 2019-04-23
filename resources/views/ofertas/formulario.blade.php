@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('header')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css">
-@endsection
-@section('content')
 <style>
     img.icons {
     padding-top: 7px;
@@ -150,6 +148,8 @@ select{
 input.special{margin-bottom: 0 !important}
 
 </style>
+@endsection
+@section('content')
 <header class="page">
   <div class="container">
     <h1 class="animated fadeInLeft">Nuestras Ofertas</h1>
@@ -692,7 +692,7 @@ input.special{margin-bottom: 0 !important}
             <h2 class="wow blue animated fadeInUp">Calculadora de Ahorros</h1>
             <br>
             
-            <form class="wow animated fadeInUp" action="{{ route('consultar') }}" method="post">
+            <form class="wow animated fadeInUp" action="{{ route('consultar.gas') }}" method="post">
                                 @csrf
             
                                 <input type="hidden" name="servicio" value="{{ $categorias->where('slug' ,'gas')->first()->id }}">
@@ -739,43 +739,6 @@ input.special{margin-bottom: 0 !important}
                                 </div>
                                 </div>
                                 
-                                <div class="row">
-                                    <div class="col">
-                                            <label>Potencia</label>
-                                    </div>
-                               </div>
-
-                                <div class="row mb-4">
-                                
-                                        <div class="col">
-                                                <input class="special form-control" type="number" name="pp1" min="0" step="any" placeholder="P1" required>
-                                        </div>
-                                        <div class="col">
-                                                <input class="special form-control" type="number" name="pp2" min="0" step="any" placeholder="P2" required>
-                                        </div>
-                                        <div class="col">
-                                                <input class="special form-control" type="number" name="pp3" min="0" step="any" placeholder="P3" required>
-                                        </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                            <label>Energía</label>
-                                    </div>
-                               </div>
-
-                                <div class="row mb-4">
-                                
-                                        <div class="col">
-                                                <input class="special form-control" type="number" name="ep1" min="0" step="any" placeholder="P1" required>
-                                        </div>
-                                        <div class="col">
-                                                <input class="special form-control" type="number" name="ep2" min="0" step="any" placeholder="P2" required>
-                                        </div>
-                                        <div class="col">
-                                                <input class="special form-control" type="number" name="ep3" min="0" step="any" placeholder="P3" required>
-                                        </div>
-                                </div>
 
                                 <div class="row mb-4">
 

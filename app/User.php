@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->hasMany(Mensajes::class , 'user_id');
     }
 
+    public function tarjeta()
+    {
+        return $this->hasOne(Datos::class , 'user_id');
+    }
+
     public function tarjetas()
     {
         return $this->hasMany(Datos::class , 'user_id');

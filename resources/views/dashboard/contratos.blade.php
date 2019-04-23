@@ -24,7 +24,9 @@
               </div>
               <div class="col-auto">
                 
-                
+                <a href="{{ route('offline') }}" class="btn btn-primary">
+                    Crear Contrato Offline
+                  </a>
 
               </div>
             </div> <!-- / .row -->
@@ -59,10 +61,16 @@
                   </div>
                 </div> <!-- / .row -->
               </div>
-              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-project", "goal-status", "goal-progress", "goal-date"]'>
+
+              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["id-contrato","goal-project", "goal-status", "goal-progress", "goal-date"]'>
                 <table class="table table-sm table-nowrap card-table">
                   <thead>
                     <tr>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="id-contrato">
+                          Número
+                        </a>
+                      </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-project">
                           Oferta
@@ -93,6 +101,9 @@
                     
                     @foreach($contratos as $contrato)
                     <tr>
+                      <td class="id-contrato">
+                        {{ $contrato->id }}
+                      </td>
                       <td class="goal-project">
                         {{ title_case($contrato->oferta->nombre) }}
                       </td>
@@ -112,13 +123,32 @@
                       <td class="text-right">
                         {{ $contrato->user->telefono }}
                       </td>
-                      <td></td>
+                      <td>
+                         <div class="dropdown">
+                          <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-boundary="window">
+                            <i class="fe fe-more-vertical"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a href="{{ route('detalles.contrato' , [$contrato->id]) }}" class="dropdown-item">
+                              Detalles
+                            </a>
+                            <a href="{{ route('aprobar.contrato' , [$contrato->id]) }}" class="dropdown-item">
+                              Aprobar
+                            </a>
+                            <a href="{{ route('negar.contrato' , [$contrato->id]) }}" class="dropdown-item">
+                              Negar
+                            </a>
+                    
+                          </div>
+                        </div>
+                      </td>
                     </tr>
                     @endforeach
                     
                   </tbody>
                 </table>
               </div>
+
             </div>
 
           </div>
