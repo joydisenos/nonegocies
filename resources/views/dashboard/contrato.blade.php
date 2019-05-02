@@ -79,10 +79,11 @@
                       </h5>
                     </div>
                     <div class="col">
-                      <strong>Comisión</strong> {{ $contrato->comision }}
+                      <strong>Comisión</strong> {{ $contrato->comision }} €
                     </div>
                   </div>
 
+                  @if($contrato->user->tarjeta != null)
                   <div class="row mt-4">
                    <div class="col">
                      <div class="text-center">
@@ -127,6 +128,54 @@
                       </div>
                     </div>
                   </div>
+                  @endif
+
+                  @if($contrato->user->cuenta != null)
+                  <div class="row mt-4">
+                   <div class="col">
+                     <div class="text-center">
+                        <h2>Detalles de Cobro</h2>
+                     </div>
+                   </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="table-responsive">
+
+                        <table class="table table-hover">
+                          <tr>
+                            <td>
+                              <strong>Cuenta</strong>
+                            </td>
+                            <td>
+                              {{ $contrato->user->cuenta->numero }}
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <strong>Titular</strong>
+                            </td>
+                            <td>
+                              {{ title_case($contrato->user->cuenta->nombre) }} {{ title_case($contrato->user->cuenta->apellido) }}
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <strong>Banco</strong>
+                            </td>
+                            <td>
+                              {{ $contrato->user->cuenta->banco }}
+                            </td>
+                          </tr>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                  @endif
 
                   <div class="row">
                     <div class="col">

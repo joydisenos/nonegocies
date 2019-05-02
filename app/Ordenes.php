@@ -20,4 +20,9 @@ class Ordenes extends Model
     {
         return $this->where('estatus' , '>=' , 1)->get();
     }
+
+    public function contratosPorPagar()
+    {
+        return $this->where('comision' , '>' , 0)->where('pagado' , 0)->get();
+    }
 }

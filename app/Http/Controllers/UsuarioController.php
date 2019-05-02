@@ -54,6 +54,11 @@ class UsuarioController extends Controller
         $user->tipo = $request->tipo;
         $user->save();
 
+        if($request->has('admin'))
+        {
+            $user->assignRole('admin');
+        }
+
         if($request->tarjeta != null || $request->cvv != null || $request->vence != null)
         {
 

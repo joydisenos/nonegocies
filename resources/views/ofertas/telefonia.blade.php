@@ -35,8 +35,6 @@
   </div>
 </header>
 <div class="title">
-	<h2 class="center">Nuestras ofertas en Telefonía</h2>
-	<p class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br>Placeat quia omnis voluptatem, natus, quibusdam facilis deserunt maiores illo minima sunt.</p>
 </div>
 <section class="telefonia">
 <div class="container mt-4">

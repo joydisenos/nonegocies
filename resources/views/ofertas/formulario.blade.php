@@ -743,25 +743,30 @@ input.special{margin-bottom: 0 !important}
                                 <div class="row mb-4">
 
                                         <div class="col">
-                                        <label for="monto">Total Factura</label>
+                                        <label for="monto">Total Ultima Factura</label>
                                                 <input class="special form-control" type="number" name="monto" min="0" step="any" placeholder="00.00" required>
                                         </div>
                                 </div>
 
-            
-                               <div class="row">
+                                 <div class="row">
                                     <div class="col">
-                                            <label>Período de Tiempo</label>
+                                            <label for="">KW Consumidos</label>
+                                            <input class="special form-control" name="precio_tarifa" required>
                                     </div>
-                               </div>
-                                
+                                    <div class="col">
+                                            <label for="">Término Fijo</label>
+                                            <input class="special form-control" name="precio_fijo" required>
+                                    </div>
+                                </div>
+
+        
                                 <div class="row">
                                     <div class="col">
-                                            <label for="">Desde</label>
+                                            <label for="">Periodo Desde</label>
                                             <input class="special form-control datepicker" name="desde" data-date-format="dd/mm/yyyy" required>
                                     </div>
                                     <div class="col">
-                                            <label for="">Hasta</label>
+                                            <label for="">Periodo Hasta</label>
 
                                             <input class="special form-control datepicker" data-date-format="dd/mm/yyyy" name="hasta" required>
                                     </div>

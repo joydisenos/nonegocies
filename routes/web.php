@@ -50,6 +50,7 @@ Route::prefix('admin')->group( function () {
    Route::get('/legales', 'DashController@legales')->name('legales')->middleware('role:admin');
    Route::get('/ofertas', 'DashController@ofertas')->name('ofertas')->middleware('role:admin');
    Route::get('/ofertas/{categoria}', 'DashController@ofertasPorCategoria')->name('ofertascategoria')->middleware('role:admin');
+   Route::get('/pagos', 'DashController@pagos')->name('pagos.comision')->middleware('role:admin');
    
    //empresas
    Route::get('/crear/empresa', 'EmpresaController@registrar')->name('registrar.empresa')->middleware('role:admin');
@@ -97,6 +98,7 @@ Route::prefix('admin')->group( function () {
    Route::get('/contrato/{id}' , 'DashController@detallesContrato')->name('detalles.contrato')->middleware('role:admin');
    Route::get('/aprobar/contrato/{id}' , 'OrdenController@aprobar')->name('aprobar.contrato')->middleware('role:admin');
    Route::get('/negar/contrato/{id}' , 'OrdenController@negar')->name('negar.contrato')->middleware('role:admin');
+   Route::get('/marcar/pago/{id}' , 'OrdenController@pagado')->name('pagar.contrato')->middleware('role:admin');
 
    //Offline
    Route::get('/offline' , 'DashController@offline')->name('offline')->middleware('role:admin');

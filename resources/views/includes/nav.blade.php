@@ -58,7 +58,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
               @role('admin')
-              <li class="nav-item">
+               <li class="nav-item">
                 <a class="nav-link" href="#admin" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="admin">
                   <i class="fe fe-home"></i> Administración
                 </a>
@@ -80,40 +80,10 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('cobros') }}">
-                  <i class="fe fe-user"></i> Cobro de Planes
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('index.contratos') }}">
-                  <i class="fe fe-user"></i> Contratos
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('enviar.mensajes') }}">
-                  <i class="fe fe-mail"></i> Mensajes
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link " href="{{ route('categorias') }}">
-                  <i class="fe fe-tag"></i> Categorías
-                </a>
-              </li>
-
-              <li class="nav-item">
                 <a class="nav-link" href="{{ route('empresas') }}">
                   <i class="fe fe-truck"></i> Empresas
                 </a>
               </li>
-              
-              <!--<li class="nav-item">
-                <a class="nav-link " href="{{ route('ofertas') }}">
-                  <i class="fe fe-package"></i> Ofertas
-                </a>
-              </li>-->
 
               <li class="nav-item">
                 <a class="nav-link" href="#ofertas" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="ofertas">
@@ -132,17 +102,55 @@
                 </div>
               </li>
 
+               <li class="nav-item">
+                <a class="nav-link " href="{{ route('contactos') }}">
+                  <i class="fe fe-phone-call"></i> Contactar
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('cobros') }}">
+                  <i class="fe fe-user"></i> Cobro a Usuarios
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('pagos.comision') }}">
+                  <i class="fe fe-user"></i> Pago a Usuarios
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('index.contratos') }}">
+                  <i class="fe fe-user"></i> Contrataciones
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="{{ route('categorias') }}">
+                  <i class="fe fe-tag"></i> Categorías
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('enviar.mensajes') }}">
+                  <i class="fe fe-mail"></i> Mensajes
+                </a>
+              </li>
+              
+              <!--<li class="nav-item">
+                <a class="nav-link " href="{{ route('ofertas') }}">
+                  <i class="fe fe-package"></i> Ofertas
+                </a>
+              </li>-->
+
+
               <li class="nav-item">
                 <a class="nav-link " href="{{ route('legales') }}">
                   <i class="fe fe-clipboard"></i> Legales
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link " href="{{ route('contactos') }}">
-                  <i class="fe fe-phone-call"></i> Contactar
-                </a>
-              </li>
               @else
               <li class="nav-item">
                 <a class="nav-link " href="{{ route('panel.index') }}">

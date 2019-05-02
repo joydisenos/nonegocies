@@ -57,7 +57,7 @@ h5.card-title {
 
 h6.card-price {
     color: #e73747 !important;
-    font-size: 90px;
+    font-size: 46px;
     padding-bottom: 20px;
 }
 
@@ -311,7 +311,7 @@ details{
                 <li><img class="check" src="{{ asset('img/checked.svg') }}" /> Panel de control propio</li> 
                 <li><img class="check" src="{{ asset('img/checked.svg') }}" /> Acceso a formación</li>
               </ul>
-              <h6 class="card-price text-center"><span class="tarifa-plan">29</span><span class="currency">€</span><span class="period"> x mes</span></h6>
+              <h6 class="card-price text-center"><span class="tarifa-plan">9,90</span><span class="currency">€</span><span class="period"> x mes</span></h6>
               @guest
               @else
               <a href="#" data-id="2" class="btn btn-block btn-primary text-uppercase contratar">Contratar</a>
@@ -334,7 +334,7 @@ details{
                 <li><img class="check" src="{{ asset('img/checked.svg') }}" /> Acceso a formación</li>
                 <li><img class="check" src="{{ asset('img/checked.svg') }}" /> Asistencia para ofertas</li>
               </ul>
-              <h6 class="card-price text-center"><span class="tarifa-plan">49</span><span class="currency">€</span><span class="period"> x mes</span></h6>
+              <h6 class="card-price text-center"><span class="tarifa-plan">29,90</span><span class="currency">€</span><span class="period"> x mes</span></h6>
               @guest
               @else
               <a href="#" data-id="3" class="btn btn-block btn-primary text-uppercase contratar">Contratar</a>

@@ -413,7 +413,7 @@ details{
 								<tr>
 									<td width="40%">CUP</td>
 									<td>
-										<input type="text" name="cup" value="" class="form-control" required>
+										<input type="text" name="cup" value="" class="form-control cups-datos" required>
 									</td>
 								</tr>
 								@endif
@@ -519,6 +519,64 @@ details{
                 $(".confirmar-contrato").attr("disabled", "disabled");
             }
         });
+
+
+        $('.cups-datos').change(function() {
+        if ($(this).val() != '') {
+
+          
+              res = valida_cups($(this).val());
+
+              if (!res.success) {
+              alert(res.msg);
+              }
+          }
+        });
+
+
+		// Validar Cups
+
+		function valida_cups(CUPS){
+
+		  RegExPattern =/^[a-zA-Z]{2}[0-9]{16}[a-zA-Z]{2}([0-9][A-Za-z])?$/;
+
+		  if (CUPS.length>22) {
+		  return {success: false, code: 1, msg:'Demasiado largo' }; //Demasiado largo
+		  }
+
+		  if (CUPS.length<20) {
+		  return {success: false, code: 2, msg:'Demasiado corto' }; //Demasiado corto
+		  }
+
+		  if (!CUPS.match(RegExPattern)) {
+		  return {success: false, code: 3, msg:'Estructura no válida' }; //Estructura no válida
+		  }
+
+		  CUPS_16 = parseInt(CUPS.substr(2,16));
+		  control = CUPS.substr(18,2).toUpperCase();
+		  letters = Array('T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E');
+
+		  R0 = CUPS_16 % 529;
+		  cont_C = Math.floor(R0/23);
+		  cont_R = R0 % 23;
+
+		  dc1 = letters[cont_C];
+		  dc2 = letters[cont_R];
+		  status = (control === dc1+dc2);
+
+		      if(!status){
+		        return {
+		        success: false, code: 4, msg:'Dígitos de control no válidos, se esperaba ' + dc1 + dc2 
+		        }; //Los dígitos de control no son válidos
+		      }else{
+		        return {
+		        success: true
+		        };
+		      }
+		  
+		  }
+
+		  
 	});
 </script>
 @endsection

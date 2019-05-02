@@ -290,7 +290,7 @@
     */
 
     $('.cups-datos').change(function() {
-        //if ($(this).val() != '') {
+        if ($(this).val() != '') {
 
           
               res = valida_cups($(this).val());
@@ -298,7 +298,7 @@
               if (!res.success) {
               alert(res.msg);
               }
-          //}
+          }
         });
 
 

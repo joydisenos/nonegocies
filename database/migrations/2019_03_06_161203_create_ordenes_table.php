@@ -21,6 +21,7 @@ class CreateOrdenesTable extends Migration
             $table->string('dni');
             $table->string('factura');
             $table->text('contrato')->nullable();
+            $table->integer('pagado');
             $table->integer('estatus');
             $table->timestamps();
         });

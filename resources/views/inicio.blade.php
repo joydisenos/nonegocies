@@ -479,6 +479,12 @@ section{
     padding-top: 23px;
 }
 
+/*fix footer to botoom */
+footer.bg-black.small.text-center.text-white-50 {
+    margin-top: 100px;
+    z-index: 999999;
+    position: relative;
+}
 
 </style>
 <header class="masthead" id="hero">
@@ -830,7 +836,7 @@ section{
 				nav:true,
 				smartSpeed: 500,
 				autoplay: 500,
-				navText: [ '<span class="flaticon-left-arrow"></span>', '<span class="flaticon-next-1"></span>' ],
+				navText: [ '<span class="flaticon-left-arrow"><</span>', '<span class="flaticon-next-1">></span>' ],
 				responsive:{
 					0:{
 						items:1,

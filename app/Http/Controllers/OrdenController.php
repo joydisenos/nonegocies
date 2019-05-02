@@ -34,6 +34,15 @@ class OrdenController extends Controller
     	return redirect()->back()->with('status' , 'Contrato #'. $contrato->id .' Negado');
     }
 
+    public function pagado($id)
+    {
+    	$contrato = Ordenes::findOrFail($id);
+    	$contrato->pagado = 1;
+    	$contrato->save();
+
+    	return redirect()->back()->with('status' , 'Contrato #'. $contrato->id .' Marcado como Pago');
+    }
+
     public function contratar(Request $request)
     {
         $validatedData = $request->validate([

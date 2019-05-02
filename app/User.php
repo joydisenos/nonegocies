@@ -73,6 +73,11 @@ class User extends Authenticatable
         return $this->hasMany(Datos::class , 'user_id');
     }
 
+    public function cuenta()
+    {
+        return $this->hasOne(Cobro::class , 'user_id');
+    }
+
     public function cuentas()
     {
         return $this->hasMany(Cobro::class , 'user_id');

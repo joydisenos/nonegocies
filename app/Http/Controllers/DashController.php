@@ -58,6 +58,14 @@ class DashController extends Controller
     	return view('dashboard.cobros' , compact('usuarios'));
     }
 
+    public function pagos()
+    {
+        $refContratos = new Ordenes;
+        $contratos = $refContratos->contratosPorPagar();
+
+        return view('dashboard.pagos' ,compact('contratos'));
+    }
+
     public function empresas()
     {
     	$refEmpresas = new Empresa();

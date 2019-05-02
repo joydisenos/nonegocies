@@ -62,7 +62,10 @@
 
                   </div>
                   <div class="col-auto">
-
+                      <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" name="admin" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Usuario Administrador</label>
+                      </div>
                   </div>
                 </div> <!-- / .row -->
               </div>
