@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,7 +19,7 @@ class CreateContactarsTable extends Migration
             $table->string('apellido');
             $table->string('email');
             $table->string('telefono');
-            $table->string('servicio');
+            $table->string('servicio')->nullable();
             $table->integer('contactado')->default(0);
             $table->text('notas')->nullable();
             $table->integer('llamar')->default(0);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Contactar;
+use App\Mail\ContactarMail;
 
 class ContactarController extends Controller
 {
@@ -29,6 +31,10 @@ class ContactarController extends Controller
             $contacto->notas = $request->notas;
         }
     	$contacto->save();
+
+    	//Mail::to('joydisenos@gmail.com')
+    	Mail::to('contactar@nonegocies.es')
+                   ->send(new ContactarMail($contacto));
 
     	if(Auth::user()->telefono == null)
     	{
