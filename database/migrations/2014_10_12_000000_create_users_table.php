@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('apellido');
             $table->string('email')->unique();
+            $table->integer('referido_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->integer('tipo')->nullable();
@@ -30,7 +31,6 @@ class CreateUsersTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('cup_gas')->nullable();
             $table->string('cup_luz')->nullable();
-            $table->date('fecha_corte')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

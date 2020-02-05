@@ -28,13 +28,13 @@
                 </div>
               </a>
 
-              <!-- Menu -->
+              <!-- Menu 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarIcon">
                 <a href="profile-posts.html" class="dropdown-item">Profile</a>
                 <a href="settings.html" class="dropdown-item">Settings</a>
                 <hr class="dropdown-divider">
                 <a href="sign-in.html" class="dropdown-item">Logout</a>
-              </div>
+              </div> -->
 
             </div>
 
@@ -85,7 +85,7 @@
                 </a>
               </li>
 
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <a class="nav-link" href="#ofertas" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="ofertas">
                   <i class="fe fe-package"></i> Ofertas
                 </a>
@@ -100,6 +100,12 @@
                     @endforeach
                   </ul>
                 </div>
+              </li>-->
+
+              <li class="nav-item">
+                <a class="nav-link " href="{{ route('ofertas') }}">
+                  <i class="fe fe-package"></i> Ofertas
+                </a>
               </li>
 
                <li class="nav-item">
@@ -108,11 +114,11 @@
                 </a>
               </li>
 
-              <li class="nav-item">
+            <!--   <li class="nav-item">
                 <a class="nav-link" href="{{ route('cobros') }}">
                   <i class="fe fe-user"></i> Cobro a Usuarios
                 </a>
-              </li>
+              </li> -->
 
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('pagos.comision') }}">
@@ -152,24 +158,72 @@
               </li>
 
               @else
+
+              @role('contador')
               <li class="nav-item">
-                <a class="nav-link " href="{{ route('panel.index') }}">
-                  <i class="fe fe-user"></i> Inicio
+                <a class="nav-link " href="{{ route('ofertas') }}">
+                  <i class="fe fe-package"></i> Ofertas
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link " href="{{ route('panel.configuracion') }}">
-                  <i class="fe fe-user"></i> Configuración
+                <a class="nav-link" href="{{ route('pagos.comision') }}">
+                  <i class="fe fe-user"></i> Pago a Usuarios
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link " href="{{ route('panel.planes') }}">
-                  <i class="fe fe-user"></i> Contratar Plan
+                <a class="nav-link " href="{{ route('contactos') }}">
+                  <i class="fe fe-phone-call"></i> Contactar
+                </a>
+              </li>
+              @elserole('gerente')
+              <li class="nav-item">
+                <!-- {{ route('usuarios') }} -->
+                <a class="nav-link" href="{{ route('panel.usuarios') }}"> 
+                  <i class="fe fe-user"></i> Usuarios
+                </a>
+              </li>
+               <li class="nav-item">
+                <!-- {{ route('index.contratos') }} -->
+                <a class="nav-link" href="{{ route('panel.contratos.referidos') }}">
+                  <i class="fe fe-user"></i> Contrataciones
+                </a>
+              </li>
+               
+			         <li class="nav-item">
+                <!-- {{ route('contactos') }} -->
+                <a class="nav-link " href="{{ route('contactos.panel') }}">
+                  <i class="fe fe-phone-call"></i> Contactar
+                </a>
+              </li>
+              <li class="nav-item">
+                <!-- {{ route('enviar.mensajes') }} -->
+                <a class="nav-link" href="{{ route('enviar.mensajes.panel') }}">
+                  <i class="fe fe-mail"></i> Mensajes
+                </a>
+              </li>
+              @else
+      
+              <li class="nav-item">
+                <a class="nav-link " href="{{ route('panel.usuarios') }}">
+                  <i class="fe fe-user"></i> Usuarios
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a class="nav-link " href="{{ route('panel.contratos.referidos') }}">
+                  <i class="fe fe-activity"></i> Contratos
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="{{ route('panel.comisiones') }}">
+                  <i class="fe fe-activity"></i> Comisiones
+                </a>
+              </li>
+
+              @endrole
               
               @endrole
 
@@ -205,46 +259,6 @@
             <div class="mt-auto"></div>
             
       
-            
-            <!-- User (md) -->
-            <div class="navbar-user d-none d-md-flex" id="sidebarUser">
-        
-              <!-- Icon -->
-              <a href="#sidebarModalActivity" class="navbar-user-link" data-toggle="modal">
-                <span class="icon">
-                  <i class="fe fe-bell"></i>
-                </span>
-              </a>
-
-              <!-- Dropup -->
-              <div class="dropup">
-          
-                <!-- Toggle -->
-                <a href="#!" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div class="avatar avatar-sm avatar-online">
-                    <img src="{{ asset('img/nonegocies.png')}}" class="avatar-img rounded-circle" alt="...">
-                  </div>
-                </a>
-
-                <!-- Menu -->
-                <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
-                  <a href="profile-posts.html" class="dropdown-item">Profile</a>
-                  <a href="settings.html" class="dropdown-item">Settings</a>
-                  <hr class="dropdown-divider">
-                  <a href="sign-in.html" class="dropdown-item">Logout</a>
-                </div>
-
-              </div>
-
-              <!-- Icon -->
-              <a href="#sidebarModalSearch" class="navbar-user-link" data-toggle="modal">
-                <span class="icon">
-                  <i class="fe fe-search"></i>
-                </span>
-              </a>
-
-            </div>
-            
 
           </div> <!-- / .navbar-collapse -->
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Contactar;
+use App\Ofertas;
 use App\Mail\ContactarMail;
 
 class ContactarController extends Controller
@@ -32,8 +33,33 @@ class ContactarController extends Controller
         }
     	$contacto->save();
 
+        if ($request->hasFile('factura')) {
+            $rutaFactura = 'contacto/'. $contacto->id;
+            $factura = $request->file('factura');
+            $nombreFactura = $factura->getClientOriginalName();
+            $request->file('factura')->storeAs($rutaFactura, $nombreFactura, 'public');
+            $contacto->factura = $nombreFactura;
+            $contacto->save();
+        }
+
     	//Mail::to('joydisenos@gmail.com')
-    	Mail::to('contactar@nonegocies.es')
+
+        if ($request->has('servicio') && $request->servicio == 'Alarmas') {
+            $contactoMail = ['alarmas@nonegocies.es' , 'humberto@nonegocies.es'];
+        }else if ($request->has('servicio') && $request->servicio == 'Seguros') {
+            $contactoMail = ['seguros@nonegocies.es' , 'humberto@nonegocies.es' , 'sergi@nonegocies.es'];
+        }else{
+            $contactoMail = ['contactar@nonegocies.es'];
+        }
+
+        if($request->has('oferta_id')){
+            $oferta = Ofertas::findOrFail($request->oferta_id);
+            if($oferta->empresa->email != null){
+                $contactoMail[] = $oferta->empresa->email;
+            }
+        }
+
+    	Mail::to($contactoMail)
                    ->send(new ContactarMail($contacto));
 
     	if(Auth::user()->telefono == null)
@@ -44,7 +70,7 @@ class ContactarController extends Controller
     	}
 
     	return response()->json([
-    		'guardado' => 'Muchas Gracias por contactarnos '.title_case($request->nombre).', pronto nos pondremos en contacto.']);
+    		'guardado' => 'Muchas Gracias por su oferta '.title_case($request->nombre).', enseguida nos pondremos en contacto para continuar la contratación.']);
 
 	}
 	

@@ -74,7 +74,7 @@
                         <div class="form-group row">
                                 <div class="col">
                                   <label for="destino">Enviar a</label>
-                                  <select type="text" id="destino" name="destino" class="form-control" placeholder="destino">
+                                  <select type="text" id="destino" name="destino" class="form-control" placeholder="destino" data-toggle="select">
                                     <option value="">Todos Los Usuarios</option>
                                     @foreach($usuarios as $usuario)
                                         <option value="{{ $usuario->id }}">{{ $usuario->email }} - {{ title_case($usuario->name) }} {{ title_case($usuario->apellido) }}</option>

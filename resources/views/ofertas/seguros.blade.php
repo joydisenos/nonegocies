@@ -10,7 +10,7 @@ grid-template-columns: 1fr;grid-template-rows: auto;grid-gap: 10px;}
 @media only screen and (min-width: 500px) {.grid {grid-template-columns: 1fr 1fr;}}
 @media only screen and (min-width: 850px) {.grid {grid-template-columns: 1fr 1fr 1fr 1fr;}}
 .element img {max-width: 110px;}
-.card {background: #ff034c;color: white;text-align: center;}
+.card {background: #F44336;color: white;text-align: center;}
 .card img {width: 70px;display: block;text-align: center;margin: 0 auto;padding: 15px 0;}
 .card:hover{background: #133273;}
 .card:hover h3{color:white;}
@@ -39,7 +39,7 @@ form#contactar-reg{background: white;}
 <section>
 	<div class="container">
 		<h2 class="center">Encuentra tu Seguro</h2>
-		<p class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br>Neque eveniet itaque consequatur quaerat non.</p>
+		<p class="center">¿Todavia no tienes tus seguros gestionados por ti?<br>consigue tu mejor oferta sin salir de casa.</p>
 		<br>
 		<hr>
 		<br>
@@ -101,7 +101,7 @@ form#contactar-reg{background: white;}
 			</a>
 			<a href="#" class="card">
 				<img src="/img/seguros/svg/house.svg" alt="">
-				<h3>Seguro inpagos alquiler</h3>
+				<h3>Seguro impagos alquiler</h3>
 				<button href="#form-contactar" class="btn btn-white step" rel="Seguros de Alguiler">Comparar</button>
 			</a>
 			<a href="#" class="card">

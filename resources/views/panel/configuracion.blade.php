@@ -1,32 +1,26 @@
 @extends('layouts.master')
 @section('header')
 <link rel="stylesheet" href="{{ asset('/css/user.css')}}">
+
 @endsection
 @section('content')
 
-<header class="page">
-  <div class="container">
-    <h1 class="animated fadeInLeft">Mis Datos</h1>
-  </div>
-</header>
+  <script src="https://cdn.jsdelivr.net/gh/RobinHerbots/jquery.inputmask@5.0.0-beta.87/dist/jquery.inputmask.min.js"></script>
+  
+  <header class="page">
+     <div class="container">
+      <h2 class="center blue fadeIn text-center animated">Mi perfil de usuario</h2>
+        <p class="text-center">{{ title_case(Auth::user()->name) }} si tienes tus datos actualizados sera más facil<br>al momento de contratar tus servicios.</p>
+     </div>
+  </header>
+  <section class="profile">
 <div class="container">
   <div class="row mt-3">
     <div class="col-md-3">
       @include('includes.nav-panel')
     </div>
     <div class="col-md-9">
-      <div class="card">
-        <div class="card-header p-4">
-          <div class="row align-items-center">
-            <div class="col">
-              <!-- Title -->
-              <h4 class="card-header-title">
-              Datos de {{ title_case(Auth::user()->name) }}
-              </h4>
-            </div>
-            <div class="col-auto"></div>
-          </div>
-        </div>
+      <div class="card panel">
         <div class="card-body">
           <div class="row align-items-center">
             <div class="col">
@@ -118,7 +112,7 @@
                           <input type="number" name="cp" class="form-control" id="cp" placeholder="CP" value="{{ Auth::user()->cp }}" required>
                         </td>
                       </tr>
-                      <tr>
+                     <!--  <tr>
                         <td>
                           CUP Servicio Gas
                         </td>
@@ -133,7 +127,7 @@
                         <td>
                           <input type="text" name="cup_luz" class="form-control cups-datos" id="cup_luz" placeholder="CUP Luz" value="{{ Auth::user()->cup_luz }}">
                         </td>
-                      </tr>
+                      </tr> -->
                       <tr>
                         <td>
                           Plan activo:
@@ -146,60 +140,22 @@
                           @elseif(Auth::user()->plan_id == 3)
                           Platinum
                           @endif
-                          <a href="{{ route('planes') }}">cambiar plan</a>
+                          
+                          @if(Auth::user()->plan_id == null)
+                          <a href="{{ route('planes') }}">cambiar plan</a> 
+                          @elseif(Auth::user()->plan_id == 2)
+                          <a href="{{ route('planes') }}">cambiar plan</a>  {{ Auth::user()->tiempoPlan() }}
+                          @elseif(Auth::user()->plan_id == 3)
+                           {{ Auth::user()->tiempoPlan() }}
+                          @endif
+
+                         
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header p-4">
-            <div class="row align-items-center">
-              <div class="col">
-                <!-- Title -->
-                <h4 class="card-header-title">
-                Datos de Pago
-                </h4>
-              </div>
-              <div class="col-auto">
-                Tu plan se debitará cada mes de esta tarjeta.
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <tbody>
-                  <tr>
-                  <td width="40%">
-                    Tarjeta
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" value="{{ $tarjeta == null ? '' : $tarjeta->tarjeta }}" name="tarjeta">
-                  </td>
-                </tr>
-                  <tr>
-                    <td>
-                      Código de Seguridad (CVV)
-                    </td>
-                    <td>
-                      <input type="number" min="0" class="form-control" value="{{ $tarjeta == null ? '' : $tarjeta->cvv }}" name="cvv">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Vence
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" value="{{ $tarjeta == null ? '' : $tarjeta->vence }}" name="vence">
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
@@ -226,7 +182,7 @@
                     Cuenta
                   </td>
                   <td>
-                    <input type="text" class="form-control" value="{{ $cuenta == null ? '' : $cuenta->numero }}" name="numero">
+                    <input type="text" class="form-control verificarCuenta" value="{{ $cuenta == null ? '' : $cuenta->numero }}" name="numero">
                   </td>
                   </tr>
                   <tr>
@@ -237,14 +193,14 @@
                       <input type="text" class="form-control" value="{{ $cuenta == null ? title_case(Auth::user()->name) : title_case($cuenta->nombre) }} {{ $cuenta == null ? title_case(Auth::user()->apellido) : title_case($cuenta->apellido) }}" name="nombre">
                     </td>
                   </tr>
-                  <tr>
+                 <!--  <tr>
                     <td>
                       Banco
                     </td>
                     <td>
                       <input type="text" class="form-control" value="{{ $cuenta == null ? '' : $cuenta->banco }}" name="banco">
                     </td>
-                  </tr>
+                  </tr> -->
                   <tr>
                     <td>
                     </td>
@@ -266,6 +222,7 @@
 </div>
 </div>
 </div>
+</section>
 @endsection
 @section('scripts')
 <script>
@@ -276,6 +233,8 @@
       //$('#datos').modal('show');
       $('#form-datos').submit();
     });
+
+    $(":input").inputmask();
 
     /*
     $('#tarjeta').click(function(e){
@@ -343,10 +302,7 @@ function valida_cups(CUPS){
       }
   
   }
-
-
-      
-     
+           
 
   });
 </script>

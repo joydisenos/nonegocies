@@ -1,0 +1,10 @@
+
+@media (max-width: 992px){
+	footer{
+		position: relative !important;
+	}
+
+	#targets{
+		height: 130vh !important;
+	}
+}

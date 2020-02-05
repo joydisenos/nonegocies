@@ -63,13 +63,18 @@
                   </div>
                 </div> <!-- / .row -->
               </div>
-              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-project", "goal-status", "goal-progress", "goal-date"]'>
+              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-project", "goal-contratacion" , "goal-status", "goal-progress", "goal-date"]'>
                 <table class="table table-sm table-nowrap card-table">
                   <thead>
                     <tr>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-project">
                           Nombre
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-contratacion">
+                          Contratacion
                         </a>
                       </th>
                       <th>
@@ -99,6 +104,9 @@
                     <tr>
                       <td class="goal-project">
                         {{ title_case($usuario->name) }} {{ title_case($usuario->apellido) }}
+                      </td>
+                      <td class="goal-status">
+                        {{ date('d/m/Y', strtotime($usuario->fecha_corte)) }}
                       </td>
                       <td class="goal-status">
                         {{ date('d/m', strtotime($usuario->fecha_corte)) }}

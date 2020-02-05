@@ -16,13 +16,14 @@ class CreateOrdenesTable extends Migration
         Schema::create('ordenes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('contratista_id')->nullable();
             $table->integer('oferta_id');
+            $table->float('comision');
             $table->float('comision');
             $table->string('dni');
             $table->string('factura');
-            $table->text('contrato')->nullable();
-            $table->integer('pagado');
-            $table->integer('estatus');
+            $table->text('contrato');
+            $table->text('firma');
             $table->timestamps();
         });
     }

@@ -77,7 +77,7 @@
                   </div>
                 </div> <!-- / .row -->
               </div>
-
+              <br>
               <div class="container">
                 <div class="row">
                     <div class="col">
@@ -85,7 +85,7 @@
                         <div class="form-group">
                             <label for="nombreempresa">Nombre</label>
                             <input type="text" name="nombre" class="form-control" id="nombreempresa" placeholder="Nombre de la empresa">
-                            <small class="form-text text-muted">Nombre de la empresa</small>
+                            
                         </div>
                     </div>
 
@@ -93,12 +93,29 @@
                     <div class="form-group">
                             <label for="logoempresa">Logotipo</label>
                             <input type="file" name="logo" class="form-control" id="logoempresa" placeholder="Logotipo">
-                            <small class="form-text text-muted">Logotipo de la empresa</small>
+                            
                             </div>
                     </div>
                 </div>
 
+                <div class="row">
+                  <br>
+                    <div class="col">
+                        
+                
+                    </div>
 
+                    <div class="col">
+                    <div class="form-group">
+                            <label for="emailempresa">Email para notificación</label>
+                            <input type="email" name="email" class="form-control" id="emailempresa" placeholder="Email">
+                            </div>
+                    </div>
+                </div>
+                
+                  <br>
+                <label>Tipo de contratación</label>
+          
                 <div class="row m-4">
                   <div class="col">
                     <div class="form-check">
@@ -137,22 +154,33 @@
                   </div>
                 </div>
 
-
                 <div class="row">
-                       <div class="col">
-                            <div class="form-group">
-                                    <label for="descripcion">Descripción</label>
-                                    <textarea name="descripcion" id="descripcion" class="form-control" cols="30" rows="10"></textarea>
-                                    <small class="form-text text-muted">Descripción de la empresa</small>
+                	<div class="col">
+                    <div class="form-group">
+                            <label for="logoempresa">Adjuntar PDF</label>
+                            <input type="file" name="pdf" class="form-control" id="adjuntarpdf" placeholder="Adjuntar">
+                            
                             </div>
-                        </div> 
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <textarea id="editor" name="contrato" cols="30" rows="10"></textarea>
                     </div>
                 </div>
+
+
+<!--                  <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="descripcion">Descripción</label>
+                      <textarea name="descripcion" id="descripcion" class="form-control" cols="30" rows="10"></textarea>
+                      <small class="form-text text-muted">Descripción de la empresa</small>
+                    </div>
+                  </div>
+                </div> 
+               <br>
+                <label>Contrato</label>
+                <div class="row">
+                  <div class="col">
+                    <textarea id="editor" name="contrato" cols="30" rows="10"></textarea>
+                  </div>
+                </div>-->
                 
               </div>
                 

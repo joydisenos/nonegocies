@@ -5,6 +5,10 @@
 <div class="main-content">
         <form action="{{ route('crearusuarionuevo') }}" method="post">
                 @csrf
+          @role('admin')
+          @else
+          <input type="hidden" value="{{ Auth::user()->id }}" name="referido_id">
+          @endrole
      <!-- HEADER -->
       <div class="header">
         <div class="container-fluid">
@@ -62,10 +66,12 @@
 
                   </div>
                   <div class="col-auto">
+                    @role('admin')
                       <div class="custom-control custom-checkbox mr-sm-2">
                         <input type="checkbox" class="custom-control-input" name="admin" id="customControlAutosizing">
                         <label class="custom-control-label" for="customControlAutosizing">Usuario Administrador</label>
                       </div>
+                    @endrole
                   </div>
                 </div> <!-- / .row -->
               </div>
@@ -82,7 +88,7 @@
 
                                 <div class="col-lg-4 col-md-6">
                                   <label for="apellido">Apellido</label>
-                                  <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" required>
+                                  <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido">
                                 </div>
 
                                 <div class="col-lg-4 col-md-12">
@@ -125,7 +131,7 @@
 
                         <div class="col-md-6">
                           <label for="telefono">Tipo</label>
-                              <select name="tipo" class="form-control">
+                              <select name="tipo" class="form-control" required>
                                 <option value="1">Particular</option>
                                 <option value="2">Empresa</option>
                                 <option value="3">Comunidad</option>
@@ -137,45 +143,28 @@
                         <div class="form-group row">
                             <div class="col-md-4">
                               <label for="telefono">Teléfono</label>
-                              <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Número telefónico" required>
+                              <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Número telefónico">
                             </div>
 
                             <div class="col-md-4">
                               <label for="dni">DNI</label>
-                              <input type="number" name="dni" class="form-control" id="dni" placeholder="DNI" required>
+                              <input type="text" name="dni" class="form-control" id="dni" placeholder="DNI">
                             </div>
 
                             <div class="col-md-4">
                               <label for="localidad">Localidad</label>
-                              <input type="text" name="localidad" class="form-control" id="localidad" placeholder="Localidad" required>
+                              <input type="text" name="localidad" class="form-control" id="localidad" placeholder="Localidad" >
                             </div>
                         </div>
 
                         <div class="form-group row">
                           <div class="col-md-8">
                             <label for="direccion">Dirección</label>
-                            <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección" required>
+                            <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección">
                           </div>
                           <div class="col-md-4">
                             <label for="cp">CP</label>
-                            <input type="number" name="cp" class="form-control" id="cp" placeholder="CP" required>
-                          </div>
-                        </div>
-
-                        <h3 class="mt-3">Datos de Tarjeta de Crédito (opcional)</h3>
-
-                        <div class="form-group row">
-                          <div class="col-md-6">
-                              <label for="numero-tarjeta">Número de Tarjeta</label>
-                            <input type="text" class="form-control" id="numero-tarjeta" value="" placeholder="Número de Tarjeta" name="tarjeta">
-                          </div>
-                          <div class="col-md-4">
-                              <label for="vence-tarjeta">Fecha de Vencimiento</label>
-                            <input type="text" class="form-control" id="vence-tarjeta" value="" name="vence">
-                          </div>
-                          <div class="col-md-2">
-                              <label for="cvv-tarjeta">CVV</label>
-                            <input type="number" min="0" id="cvv-tarjeta" class="form-control" value="" name="cvv">
+                            <input type="number" name="cp" class="form-control" id="cp" placeholder="CP" >
                           </div>
                         </div>
 

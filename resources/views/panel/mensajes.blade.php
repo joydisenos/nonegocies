@@ -4,64 +4,58 @@
 @endsection
 @section('content')
 
-<header class="page">
-	<div class="container">
-	<h1 class="animated fadeInLeft">Mensajes</h1>
-	</div>
-</header>
-<div class="container">
-  <div class="row mt-3">
-    <div class="col-md-3">
-      @include('includes.nav-panel')
-    </div>
-    <div class="col-md-9" style="min-height: 500px">
-      <div class="card">
-        <div class="card-header p-4">
-          <div class="row align-items-center">
-            <div class="col">
-              <h4 class="card-header-title">Mensajes para {{ title_case(Auth::user()->name) }}</h4>
-            </div>
-            <div class="col-auto"></div>
-          </div>
+  <header class="page">
+      <div class="container">
+         <h2 class="center blue fadeIn text-center animated">Mensajes para {{ title_case(Auth::user()->name) }}</h2>
+        <p class="text-center">Por este apartado nos pondremos en contacto<br />para notifcarte el estado de tus contrataciones o promociones</p>
+      </div>
+  </header>
+  <section class="messages">
+    <div class="container">
+      <div class="row mt-3">
+        <div class="col-md-3">
+          @include('includes.nav-panel')
         </div>
-        <div class="card-body">
-          <div class="row align-items-center">
-            <div class="col">
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead>
-                    <th>Asunto</th>
-                    <th>Mensaje</th>
-                    <th>Fecha</th>
-                    <th>Leído</th>
-                  </thead>
-                  <tbody>
-                    @foreach($mensajes as $mensaje)
-                    <tr class="{{ $mensaje->leido == 0 ? 'font-weight-bold' : '' }} fila" data-asunto="{{ $mensaje->asunto }}" data-mensaje="{{ $mensaje->mensaje }}" data-fecha="{{ $mensaje->created_at->format('d/m/y') }}">
-                      <td>{{ $mensaje->asunto }}</td>
-                      <td>{!! str_limit($mensaje->mensaje , 45 , '... <a href="#" class="ver-mas" data-toggle="modal" data-target="#mensaje">ver mas</a>') !!}</td>
-                      <td>{{ $mensaje->created_at->format('d/m/y') }}</td>
-                      <td>
-                        <form class="marcar-mensaje">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="leido" data-id="{{$mensaje->id}}" class="custom-control-input leido" id="leido{{$mensaje->id}}" {{ $mensaje->leido == 1 ? 'checked' : '' }}>
-                            <label class="custom-control-label" for="leido{{$mensaje->id}}"></label>
-                          </div>
-                        </form>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
+        <div class="col-md-9">
+          <div class="card panel">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <th>Asunto</th>
+                        <th>Mensaje</th>
+                        <th>Fecha</th>
+                        <th>Leído</th>
+                      </thead>
+                      <tbody>
+                        @foreach($mensajes as $mensaje)
+                        <tr class="{{ $mensaje->leido == 0 ? 'font-weight-bold' : '' }} fila" data-asunto="{{ $mensaje->asunto }}" data-mensaje="{{ $mensaje->mensaje }}" data-fecha="{{ $mensaje->created_at->format('d/m/y') }}">
+                          <td>{{ $mensaje->asunto }}</td>
+                          <td>{!! str_limit($mensaje->mensaje , 45 , '... <a href="#" class="ver-mas" data-toggle="modal" data-target="#mensaje">ver mas</a>') !!}</td>
+                          <td>{{ $mensaje->created_at->format('d/m/y') }}</td>
+                          <td>
+                            <form class="marcar-mensaje">
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="leido" data-id="{{$mensaje->id}}" class="custom-control-input leido" id="leido{{$mensaje->id}}" {{ $mensaje->leido == 1 ? 'checked' : '' }}>
+                                <label class="custom-control-label" for="leido{{$mensaje->id}}"></label>
+                              </div>
+                            </form>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
+    </section>
 <!-- Modal -->
 <div class="modal fade" id="mensaje" tabindex="-1" role="dialog" aria-labelledby="Label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">

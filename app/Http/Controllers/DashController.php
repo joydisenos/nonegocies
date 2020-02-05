@@ -10,6 +10,7 @@ use App\Categoria;
 use App\Ajuste;
 use App\Ofertas;
 use App\Ordenes;
+use App\Comision;
 
 class DashController extends Controller
 {
@@ -61,9 +62,12 @@ class DashController extends Controller
     public function pagos()
     {
         $refContratos = new Ordenes;
-        $contratos = $refContratos->contratosPorPagar();
+        $refComisiones = new Comision;
 
-        return view('dashboard.pagos' ,compact('contratos'));
+        $contratos = $refContratos->contratosPorPagar();
+        $comisiones = $refComisiones->comisionesPorPagar();
+
+        return view('dashboard.pagos' ,compact('contratos' , 'comisiones'));
     }
 
     public function empresas()
@@ -102,8 +106,10 @@ class DashController extends Controller
     {
         $refOfertas = new Ofertas();
         $ofertas = $refOfertas->ofertas();
+        $categoriasRef = new Categoria();
+        $categorias = $categoriasRef->categorias();
 
-        return view('dashboard.ofertas' , compact('ofertas'));
+        return view('dashboard.ofertas' , compact('ofertas' , 'categorias'));
     }
 
     public function offline()
@@ -112,7 +118,7 @@ class DashController extends Controller
         $categoria = $refCategoria->getCategoriaSlug('offline');
 
         $refOfertas = new Ofertas();
-        $ofertas = $refOfertas->getOfertasCategoria($categoria->id);
+        $ofertas = $refOfertas->ofertas();
 
         $refEmpresas = new Empresa();
         $empresas = $refEmpresas->empresas();

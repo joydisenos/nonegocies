@@ -172,3 +172,38 @@
 
 })(jQuery); // End of use strict
 
+$('.verificarCuenta').change(function(){
+  verificar = verificarCuenta($(this).val());
+  if (verificar == false) {
+    $(this).removeClass('is-valid');
+    $(this).addClass('is-invalid');
+  }else{
+    $(this).removeClass('is-invalid');
+    $(this).addClass('is-valid');
+  }
+});
+
+function verificarCuenta(numero){
+      
+      letras = numero.substr(0,2).toLowerCase();
+      caracteres = numero.substr(3,24);
+      
+
+      if(numero.length != 24){
+        toastr.error('Debe comenzar por los caracteres ES seguido de 22 caracteres numéricos');
+        return false;
+      }
+
+      if(letras != 'es'){
+        toastr.error('Debe comenzar por los caracteres ES');
+        return false;
+      }
+
+      if(! $.isNumeric(caracteres)){
+        toastr.error('Los caracteres deben ser numéricos');
+        return false;
+      }
+
+      return true;
+}
+

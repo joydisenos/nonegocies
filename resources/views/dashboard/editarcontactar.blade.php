@@ -55,6 +55,7 @@
             <!-- Goals -->
             <div class="card">
               <div class="card-header">
+                
                 <div class="row align-items-center">
                   <div class="col">
 
@@ -83,6 +84,18 @@
               </div>
 
               <div class="container">
+
+                <div class="row mt-4 mb-4">
+                  <div class="col text-left">
+                    <h4>{{ $contacto->servicio }}</h4>
+                  </div>
+                  <div class="col">
+                    @if($contacto->factura != null)
+                      <a href="{{ asset('storage/contacto/' . $contacto->id . '/' . $contacto->factura) }}" class="btn btn-primary">ver factura</a>
+                    @endif
+                  </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-4">
                         

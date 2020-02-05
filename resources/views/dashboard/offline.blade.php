@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="main-content">
-        <form action="{{ route('contrato.offline') }}" method="post">
+        <form action="{{ route('contrato.offline') }}" method="post" enctype="multipart/form-data">
                 @csrf
      <!-- HEADER -->
       <div class="header">
@@ -79,7 +79,7 @@
                     <div class="col">
                     	<div class="form-group">
 	                		<label for="nombreusuario">Usuario</label>
-	                		<select name="user" id="user" class="form-control" required>
+	                		<select name="user" id="user" class="form-control" data-toggle="select" required>
 	                			<option value="">Seleccione un Usuario</option>
 	                			@foreach($usuarios as $usuario)
 	                				<option value="{{ $usuario->id }}">{{ title_case($usuario->name) }} {{ title_case($usuario->apellido) }} - {{ $usuario->email }}</option>
@@ -88,21 +88,8 @@
 	                	</div>
                     </div>
 
-                    <input type="hidden" name="oferta_id" value="0">
-                  <!--
-                    <div class="col">
-                    <div class="form-group">
-                            <label for="ofertas">Ofertas</label>
-                            <select name="oferta_id" id="ofertas" class="form-control ofertas">
-                            	<option value="0">Nueva Oferta</option>
-                            	@foreach($ofertas as $oferta)
-                            		<option value="{{ $oferta->id }}">{{ title_case($oferta->nombre) }}</option>
-                            	@endforeach
-                            </select>
-                            <small class="form-text text-muted">Seleccione la Oferta</small>
-                            </div>
-                    </div>
-                  -->
+                    
+                  
                 </div>
 
 				<div class="ocultar">
@@ -111,7 +98,7 @@
 	                        
 	                        <div class="form-group">
 	                            <label for="nombreempresa">Empresa</label>
-	                            <select name="empresa_id" id="nombreempresa" class="form-control">
+	                            <select name="empresa_id" id="nombreempresa" class="form-control" data-toggle="select">
 	                              <option value="">Seleccione una Empresa</option>
 	                              @foreach($empresas as $empresa)
 	                              	<option value="{{ $empresa->id }}">{{ title_case($empresa->nombre) }}</option>
@@ -121,18 +108,35 @@
 	                        </div>
 	                    </div>
 
-	                	<div class="col">
+	                	<!--<div class="col">
 	                		<div class="form-group">
 		                		<label for="nombreoferta">Nombre</label>
 		                		<input type="text" id="nombreoferta" name="nombre" class="form-control">
 		                	</div>
 	                	</div>
+                    -->
+                    <div class="col">
+                    <div class="form-group">
+                            <label for="nombre">Ofertas</label>
+                            <select id="nombre" name="nombre" class="form-control ofertas">
+                              <option value="">Seleccione una oferta</option>
+                              @foreach($ofertas as $oferta)
+                              @can($oferta->categoria->slug)
+                                <option value="{{ $oferta->nombre }}" data-id="{{ $oferta->id }}" data-empresa="{{$oferta->empresa_id}}" data-precio="{{$oferta->precio}}" data-comision="{{ $oferta->comision }}" >{{ title_case($oferta->nombre) }}</option>
+                              @endcan
+                              @endforeach
+                            </select>
+                            <small class="form-text text-muted">Seleccione la Oferta</small>
+
+                            <input type="hidden" id="inputOferta" name="oferta_id" value="0">
+                            </div>
+                    </div>
 	                </div>
 
 	                <div class="row">
 	                	  <div class="col">
 	                            <label for="tipooferta">Fecha</label>
-	                            <input type="date" class="form-control" name="fecha">
+	                            <input type="date" class="form-control" name="fecha" value="{{ date('Y-m-d') }}">
 	                     </div>
 	                     <div class="col">
 	                		<div class="form-group">
@@ -142,31 +146,30 @@
 	                	</div>
 	                </div>
 
-                  <div class="form-group row">
-                          <div class="col-md-3">
-                            <label for="detallesoferta">Comisión</label>
-                            <input type="number" step="0.01" class="form-control" name="comision" placeholder="$">
-                          </div>
+                  <div class="row">
+                      <div class="col">
+                              <label for="inputDniAn">Dni (lado frontal)</label>
+                              <input type="file" class="form-control" name="dni-scan-an">
+                       </div>
+                       <div class="col">
+                              <label for="inputDniRe">Dni (lado reverso)</label>
+                              <input type="file" class="form-control" name="dni-scan-re">
+                       </div>
+                       <div class="col">
+                              <label for="inputFactura">Factura</label>
+                              <input type="file" class="form-control" name="factura-scan">
+                       </div>
+                  </div>
 
-                          <div class="col-md-3">
-                            <label for="detallesoferta">Plan Gratis</label>
-                            <input type="number" step="0.01" name="plan1" class="form-control" placeholder="30%" />
-                          </div>
-                          <div class="col-md-3">
-                            <label for="detallesoferta">Plan Premium</label>
-                            <input type="number" step="0.01" name="plan2" class="form-control" placeholder="40%" />
-                          </div>
-                          <div class="col-md-3">
-                            <label for="detallesoferta">Plan Platinum</label>
-                            <input type="number" step="0.01" name="plan3" class="form-control" placeholder="40%" />
-                          </div>
-                        </div>
+
+
+                  <input type="hidden" step="0.01" name="comision" id="inputComision">
 
 	                <div class="row">
 	                	<div class="col">
 	                		 <div class="form-group">
-	                          <label for="detallesoferta">Detalles</label>
-	                          <textarea name="descripcion" class="form-control" id="detallesoferta" cols="30" rows="10"></textarea>
+	                          <label for="detallesobservaciones">Observaciones</label>
+	                          <textarea name="observaciones" class="form-control" id="detallesobservaciones" cols="30" rows="10"></textarea>
 	                        </div>
 	                	</div>
 	                </div>
@@ -201,4 +204,5 @@
     */
 	});
 </script>
+<script type="text/javascript" src="{{ asset('assets/js/offline.js') }}"></script>
 @endsection

@@ -1,15 +1,19 @@
-
+.card.panel {margin-top: 0;}
 .page .container {min-height: 350px}
-p{font-size: 13px !important;color: dimgray !important;line-height: 1.5 !important}
-.card {margin-bottom: 50px;}
+.card-body{box-shadow: 0 10px 30px rgba(28, 28, 53, 0.11) !important;}
 .table thead th{border-bottom:0;}
 .table td, .table th{border-top:0;}
 .row.mt-3 {padding-top: 30px;}
 .card-header.p-4 {background: #FF034C;color: white;padding: 15px 30px !important;}
 .table-hover tbody tr:hover{background: transparent !important;}
-#v-pills-tab {background: #133273;padding: 10px;border-radius: 6px;position: sticky;top: 90px;}
+#v-pills-tab {box-shadow: 0 10px 30px rgba(28, 28, 53, 0.11) !important;background: #133273;padding: 10px;border-radius: 6px;position: sticky;/* top: 90px; */}
 .nav-pills .nav-link {color: #fff !important;}
 .nav-pills .nav-link:hover{color: #133273;}
 #actualizar:hover {background: #133273 !important;}
 .nav-pills .nav-link:hover {color: yellow !important;}
 td {color: #929FAD;}
+.code {background: #ffff0080;padding: 10px 20px;border-radius: 35px;width: fit-content;margin: 50px auto;}
+.pestanaBanner{position:absolute; top:-35px; left: 0; padding: 5px; background: #FF034C; color: #ffffff; border-radius: 10px 10px 0 0}
+.pestana{position:absolute; top:-35px; right: 0; padding: 5px; background: #FF034C; color: #ffffff; border-radius: 10px 10px 0 0}
+.pestanaPremium{position:absolute; top:-35px; right: 400px; padding: 5px; background: #FF034C; color: #ffffff; border-radius: 10px 10px 0 0}
+.pestanaPlatinum{position:absolute; top:-35px; right: 200px; padding: 5px; background: #FF034C; color: #ffffff; border-radius: 10px 10px 0 0}

@@ -10,7 +10,7 @@ class Contactar extends Model
 
     public function contactos()
     {
-    	$contactos = Contactar::all();
+    	$contactos = Contactar::orderBy('created_at' , 'desc')->get();
 
     	return $contactos;
     }

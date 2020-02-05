@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
 use App\User;
 use App\Datos;
 use App\Cobro;
@@ -43,6 +45,10 @@ class UsuarioController extends Controller
 
         $user = new User();
         $user->name = $request->name;
+        if($request->has('referido_id'))
+        {
+            $user->referido_id = $request->referido_id;    
+        }
         $user->apellido = $request->apellido;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -86,15 +92,36 @@ class UsuarioController extends Controller
             $cobro->save();
         }
 
-        return redirect()->route('usuarios')->with('status','Usuario Creado');
+        $usuario = Auth::user();
+        $roles = $usuario->getRoleNames()->toArray();
+      
+        
+            if(in_array("admin", $roles))
+            {
+                return redirect()->route('usuarios')->with('status','Usuario Creado');
+            }else{
+                return redirect()->route('panel.usuarios')->with('status','Usuario Creado');
+            }
+        
 
     }
 
     public function modificar($id)
     {
         $usuario = User::findOrFail($id);
+        $roles = $usuario->getRoleNames()->toArray();
+        $permisos = Permission::all();
+      
+        
+            if(in_array("admin", $roles))
+            {
+                $admin = true;
+            }else{
+                $admin = false;
+            }
+        
 
-        return view('dashboard.editarusuario' , compact('usuario'));
+        return view('dashboard.editarusuario' , compact('usuario' , 'admin' , 'permisos'));
     }
 
     public function actualizar(Request $request, $id)
@@ -127,9 +154,36 @@ class UsuarioController extends Controller
         $user->localidad = $request->localidad;
         $user->telefono = $request->telefono;
         $user->tipo = $request->tipo;
+        $user->plan_id = $request->plan_id;
+        $user->dias_plazo = $request->dias_plazo;
         $user->save();
 
-        return redirect()->route('usuarios')->with('status','Usuario Actualizado');
+        if($request->has('admin'))
+        {
+            $user->assignRole('admin');
+        }else{
+            $user->removeRole('admin');
+        }
+        
+        if($request->has('gerente'))
+        {
+            $user->assignRole('gerente');
+        }else{
+            $user->removeRole('gerente');
+        }
+
+        $user->syncPermissions($request->permisos);
+
+        $usuario = Auth::user();
+        $roles = $usuario->getRoleNames()->toArray();
+      
+        
+            if(in_array("admin", $roles))
+            {
+                return redirect()->route('usuarios')->with('status','Usuario Actualizado');
+            }else{
+                return redirect()->route('panel.usuarios')->with('status','Usuario Actualizado');
+            }
     }
 
     public function borrar($id)

@@ -26,6 +26,14 @@
                 </h1>
 
               </div>
+               <div class="col-auto">
+                @role('admin')
+                  <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" class="custom-control-input" name="admin" id="customControlAutosizing" {{ $admin == true ? 'checked' : '' }}>
+                    <label class="custom-control-label" for="customControlAutosizing">Usuario Administrador</label>
+                  </div>
+                  @endrole
+              </div>
               <div class="col-auto">
                
                 <!-- Button trigger modal -->
@@ -74,12 +82,12 @@
                         <div class="form-group row">
                                 <div class="col-lg-4 col-md-6">
                                   <label for="nombre">Nombre</label>
-                                  <input type="text" id="nombre" name="name" class="form-control" placeholder="Nombre" value="{{ $usuario->name }}" required>
+                                  <input type="text" id="nombre" name="name" class="form-control" placeholder="Nombre" value="{{ $usuario->name }}" >
                                 </div>
 
                                 <div class="col-lg-4 col-md-6">
                                   <label for="apellido">Apellido</label>
-                                  <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" value="{{ $usuario->apellido }}" required>
+                                  <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" value="{{ $usuario->apellido }}" >
                                 </div>
 
                                 <div class="col-lg-4 col-md-12">
@@ -136,28 +144,28 @@
                         <div class="form-group row">
                             <div class="col-md-4">
                               <label for="telefono">Teléfono</label>
-                              <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Número telefónico" value="{{ $usuario->telefono }}" required>
+                              <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Número telefónico" value="{{ $usuario->telefono }}">
                             </div>
 
                             <div class="col-md-4">
                               <label for="dni">DNI</label>
-                              <input type="number" name="dni" class="form-control" id="dni" placeholder="DNI" value="{{ $usuario->dni }}" required>
+                              <input type="txt" name="dni" class="form-control" id="dni" placeholder="DNI" value="{{ $usuario->dni }}">
                             </div>
 
                             <div class="col-md-4">
                               <label for="localidad">Localidad</label>
-                              <input type="text" name="localidad" class="form-control" id="localidad" placeholder="Localidad" value="{{ $usuario->localidad }}" required>
+                              <input type="text" name="localidad" class="form-control" id="localidad" placeholder="Localidad" value="{{ $usuario->localidad }}" >
                             </div>
                         </div>
 
                         <div class="form-group row">
                           <div class="col-md-8">
                             <label for="direccion">Dirección</label>
-                            <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección" value="{{ $usuario->direccion }}" required>
+                            <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirección" value="{{ $usuario->direccion }}" >
                           </div>
                           <div class="col-md-4">
                             <label for="cp">CP</label>
-                            <input type="number" name="cp" class="form-control" id="cp" placeholder="CP" value="{{ $usuario->cp }}" required>
+                            <input type="number" name="cp" class="form-control" id="cp" placeholder="CP" value="{{ $usuario->cp }}">
                           </div>
                         </div>
 
@@ -177,6 +185,84 @@
               
             </div>
 
+
+            @role('admin')
+
+            <div class="row">
+            	<div class="col">
+		            <div class="card">
+		              <div class="card-header">
+		                <div class="row align-items-center">
+		                  <div class="col">
+
+		                    <!-- Title -->
+		                    <h4 class="card-header-title">
+		                      Plan de usuario
+		                    </h4>
+
+		                  </div>
+		                  <div class="col-auto">
+
+		                  </div>
+		                </div> <!-- / .row -->
+		              </div>
+
+		              <div class="container">
+		                
+		               <div class="row">	
+		               	<div class="col">
+		               		<div class="form-group">
+		               			<select name="plan_id" id="" class="form-control">
+		               				<option value="0">Gratis</option>
+		               				<option value="2" @if($usuario->plan_id == 2) selected @endif>Premium</option>
+		               				<option value="3" @if($usuario->plan_id == 3) selected @endif>Platinum</option>
+		               			</select>
+		               		</div>
+		               	</div>
+		               </div> 
+		              </div>
+		                
+		              
+		            </div>
+            	</div>
+            	<div class="col">
+		            <div class="card">
+		              <div class="card-header">
+		                <div class="row align-items-center">
+		                  <div class="col">
+
+		                    <!-- Title -->
+		                    <h4 class="card-header-title">
+		                      Días de plazo
+		                    </h4>
+
+		                  </div>
+		                  <div class="col-auto">
+
+		                  </div>
+		                </div> <!-- / .row -->
+		              </div>
+
+		              <div class="container">
+		                
+		               <div class="row">	
+		               	<div class="col">
+		               		<div class="form-group">
+		               			<select name="dias_plazo" id="" class="form-control">
+		               				<option value="0" @if(Auth::user()->dias_plazo == 0) selected @endif >0</option>
+		               				<option value="15" @if(Auth::user()->dias_plazo == 15) selected @endif >15</option>
+		               				<option value="30" @if(Auth::user()->dias_plazo == 30) selected @endif >30</option>
+		               			</select>
+		               		</div>
+		               	</div>
+		               </div> 
+		              </div>
+		                
+		              
+		            </div>
+            	</div>
+            </div>
+
             <div class="card">
               <div class="card-header">
                 <div class="row align-items-center">
@@ -184,7 +270,10 @@
 
                     <!-- Title -->
                     <h4 class="card-header-title">
-                      Datos de Cobro
+                      <div class="custom-control custom-checkbox mr-sm-2">
+		                    <input type="checkbox" class="custom-control-input" name="gerente" id="customControlGerente" {{ $usuario->hasRole('gerente') ? 'checked' : '' }}>
+		                    <label class="custom-control-label" for="customControlGerente">Usuario Gerente</label>
+		                  </div>
                     </h4>
 
                   </div>
@@ -192,44 +281,16 @@
 
                   </div>
                 </div> <!-- / .row -->
-              </div>
-
-              <div class="container">
-                @foreach($usuario->tarjetas as $tarjeta)
-                  <div class="row p-3">
-                      <div class="col-4">
-
-                              <h4>Tarjeta:</h4>
-
-                      </div>
-                      <div class="col">
-                             <h4> {{ $tarjeta->tarjeta }}</h4>
-                      </div>
-                  </div>
-
-                  <div class="row p-3">
-                      <div class="col-4">
-
-                              <h4>Código de Seguridad (CVV):</h4>
-
-                      </div>
-                      <div class="col">
-                             <h4> {{ $tarjeta->cvv }}</h4>
-                      </div>
-                  </div>
-
-                  <div class="row p-3">
-                      <div class="col-4">
-
-                              <h4>Vence:</h4>
-
-                      </div>
-                      <div class="col">
-                             <h4> {{ $tarjeta->vence }}</h4>
-                      </div>
-                  </div>
-                @endforeach
-                
+                <div class="row">
+                	@foreach($permisos as $permiso)
+                	<div class="col-md-4">
+                		<div class="custom-control custom-checkbox mr-sm-2">
+		                    <input type="checkbox" class="custom-control-input" name="permisos[]" value="{{$permiso->name}}" id="customControl{{$permiso->name}}" {{ $usuario->can($permiso->name) == true ? 'checked' : '' }}>
+		                    <label class="custom-control-label" for="customControl{{$permiso->name}}">{{$permiso->name}}</label>
+		                  </div>
+                	</div>
+                	@endforeach
+                </div>
               </div>
                 
               
@@ -292,7 +353,9 @@
                 
               
             </div>
-          
+            
+            @endrole
+            
         </div> <!-- / .row -->
       </div>
     </form>

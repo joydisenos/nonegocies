@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/libs/quill/dist/quill.core.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/libs/select2/dist/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/libs/flatpickr/dist/flatpickr.min.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 
     <!-- Theme CSS -->
       
@@ -812,6 +813,7 @@
     <script src="{{ asset('assets/libs/quill/dist/quill.min.js')}}"></script>
     <script src="{{ asset('assets/libs/dropzone/dist/min/dropzone.min.js')}}"></script>
     <script src="{{ asset('assets/libs/select2/dist/js/select2.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
     <!-- Theme JS -->
     <script src="{{ asset('assets/js/theme.min.js')}}"></script>

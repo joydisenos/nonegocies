@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,6 +49,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title">
+                    
                     @yield('message')
                 </div>
             </div>

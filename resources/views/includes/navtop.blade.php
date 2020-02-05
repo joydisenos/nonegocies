@@ -29,7 +29,7 @@
 
                   <!-- List group -->
                   <div class="list-group list-group-flush list my--3">
-                    <a href="team-overview.html" class="list-group-item px-0">
+                    <a href="#" class="list-group-item px-0">
                       <div class="row align-items-center">
                         <div class="col-auto">
                     
@@ -54,7 +54,7 @@
                         </div>
                       </div> <!-- / .row -->
                     </a>
-                    <a href="team-overview.html" class="list-group-item px-0">
+                    <a href="#" class="list-group-item px-0">
                       <div class="row align-items-center">
                         <div class="col-auto">
                     
@@ -79,7 +79,7 @@
                         </div>
                       </div> <!-- / .row -->
                     </a>
-                    <a href="project-overview.html" class="list-group-item px-0">
+                    <a href="#" class="list-group-item px-0">
 
                       <div class="row align-items-center">
                         <div class="col-auto">
@@ -106,7 +106,7 @@
                       </div> <!-- / .row -->
 
                     </a>
-                    <a href="project-overview.html" class="list-group-item px-0">
+                    <a href="#" class="list-group-item px-0">
 
                       <div class="row align-items-center">
                         <div class="col-auto">
@@ -133,7 +133,7 @@
                       </div> <!-- / .row -->
 
                     </a>
-                    <a href="project-overview.html" class="list-group-item px-0">
+                    <a href="#" class="list-group-item px-0">
 
                       <div class="row align-items-center">
                         <div class="col-auto">
@@ -160,7 +160,7 @@
                       </div> <!-- / .row -->
               
                     </a>
-                    <a href="profile-posts.html" class="list-group-item px-0">
+                    <a href="#" class="list-group-item px-0">
               
                       <div class="row align-items-center">
                         <div class="col-auto">
@@ -187,7 +187,7 @@
                       </div> <!-- / .row -->
 
                     </a>
-                    <a href="profile-posts.html" class="list-group-item px-0">
+                    <a href="#" class="list-group-item px-0">
 
                       <div class="row align-items-center">
                         <div class="col-auto">
@@ -510,10 +510,10 @@
 
               <!-- Menu -->
               <div class="dropdown-menu dropdown-menu-right">
-                <a href="profile-posts.html" class="dropdown-item">Profile</a>
-                <a href="settings.html" class="dropdown-item">Settings</a>
+                <a href="#" class="dropdown-item">Profile</a>
+                <a href="#" class="dropdown-item">Settings</a>
                 <hr class="dropdown-divider">
-                <a href="sign-in.html" class="dropdown-item">Logout</a>
+                <a href="#" class="dropdown-item">Logout</a>
               </div>
 
             </div>
@@ -536,12 +536,12 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="topnavDashboards">
                   <li>
-                    <a class="dropdown-item " href="index.html">
+                    <a class="dropdown-item " href="#">
                       Default
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item active" href="dashboard-alt.html">
+                    <a class="dropdown-item active" href="#">
                       Alternative
                     </a>
                   </li>
@@ -557,19 +557,19 @@
                       Profile
                     </a>
                     <div class="dropdown-menu" aria-labelledby="topnavProfile">
-                      <a class="dropdown-item " href="profile-posts.html">
+                      <a class="dropdown-item " href="#">
                         Posts
                       </a>
-                      <a class="dropdown-item " href="profile-groups.html">
+                      <a class="dropdown-item " href="#">
                         Groups
                       </a>
-                      <a class="dropdown-item " href="profile-projects.html">
+                      <a class="dropdown-item " href="#">
                         Projects
                       </a>
-                      <a class="dropdown-item " href="profile-files.html">
+                      <a class="dropdown-item " href="#">
                         Files
                       </a>
-                      <a class="dropdown-item " href="profile-subscribers.html">
+                      <a class="dropdown-item " href="#">
                         Subscribers
                       </a>
                     </div>
@@ -579,16 +579,16 @@
                       Project
                     </a>
                     <div class="dropdown-menu" aria-labelledby="topnavProject">
-                      <a class="dropdown-item " href="project-overview.html">
+                      <a class="dropdown-item " href="#">
                         Overview
                       </a>
-                      <a class="dropdown-item " href="project-files.html">
+                      <a class="dropdown-item " href="#">
                         Files
                       </a>
-                      <a class="dropdown-item " href="project-reports.html">
+                      <a class="dropdown-item " href="#">
                         Reports
                       </a>
-                      <a class="dropdown-item " href="project-new.html">
+                      <a class="dropdown-item " href="#">
                         New project
                       </a>
                     </div>
@@ -598,42 +598,42 @@
                       Team
                     </a>
                     <div class="dropdown-menu" aria-labelledby="topnavTeam">
-                      <a class="dropdown-item " href="team-overview.html">
+                      <a class="dropdown-item " href="#">
                         Overview
                       </a>
-                      <a class="dropdown-item " href="team-projects.html">
+                      <a class="dropdown-item " href="#">
                         Projects
                       </a>
-                      <a class="dropdown-item " href="team-members.html">
+                      <a class="dropdown-item " href="#">
                         Members
                       </a>
-                      <a class="dropdown-item " href="team-new.html">
+                      <a class="dropdown-item " href="#">
                         New team
                       </a>
                     </div>
                   </li>
                   <li>
-                    <a class="dropdown-item " href="orders.html">
+                    <a class="dropdown-item " href="#">
                       Orders
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item " href="feed.html">
+                    <a class="dropdown-item " href="#">
                       Feed
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item " href="settings.html">
+                    <a class="dropdown-item " href="#">
                       Settings
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item " href="invoice.html">
+                    <a class="dropdown-item " href="#">
                       Invoice
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item " href="pricing.html">
+                    <a class="dropdown-item " href="#">
                       Pricing
                     </a>
                   </li>

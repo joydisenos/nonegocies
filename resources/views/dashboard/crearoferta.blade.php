@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="main-content">
-<form action="{{ route('storeoferta') }}" method="post">
+<form action="{{ route('crearoferta') }}" enctype="multipart/form-data" method="post">
   @csrf
   <!-- HEADER -->
   <div class="header">
@@ -29,7 +29,7 @@
             
             
             <button type="submit" class="btn btn-primary">
-            Registrar
+            Crear
             </button>
             
           </div>
@@ -51,55 +51,66 @@
                     <div class="col">
                       <!-- Title -->
                       <h4 class="card-header-title">
-                      Oferta
+                      Crear Oferta
                       </h4>
                     </div>
-                    <div class="col-auto">
-                    </div>
+                    <br>
                     </div> <!-- / .row -->
                   </div>
                   <div class="container">
                     <div class="row">
                       <div class="col">
-                        <br>
-                        <div class="form-group">
-                          <label for="nombreoferta">Nombre de la Oferta</label>
-                          <input type="text" name="nombre" class="form-control" id="nombreoferta" placeholder="Nombre de la Oferta" required>
-                        </div>
-                        <div class="form-group">
-                          <label for="nombreoferta">Empresa</label>
-                          <select name="empresa_id" class="form-control" required>
-                            <option value="">Seleccione una Empresa</option>
-                            @foreach($empresas as $empresa)
-                            <option value="{{ $empresa->id }}">
-                              {{ $empresa->nombre }}
-                            </option>
-                            @endforeach
-                          </select>
-                        </div>
+                      
                         <div class="form-group row">
-                          <div class="col">
-                            <label for="nombreoferta">Categoría</label>
-                            <select name="categoria_id" class="form-control" id="categorias" required>
-                              <option value="">Seleccione una Categoría</option>
-                              @foreach($categorias as $categoria)
-                              <option value="{{ $categoria->id }}" data-slug="{{$categoria->slug}}" >
-                                {{ $categoria->nombre }}
+
+                          <div class="col-md-8">
+                            <br>
+                            <label for="nombreoferta">Nombre de la Oferta</label>
+                            <input type="text" name="nombre" class="form-control" id="nombreoferta" placeholder="Nombre de la Oferta" required>
+                          </div>
+                          <div class="col-md-4">
+                            <br>
+                            <label>Para usuarios:</label>
+                             <select name="tipo" class="form-control">
+                              <option value="1">Particulares</option>
+                              <option value="2">Empresas</option>
+                              <option value="3">Comunidades</option>
+                              <option value="4">Administradores</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+
+
+                          <div class="col-md-4">
+                            <label for="nombreoferta">Empresa</label>
+                            <select name="empresa_id" class="form-control" data-toggle="select" required>
+                              <option value="">Seleccione una Empresa</option>
+                              @foreach($empresas as $empresa)
+                              <option value="{{ $empresa->id }}"
+                                >
+                                {{ $empresa->nombre }}
                               </option>
                               @endforeach
                             </select>
                           </div>
-                          <div class="col">
-                            <label for="nombreoferta">Tipo de Oferta</label>
-                            <select name="tipo" class="form-control" required>
-                              <option value="">Seleccione una Opción</option>
-                              <option value="1">Particular</option>
-                              <option value="2">Empresa</option>
-                              <option value="3">Comunidad</option>
-                              <option value="4">Administrador</option>
+                          <div class="col-md-4">
+                            <label for="nombreoferta">Categoría</label>
+                            <select name="categoria_id" class="form-control" id="categorias" required>
+                              <option value="">Seleccione una Categoría</option>
+                              @foreach($categorias as $categoria)
+                              @can($categoria->slug)
+                              <option value="{{ $categoria->id }}" data-slug="{{$categoria->slug}}"
+                                >
+                                {{ $categoria->nombre }}
+                              </option>
+                              @endcan
+                              @endforeach
                             </select>
                           </div>
-                          <div class="col">
+
+                          <div class="col-md-4">
                             <div id="luz-tarifas" class="opciones">
                               <label for="tarifa">Tarifa</label>
                               <select name="tarifa" id="tarifa" class="form-control">
@@ -116,10 +127,10 @@
                                 <option value="10" class="tarifas gas-opt">3.4</option>
                               </select>
                             </div>
-
+                            
                             <div class="opciones telefonia-opt">
                                 <label for="tarifa">Subcategoría</label>
-                                <select name="subcategoria" id="subcategoria" class="form-control">
+                                <select name="subcategoria" id="subcategoriaTelefonia" class="form-control">
                                   <option value="1">Internet sin Fijo</option>
                                   <option value="2">Internet + Fijo</option>
                                   <option value="3">Tarifa Móvil Contrato</option>
@@ -130,42 +141,83 @@
                                   <option value="8">Tarifa Móvil Prepago</option>
                                   <option value="9">Internet + Fútbol</option>
                                   <option value="10">Internet + Tarifa Móvil</option>
+                                  <option value="11">Solo TV</option>
                                 </select>
                             </div>
+
+                            <div class="opciones seguros-opt">
+                                <label for="tarifa">Subcategoría</label>
+                                <select name="subcategoria" id="seguros_sub" class="form-control">
+                                  <option value="1">Coche</option>
+                                  <option value="2">Moto</option>
+                                  <option value="3">Bici</option>
+                                  <option value="4">Hogar</option>
+                                  <option value="5">Viaje</option>
+                                  <option value="6">Salud</option>
+                                  <option value="7">Dental</option>
+                                  <option value="8">Vida</option>
+                                  <option value="9">Decesos</option>
+                                  <option value="10">Mascotas</option>
+                                  <option value="11">Furgonetas</option>
+                                  <option value="12">Autónomos</option>
+                                  <option value="13">Impagos</option>
+                                  <option value="14">Empresas</option>
+                                  <option value="15">Deportes</option>
+                                </select>
+                                <br>
+                            </div>
+
+
+                            <div class="opciones seguros-opt precio-opt">
+                              <div class="form-group row">
+
+                                 <div class="col-md-12">
+                                      <label for="precio_inicial">Precio</label>
+                                      <input type="number" class="form-control" step="any" name='precio_inicial' id="precio_inicial" min="0">
+                                  </div>
+                              
+                            </div>
                           </div>
+
+
+                            
+                        </div>
+
+                        
+                            
                         </div>
 
                         <div class="opciones telefonia-opt">
-                          <div class="form-group row mb-4">
-                            <div class="col-md-4">
-                                <label>Subtítulo</label>
-                                <input class="form-control" name="subtitulo_telefonia" type="text" placeholder="Subtítulo">
+                            <div class="form-group row mb-4">
+                              <div class="col-md-4">
+                                  <label>Subtítulo</label>
+                                  <input class="form-control" name="subtitulo_telefonia" type="text" placeholder="Subtítulo">
+                              </div>
+                              <div class="col-md-4">
+                                  <label>Precio</label>
+                                  <input class="form-control" name="precio_telefonia" type="number" min="0" step="any">
+                              </div>
+                              <div class="col-md-4">
+                                  <label>Móvil</label>
+                                  <input class="form-control" name="movil_telefonia" type="text">
+                              </div>
                             </div>
-                            <div class="col-md-4">
-                                <label>Precio</label>
-                                <input class="form-control" name="precio_telefonia" type="number" min="0" step="0.01">
-                            </div>
-                            <div class="col-md-4">
-                                <label>Móvil</label>
-                                <input class="form-control" name="movil_telefonia" type="text">
-                            </div>
+  
+                            <div class="form-group row mb-4">
+                                <div class="col-md-4">
+                                    <label>Fijo</label>
+                                    <input class="form-control" name="fijo_telefonia" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Internet</label>
+                                    <input class="form-control" name="internet_telefonia" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>TV</label>
+                                    <input class="form-control" name="tv_telefonia" type="text">
+                                </div>
+                              </div>
                           </div>
-
-                          <div class="form-group row mb-4">
-                              <div class="col-md-4">
-                                  <label>Fijo</label>
-                                  <input class="form-control" name="fijo_telefonia" type="text">
-                              </div>
-                              <div class="col-md-4">
-                                  <label>Internet</label>
-                                  <input class="form-control" name="internet_telefonia" type="text">
-                              </div>
-                              <div class="col-md-4">
-                                  <label>TV</label>
-                                  <input class="form-control" name="tv_telefonia" type="text">
-                              </div>
-                            </div>
-                        </div>
                         
                         <div class="opciones luz-opt">
                           <h3>Potencia</h3>
@@ -173,15 +225,15 @@
                             
                             <div class="col-md-4">
                               <label>p1</label>
-                              <input class="form-control" name="pp1" type="number" min="0" step="0.000001">
+                              <input class="form-control" id="pp1-luz" name="pp1" type="number" min="0" step="any">
                             </div>
                             <div class="col-md-4">
                               <label>p2</label>
-                              <input class="form-control" name="pp2" type="number" min="0" step="0.000001">
+                              <input class="form-control" id="pp2-luz" name="pp2" type="number" min="0" step="any">
                             </div>
                             <div class="col-md-4">
                               <label>p3</label>
-                              <input class="form-control" name="pp3" type="number" min="0" step="0.000001">
+                              <input class="form-control" id="pp3-luz" name="pp3" type="number" min="0" step="any">
                             </div>
                           </div>
                           <h3>Energía</h3><br>
@@ -189,60 +241,95 @@
                             
                             <div class="col-md-4">
                               <label>p1</label>
-                              <input class="form-control" name="ep1" type="number" min="0" step="0.000001">
+                              <input class="form-control" id="ep1-luz" name="ep1" type="number" min="0" step="any">
                             </div>
                             <div class="col-md-4">
                               <label>p2</label>
-                              <input class="form-control" name="ep2" type="number" min="0" step="0.000001">
+                              <input class="form-control" id="ep2-luz" name="ep2" type="number" min="0" step="any">
                             </div>
                             <div class="col-md-4">
                               <label>p3</label>
-                              <input class="form-control" name="ep3" type="number" min="0" step="0.000001">
+                              <input class="form-control" id="ep3-luz" name="ep3" type="number" min="0" step="any">
                             </div>
                           </div>
                         </div>
                         <div class="form-group row opciones gas-opt">
+                          
+                          
                           <div class="col-md-6">
-                            <label>Precio Tarifa</label>
-                            <input class="form-control" name="precio_tarifa" type="number" min="0" step="0.1">
+                            <label>Precio KW</label>
+                            <input class="form-control" name="precio_tarifa" type="number" min="0" step="any">
                           </div>
                           <div class="col-md-6">
                             <label>Precio Fijo</label>
-                            <input class="form-control" name="precio_fijo" type="number" min="0" step="0.1">
+                            <input class="form-control" name="precio_fijo" type="number" min="0" step="any">
                           </div>
+                          
+                          
                         </div>
-                        <div class="form-group row">
-                          <div class="col-md-3">
-                            <label for="detallesoferta">Comisión</label>
-                            <input type="number" step="0.01" class="form-control" name="comision" placeholder="$">
-                          </div>
 
-                          <div class="col-md-3">
+
+              
+
+                        <div class="form-group row">
+                          @role('contador')
+                          <div class="col">
+                            <label for="detallesoferta">Comisión real</label>
+                            <input type="number" step="any" class="form-control" name="comision_real" placeholder="€">
+                          </div> 
+                          @endrole
+                          <div class="col">
+                            <label for="detallesoferta">Comisión</label>
+                            <input type="number" step="any" class="form-control" name="comision" placeholder="€">
+                          </div>
+                          <div class="col-md-2">
                             <label for="detallesoferta">Plan Gratis</label>
-                            <input type="number" step="0.01" name="plan1" class="form-control" placeholder="30%" />
+                            <input type="number" step="any" name="plan1" class="form-control" value="30" readonly/>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-2">
                             <label for="detallesoferta">Plan Premium</label>
-                            <input type="number" step="0.01" name="plan2" class="form-control" placeholder="40%" />
+                            <input type="number" step="any" name="plan2" class="form-control" value="50" readonly/>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-2">
                             <label for="detallesoferta">Plan Platinum</label>
-                            <input type="number" step="0.01" name="plan3" class="form-control" placeholder="40%" />
+                            <input type="number" step="any" name="plan3" class="form-control" value="90" readonly/>
                           </div>
                         </div>
+
                         <div class="form-group">
                           <label for="detallesoferta">Descripción</label>
                           <textarea name="descripcion" class="form-control" id="detallesoferta" cols="30" rows="10"></textarea>
                         </div>
                         <div class="form-group">
+                            <label for="imagen_oferta">Imagen de la Oferta (listado / card)</label>
+                            <input type="file" name="imagen_oferta" class="form-control" id="imagen_oferta" placeholder="Imagen">
+                          </div>
+                        <div class="form-group">
+                            <label for="imagen_oferta">Imagen de la Oferta (dentro de la oferta / flyer)</label>
+                            <input type="file" name="flyer_oferta" class="form-control" id="flyer_oferta" placeholder="Imagen">
+                        </div>
+                        <div class="form-group">
+                            <label for="pdf_oferta">Adjuntar PDF (opcional)</label>
+                            <input type="file" name="pdf_oferta" class="form-control" id="pdf_oferta" placeholder="PDF">
+                          </div>
+                        <div class="form-group">
+                            <label for="tabla_comisiones">Adjuntar Tabla de comisiones (opcional)</label>
+                            <input type="file" name="tabla_comisiones" class="form-control" id="tabla_comisiones" placeholder="Tabla de Comisiones">
+                          </div>
+                          
+                        <div class="form-group">
                           <button type="submit" class="btn btn-primary">
-                          Registrar
+                          Crear
                           </button>
                         </div>
                       </div>
                     </div>
+                    
                   </div>
+                  
+                  
                 </div>
+                
                 </div> <!-- / .row -->
               </div>
             </form>
@@ -258,8 +345,19 @@
         $('.tarifas').hide();
         $('.opciones').hide();
 
-
         categoria = $('#categorias option:selected').data('slug');
+
+        $('#tarifa').change(function(){
+            // 1 0 3
+            if($(this).val() == 1 || $(this).val() == 3)
+            {
+                $('#pp2-luz , #pp3-luz , #ep2-luz , #ep3-luz').val(0);
+                $('#pp2-luz , #pp3-luz , #ep2-luz , #ep3-luz').prop('readonly', true);
+            }else{
+                $('#pp2-luz , #pp3-luz , #ep2-luz , #ep3-luz').val('');
+                $('#pp2-luz , #pp3-luz , #ep2-luz , #ep3-luz').prop('readonly', false);
+            }
+        });
 
         if(categoria == 'luz'){
           $('.luz-opt').show();
@@ -273,6 +371,14 @@
           $('.luz-opt input').attr('required' , false);
         }else if( categoria == 'telefonia' ){
             $('.telefonia-opt').show();
+            $('.gas-opt input').attr('required' , false);
+            $('.luz-opt input').attr('required' , false);
+          }else if( categoria == 'seguros' ){
+            $('.seguros-opt').show();
+            $('.gas-opt input').attr('required' , false);
+            $('.luz-opt input').attr('required' , false);
+          }else if( categoria == 'alarmas' || categoria == 'tarjetas' || categoria == 'prestamos' || categoria == 'renta' || categoria == 'formacion' || categoria == 'extintores' || categoria == 'prot-datos' || categoria == 'solar' || categoria == 'tarjetas' || categoria == 'financiacion' || categoria == 'contadores' || categoria == 'ascensores' || categoria == ' fincas' || categoria == 'cargadores' || categoria == 'cosmeticos' || categoria == 'agua' || categoria == 'obras'){
+            $('.precio-opt').show();
             $('.gas-opt input').attr('required' , false);
             $('.luz-opt input').attr('required' , false);
           }
@@ -293,10 +399,19 @@
             $('.gas-opt input').attr('required' , false);
           }else if( categoria == 'gas'){
             $('.gas-opt').show();
+            $('#luz-tarifas').show();
             $('.gas-opt input').attr('required' , true);
             $('.luz-opt input').attr('required' , false);
           }else if( categoria == 'telefonia' ){
             $('.telefonia-opt').show();
+            $('.gas-opt input').attr('required' , false);
+            $('.luz-opt input').attr('required' , false);
+          }else if( categoria == 'seguros' ){
+            $('.seguros-opt').show();
+            $('.gas-opt input').attr('required' , false);
+            $('.luz-opt input').attr('required' , false);
+          }else if( categoria == 'alarmas' || categoria == 'tarjetas' || categoria == 'prestamos' || categoria == 'renta' || categoria == 'formacion' || categoria == 'extintores' || categoria == 'prot-datos' || categoria == 'solar' || categoria == 'tarjetas' || categoria == 'financiacion' || categoria == 'contadores' || categoria == 'ascensores' || categoria == ' fincas' || categoria == 'cargadores' || categoria == 'cosmeticos' || categoria == 'agua' || categoria == 'obras'){
+            $('.precio-opt').show();
             $('.gas-opt input').attr('required' , false);
             $('.luz-opt input').attr('required' , false);
           }

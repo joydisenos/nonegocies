@@ -16,7 +16,7 @@
       
     <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css')}}" id="stylesheetLight">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/theme-dark.min.css')}}" id="stylesheetDark">
+    <!--<link rel="stylesheet" href="{{ asset('assets/css/theme-dark.min.css')}}" id="stylesheetDark">-->
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 
     <style>body { display: none; }</style>
@@ -50,6 +50,7 @@
     <!-- Theme JS -->
     <script src="{{ asset('assets/js/theme.min.js')}}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     @yield('scripts')
     @include('includes.errors')
     @include('includes.notificacion')

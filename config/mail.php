@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@joydisenos.com.ve'),
-        'name' => env('MAIL_FROM_NAME', 'Joseph Vasquez'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@nonegocies.es'),
+        'name' => env('MAIL_FROM_NAME', 'No Negocies'),
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', ''),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------

@@ -10,6 +10,7 @@ use App\Mensajes;
 use App\Datos;
 use App\Cobro;
 use App\Ordenes;
+use App\Comision;
 
 class PanelController extends Controller
 {
@@ -38,6 +39,13 @@ class PanelController extends Controller
         return view('panel.contratos' , compact('contratos'));
     }
 
+    public function comisiones()
+    {
+        $comisiones = Auth::user()->comisiones;
+
+        return view('dashboard.comisiones' , compact('comisiones'));
+    }
+
     public function contrato($id)
     {
         $contrato = Ordenes::findOrFail($id);
@@ -61,22 +69,22 @@ class PanelController extends Controller
                 ]);
         }
         
-        if($request->tarjeta != null || $request->cvv != null || $request->vence != null)
+        /*if($request->tarjeta != null || $request->cvv != null || $request->vence != null)
         {
             $validatedData = $request->validate([
                 'tarjeta' => 'required|string|max:255',
                 'cvv' => 'required',
                 'vence' => 'required|string|max:255',
                 ]);
-        }
+        }*/
 
         if($request->numero != null || $request->banco != null)
         {
-            $validatedData = $request->validate([
+           /* $validatedData = $request->validate([
                 'numero' => 'required|string|max:255',
                 'nombre' => 'required',
                 'banco' => 'required|string|max:255',
-                ]);
+                ]);*/
         }
 
         $user = User::findOrFail(Auth::user()->id);
@@ -97,8 +105,6 @@ class PanelController extends Controller
         $user->cup_luz = $request->cup_luz;
         $user->save();
 
-        if($request->tarjeta != null || $request->cvv != null || $request->vence != null)
-        {
 
             $tarjeta = Datos::where('user_id' , Auth::user()->id)->first();
             if($tarjeta == null)
@@ -111,10 +117,7 @@ class PanelController extends Controller
             $tarjeta->vence = $request->vence;
             $tarjeta->save();
 
-        }
-
-        if($request->numero != null || $request->banco != null)
-        {
+        
             $cobro = Cobro::where('user_id' , Auth::user()->id)->first();
             if($cobro == null)
             {
@@ -123,11 +126,23 @@ class PanelController extends Controller
             }
             $cobro->numero = $request->numero;
             $nombre = explode( ' ' , $request->nombre);
-            $cobro->nombre = $nombre[0];
-            $cobro->apellido = $nombre[1];
+           
+            if($request->nombre != '')
+            {
+                if(count($nombre) == 1)
+                {
+                    $cobro->nombre = $nombre[0];
+                }else{
+                    $cobro->nombre = $nombre[0];
+                    $cobro->apellido = $nombre[1];
+                }
+            }else{
+                $cobro->nombre = '';
+                $cobro->apellido = '';
+            }
             $cobro->banco = $request->banco;
             $cobro->save();
-        }
+        
 
         return redirect()->back()->with('status','Datos Actualizados Correctamente');
     }
@@ -138,5 +153,49 @@ class PanelController extends Controller
         $mensajes = $mensajesRef->getMensajes(Auth::user()->id);
 
         return view('panel.mensajes' , compact('mensajes'));
+    }
+
+    public function usuarios()
+    {
+        $users = Auth::user();
+        $usuarios = $users->referidos;
+
+        return view('dashboard.usuarios' , compact('usuarios'));
+    }
+
+    public function crearUsuario()
+    {
+        return view('dashboard.crearusuario');
+    }
+
+    public function contratosReferidos()
+    {
+        $users = Auth::user();
+        $usuarios = $users->referidos;
+
+        $idUsers = array();
+
+        foreach ($usuarios as $user) {
+            array_push( $idUsers, $user->id);
+        }
+
+        $contratos = Ordenes::whereIn('user_id' , $idUsers)
+                                ->orWhere('contratista_id' , Auth::user()->id)
+                                ->get(); 
+        
+
+        return view('dashboard.contratos' , compact('contratos'));
+    }
+
+    public function detallesContrato($id)
+    {
+        $contrato = Ordenes::findOrFail($id);
+
+        return view('dashboard.contrato' , compact('contrato'));
+    }
+
+    public function referidos()
+    {
+        return view('panel.referidos');
     }
 }

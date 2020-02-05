@@ -1,0 +1,9 @@
+.featured{width: 100%;}
+.card-body-featured{text-align: unset}
+h3{text-transform: uppercase;}
+.space{height: 140px;display: block;width: 100%}
+.title-colabora{color: #e94578 !important;}
+@media (max-width: 992px){
+	.space{display: none}
+	.colabora .container .row .col-md-5:last-child {display: none;}
+}

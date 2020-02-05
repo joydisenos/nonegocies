@@ -77,26 +77,43 @@
                   </div>
                 </div> <!-- / .row -->
               </div>
-
+              <br>
               <div class="container">
                 <div class="row">
+                  <br>
                     <div class="col">
                         
                         <div class="form-group">
                             <label for="nombreempresa">Nombre</label>
                             <input type="text" name="nombre" class="form-control" id="nombreempresa" placeholder="Nombre de la empresa" value="{{ $empresa->nombre }}">
-                            <small class="form-text text-muted">Nombre de la empresa</small>
                         </div>
                     </div>
 
                     <div class="col">
                     <div class="form-group">
                             <label for="logoempresa">Logotipo</label>
-                            <input type="file" name="logo" class="form-control" id="logoempresa" placeholder="Logotipo" value="{{ $empresa->logo }}">
-                            <small class="form-text text-muted">Logotipo de la empresa</small>
+                            <input type="file" name="logo" class="form-control" id="logoempresa" placeholder="Logotipo">
                             </div>
                     </div>
                 </div>
+
+                <div class="row">
+                  <br>
+                    <div class="col">
+                        
+                
+                    </div>
+
+                    <div class="col">
+                    <div class="form-group">
+                            <label for="emailempresa">Email para notificación</label>
+                            <input type="email" name="email" class="form-control" id="emailempresa" placeholder="Email" value="{{ $empresa->email }}">
+                            </div>
+                    </div>
+                </div>
+                
+                 <br>
+                <label>Tipo de contratación</label>
 
                 <div class="row m-4">
                   <div class="col">
@@ -136,8 +153,35 @@
                   </div>
                 </div>
 
-
                 <div class="row">
+                	<div class="col">
+                    <div class="form-group">
+                            <label for="logoempresa">Adjuntar PDF</label>
+                            <input type="file" name="pdf" class="form-control" id="adjuntarpdf" placeholder="Adjuntar">
+                            
+                            </div>
+                    </div>
+                    @if($empresa->pdf != null)
+                    <div class="col">
+                    	<a href="{{ asset('storage/' . $empresa->pdf ) }}" class="btn btn-primary" target="_blank">Ver PDF</a> <hr>
+
+                      <input type="checkbox" name="del_pdf" id="del_pdf"> 
+                              <label for="del_pdf"><span class="fe fe-trash-2"></span> eliminar pdf</label>
+                    </div>
+                    @endif
+                </div>
+
+               
+                <h4>Logo Actual:</h4>
+                 <img src="{{ asset('storage/'. $empresa->logo) }}" class="img-company" alt="Logo {{$empresa->nombre}}">
+                
+              
+
+
+
+               
+
+               <!--  <div class="row">
                        <div class="col">
                             <div class="form-group">
                                     <label for="descripcion">Descripción</label>
@@ -145,13 +189,16 @@
                                     <small class="form-text text-muted">Descripción de la empresa</small>
                             </div>
                         </div> 
-                </div>
-
+                </div> 
+                 <br>
+                <label>Contrato</label>
                 <div class="row">
                     <div class="col">
                         <textarea id="editor" name="contrato" cols="30" rows="10">{{ $empresa->contrato }}</textarea>
                     </div>
                 </div>
+
+              -->
                 
               </div>
                 

@@ -15,7 +15,7 @@
 </svg>
   </div>
 </header>
-<section class="gray">
+<section>
 	<div class="container">
 		{!! $legal !!}
 	</div>

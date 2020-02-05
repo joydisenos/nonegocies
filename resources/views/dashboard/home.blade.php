@@ -205,10 +205,15 @@
                   </div>
                 </div> <!-- / .row -->
               </div>
-              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-project", "goal-status", "goal-progress", "goal-date"]'>
+              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-fecha" , "goal-project", "goal-status", "goal-progress", "goal-date"]'>
                 <table class="table table-sm table-nowrap card-table">
                   <thead>
                     <tr>
+                    	<th>
+                        <a href="#" class="text-muted sort" data-sort="goal-fecha">
+                          Fecha
+                        </a>
+                      </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-project">
                           Oferta
@@ -239,24 +244,27 @@
                     
                     @foreach($contratos as $contrato)
                     <tr>
+                    <td class="goal-fecha">
+                        {{ $contrato->created_at->format('d/m/Y') }}
+                      </td>
                       <td class="goal-project">
                         {{ title_case($contrato->oferta->nombre) }}
                       </td>
                       <td class="goal-status">
-                      {{ title_case($contrato->user->name) }} {{ title_case($contrato->user->apellido) }}
+                      {{ $contrato->user != null ? title_case($contrato->user->name) : ''}} {{ $contrato->user != null ? title_case($contrato->user->apellido) : ''}}
                       </td>
                       <td class="goal-progress">
-                        {{ $contrato->user->email }}
+                        {{ $contrato->user != null ? $contrato->user->email : '' }}
                       </td>
                       <td class="goal-date">
                         @if($contrato->oferta->categoria->slug == 'gas')
-                            {{ $contrato->user->cup_gas }}
+                            {{ $contrato->user != null ? $contrato->user->cup_gas : '' }}
                         @elseif($contrato->oferta->categoria->slug == 'luz')
-                            {{ $contrato->user->cup_luz }}
+                            {{ $contrato->user != null ? $contrato->user->cup_luz : '' }}
                         @endif
                       </td>
                       <td class="text-right">
-                        {{ $contrato->user->telefono }}
+                        {{ $contrato->user != null ? $contrato->user->telefono : ''}}
                       </td>
                       <td></td>
                     </tr>

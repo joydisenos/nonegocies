@@ -70,6 +70,11 @@
                         </a>
                       </th>
                       <th>
+                        <a href="#" class="text-muted sort" data-sort="id-contrato">
+                          Fecha de contrato
+                        </a>
+                      </th>
+                      <th>
                         <a href="#" class="text-muted sort" data-sort="goal-project">
                           Oferta
                         </a>
@@ -101,6 +106,9 @@
                       <td class="id-contrato">
                         {{ $contrato->id }}
                       </td>
+                      <td class="id-contrato">
+                        {{ $contrato->created_at->format('d/m/Y') }}
+                      </td>
                       <td class="goal-project">
                         {{ title_case($contrato->oferta->nombre) }}
                       </td>
@@ -130,6 +138,48 @@
                             <a href="{{ route('pagar.contrato' , [$contrato->id]) }}" class="dropdown-item">
                               Marcar como Pago
                             </a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    @endforeach
+
+                    @foreach($comisiones as $comision)
+                    <tr>
+                      <td class="id-contrato">
+                        COM-{{ $comision->id }}
+                      </td>
+                      <td class="id-contrato">
+                        {{ $comision->created_at->format('d/m/Y') }}
+                      </td>
+                      <td class="goal-project">
+                        {{ $comision->orden_id != null ? title_case($comision->orden->oferta->nombre) : $comision->concepto }}
+                      </td>
+                      <td class="goal-status">
+                      {{ title_case($comision->user->name) }} {{ title_case($comision->user->apellido) }}
+                      </td>
+                      <td class="goal-progress">
+                        {{ $comision->user->email }}
+                      </td>
+                      
+
+                      <td class="text-right">
+                        {{ $comision->user->telefono }}
+                      </td>
+                      <td>
+                        {{ $comision->monto }} €
+                      </td>
+                      <td>
+                         <div class="dropdown">
+                          <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-boundary="window">
+                            <i class="fe fe-more-vertical"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            
+                            <a href="{{ route('pagar.comision' , [$comision->id]) }}" class="dropdown-item">
+                              Marcar como Pago
+                            </a>
+
                           </div>
                         </div>
                       </td>

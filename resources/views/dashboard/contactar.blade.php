@@ -62,13 +62,19 @@
                   </div>
                 </div> <!-- / .row -->
               </div>
-              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-project", "goal-status", "goal-progress", "goal-date"]'>
+              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-project", "goal-status", "goal-fecha", "goal-progress", "goal-date"]'>
                 <table class="table table-sm table-nowrap card-table">
                   <thead>
                     <tr>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-project">
                           Nombre
+                        </a>
+                      </th>
+
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-fecha">
+                          Fecha
                         </a>
                       </th>
                       <th>
@@ -102,6 +108,9 @@
                       <td class="goal-project">
                         {{ title_case($contacto->nombre) }} {{ title_case($contacto->apellido) }}
                       </td>
+                      <td class="goal-project">
+                        {{ $contacto->created_at->format('Y/m/d') }}
+                      </td>
                       <td class="goal-status">
                         @if($contacto->contactado == 0)
                         <span class="text-warning">●</span> Pendiente
@@ -117,7 +126,7 @@
                          	style="color:{{ ($contacto->llamar == 1) ? 'green' : 'red' }}"></i>
                       </td>-->
                       <td>
-                        {{ title_case($contacto->servicio ) }}
+                        {{ str_limit($contacto->servicio , 30) }}
                       </td>
                       <td class="text-right">
                         {{ ($contacto->telefono) ? $contacto->telefono : 'No Registrado'}}

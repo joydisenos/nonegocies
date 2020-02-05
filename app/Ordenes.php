@@ -23,6 +23,37 @@ class Ordenes extends Model
 
     public function contratosPorPagar()
     {
-        return $this->where('comision' , '>' , 0)->where('pagado' , 0)->get();
+        return $this->where('comision' , '>' , 0)
+                    ->where('pagado' , 0)
+                    ->where('estatus' , 3)
+                    ->get();
+    }
+
+    public function estatus()
+    {
+        $est = $this->estatus;
+
+        switch ($est) {
+            case 1:
+                $estatus = 'Por procesar';
+                break;
+
+            case 2:
+                $estatus = 'Aprobado';
+                break;
+
+            case 0:
+                $estatus = 'Negado';
+                break;
+
+            case 3:
+                $estatus = 'Por Cobrar';
+                break;
+            
+            default:
+                $estatus = 'No definido';
+                break;
+        }
+        return $estatus;
     }
 }

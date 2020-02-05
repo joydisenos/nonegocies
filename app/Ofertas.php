@@ -10,12 +10,24 @@ class Ofertas extends Model
 {
     protected $fillable = [
         'nombre',
+        'imagen_oferta',
+        'flyer_oferta',
+        'pdf_oferta',
         'slug',
         'descripcion',
         'empresa_id',
         'categoria_id',
         'precio',
-        'tipo'
+        'precio_diario',
+        'subcategoria',
+        'tipo',
+        'estatus',
+        'tarifa',
+        'ventas',
+        'comision',
+        'plan1',
+        'plan2',
+        'plan3'
     ];
 
     public function ofertas()
@@ -68,9 +80,55 @@ class Ofertas extends Model
         return $contrato;
     }
 
-
-    public function getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias)
+    public function duplicarOferta($id)
     {
+        $ofertaOriginal = Ofertas::findOrFail($id);
+        $ofertaArray = $ofertaOriginal->toArray();
+
+        $ofertaNueva = Ofertas::create($ofertaArray);
+
+        /*if( $ofertaOriginal->imagen_oferta != null )
+            {
+                $rutaImagen = 'ofertas/'. $ofertaOriginal->id . '/' . $ofertaOriginal->imagen_oferta;
+                $destinoImagen = 'ofertas/'. $ofertaNueva->id . '/' . $ofertaNueva->imagen_oferta;
+                copy($rutaImagen , $destinoImagen);
+            }
+
+        if( $ofertaOriginal->pdf_oferta != null )
+            {
+                $rutaPdf = 'ofertas/'. $ofertaOriginal->id . '/' . $ofertaOriginal->pdf_oferta;
+                $destinoPdf = 'ofertas/'. $ofertaNueva->id . '/' . $ofertaNueva->pdf_oferta;
+                copy($destinoPdf , $rutaPdf);
+            }
+            
+        if( $ofertaOriginal->flyer_oferta != null )
+            {
+                $rutaFlyer = 'ofertas/'. $ofertaOriginal->id . '/' . $ofertaOriginal->flyer_oferta;
+                $destinoFlyer = 'ofertas/'. $ofertaNueva->id . '/' . $ofertaNueva->flyer_oferta;
+                copy($rutaFlyer , $destinoFlyer);
+            }*/
+
+        if( $ofertaOriginal->opcion != null )
+        {
+            $opciones = $ofertaOriginal->opcion;
+            $opcionesArray = $opciones->toArray();
+            $opcionesArray['oferta_id'] = $ofertaNueva->id;
+
+            CamposOferta::create($opcionesArray);
+        }
+
+        return $ofertaNueva;
+    }
+
+
+    public function getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias , $order)
+    {
+        if($order == 'totalgeneral'){
+            $direccion = 'ASC';
+        }else{
+            $direccion = 'DESC';
+        }
+
         $ofertas = Ofertas::selectRaw(('* , 
                                     ofertas.id as ofertaid,
                                     ofertas.estatus,
@@ -81,51 +139,167 @@ class Ofertas extends Model
         							campos_ofertas.ep1,
         							campos_ofertas.ep2,
         							campos_ofertas.ep3,
-                                    (campos_ofertas.pp1 / 365) as diap1 , 
-                                    (campos_ofertas.pp2 / 365) as diap2 , 
-                                    (campos_ofertas.pp3 / 365) as diap3 ,
-                                    ((campos_ofertas.pp1 / 365) * '. $dias .' * '. $pp1 .') as totalp1 ,
-                                    ((campos_ofertas.pp2 / 365) * '. $dias .' * '. $pp2 .') as totalp2 ,
-                                    ((campos_ofertas.pp3 / 365) * '. $dias .' * '. $pp3 .') as totalp3 ,
-                                    (campos_ofertas.ep1 * '. $dias .' * '. $ep1 .') as totale1 ,
-                                    (campos_ofertas.ep2 * '. $dias .' * '. $ep2 .') as totale2 ,
-                                    (campos_ofertas.ep3 * '. $dias .' * '. $ep3 .') as totale3 ,
+
+        							(
+        							(
+        							(
+        							(campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+	                                (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+	                                (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+	                                (campos_ofertas.ep1 * '. $ep1 .') + 
+	                                (campos_ofertas.ep2 * '. $ep2 .') + 
+	                                (campos_ofertas.ep3 * '. $ep3 .')
+	                                ) * 21 
+	                                )
+	                                / 100
+	                                ) +
+
+	                                (
+	                                (
+	                                (
+	                                (campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+	                                (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+	                                (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+	                                (campos_ofertas.ep1 * '. $ep1 .') + 
+	                                (campos_ofertas.ep2 * '. $ep2 .') + 
+	                                (campos_ofertas.ep3 * '. $ep3 .')
+	                                ) * 5.113 
+	                                )
+	                                /100
+	                                ) +
+                        			
+                        			(
+	                                (campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+	                                (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+	                                (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+	                                (campos_ofertas.ep1 * '. $ep1 .') + 
+	                                (campos_ofertas.ep2 * '. $ep2 .') + 
+	                                (campos_ofertas.ep3 * '. $ep3 .') 
+									)
+
+	                                as totalgeneral,
+
+                                    ((comision + (
                                     
-                                    (((campos_ofertas.pp1 / 365) * '. $dias .' * '. $pp1 .') + 
-                                    ((campos_ofertas.pp2 / 365) * '. $dias .' * '. $pp2 .') + 
-                                    ((campos_ofertas.pp3 / 365) * '. $dias .' * '. $pp3 .') + 
-                                    (campos_ofertas.ep1 * '. $dias .' * '. $ep1 .') + 
-                                    (campos_ofertas.ep2 * '. $dias .' * '. $ep2 .') + 
-                                    (campos_ofertas.ep3 * '. $dias .' * '. $ep3 .')) as totalgeneral'))
+                                    (
+                                    (
+                                    (
+                                    (campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+                                    (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+                                    (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+                                    (campos_ofertas.ep1 * '. $ep1 .') + 
+                                    (campos_ofertas.ep2 * '. $ep2 .') + 
+                                    (campos_ofertas.ep3 * '. $ep3 .')
+                                    ) * 21 
+                                    )
+                                    / 100
+                                    ) +
+
+                                    (
+                                    (
+                                    (
+                                    (campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+                                    (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+                                    (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+                                    (campos_ofertas.ep1 * '. $ep1 .') + 
+                                    (campos_ofertas.ep2 * '. $ep2 .') + 
+                                    (campos_ofertas.ep3 * '. $ep3 .')
+                                    ) * 5.113 
+                                    )
+                                    /100
+                                    ) +
+                                    
+                                    (
+                                    (campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+                                    (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+                                    (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+                                    (campos_ofertas.ep1 * '. $ep1 .') + 
+                                    (campos_ofertas.ep2 * '. $ep2 .') + 
+                                    (campos_ofertas.ep3 * '. $ep3 .') 
+                                    )
+
+                                    )) / 2) as promedio 
+
+                                    '))
                                     ->join('campos_ofertas' , 'campos_ofertas.oferta_id' , '=' , 'ofertas.id')
                                     ->where('ofertas.categoria_id' , $categoriaId)
                                     ->where('ofertas.tarifa' , $tarifa)
-                                    ->where('ofertas.tipo' , $tipoPersona)
+                                    //->where('ofertas.tipo' , $tipoPersona)
                                     ->where('ofertas.estatus' , 1)
-                                    ->whereRaw('(((campos_ofertas.pp1 / 365) * '. $dias .' * '. $pp1 .') + 
-                                    ((campos_ofertas.pp2 / 365) * '. $dias .' * '. $pp2 .') + 
-                                    ((campos_ofertas.pp3 / 365) * '. $dias .' * '. $pp3 .') + 
-                                    (campos_ofertas.ep1 * '. $dias .' * '. $ep1 .') + 
-                                    (campos_ofertas.ep2 * '. $dias .' * '. $ep2 .') + 
-                                    (campos_ofertas.ep3 * '. $dias .' * '. $ep3 .'))
-                                    <= '. $precio)
+                                    /*->whereRaw('
+                                    			
+                                    (
+        							(
+        							(
+        							(campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+	                                (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+	                                (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+	                                (campos_ofertas.ep1 * '. $ep1 .') + 
+	                                (campos_ofertas.ep2 * '. $ep2 .') + 
+	                                (campos_ofertas.ep3 * '. $ep3 .')
+	                                ) * 21 
+	                                )
+	                                / 100
+	                                ) +
+
+	                                (
+	                                (
+	                                (
+	                                (campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+	                                (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+	                                (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+	                                (campos_ofertas.ep1 * '. $ep1 .') + 
+	                                (campos_ofertas.ep2 * '. $ep2 .') + 
+	                                (campos_ofertas.ep3 * '. $ep3 .')
+	                                ) * 5.113 
+	                                )
+	                                /100
+	                                ) +
+                        			
+                        			(
+	                                (campos_ofertas.pp1 * '. $dias .' * '. $pp1 .') + 
+	                                (campos_ofertas.pp2 * '. $dias .' * '. $pp2 .') + 
+	                                (campos_ofertas.pp3 * '. $dias .' * '. $pp3 .') + 
+	                                (campos_ofertas.ep1 * '. $ep1 .') + 
+	                                (campos_ofertas.ep2 * '. $ep2 .') + 
+	                                (campos_ofertas.ep3 * '. $ep3 .') 
+									)
+                                    <= '. $precio)*/
+                                    ->orderBy($order , $direccion)
                                     ->get();
 
         return $ofertas;
     }
 
-    public function getOfertasMenorPrecioGas($categoriaId , $tarifa , $tipoPersona , $precio)
+    public function getOfertasMenorPrecioGas($categoriaId , $tarifa , $tipoPersona , $precio , $dias , $kw , $order)
     {
+        if($order == 'totalgeneral'){
+            $direccion = 'ASC';
+        }else{
+            $direccion = 'DESC';
+        }
         $ofertas = Ofertas::selectRaw(('* , 
                                     ofertas.id as ofertaid,
                                     ofertas.estatus,
-                                    ofertas.nombre as titulo'))
+                                    ofertas.nombre as titulo,
+                                                    ( ('. $kw .' * campos_ofertas.precio_tarifa ) + 
+                                                    (campos_ofertas.precio_fijo * '. $dias .')) 
+                                                    *1.21 as totalgeneral,
+                                    ((comision + (
+                                                    ( ('. $kw .' * campos_ofertas.precio_tarifa ) + 
+                                                    (campos_ofertas.precio_fijo * '. $dias .')) 
+                                                    *1.21
+                                    )) / 2) as promedio
+                                    '))
                                     ->join('campos_ofertas' , 'campos_ofertas.oferta_id' , '=' , 'ofertas.id')
                                     ->where('ofertas.categoria_id' , $categoriaId)
                                     ->where('ofertas.tarifa' , $tarifa)
-                                    ->where('ofertas.tipo' , $tipoPersona)
-                                    ->where('campos_ofertas.precio_fijo' , '<=' , $precio)
+                                    //->where('ofertas.tipo' , $tipoPersona)
                                     ->where('ofertas.estatus' , 1)
+                                    //->whereRaw( ' ( ('. $kw .' * campos_ofertas.precio_tarifa ) + 
+                                    //                (campos_ofertas.precio_fijo * '. $dias .')) 
+                                    //                *1.21 <= '. $precio)
+                                    ->orderBy($order , $direccion)
                                     ->get();
 
         return $ofertas;

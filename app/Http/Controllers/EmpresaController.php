@@ -33,9 +33,18 @@ class EmpresaController extends Controller
             $request->file('logo')->storeAs($ruta, $nombre, 'public');
         }
 
+        if( $request->hasFile('pdf') )
+        {
+            $rutaPdf = 'empresa/'. str_slug($request->nombre , '-');
+            $pdf = $request->file('pdf');
+            $nombrePdf = $pdf->getClientOriginalName();
+            $request->file('pdf')->storeAs($rutaPdf, $nombrePdf, 'public');
+        }
+
         $empresa = new Empresa();
         $empresa->nombre = $request->nombre;
         $empresa->cerrar = $request->cerrar;
+        $empresa->email = $request->email;
         if( $request->descripcion != null)
         {
             $empresa->descripcion = $request->descripcion;
@@ -49,6 +58,10 @@ class EmpresaController extends Controller
         if ( $request->hasFile('logo') )
         {
             $empresa->logo = $ruta . '/' . $nombre;
+        }
+        if ( $request->hasFile('pdf') )
+        {
+            $empresa->pdf = $rutaPdf . '/' . $nombrePdf;
         }
         $empresa->save();
     	
@@ -93,10 +106,19 @@ class EmpresaController extends Controller
                 $nombre = $logo->getClientOriginalName();
                 $request->file('logo')->storeAs($ruta, $nombre, 'public');
             }
+
+            if( $request->hasFile('pdf') )
+            {
+                $rutaPdf = 'empresa/'. str_slug($request->nombre , '-');
+                $pdf = $request->file('pdf');
+                $nombrePdf = $pdf->getClientOriginalName();
+                $request->file('pdf')->storeAs($rutaPdf, $nombrePdf, 'public');
+            }
     
             $empresa = Empresa::findOrFail($id);
             $empresa->nombre = $request->nombre;
             $empresa->cerrar = $request->cerrar;
+            $empresa->email = $request->email;
             if( $request->contrato != null )
             {
                 $empresa->contrato = $request->contrato;
@@ -112,6 +134,14 @@ class EmpresaController extends Controller
             if ( $request->hasFile('logo') )
             {
                 $empresa->logo = $ruta . '/' . $nombre;
+            }
+            if ( $request->hasFile('pdf') )
+            {
+                $empresa->pdf = $rutaPdf . '/' . $nombrePdf;
+            }
+            if ( $request->has('del_pdf') )
+            {
+                $empresa->pdf = null;
             }
             $empresa->save();
             

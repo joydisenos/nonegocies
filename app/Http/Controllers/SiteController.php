@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Ajuste;
 use App\Categoria;
 use App\Ofertas;
+use App\User;
 use Carbon\Carbon;
+use App\Mail\ColaboraMail;
 
 class SiteController extends Controller
 {
@@ -19,7 +22,7 @@ class SiteController extends Controller
      public function planes()
     {
     	$refLegal = Ajuste::first();
-        $legal = $refLegal->terminos;
+        $legal = $refLegal->contrato_plan;
 
         return view('planes' , compact('legal'));
     }
@@ -29,12 +32,26 @@ class SiteController extends Controller
         return view('nosotros');
     }
 
+    public function colabora()
+    {
+        return view('colabora');
+    }
+
+    public function mailColabora(Request $request)
+    {
+        Mail::to('info@nonegocies.es')
+        //Mail::to('joydisenos@gmail.com')
+                   ->send(new ColaboraMail($request));
+
+        return redirect()->back()->with('status' , 'Mensaje enviado con exito');
+    }
+
     public function seguros()
     {
         return view('ofertas.seguros');
     }
 
-    public function telefonia()
+    public function ofertasTelefonia()
     {
 
         $refCategoria = new Categoria();
@@ -44,6 +61,21 @@ class SiteController extends Controller
         $ofertas = $refOfertas->getOfertasCategoria($categoria->id);
 
         return view('ofertas.telefonia' , compact('ofertas'));
+    }
+
+    public function ofertasCategoria($categoria)
+    {
+
+        $refCategoria = new Categoria();
+        $categoria = $refCategoria->getCategoriaSlug($categoria);
+
+        $refOfertas = new Ofertas();
+        $ofertas = $refOfertas->getOfertasCategoria($categoria->id);
+
+        $contratoRef = Ajuste::first();
+        $contrato = $contratoRef->contrato_oferta;
+
+        return view('ofertas.resultados-varios' , compact('ofertas' , 'categoria' , 'contrato'));
     }
 
     public function terminos()
@@ -90,9 +122,11 @@ class SiteController extends Controller
     {
          $validatedData = $request->validate([
             'servicio' => 'required',
+            'monto' => 'required',
             'persona' => 'required',
             'tarifa' => 'required',
-            'monto' => 'required',
+            'precio_tarifa' => 'required',
+            'precio_fijo' => 'required',
             'desde' => 'required',
             'hasta' => 'required',
             ]);
@@ -111,15 +145,27 @@ class SiteController extends Controller
         $hasta = Carbon::createFromFormat('d/m/Y' , $request->hasta);
 
         $dias = $hasta->diffInDays($desde);
-        $precio = ( (float)$request->monto / $dias ) * 30;
+        $precio = $request->monto;
 
         $categoriaId = $categoria->id;
         $tipoPersona = $request->persona;
         $tarifa = (int)$request->tarifa;
+        $kw = $request->precio_tarifa;
+        $monto = $request->monto;
+        $userip = $request->ip();
+        if($request->has('order')){
+            $order = $request->order;
+        }else{ 
+            $order = 'totalgeneral';
+             }
+
+        $contratoRef = Ajuste::first();
+        $contrato = $contratoRef->contrato_oferta;
         
-        $ofertas = $refOfertas->getOfertasMenorPrecioGas($categoriaId , $tarifa , $tipoPersona , $precio );
+        $ofertas = $refOfertas->getOfertasMenorPrecioGas($categoriaId , $tarifa , $tipoPersona , $precio , $dias , $kw , $order);
         
-        return view('ofertas.resultados-gas' , compact('ofertas' , 'categoria'));
+        
+        return view('ofertas.resultados-gas' , compact('ofertas' , 'categoria','kw','monto' ,'dias','contrato','userip' ,'precio'));
     }
 
     public function consultar(Request $request)
@@ -157,15 +203,31 @@ class SiteController extends Controller
         $pp1 = (float)$request->pp1;
         $pp2 = (float)$request->pp2;
         $pp3 = (float)$request->pp3;
-        $ep1 = (float)$request->ep1 / $dias;
-        $ep2 = (float)$request->ep2 / $dias;
-        $ep3 = (float)$request->ep3 / $dias;
+        $ep1 = (float)$request->ep1;
+        $ep2 = (float)$request->ep2;
+        $ep3 = (float)$request->ep3;
         $categoriaId = $categoria->id;
         $tipoPersona = $request->persona;
         $tarifa = (int)$request->tarifa;
+        $userip = $request->ip();
+        if($request->has('order')){
+            $order = $request->order;
+        }else{ 
+            $order = 'totalgeneral';
+             }
+
+        $contratoRef = Ajuste::first();
+        $contrato = $contratoRef->contrato_oferta;
         
-        $ofertas = $refOfertas->getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias);
+        $ofertas = $refOfertas->getOfertasMenorPrecioLuz($categoriaId , $tarifa , $tipoPersona , $precio , $pp1 , $pp2 , $pp3 , $ep1 , $ep2 , $ep3 , $dias , $order);
         
-        return view('ofertas.resultados' , compact('ofertas' , 'categoria'));
+        return view('ofertas.resultados-luz' , compact('ofertas' , 'categoria' ,'precio','contrato' , 'request' , 'dias','userip'));
+    }
+
+    public function registro($referido)
+    {
+        $user = User::findOrFail($referido);
+
+        return view('auth.register',compact('referido'));
     }
 }

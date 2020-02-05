@@ -1,3 +1,6 @@
+<!-- remover en produccion: -->
+<?php $realtime      = date('dm').''.date('His');  ?>
+<!-- end remover -->
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -6,16 +9,17 @@
     <meta name="robots" content="follow,index">
     <meta name="revisit-after" content="2 days">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="">
+    <meta name="description" content="Ahorrar y gana dinero con tu factura de gas, luz, telefono y seguros">
     <title>No Negocies</title>
     <link rel="apple-touch-icon" href="{{asset('img/nonegocies.png')}}" />
     <link rel="icon" href="{{asset('img/favicon2.png')}}" type="image/png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/fonts/feather/feather.min.css')}}">
-    <link href="{{asset('css/styles.css')}}" rel="stylesheet">
+    <link href="{{asset('css/styles.css?')}}<?php echo $realtime; ?>" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     @yield('header')
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
@@ -63,6 +67,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{{ route('nosotros') }}">Quienes somos</a>
             </li>
+             <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{ route('colabora') }}">Colabora</a>
+            </li>
             @guest
             @else
 
@@ -85,10 +92,21 @@
                   @role('admin')
                   <li><a href ="{{ route('inicio') }}">Admin</a></li>
                   @endrole
+
+                  @role('contador')
+                  <li><a href ="{{ route('ofertas') }}">Admin</a></li>
+                  <li><a href ="{{ route('pagos.comision') }}">Pago a Usuarios</a></li>
+                  @elserole('gerente')
+                  <li><a href ="{{ route('ofertas') }}">Admin</a></li>
+                  @endrole
+
+                    @if(Auth::user()->plan_id > 1)
+                    <li><a href ="{{ route('panel.usuarios') }}">Panel</a></li>
+                    @endif
                   <li><a href ="{{ route('panel.configuracion') }}">Perfil</a></li>
                   <li><a href ="{{ route('panel.mensajes') }}">Mensajes <span class="badge">{{ (Auth::user()->noleidos() > 0) ? Auth::user()->noleidos() : '' }}</span></a></li>
                   <li><a href ="{{ route('panel.contratos') }}">Mis Contratos</a></li>
-                  <li><a class="nav-link " href="{{ route('logout') }}"
+                  <li><a class="nav-link logout" href="{{ route('logout') }}"
                  onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">Salir</a></li>
                 </ul>
@@ -108,7 +126,7 @@
       <div class="container">
         <div class="row">
         <div class="col-md-9 copyright">
-           Copyright &copy; {{ date('Y') }} No Negocies <a href="{{ route('terminos') }}"> Términos y Condiciones</a>  <a href="{{ route('privacidad') }}"> Politicas de Privacidad</a>
+           Copyright &copy; {{ date('Y') }} No Negocies <a href="{{ route('terminos') }}"> Términos y Condiciones</a> <a href="{{ route('privacidad') }}"> Politicas de Privacidad</a>
         </div>
         <div class="col-md-3">
           <ul class="social-links">
@@ -138,8 +156,9 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     @include('includes.errors')
     @include('includes.notificacion')
     <script type="text/javascript">
@@ -204,6 +223,7 @@
       });
 
     </script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     @yield('scripts')
   </body>
 </html>

@@ -1,5 +1,17 @@
 @extends('layouts.dash')
 
+<style>
+  .color-Aprobado > td {
+    background: lightgreen !important;
+  }
+  tr.color-Por.procesar td {
+    background: yellow;
+  }
+  tr.color-Negado td{
+    background: red;
+  }
+</style>
+
 @section('content')
 <div class="main-content">
      <!-- HEADER -->
@@ -24,9 +36,11 @@
               </div>
               <div class="col-auto">
                 
+                
                 <a href="{{ route('offline') }}" class="btn btn-primary">
                     Crear Contrato Offline
                   </a>
+                  
 
               </div>
             </div> <!-- / .row -->
@@ -62,13 +76,18 @@
                 </div> <!-- / .row -->
               </div>
 
-              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["id-contrato","goal-project", "goal-status", "goal-progress", "goal-date"]'>
+              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["id-contrato","id-fecha","goal-project", "goal-status", "goal-progress", "goal-date","goal-estatus"]'>
                 <table class="table table-sm table-nowrap card-table">
                   <thead>
                     <tr>
-                      <th>
+                      <!--<th>
                         <a href="#" class="text-muted sort" data-sort="id-contrato">
                           Número
+                        </a>
+                      </th>-->
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="id-fecha">
+                          Fecha
                         </a>
                       </th>
                       <th>
@@ -86,9 +105,14 @@
                           Email
                         </a>
                       </th>
-                      <th>
+                      <!--<th>
                         <a href="#" class="text-muted sort" data-sort="goal-date">
                           CUP
+                        </a>
+                      </th>-->
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-estatus">
+                          estatus
                         </a>
                       </th>
                       <th class="text-right">
@@ -100,49 +124,66 @@
                   <tbody class="list">
                     
                     @foreach($contratos as $contrato)
-                    <tr>
-                      <td class="id-contrato">
-                        {{ $contrato->id }}
-                      </td>
-                      <td class="goal-project">
-                        {{ title_case($contrato->oferta->nombre) }}
-                      </td>
-                      <td class="goal-status">
-                      {{ title_case($contrato->user->name) }} {{ title_case($contrato->user->apellido) }}
-                      </td>
-                      <td class="goal-progress">
-                        {{ $contrato->user->email }}
-                      </td>
-                      <td class="goal-date">
-                        @if($contrato->oferta->categoria->slug == 'gas')
-                            {{ $contrato->user->cup_gas }}
-                        @elseif($contrato->oferta->categoria->slug == 'luz')
-                            {{ $contrato->user->cup_luz }}
-                        @endif
-                      </td>
-                      <td class="text-right">
-                        {{ $contrato->user->telefono }}
-                      </td>
-                      <td>
-                         <div class="dropdown">
-                          <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-boundary="window">
-                            <i class="fe fe-more-vertical"></i>
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right">
-                            <a href="{{ route('detalles.contrato' , [$contrato->id]) }}" class="dropdown-item">
-                              Detalles
+                    @can($contrato->oferta->categoria->slug)
+                      <tr class="color-{{ $contrato->estatus() }}">
+                        <!--<td class="id-contrato">
+                          {{ $contrato->id }}
+                        </td>-->
+                        <td class="id-fecha">
+                          {{ $contrato->created_at->format('Y/m/d') }}
+                        </td>
+                        <td class="goal-project">
+                          {{ title_case($contrato->oferta->nombre) }}
+                        </td>
+                        <td class="goal-status">
+                        {{ $contrato->user != null ? title_case($contrato->user->name): '' }} {{ $contrato->user != null ? title_case($contrato->user->apellido) : ''}}
+                        </td>
+                        <td class="goal-progress">
+                          {{ $contrato->user != null ? $contrato->user->email : ''}}
+                        </td>
+                        <!--<td class="goal-date">
+                          @if($contrato->oferta->categoria->slug == 'gas')
+                              {{$contrato->user != null ?  $contrato->user->cup_gas : ''}}
+                          @elseif($contrato->oferta->categoria->slug == 'luz')
+                              {{$contrato->user != null ?  $contrato->user->cup_luz : ''}}
+                          @endif
+                        </td>-->
+                        <td class="text-right goal-estatus">
+                          {{ $contrato->estatus() }}
+                        </td>
+                        <td class="text-right">
+                          {{ $contrato->user != null ? $contrato->user->telefono : ''}}
+                        </td>
+                        <td>
+                           <div class="dropdown">
+                            <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-boundary="window">
+                              <i class="fe fe-more-vertical"></i>
                             </a>
-                            <a href="{{ route('aprobar.contrato' , [$contrato->id]) }}" class="dropdown-item">
-                              Aprobar
-                            </a>
-                            <a href="{{ route('negar.contrato' , [$contrato->id]) }}" class="dropdown-item">
-                              Negar
-                            </a>
-                    
+                            <div class="dropdown-menu dropdown-menu-right">
+
+                              @role('admin')
+                              <a href="{{ route('detalles.contrato' , [$contrato->id]) }}" class="dropdown-item">
+                                Detalles
+                              </a>
+                              <a href="{{ route('aprobar.contrato' , [$contrato->id]) }}" class="dropdown-item">
+                                Aprobar
+                              </a>
+                              <a href="{{ route('negar.contrato' , [$contrato->id]) }}" class="dropdown-item">
+                                Negar
+                              </a>
+                              @else
+                                @if(Auth::user()->plan_id == 3)
+                                <a href="{{ route('panel.detalles.contrato' , [$contrato->id]) }}" class="dropdown-item">
+                                  Detalles
+                                </a>
+                                @endif
+                              @endrole
+                      
+                            </div>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
+                        </td>
+                      </tr>
+                    @endcan
                     @endforeach
                     
                   </tbody>

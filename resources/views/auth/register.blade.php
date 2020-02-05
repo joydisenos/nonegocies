@@ -18,7 +18,8 @@ Registro
           <h1 class="display-4 text-center mb-3">
             Registro
           </h1>
-
+          
+         
          
           
           <!-- Subheading -->
@@ -30,6 +31,9 @@ Registro
           <form method="POST" action="{{ route('register') }}">
             @csrf
             
+             @if(isset($referido))
+          <input type="hidden" name="referido_id" value="{{ $referido }}">
+          @endif
             <!-- Nombre -->
             <div class="form-group">
 
@@ -57,6 +61,8 @@ Registro
                 <select name="tipo" class="form-control">
                   <option value="1">Particular</option>
                   <option value="2">Empresa</option>
+                  <option value="3">Comunidad</option>
+                  <option value="4">Administrador</option>
                 </select>
         </div>
 
@@ -101,6 +107,8 @@ Registro
               </div>
             </div>
 
+            <div class="g-recaptcha" data-sitekey="{{ env('RE_CLAVE_SITIO' , '') }}"></div>
+
             <!-- Password Confirm
             <div class="form-group">
 
@@ -122,7 +130,7 @@ Registro
            
 
             <!-- Submit -->
-            <button class="btn btn-lg btn-block btn-primary mb-3">
+            <button class="btn btn-lg btn-block btn-primary mb-3 mt-3">
               Registrar
             </button>
 

@@ -109,7 +109,8 @@
                         {{ $empresa->descripcion }}
                       </td>
                       <td class="goal-date">
-                        <img src="{{ ($empresa->logo) ? asset('storage/'. $empresa->logo) : asset('img/nonegocies.png')}}" style="max-width:100px;" class="img-fluid" alt="Logo {{$empresa->nombre}}">
+                        <img src="{{ ($empresa->logo) ? asset('storage/'. $empresa->logo) : asset('img/nonegocies.png')}}" style="max-width:30px;border: 1px solid #00000054;
+    border-radius: 100%;" class="img-fluid" alt="Logo {{$empresa->nombre}}">
                       </td>
                       
                       <td class="text-right">

@@ -134,6 +134,19 @@
                       </td>
                     
                     </tr>
+
+                    <tr>
+                      <td class="goal-project">
+                          Contrato para Ofertas
+                      </td>
+                      <td class="goal-status">
+                          
+                      </td>
+                      <td>
+                          <a class="btn btn-primary" href="{{ route('editarlegales', ['contrato_oferta']) }}">Editar</a>
+                      </td>
+                    
+                    </tr>
                  
                     
                   </tbody>

@@ -18,16 +18,22 @@
 
                 <!-- Title -->
                 <h1 class="header-title">
-                  Usuarios
+                  Usuarios 
                 </h1>
 
               </div>
               <div class="col-auto">
                 
                 <!-- Button -->
+                @role('admin')
                 <a href="{{ route('crearusuario') }}" class="btn btn-primary">
                   Crear Usuario
                 </a>
+                @else
+                <a href="{{ route('panel.crear.usuario') }}" class="btn btn-primary">
+                  Crear Usuario
+                </a>
+                @endrole
 
               </div>
             </div> <!-- / .row -->
@@ -36,6 +42,9 @@
         </div>
       </div> <!-- / .header -->
       
+      <div class="container-fluid">
+      
+        </div>
       <!-- CARDS -->
       <div class="container-fluid">
         
@@ -62,7 +71,7 @@
                   </div>
                 </div> <!-- / .row -->
               </div>
-              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-project", "goal-status", "goal-progress", "goal-date"]'>
+              <div class="table-responsive mb-0" data-toggle="lists" data-lists-values='["goal-project", "goal-status", "goal-progress", "goal-date","goal-registro","goal-referidos"]'>
                 <table class="table table-sm table-nowrap card-table">
                   <thead>
                     <tr>
@@ -81,9 +90,20 @@
                           Email
                         </a>
                       </th>
+
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-registro">
+                          Registro
+                        </a>
+                      </th>
                       <th>
                         <a href="#" class="text-muted sort" data-sort="goal-date">
                           Plan
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" class="text-muted sort" data-sort="goal-referidos">
+                          Referidos
                         </a>
                       </th>
                       <th class="text-right">
@@ -105,6 +125,9 @@
                       <td class="goal-progress">
                         {{ $usuario->email }}
                       </td>
+                      <td class="goal-registro">
+                        {{ $usuario->created_at->format('Y/m/d') }}
+                      </td>
                       <td class="goal-date">
               			@if($usuario->plan_id == null)
               				Inicial
@@ -114,15 +137,21 @@
               				Platinum
               			@endif
                       </td>
+                      <td class="text-right goal-referidos">
+                        {{ $usuario->referidos->count() }}
+                      </td>
                       <td class="text-right">
                         {{ ($usuario->telefono) ? $usuario->telefono : 'No Registrado'}}
                       </td>
                       <td class="text-right">
+                        
                         <div class="dropdown">
                           <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-boundary="window">
                             <i class="fe fe-more-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right">
+                            
+                            @role('admin')
                             <a href="{{ route('modificarusuario' , [$usuario->id]) }}" class="dropdown-item">
                               Editar
                             </a>
@@ -130,8 +159,16 @@
                             <a href="{{ route('eliminarusuario' , [$usuario->id]) }}" class="dropdown-item">
                               Eliminar
                             </a>
+                            @else
+                              @if(Auth::user()->plan_id == 3)
+                              <a href="{{ route('panel.modificarusuario' , [$usuario->id]) }}" class="dropdown-item">
+                                Editar
+                              </a>
+                              @endif
+                            @endrole
                           </div>
                         </div>
+
                       </td>
                     </tr>
                     @endforeach
